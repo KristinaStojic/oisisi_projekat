@@ -1,8 +1,10 @@
 package izgledAplikacije;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
@@ -18,6 +20,7 @@ public class Menu_bar extends JMenuBar{
 
 	public Menu_bar() {
 		JMenu file = new JMenu("File");
+		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		file.setMnemonic(KeyEvent.VK_F);
 		Icon icon = new ImageIcon("imgs/Plus_sign.jpg");
 		JMenuItem miNew = new JMenuItem("New", icon);
