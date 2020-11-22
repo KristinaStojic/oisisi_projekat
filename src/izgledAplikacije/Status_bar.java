@@ -25,6 +25,7 @@ public class Status_bar extends JPanel{
 		Date dNow = new Date();
 	    SimpleDateFormat ft = new SimpleDateFormat ("hh:mm MM.dd.yyy ");
 	    JLabel clock = new JLabel(ft.format(dNow));
+	    
 	
 		this.setLayout(new BorderLayout());
 		this.add(label, BorderLayout.WEST);
