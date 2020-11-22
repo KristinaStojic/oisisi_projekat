@@ -56,6 +56,8 @@ public class Tool_bar extends JToolBar{
 	Btn4.setIcon(new ImageIcon("imgs/search.jpg"));
 	add(Btn4);
 	
+	
+	
 	setVisible(true);
 	}
 }
