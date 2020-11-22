@@ -19,7 +19,6 @@ public class Status_bar extends JPanel{
 
 	public Status_bar() {
 		setLayout(new BorderLayout());
-		setPreferredSize(new Dimension(20,20));
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 		JLabel label = new JLabel("Studentska sluzba");
