@@ -1,5 +1,6 @@
 package izgledAplikacije;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -29,6 +30,11 @@ public class Glavni_prozor extends JFrame {
         
         Menu_bar menu = new Menu_bar();
 		this.setJMenuBar(menu);
+		
+		Tool_bar tool = new Tool_bar();
+		add(tool, BorderLayout.NORTH);
+
+
     	
     }
     
