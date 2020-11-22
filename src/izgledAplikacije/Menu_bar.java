@@ -10,13 +10,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-public class MenuBar extends JMenuBar{
+public class Menu_bar extends JMenuBar{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public MenuBar() {
+	public Menu_bar() {
 		JMenu file = new JMenu("File");
 		file.setMnemonic(KeyEvent.VK_F);
 		Icon icon = new ImageIcon("imgs/Plus_sign.jpg");
