@@ -1,5 +1,7 @@
 package izgledAplikacije;
 
+import java.awt.Dimension;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -45,9 +47,9 @@ public class Tool_bar extends JToolBar{
 	BoxLayout box=new BoxLayout(panBottom, BoxLayout.X_AXIS);
 	panBottom.setLayout(box);
 	panBottom.add(Box.createGlue());
-	panBottom.add(Box.createHorizontalStrut(1060));
 	JTextField trazi = new JTextField();
 	panBottom.add(trazi);
+	trazi.setMaximumSize(new Dimension(5000,100));
 	add(panBottom);
 	
 	
