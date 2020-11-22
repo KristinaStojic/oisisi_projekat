@@ -1,5 +1,6 @@
 package izgledAplikacije;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -29,7 +30,9 @@ public class Glavni_prozor extends JFrame {
         
         Menu_bar menu = new Menu_bar();
 		this.setJMenuBar(menu);
-    	
+
+		Status_bar status = new Status_bar();
+		this.add(status, BorderLayout.SOUTH);
     }
     
 }
