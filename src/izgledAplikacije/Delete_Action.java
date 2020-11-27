@@ -7,7 +7,7 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
-public class DeleteAction extends AbstractAction{
+public class Delete_Action extends AbstractAction{
 
 	
 	/**
@@ -15,7 +15,7 @@ public class DeleteAction extends AbstractAction{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public DeleteAction() {
+	public Delete_Action() {
 		putValue(MNEMONIC_KEY, KeyEvent.VK_D);
 		putValue(SHORT_DESCRIPTION, "Obrisi");
 		putValue(SMALL_ICON, new ImageIcon("imgs/delete.jpg"));

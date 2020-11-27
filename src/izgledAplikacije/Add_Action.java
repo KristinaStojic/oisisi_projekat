@@ -9,12 +9,12 @@ import javax.swing.KeyStroke;
 
 
 
-public class AddAction extends AbstractAction{
+public class Add_Action extends AbstractAction{
 
 		private static final long serialVersionUID = 1583426086994634757L;
 
-		public AddAction() {
-			//putValue(NAME, "Obrisi");
+		public Add_Action() {
+			
 			putValue(MNEMONIC_KEY, KeyEvent.VK_N);
 			putValue(SHORT_DESCRIPTION, "Obrisi");
 			putValue(SMALL_ICON, new ImageIcon("imgs/insert.jpg"));

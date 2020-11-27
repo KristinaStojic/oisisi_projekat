@@ -24,7 +24,7 @@ public class Tool_bar extends JToolBar{
 	
 	public Tool_bar() {
 	
-	AddAction dodaj = new AddAction();
+	Add_Action dodaj = new Add_Action();
 	JButton btn1 = new JButton(dodaj);
 	btn1.setToolTipText("Dodaj");
 	add(btn1);
@@ -46,7 +46,7 @@ public class Tool_bar extends JToolBar{
 	
 	
 
-	DeleteAction izbrisi = new DeleteAction();
+	Delete_Action izbrisi = new Delete_Action();
 	JButton btn3 = new JButton(izbrisi);
 	btn3.setToolTipText("Obrisi");
 	add(btn3);
