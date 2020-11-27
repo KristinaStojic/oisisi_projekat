@@ -2,6 +2,8 @@ package izgledAplikacije;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -26,6 +28,12 @@ public class Status_bar extends JPanel{
 	    SimpleDateFormat ft = new SimpleDateFormat ("hh:mm MM.dd.yyy ");
 	    JLabel clock = new JLabel(ft.format(dNow));
 	    
+	    ActionListener al = new ActionListener(){
+		      public void actionPerformed(ActionEvent ae){
+		        clock.setText(ft.format(new java.util.Date()));
+		      }
+		};
+		new javax.swing.Timer(1000,al).start();
 	
 		this.setLayout(new BorderLayout());
 		this.add(label, BorderLayout.WEST);
