@@ -52,6 +52,8 @@ public class Tool_bar extends JToolBar{
 	setFloatable(false);
 	
 	
+	
+	
 	JPanel panBottom=new JPanel();
 	BoxLayout box=new BoxLayout(panBottom, BoxLayout.X_AXIS);
 	panBottom.setLayout(box);

@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
-import javax.swing.KeyStroke;
 
 
 
@@ -18,7 +17,7 @@ public class Add_Action extends AbstractAction{
 			putValue(MNEMONIC_KEY, KeyEvent.VK_N);
 			putValue(SHORT_DESCRIPTION, "Obrisi");
 			putValue(SMALL_ICON, new ImageIcon("imgs/insert.jpg"));
-			putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK));
+			//putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.VK_M));
 		}
 
 		@Override

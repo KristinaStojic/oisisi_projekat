@@ -17,7 +17,7 @@ public class Insert_Action extends AbstractAction{
 		putValue(MNEMONIC_KEY, KeyEvent.VK_I);
 		putValue(SHORT_DESCRIPTION, "Izmeni");
 		putValue(SMALL_ICON, new ImageIcon("imgs/search.jpg"));
-		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_I, KeyEvent.CTRL_MASK));
+		//putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_I, KeyEvent.CTRL_MASK));
 		
 	}
 	
