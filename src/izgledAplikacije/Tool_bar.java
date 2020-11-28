@@ -28,7 +28,6 @@ public class Tool_bar extends JToolBar{
 	JButton btn1 = new JButton(dodaj);
 	btn1.setToolTipText("Dodaj");
 	add(btn1);
-	
 	btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
     KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), "Dodaj");
 	addSeparator();
@@ -44,8 +43,6 @@ public class Tool_bar extends JToolBar{
 	addSeparator();
 	
 	
-	
-
 	Delete_Action izbrisi = new Delete_Action();
 	JButton btn3 = new JButton(izbrisi);
 	btn3.setToolTipText("Obrisi");
@@ -53,7 +50,6 @@ public class Tool_bar extends JToolBar{
 	btn3.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
 	        KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK), "Obrisi");
 	setFloatable(false);
-	
 	
 	
 	JPanel panBottom=new JPanel();
@@ -70,6 +66,7 @@ public class Tool_bar extends JToolBar{
 	Btn4.setToolTipText("Pretrazi");
 	Btn4.setIcon(new ImageIcon("imgs/search.jpg"));
 	add(Btn4);
+	
 	
 	JToolBar toolbar = new JToolBar();
 	toolbar.add(dodaj);
