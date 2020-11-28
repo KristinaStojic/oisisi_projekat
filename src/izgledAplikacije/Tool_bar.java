@@ -2,6 +2,7 @@ package izgledAplikacije;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -12,8 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
-
-import com.sun.glass.events.KeyEvent;
 
 public class Tool_bar extends JToolBar{
 	
