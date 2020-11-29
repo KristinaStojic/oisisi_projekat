@@ -9,7 +9,17 @@ import javax.swing.JFrame;
 
 
 public class Glavni_prozor extends JFrame {
-
+	
+	public static Glavni_prozor instance = null;
+	
+	public static Glavni_prozor getInstance() {
+		if (instance == null)
+		{
+			instance = new Glavni_prozor();
+		}
+		
+		return instance;
+	}
 	
     /**
 	 * 

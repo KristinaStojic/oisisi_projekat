@@ -2,6 +2,7 @@ package izgledAplikacije;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
@@ -49,9 +50,25 @@ public class Menu_bar extends JMenuBar{
 		icon = new ImageIcon("imgs/help.jpg");
 		JMenuItem miHelp = new JMenuItem("Help", icon);
 		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
+		miHelp.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Help help = new Help(Glavni_prozor.getInstance());
+			}
+			
+		});
 		icon = new ImageIcon("imgs/about.jpg");
 		JMenuItem miAbout = new JMenuItem("About", icon);
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
+		miAbout.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				About about = new About(Glavni_prozor.getInstance());
+			}
+			
+		});
 		help.add(miHelp);
 		help.addSeparator();
 		help.add(miAbout);
