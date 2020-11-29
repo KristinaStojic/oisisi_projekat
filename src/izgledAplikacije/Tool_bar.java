@@ -27,8 +27,8 @@ public class Tool_bar extends JToolBar{
 	JButton btn1 = new JButton(dodaj);
 	btn1.setToolTipText("Dodaj");
 	add(btn1);
-	btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-    KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), "Dodaj");
+	//btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+   // KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.ALT_MASK), "Dodaj");
 	addSeparator();
 	
 	
@@ -37,8 +37,8 @@ public class Tool_bar extends JToolBar{
 	btn2.setToolTipText("Izmeni");
 	btn2.setIcon(new ImageIcon("imgs/olovka.jpg"));
 	add(btn2);
-	btn2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-	        KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.CTRL_MASK), "Izmeni");
+	//btn2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+	  //      KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.ALT_MASK), "Izmeni");
 	addSeparator();
 	
 	
@@ -46,8 +46,8 @@ public class Tool_bar extends JToolBar{
 	JButton btn3 = new JButton(izbrisi);
 	btn3.setToolTipText("Obrisi");
 	add(btn3);
-	btn3.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-	        KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK), "Obrisi");
+	//btn3.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+	  //      KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK), "Obrisi");
 	setFloatable(false);
 	
 	
