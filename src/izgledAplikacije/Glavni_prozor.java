@@ -10,15 +10,10 @@ import javax.swing.JFrame;
 
 public class Glavni_prozor extends JFrame {
 	
-	public static Glavni_prozor instance = null;
+	private static Glavni_prozor instance = null;
 	
-	public static Glavni_prozor getInstance() {
-		if (instance == null)
-		{
-			instance = new Glavni_prozor();
-		}
-		
-		return instance;
+	private Glavni_prozor() {
+		initialise();
 	}
 	
     /**
@@ -27,7 +22,7 @@ public class Glavni_prozor extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	
-	public Glavni_prozor() {
+	private void initialise() {
     	Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
     	int screenHeight = screenSize.height;
@@ -48,5 +43,12 @@ public class Glavni_prozor extends JFrame {
 		this.add(status, BorderLayout.SOUTH);
 
     }
+	
+	public static Glavni_prozor getInstance() {
+		if(instance == null) {
+			instance = new Glavni_prozor();
+		}
+		return instance;
+	}
     
 }
