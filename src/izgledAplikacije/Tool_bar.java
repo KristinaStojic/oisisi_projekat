@@ -69,8 +69,8 @@ public class Tool_bar extends JToolBar{
 	add(Btn4);
 	
 	
-	JToolBar toolbar = new JToolBar();
-	toolbar.add(dodaj);
+	/*oolBar toolbar = new JToolBar();
+	toolbar.add(dodaj);*/
 	
 	setVisible(true);
 	}
