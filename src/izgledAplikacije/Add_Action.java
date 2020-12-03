@@ -15,10 +15,10 @@ public class Add_Action extends AbstractAction{
 
 		public Add_Action() {
 			
-			putValue(MNEMONIC_KEY,KeyEvent.VK_N);
-			putValue(SHORT_DESCRIPTION, "Dodaj");
+			//putValue(MNEMONIC_KEY,KeyEvent.VK_N);
+			putValue(SHORT_DESCRIPTION, "New");
 			putValue(SMALL_ICON, new ImageIcon("imgs/insert.jpg"));
-			putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK));
+			putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		}
 
 		@Override
