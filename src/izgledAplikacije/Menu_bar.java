@@ -23,9 +23,12 @@ public class Menu_bar extends JMenuBar{
 		JMenu file = new JMenu("File");
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		file.setMnemonic(KeyEvent.VK_F);
+		Add_Action dodaj = new Add_Action();
 		Icon icon = new ImageIcon("imgs/Plus_sign.jpg");
-		JMenuItem miNew = new JMenuItem("New", icon);
-		miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+		JMenuItem miNew = new JMenuItem();
+		miNew.setAction(dodaj);
+		miNew.setText("New");
+		//miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		icon = new ImageIcon("imgs/close.jpg");
 		JMenuItem miClose = new JMenuItem("Close", icon);
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
