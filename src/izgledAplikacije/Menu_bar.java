@@ -38,14 +38,18 @@ public class Menu_bar extends JMenuBar{
 		
 		JMenu edit = new JMenu("Edit");
 		edit.setMnemonic(KeyEvent.VK_E);
+
 		//icon = new ImageIcon("imgs/edit.jpg");
 		JMenuItem miEdit = new JMenuItem();
+
 		//miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		Insert_Action ed = new Insert_Action();
 		miEdit.setAction(ed);
 		miEdit.setText("Edit");
 		//icon = new ImageIcon("imgs/Redx.jpg");
+
 		JMenuItem miDelete = new JMenuItem();
+
 		Delete_Action del = new Delete_Action();
 		miDelete.setAction(del);
 		miDelete.setText("Delete");

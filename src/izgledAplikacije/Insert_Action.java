@@ -14,10 +14,11 @@ public class Insert_Action extends AbstractAction{
 	private static final long serialVersionUID = 1L;
 
 	public Insert_Action() {
-		putValue(MNEMONIC_KEY, KeyEvent.VK_I);
-		putValue(SHORT_DESCRIPTION, "Izmeni");
+		
+		//putValue(MNEMONIC_KEY,KeyEvent.VK_I);
+		putValue(SHORT_DESCRIPTION, "Edit");
 		putValue(SMALL_ICON, new ImageIcon("imgs/search.jpg"));
-		//putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_I, KeyEvent.CTRL_MASK));
+		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		
 	}
 	
