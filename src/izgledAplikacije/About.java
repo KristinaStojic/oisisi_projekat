@@ -25,5 +25,6 @@ public class About {
 		dijalog.setSize(new Dimension(500,400));
 		dijalog.setLocationRelativeTo(null);		
 		dijalog.setVisible(true);
+		
 	}
 }
