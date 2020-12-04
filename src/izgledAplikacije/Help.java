@@ -18,7 +18,7 @@ public class Help extends JDialog{
 		String tekst = "U glavni prozor aplikacije dodati su menu bar, status bar i toolbar.\n"
 					   + "Meni bar sadrzi:\n"
 					   + "  -Podmeni File(akcelerator: alt+f). U kome se nalaze stavke: \n"
-					   + "    New(mnemonik: ctrl+new): sluzi za dodavanje novog entiteta u sistem. \n"
+					   + "    New(mnemonik: ctrl+n): sluzi za dodavanje novog entiteta u sistem. \n"
 					   + "    Close(mnemonik: ctrl+c): sluzi za zatvaranje aplikacije.\n"
 					   + "  -Podmeni Edit(akcelerator: alt+e). U kome se nalaze stavke: \n"
 					   + "    Edit(mnemonik: ctrl+e): sluzi za izmjenu postojeceg entiteta\n"
