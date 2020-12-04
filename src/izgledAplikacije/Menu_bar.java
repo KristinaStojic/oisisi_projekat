@@ -64,6 +64,7 @@ public class Menu_bar extends JMenuBar{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Help help = new Help(Glavni_prozor.getInstance());
+				help.setVisible(true);
 			}
 			
 		});
@@ -75,6 +76,7 @@ public class Menu_bar extends JMenuBar{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				About about = new About(Glavni_prozor.getInstance());
+				about.setVisible(true);
 			}
 			
 		});

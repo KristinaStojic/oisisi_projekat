@@ -6,9 +6,14 @@ import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
-public class Help {
+public class Help extends JDialog{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Help(Glavni_prozor gp) {
-		JDialog dijalog = new JDialog(gp,"Help",true);
+		super(gp,"Help",true);
 		JTextPane txt = new JTextPane();
 		String tekst = "U glavni prozor aplikacije dodati su menu bar, status bar i toolbar.\n"
 					   + "Meni bar sadrzi:\n"
@@ -29,10 +34,9 @@ public class Help {
 					   + "Status bar aplikacije sadrzi: naziv aplikacije, trenutno vrijeme i trenutni datum.";
 		txt.setText(tekst);
 		txt.setEditable(false);
-		dijalog.add(txt);
-		dijalog.add(new JScrollPane(txt));
-		dijalog.setSize(new Dimension(500,400));
-		dijalog.setLocationRelativeTo(null);
-		dijalog.setVisible(true);
+		add(txt);
+		add(new JScrollPane(txt));
+		setSize(new Dimension(500,400));
+		setLocationRelativeTo(null);
 	}
 }
