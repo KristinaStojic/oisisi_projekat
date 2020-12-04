@@ -6,9 +6,14 @@ import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
-public class About {
+public class About extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public About(Glavni_prozor gp) {
-		JDialog dijalog = new JDialog(gp,"About",true);
+		super(gp,"About",true);
 		JTextPane txt = new JTextPane();
 		String tekst = "Verzija: 2020/2021\n"
 						+ "Aplikacija studentska sluzba\n"
@@ -20,10 +25,9 @@ public class About {
 						+ "Rođena 5.03.1999 u Zvorniku. Student treće godine racunarstva i automatike.";
 		txt.setText(tekst);
 		txt.setEditable(false);
-		dijalog.add(txt);
-		dijalog.add(new JScrollPane(txt));
-		dijalog.setSize(new Dimension(500,400));
-		dijalog.setLocationRelativeTo(null);		
-		dijalog.setVisible(true);
+		add(txt);
+		add(new JScrollPane(txt));
+		setSize(new Dimension(500,400));
+		setLocationRelativeTo(null);		
 	}
 }
