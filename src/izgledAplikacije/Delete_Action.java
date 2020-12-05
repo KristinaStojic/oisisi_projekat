@@ -15,10 +15,11 @@ public class Delete_Action extends AbstractAction{
 	private static final long serialVersionUID = 1L;
 
 	public Delete_Action() {
-		putValue(MNEMONIC_KEY, KeyEvent.VK_D);
-		putValue(SHORT_DESCRIPTION, "Obrisi");
+		
+		//putValue(MNEMONIC_KEY,KeyEvent.VK_D);
+		putValue(SHORT_DESCRIPTION, "Delete");
 		putValue(SMALL_ICON, new ImageIcon("imgs/delete.jpg"));
-		//putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_D, KeyEvent.CTRL_MASK));
+		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		
 	}
 	

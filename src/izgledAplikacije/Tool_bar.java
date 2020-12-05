@@ -21,29 +21,29 @@ public class Tool_bar extends JToolBar{
 	
 	Add_Action dodaj = new Add_Action();
 	JButton btn1 = new JButton(dodaj);
-	btn1.setToolTipText("Dodaj");
+	//btn1.setToolTipText("Dodaj");
 	add(btn1);
-	//btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-   // KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.ALT_MASK), "Dodaj");
+	btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+    KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), "New");
 	addSeparator();
 	
 	
 	Insert_Action izmeni = new Insert_Action();
 	JButton btn2 = new JButton(izmeni);
-	btn2.setToolTipText("Izmeni");
+	//btn2.setToolTipText("Izmeni");
 	btn2.setIcon(new ImageIcon("imgs/olovka.jpg"));
 	add(btn2);
-	//btn2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-	  //      KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.ALT_MASK), "Izmeni");
+	btn2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+	        KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK), "Edit");
 	addSeparator();
 	
 	
 	Delete_Action izbrisi = new Delete_Action();
 	JButton btn3 = new JButton(izbrisi);
-	btn3.setToolTipText("Obrisi");
+	//btn3.setToolTipText("Obrisi");
 	add(btn3);
-	//btn3.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-	  //      KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK), "Obrisi");
+	btn3.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+	        KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK), "Delete");
 	setFloatable(false);
 	
 	
@@ -60,13 +60,13 @@ public class Tool_bar extends JToolBar{
 	
 	
 	JButton Btn4 = new JButton();
-	Btn4.setToolTipText("Pretrazi");
+	Btn4.setToolTipText("Search");
 	Btn4.setIcon(new ImageIcon("imgs/search.jpg"));
 	add(Btn4);
 	
 	
-	JToolBar toolbar = new JToolBar();
-	toolbar.add(dodaj);
+	/*oolBar toolbar = new JToolBar();
+	toolbar.add(dodaj);*/
 	
 	setVisible(true);
 	}
