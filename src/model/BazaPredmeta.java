@@ -5,7 +5,6 @@ import java.util.List;
 
 public class BazaPredmeta {
 		
-	
 	private static BazaPredmeta instance = null;
 
 	public static BazaPredmeta getInstance() {
@@ -25,7 +24,7 @@ public class BazaPredmeta {
 		inicijalizujPredmete();
 		
 		
-		this.predmeti = new ArrayList<Predmet>();
+	
 		this.kolone = new ArrayList<String>();
 		
 		this.kolone.add("Sifra predmeta");
@@ -40,8 +39,8 @@ public class BazaPredmeta {
 	private void inicijalizujPredmete(){
 		
 		this.predmeti = new ArrayList<Predmet>();
-		predmeti.add(new Predmet("E2","OISISI",8,3,"Letnji"));
-		predmeti.add(new Predmet("E22","Baze podataka",6,3,"Zimski"));
+		predmeti.add(new Predmet("E2","OISISI","Letnji",3,null,8,null));
+		
 		
 	}
 	
