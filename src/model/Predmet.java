@@ -33,7 +33,13 @@ public class Predmet {
 		this.studenti = studenti;
 	}
 	
-	
+	public Predmet(String sifra, String naziv, int espb, int godina, String semestar) {
+		this.sifra_predmeta = sifra;
+		this.naziv_predmeta = naziv;
+		this.broj_ESPB = espb;
+		this.godina_izvodjenja = godina;
+		this.semestar = semestar;
+	}
 	
 	
 	public String getSifraPredmeta() {
