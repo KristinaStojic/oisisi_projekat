@@ -3,7 +3,6 @@ package izgledAplikacije;
 import javax.swing.table.AbstractTableModel;
 
 import model.BazaProfesora;
-import model.BazaStudenata;
 
 public class AbstractTableModelProfesori extends AbstractTableModel{
 
