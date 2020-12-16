@@ -3,6 +3,7 @@ package izgledAplikacije;
 import javax.swing.table.AbstractTableModel;
 
 import model.BazaPredmeta;
+import model.BazaProfesora;
 
 public class AbstractTableModelPredmeti extends AbstractTableModel{
 
@@ -21,6 +22,10 @@ public class AbstractTableModelPredmeti extends AbstractTableModel{
 		return BazaPredmeta.getInstance().getColumnCount();
 	}
 
+	public String getColumnName(int column) {
+		return BazaPredmeta.getInstance().getColumnName(column);
+	}
+	
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		return BazaPredmeta.getInstance().getValueAt(rowIndex, columnIndex);

@@ -31,7 +31,7 @@ public class BazaProfesora {
 	
 	private void inicijalizujProfesore() {
 		this.profesori=new ArrayList<Profesor>();
-		profesori.add(new Profesor("Kristina", "Stojic", "dr", "Profesor"));
+		profesori.add(new Profesor("Kristina", "Stojic", "05.03.1999.","Jardan 129","064/351-58-64","stojic.kris@gmail.com","Futoska 50","KA10101", "dr", "Profesor", null));
 	}
 	
 	
