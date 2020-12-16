@@ -1,10 +1,12 @@
-package izgledAplikacije;
+package dialozi;
 
 import java.awt.Dimension;
 
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+
+import izgledAplikacije.Glavni_prozor;
 
 public class Help extends JDialog{
 	/**

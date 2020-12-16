@@ -13,6 +13,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import dialozi.Help;
+
 public class Menu_bar extends JMenuBar{
 	/**
 	 * 
