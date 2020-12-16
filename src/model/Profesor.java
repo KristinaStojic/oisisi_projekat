@@ -38,7 +38,12 @@ public class Profesor {
 	}
 	
 	
-	
+	public Profesor(String ime, String prezime, String titula, String zvanje) {
+		this.ime = ime;
+		this.prezime = prezime;
+		this.titula = titula;
+		this.zvanje = zvanje;
+	}
 	
 	
 	
