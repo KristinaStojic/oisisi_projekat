@@ -21,6 +21,11 @@ public class JTables extends JTable{
 				AbstractTableModelStudenti modelStudenti = new AbstractTableModelStudenti();
 				this.setModel(modelStudenti);
 				break;
+				
+		case Profesori:
+				AbstractTableModelProfesori modelProfesori = new AbstractTableModelProfesori();
+				this.setModel(modelProfesori);
+				break;
 		}
 	}
 	
