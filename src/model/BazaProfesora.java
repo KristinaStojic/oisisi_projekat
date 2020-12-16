@@ -47,11 +47,29 @@ public class BazaProfesora {
 		return 4;
 	}
 	
+	public String getColumnName(int index) {
+		return this.kolone.get(index);
+	}
+	
 	public Profesor getRow(int rowIndex) {
 		return this.profesori.get(rowIndex);
 	}
 	
 	
-	
+	public String getValueAt(int row, int column) {
+		Profesor p = this.profesori.get(row);
+		switch(column) {
+		case 0:
+			return p.getIme();
+		case 1:
+			return p.getPrezime();
+		case 2:
+			return p.getTitula();
+		case 3:
+			return p.getZvanje();
+		default:
+			return null;
+		}
+	}
 	
 }
