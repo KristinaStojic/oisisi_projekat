@@ -1,0 +1,140 @@
+package model;
+
+import java.util.List;
+
+public class Student {
+	enum Status {B, S};
+	protected String imeStudenta;
+	protected String prezimeStudenta;
+	protected String datumRodjenjaStudenta;
+	protected String adresaStudenta;
+	protected String kontaktTelefon;
+	protected String emailAdresa;
+	protected String brojIndeksa;
+	protected int godinaUpisa;
+	protected int trenutnaGodinaStudija;
+	protected double prosjecnaOcjena;
+	List<Ocena> polozeniIspiti;
+	List<Predmet> nepolozeniIspiti;
+	
+	public Student() {
+		super();
+	}
+
+	public Student(String imeStudenta, String prezimeStudenta, String datumRodjenjaStudenta, String adresaStudenta,
+			String kontaktTelefon, String emailAdresa, String brojIndeksa, int godinaUpisa, int trenutnaGodinaStudija,
+			double prosjecnaOcjena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti) {
+		super();
+		this.imeStudenta = imeStudenta;
+		this.prezimeStudenta = prezimeStudenta;
+		this.datumRodjenjaStudenta = datumRodjenjaStudenta;
+		this.adresaStudenta = adresaStudenta;
+		this.kontaktTelefon = kontaktTelefon;
+		this.emailAdresa = emailAdresa;
+		this.brojIndeksa = brojIndeksa;
+		this.godinaUpisa = godinaUpisa;
+		this.trenutnaGodinaStudija = trenutnaGodinaStudija;
+		this.prosjecnaOcjena = prosjecnaOcjena;
+		this.polozeniIspiti = polozeniIspiti;
+		this.nepolozeniIspiti = nepolozeniIspiti;
+	}
+
+	public String getImeStudenta() {
+		return imeStudenta;
+	}
+
+	public void setImeStudenta(String imeStudenta) {
+		this.imeStudenta = imeStudenta;
+	}
+
+	public String getPrezimeStudenta() {
+		return prezimeStudenta;
+	}
+
+	public void setPrezimeStudenta(String prezimeStudenta) {
+		this.prezimeStudenta = prezimeStudenta;
+	}
+
+	public String getDatumRodjenjaStudenta() {
+		return datumRodjenjaStudenta;
+	}
+
+	public void setDatumRodjenjaStudenta(String datumRodjenjaStudenta) {
+		this.datumRodjenjaStudenta = datumRodjenjaStudenta;
+	}
+
+	public String getAdresaStudenta() {
+		return adresaStudenta;
+	}
+
+	public void setAdresaStudenta(String adresaStudenta) {
+		this.adresaStudenta = adresaStudenta;
+	}
+
+	public String getKontaktTelefon() {
+		return kontaktTelefon;
+	}
+
+	public void setKontaktTelefon(String kontaktTelefon) {
+		this.kontaktTelefon = kontaktTelefon;
+	}
+
+	public String getEmailAdresa() {
+		return emailAdresa;
+	}
+
+	public void setEmailAdresa(String emailAdresa) {
+		this.emailAdresa = emailAdresa;
+	}
+
+	public String getBrojIndeksa() {
+		return brojIndeksa;
+	}
+
+	public void setBrojIndeksa(String brojIndeksa) {
+		this.brojIndeksa = brojIndeksa;
+	}
+
+	public int getGodinaUpisa() {
+		return godinaUpisa;
+	}
+
+	public void setGodinaUpisa(int godinaUpisa) {
+		this.godinaUpisa = godinaUpisa;
+	}
+
+	public int getTrenutnaGodinaStudija() {
+		return trenutnaGodinaStudija;
+	}
+
+	public void setTrenutnaGodinaStudija(int trenutnaGodinaStudija) {
+		this.trenutnaGodinaStudija = trenutnaGodinaStudija;
+	}
+
+	public double getProsjecnaOcjena() {
+		return prosjecnaOcjena;
+	}
+
+	public void setProsjecnaOcjena(double prosjecnaOcjena) {
+		this.prosjecnaOcjena = prosjecnaOcjena;
+	}
+
+	public List<Ocena> getPolozeniIspiti() {
+		return polozeniIspiti;
+	}
+
+	public void setPolozeniIspiti(List<Ocena> polozeniIspiti) {
+		this.polozeniIspiti = polozeniIspiti;
+	}
+
+	public List<Predmet> getNepolozeniIspiti() {
+		return nepolozeniIspiti;
+	}
+
+	public void setNepolozeniIspiti(List<Predmet> nepolozeniIspiti) {
+		this.nepolozeniIspiti = nepolozeniIspiti;
+	}
+	
+	
+	
+}
