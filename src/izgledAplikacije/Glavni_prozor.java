@@ -44,6 +44,9 @@ public class Glavni_prozor extends JFrame {
 		
 		MyTabbedPane tabbedPane = new MyTabbedPane();
 		this.add(tabbedPane, BorderLayout.CENTER);
+		
+		tabbedPane = new MyTabbedPane();
+		add(tabbedPane, BorderLayout.CENTER);
     }
 	
 	public static Glavni_prozor getInstance() {
