@@ -58,9 +58,31 @@ public class BazaPredmeta {
 		return 5;
 	}
 
+	public String getColumnName(int index) {
+		return this.kolone.get(index);
+	}
 	
 	public Predmet getRow(int rowIndex) {
 		return this.predmeti.get(rowIndex);
+	}
+	
+	
+	public String getValueAt(int row, int column) {
+		Predmet p = this.predmeti.get(row);
+		switch(column) {
+		case 0:
+			return p.getSifraPredmeta();
+		case 1:
+			return p.getNazivPredmeta();
+		case 2:
+			return String.valueOf(p.getESPB());
+		case 3:
+			return String.valueOf(p.getGodinaIzvodjenja());
+		case 4:
+			return String.valueOf(p.getSemestar());
+		default:
+			return null;
+		}
 	}
 	
 	
