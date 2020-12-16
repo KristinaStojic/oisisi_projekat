@@ -22,9 +22,11 @@ public class Student {
 		super();
 	}
 
+	
+
 	public Student(String imeStudenta, String prezimeStudenta, String datumRodjenjaStudenta, String adresaStudenta,
 			String kontaktTelefon, String emailAdresa, String brojIndeksa, int godinaUpisa, int trenutnaGodinaStudija,
-			double prosjecnaOcjena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti) {
+			Status status, double prosjecnaOcjena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti) {
 		super();
 		this.imeStudenta = imeStudenta;
 		this.prezimeStudenta = prezimeStudenta;
@@ -35,10 +37,13 @@ public class Student {
 		this.brojIndeksa = brojIndeksa;
 		this.godinaUpisa = godinaUpisa;
 		this.trenutnaGodinaStudija = trenutnaGodinaStudija;
+		this.status = status;
 		this.prosjecnaOcjena = prosjecnaOcjena;
 		this.polozeniIspiti = polozeniIspiti;
 		this.nepolozeniIspiti = nepolozeniIspiti;
 	}
+
+
 
 	public String getImeStudenta() {
 		return imeStudenta;
@@ -134,6 +139,14 @@ public class Student {
 
 	public void setNepolozeniIspiti(List<Predmet> nepolozeniIspiti) {
 		this.nepolozeniIspiti = nepolozeniIspiti;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 	
 	
