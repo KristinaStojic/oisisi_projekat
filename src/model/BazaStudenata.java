@@ -3,8 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.net.ssl.SSLEngineResult.Status;
-
 public class BazaStudenata {
 	
 	private static BazaStudenata instance = null;
