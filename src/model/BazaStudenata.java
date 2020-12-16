@@ -49,6 +49,10 @@ public class BazaStudenata {
 		return 6;
 	}
 	
+	public String getColumnName(int index) {
+		return this.kolone.get(index);
+	}
+	
 	public Student getRow(int rowIndex) {
 		return this.studenti.get(rowIndex);
 	}
