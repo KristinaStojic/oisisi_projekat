@@ -13,6 +13,7 @@ public class Student {
 	protected String brojIndeksa;
 	protected int godinaUpisa;
 	protected int trenutnaGodinaStudija;
+	protected Status status;
 	protected double prosjecnaOcjena;
 	List<Ocena> polozeniIspiti;
 	List<Predmet> nepolozeniIspiti;
