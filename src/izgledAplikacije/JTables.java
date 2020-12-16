@@ -16,20 +16,14 @@ public class JTables extends JTable{
 	private static final long serialVersionUID = 1L;
 
 	public JTables(Tab t) {
-		switch(t) {
+		switch(t) {	
 		case Studenti:
 				AbstractTableModelStudenti modelStudenti = new AbstractTableModelStudenti();
 				this.setModel(modelStudenti);
 				break;
-		
 		case Profesori:
 				AbstractTableModelProfesori modelProfesori = new AbstractTableModelProfesori();
 				this.setModel(modelProfesori);
-				break;
-		
-		case Predmeti:
-				AbstractTableModelPredmeti modelPredmeti = new AbstractTableModelPredmeti();
-				this.setModel(modelPredmeti);
 				break;
 		}
 	}
