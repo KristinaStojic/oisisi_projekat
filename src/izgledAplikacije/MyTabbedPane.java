@@ -12,6 +12,7 @@ public class MyTabbedPane extends JTabbedPane{
 	public MyTabbedPane() {
 		super.addTab("Student", null);
 		super.addTab("Profesor", null);
+		super.addTab("Predmet", null);
 	}
 	
 	
