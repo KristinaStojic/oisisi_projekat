@@ -6,7 +6,7 @@ import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
-import izgledAplikacije.Glavni_prozor;
+import izgledAplikacije.GlavniProzor;
 
 public class About extends JDialog{
 	/**
@@ -14,7 +14,7 @@ public class About extends JDialog{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public About(Glavni_prozor gp) {
+	public About(GlavniProzor gp) {
 		super(gp,"About",true);
 		JTextPane txt = new JTextPane();
 		String tekst = "Verzija: 2020/2021\n"

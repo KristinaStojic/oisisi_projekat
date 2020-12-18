@@ -6,7 +6,7 @@ import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
-import izgledAplikacije.Glavni_prozor;
+import izgledAplikacije.GlavniProzor;
 
 public class Help extends JDialog{
 	/**
@@ -14,7 +14,7 @@ public class Help extends JDialog{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Help(Glavni_prozor gp) {
+	public Help(GlavniProzor gp) {
 		super(gp,"Help",true);
 		JTextPane txt = new JTextPane();
 		String tekst = "U glavni prozor aplikacije dodati su menu bar, status bar i toolbar.\n"
