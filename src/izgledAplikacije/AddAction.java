@@ -9,11 +9,11 @@ import javax.swing.KeyStroke;
 
 
 
-public class Add_Action extends AbstractAction{
+public class AddAction extends AbstractAction{
 
 		private static final long serialVersionUID = 1583426086994634757L;
 
-		public Add_Action() {
+		public AddAction() {
 			
 			//putValue(MNEMONIC_KEY,KeyEvent.VK_N);
 			putValue(SHORT_DESCRIPTION, "New");
