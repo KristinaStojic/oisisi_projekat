@@ -1,11 +1,11 @@
 package main;
 
-import izgledAplikacije.Glavni_prozor;
+import izgledAplikacije.GlavniProzor;
 
 public class Main {
 	public static void main(String args[]) {
 		
-		Glavni_prozor gp = Glavni_prozor.getInstance();
+		GlavniProzor gp = GlavniProzor.getInstance();
 		gp.setVisible(true);
 		
 	}
