@@ -8,11 +8,11 @@ import javax.swing.JFrame;
 
 
 
-public class Glavni_prozor extends JFrame {
+public class GlavniProzor extends JFrame {
 	
-	private static Glavni_prozor instance = null;
+	private static GlavniProzor instance = null;
 	
-	private Glavni_prozor() {
+	private GlavniProzor() {
 		initialise();
 	}
 	
@@ -36,7 +36,7 @@ public class Glavni_prozor extends JFrame {
         MenuBar menu = new MenuBar();
 		this.setJMenuBar(menu);
 		
-		Tool_bar tool = new Tool_bar();
+		ToolBar tool = new ToolBar();
 		this.add(tool, BorderLayout.NORTH);
 
 		StatusBar status = new StatusBar();
@@ -49,9 +49,9 @@ public class Glavni_prozor extends JFrame {
 		add(tabbedPane, BorderLayout.CENTER);
     }
 	
-	public static Glavni_prozor getInstance() {
+	public static GlavniProzor getInstance() {
 		if(instance == null) {
-			instance = new Glavni_prozor();
+			instance = new GlavniProzor();
 		}
 		return instance;
 	}
