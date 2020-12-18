@@ -16,13 +16,13 @@ import javax.swing.KeyStroke;
 import dialozi.About;
 import dialozi.Help;
 
-public class Menu_bar extends JMenuBar{
+public class MenuBar extends JMenuBar{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Menu_bar() {
+	public MenuBar() {
 		JMenu file = new JMenu("File");
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		file.setMnemonic(KeyEvent.VK_F);

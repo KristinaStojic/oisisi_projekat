@@ -29,11 +29,11 @@ public class Glavni_prozor extends JFrame {
         int screenWidth = screenSize.width;
         
         setSize(screenWidth / 4*3  , screenHeight / 4*3);
-        setTitle("Studentska služba");
+        setTitle("Studentska sluï¿½ba");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         
-        Menu_bar menu = new Menu_bar();
+        MenuBar menu = new MenuBar();
 		this.setJMenuBar(menu);
 		
 		Tool_bar tool = new Tool_bar();
