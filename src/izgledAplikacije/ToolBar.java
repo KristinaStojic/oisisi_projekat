@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 
-public class Tool_bar extends JToolBar{
+public class ToolBar extends JToolBar{
 	
 	/**
 	 * 
