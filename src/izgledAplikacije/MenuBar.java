@@ -26,7 +26,7 @@ public class MenuBar extends JMenuBar{
 		JMenu file = new JMenu("File");
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		file.setMnemonic(KeyEvent.VK_F);
-		Add_Action dodaj = new Add_Action();
+		AddAction dodaj = new AddAction();
 		//Icon icon = new ImageIcon("imgs/Plus_sign.jpg");
 		JMenuItem miNew = new JMenuItem();
 		miNew.setAction(dodaj);
@@ -46,13 +46,13 @@ public class MenuBar extends JMenuBar{
 		icon = new ImageIcon("imgs/edit.jpg");
 		JMenuItem miEdit = new JMenuItem("Edit", icon);
 		//miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
-		Insert_Action ed = new Insert_Action();
+		InsertAction ed = new InsertAction();
 		miEdit.setAction(ed);
 		miEdit.setText("Edit");
 		miEdit.setMnemonic(KeyEvent.VK_E);
 		//icon = new ImageIcon("imgs/Redx.jpg");
 		JMenuItem miDelete = new JMenuItem("Delete", icon);
-		Delete_Action del = new Delete_Action();
+		DeleteAction del = new DeleteAction();
 		miDelete.setAction(del);
 		miDelete.setText("Delete");
 		miDelete.setMnemonic(KeyEvent.VK_D);
@@ -70,7 +70,7 @@ public class MenuBar extends JMenuBar{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Help help = new Help(Glavni_prozor.getInstance());
+				Help help = new Help(GlavniProzor.getInstance());
 				help.setVisible(true);
 			}
 			
@@ -83,7 +83,7 @@ public class MenuBar extends JMenuBar{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				About about = new About(Glavni_prozor.getInstance());
+				About about = new About(GlavniProzor.getInstance());
 				about.setVisible(true);
 			}
 			

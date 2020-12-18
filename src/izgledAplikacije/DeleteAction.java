@@ -7,18 +7,20 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
-public class Insert_Action extends AbstractAction{
+public class DeleteAction extends AbstractAction{
+
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Insert_Action() {
+	public DeleteAction() {
 		
-		//putValue(MNEMONIC_KEY,KeyEvent.VK_I);
-		putValue(SHORT_DESCRIPTION, "Edit");
-		putValue(SMALL_ICON, new ImageIcon("imgs/search.jpg"));
-		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
+		//putValue(MNEMONIC_KEY,KeyEvent.VK_D);
+		putValue(SHORT_DESCRIPTION, "Delete");
+		putValue(SMALL_ICON, new ImageIcon("imgs/delete.jpg"));
+		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		
 	}
 	

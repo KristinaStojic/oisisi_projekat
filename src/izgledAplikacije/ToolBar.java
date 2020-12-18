@@ -21,9 +21,9 @@ public class ToolBar extends JToolBar{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public Tool_bar() {
+	public ToolBar() {
 	
-	Add_Action dodaj = new Add_Action();
+	AddAction dodaj = new AddAction();
 	JButton btn1 = new JButton(dodaj);
 	//btn1.setToolTipText("Dodaj");
 	add(btn1);
@@ -32,7 +32,7 @@ public class ToolBar extends JToolBar{
 	addSeparator();
 	
 	
-	Insert_Action izmeni = new Insert_Action();
+	InsertAction izmeni = new InsertAction();
 	JButton btn2 = new JButton(izmeni);
 	//btn2.setToolTipText("Izmeni");
 	btn2.setIcon(new ImageIcon("imgs/olovka.jpg"));
@@ -42,7 +42,7 @@ public class ToolBar extends JToolBar{
 	addSeparator();
 	
 	
-	Delete_Action izbrisi = new Delete_Action();
+	DeleteAction izbrisi = new DeleteAction();
 	JButton btn3 = new JButton(izbrisi);
 	//btn3.setToolTipText("Obrisi");
 	add(btn3);
