@@ -28,10 +28,12 @@ public class Menu_bar extends JMenuBar{
 		JMenuItem miNew = new JMenuItem();
 		miNew.setAction(dodaj);
 		miNew.setText("New");
+		miNew.setMnemonic(KeyEvent.VK_N);
 		//miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		Icon icon = new ImageIcon("imgs/close.jpg");
 		JMenuItem miClose = new JMenuItem("Close", icon);
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+		miClose.setMnemonic(KeyEvent.VK_C);
 		file.add(miNew);
 		file.addSeparator();
 		file.add(miClose);
@@ -44,11 +46,13 @@ public class Menu_bar extends JMenuBar{
 		Insert_Action ed = new Insert_Action();
 		miEdit.setAction(ed);
 		miEdit.setText("Edit");
+		miEdit.setMnemonic(KeyEvent.VK_E);
 		//icon = new ImageIcon("imgs/Redx.jpg");
 		JMenuItem miDelete = new JMenuItem("Delete", icon);
 		Delete_Action del = new Delete_Action();
 		miDelete.setAction(del);
 		miDelete.setText("Delete");
+		miDelete.setMnemonic(KeyEvent.VK_D);
 		//miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		edit.add(miEdit);
 		edit.addSeparator();
@@ -59,6 +63,7 @@ public class Menu_bar extends JMenuBar{
 		icon = new ImageIcon("imgs/help.jpg");
 		JMenuItem miHelp = new JMenuItem("Help", icon);
 		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
+		miHelp.setMnemonic(KeyEvent.VK_H);
 		miHelp.addActionListener(new ActionListener() {
 
 			@Override
@@ -71,6 +76,7 @@ public class Menu_bar extends JMenuBar{
 		icon = new ImageIcon("imgs/about.jpg");
 		JMenuItem miAbout = new JMenuItem("About", icon);
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
+		miAbout.setMnemonic(KeyEvent.VK_A);
 		miAbout.addActionListener(new ActionListener(){
 
 			@Override
