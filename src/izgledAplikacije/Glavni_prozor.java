@@ -39,7 +39,7 @@ public class Glavni_prozor extends JFrame {
 		Tool_bar tool = new Tool_bar();
 		this.add(tool, BorderLayout.NORTH);
 
-		Status_bar status = new Status_bar();
+		StatusBar status = new StatusBar();
 		this.add(status, BorderLayout.SOUTH);
 		
 		MyTabbedPane tabbedPane = new MyTabbedPane();
