@@ -33,6 +33,7 @@ public class MenuBar extends JMenuBar{
 		miNew.setText("New");
 		miNew.setMnemonic(KeyEvent.VK_N);
 		//miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+
 		Icon icon = new ImageIcon("imgs/close.jpg");
 		JMenuItem miClose = new JMenuItem("Close", icon);
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
