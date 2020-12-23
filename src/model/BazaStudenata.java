@@ -82,6 +82,10 @@ public class BazaStudenata {
 		this.studenti.add(s);
 	}
 	
+	public void dodajStudenta(Student s) {
+		this.studenti.add(s);
+	}
+	
 	public void izbrisiStudenta(String brojIndeksa) {
 		for(Student s : studenti) {
 			if(s.getBrojIndeksa() == brojIndeksa) {

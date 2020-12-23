@@ -13,6 +13,16 @@ public class MyTabbedPane extends JTabbedPane{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private static MyTabbedPane instance = null;
+	
+	public static MyTabbedPane getInstance() {
+		if(instance == null) {
+			instance = new MyTabbedPane();
+		}
+		return instance;
+	}
+	
+	
 	enum Tab {Studenti, Profesori, Predmeti};
 	
 	JPanel studentiPanel = new JPanel();
@@ -48,6 +58,10 @@ public class MyTabbedPane extends JTabbedPane{
 		
 	}
 	
-	
+	public void azurirajPrikazStudenata(String akcija, int vrijednost) {
+		AbstractTableModelStudenti model = (AbstractTableModelStudenti) studentiTabela.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
 	
 }

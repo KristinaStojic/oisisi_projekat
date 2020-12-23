@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 
 public class Student {
-	enum Status {B, S};
+	public enum Status {B, S};
 	protected String imeStudenta;
 	protected String prezimeStudenta;
 	protected String datumRodjenjaStudenta;
@@ -22,8 +22,6 @@ public class Student {
 		super();
 		
 	}
-
-	
 
 	public Student(String imeStudenta, String prezimeStudenta, String datumRodjenjaStudenta, String adresaStudenta,
 			String kontaktTelefon, String emailAdresa, String brojIndeksa, int godinaUpisa, int trenutnaGodinaStudija,
