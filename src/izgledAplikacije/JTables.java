@@ -25,6 +25,10 @@ public class JTables extends JTable{
 				AbstractTableModelProfesori modelProfesori = new AbstractTableModelProfesori();
 				this.setModel(modelProfesori);
 				break;
+		case Predmeti:
+			AbstractTableModelPredmeti modelPredmeti= new AbstractTableModelPredmeti();
+			this.setModel(modelPredmeti	);
+			break;
 		}
 	}
 	
