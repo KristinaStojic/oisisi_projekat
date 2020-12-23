@@ -36,7 +36,9 @@ public class BazaProfesora {
 		profesori.add(new Profesor("Hrnjak", "Jelena", "28.08.1999.","Backa Topola 20","064/785-25-67","hrnjakjelena@gmail.com","Svetojovanska 2","JH909", "dr", "Prodekan", null));
 	}
 	
-	
+	public void dodajProfesor(Profesor p) {
+		profesori.add(p);
+	}
 	public List<Profesor> getProfesori(){
 		return profesori;
 	}
