@@ -1,6 +1,6 @@
 package controller;
 
-import izgledAplikacije.MyTabbedPane;
+import izgledAplikacije.GlavniProzor;
 import model.BazaStudenata;
 import model.Student;
 
@@ -19,6 +19,6 @@ public class StudentiController {
 	
 	public void dodajStudenta(Student s) {
 		BazaStudenata.getInstance().dodajStudenta(s);
-		MyTabbedPane.getInstance().azurirajPrikazStudenata("DODAT", -1);
+		GlavniProzor.getInstance().azurirajPrikaz("DODAT", -1);
 	}
 }

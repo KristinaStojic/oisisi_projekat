@@ -220,11 +220,7 @@ public class AddStudent extends JDialog {
 						) {
 					JOptionPane.showMessageDialog(null, "Morate unijeti sva polja");
 				}else {*/
-				Student s = new Student(student.getImeStudenta(), student.getPrezimeStudenta(), student.getDatumRodjenjaStudenta(),
-						student.getAdresaStudenta(), student.getKontaktTelefon(), student.getEmailAdresa(), student.getEmailAdresa(), 
-						student.getGodinaUpisa(), student.getTrenutnaGodinaStudija(), student.getStatus(), 0, null, null);
-					StudentiController.getInstance().dodajStudenta(s);
-					System.out.println(s);
+					StudentiController.getInstance().dodajStudenta(student);
 					
 					dispose();
 				//}
@@ -272,7 +268,7 @@ public class AddStudent extends JDialog {
 		}
 		
 		Student st = new Student(ime, prezime, datumRodjenja, adresaStanovanja, brojTelefona, emailAdresa, 
-									brojIndeksa, godinaUpisa, trenutnaGodinaStudija, s, prosjek, null, null);
+							brojIndeksa, godinaUpisa, trenutnaGodinaStudija, s, prosjek, null, null);
 		return st;
 	}
 	

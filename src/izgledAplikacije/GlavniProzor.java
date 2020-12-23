@@ -46,8 +46,6 @@ public class GlavniProzor extends JFrame {
 		tabbedPane = new MyTabbedPane();
 		this.add(tabbedPane, BorderLayout.CENTER);
 		
-		tabbedPane = new MyTabbedPane();
-		add(tabbedPane, BorderLayout.CENTER);
     }
 	
 	public static GlavniProzor getInstance() {
@@ -56,5 +54,11 @@ public class GlavniProzor extends JFrame {
 		}
 		return instance;
 	}
-    
+	
+	public void azurirajPrikaz(String str, int i) {
+		tabbedPane.azurirajPrikazStudenata(str, i);
+		validate();
+	}
+ 
+	
 }
