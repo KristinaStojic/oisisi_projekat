@@ -7,6 +7,9 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import dialozi.AddStudent;
+import izgledAplikacije.MyTabbedPane.Tab;
+
 
 
 public class AddAction extends AbstractAction{
@@ -24,7 +27,10 @@ public class AddAction extends AbstractAction{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Pritisnuto dugme");
-		
+				if(MyTabbedPane.tab == Tab.Studenti) {
+					AddStudent addStudent = new AddStudent();
+					addStudent.setVisible(true);
+				}
 
 	}
 	
