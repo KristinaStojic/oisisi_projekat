@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 
 public class MyTabbedPane extends JTabbedPane{
 
@@ -13,14 +14,14 @@ public class MyTabbedPane extends JTabbedPane{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static MyTabbedPane instance = null;
+	/*private static MyTabbedPane instance = null;
 	
 	public static MyTabbedPane getInstance() {
 		if(instance == null) {
 			instance = new MyTabbedPane();
 		}
 		return instance;
-	}
+	}*/
 	
 	
 	enum Tab {Studenti, Profesori, Predmeti};
@@ -31,9 +32,9 @@ public class MyTabbedPane extends JTabbedPane{
 	
 	public static Tab tab = Tab.Studenti;
 	
-	static JTables studentiTabela;
-	static JTables profesoriTabela;
-	static JTables predmetiTabela;
+	static JTable studentiTabela;
+	static JTable profesoriTabela;
+	static JTable predmetiTabela;
 	
 	public MyTabbedPane() {
 		studentiPanel.setLayout(new BorderLayout());
@@ -41,7 +42,6 @@ public class MyTabbedPane extends JTabbedPane{
 		JScrollPane pane = new JScrollPane(studentiTabela);
 		studentiPanel.add(pane, BorderLayout.CENTER);
 		add(Tab.Studenti.toString(), studentiPanel);
-		
 		
 		profesoriPanel.setLayout(new BorderLayout());
 		profesoriTabela = new JTables(Tab.Profesori);
