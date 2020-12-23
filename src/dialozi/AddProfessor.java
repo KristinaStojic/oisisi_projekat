@@ -13,6 +13,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.ProfesorController;
+import controller.StudentiController;
+import model.Profesor;
+import model.Student;
+import model.Student.Status;
+
 public class AddProfessor  extends JDialog {
 
 	/**
@@ -189,8 +195,10 @@ public class AddProfessor  extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				dispose();
+			Profesor profesor = collectData();
+			ProfesorController.getInstance().dodajProfesora(profesor);
+			
+			dispose();
 			}
 		});
 		
@@ -214,5 +222,25 @@ public class AddProfessor  extends JDialog {
 		
 		
 		
+	}
+	
+	
+	
+	public Profesor collectData() {		
+		 String prezime = txtPrz.getText();
+		 String ime = txtIme.getText();
+		 String datum_rodjenja = txtDatum.getText();
+		 String adresa_stanovanja = txtAdresa.getText();
+		 String kontakt_telefon = txtTel.getText();
+		 String email_adresa = txtEmail.getText();
+		 String adresa_kancelarije = txtAdresaKanc.getText();
+		 String broj_licne_karte = txtBrLicne.getText();
+		 String titula = txtTitula.getText();
+		 String zvanje = txtZvanje.getText();
+		 
+		 
+		Profesor prof = new Profesor(prezime, ime, datum_rodjenja, adresa_stanovanja, kontakt_telefon,
+			 email_adresa, adresa_kancelarije, broj_licne_karte, titula, zvanje, null);
+		return prof;
 	}
 }

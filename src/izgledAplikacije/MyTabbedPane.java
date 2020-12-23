@@ -64,4 +64,11 @@ public class MyTabbedPane extends JTabbedPane{
 		validate();
 	}
 	
+	
+	public void azurirajPrikazProfesora(String akcija, int vrijednost) {
+		AbstractTableModelProfesori model = (AbstractTableModelProfesori) profesoriTabela.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
+	
 }
