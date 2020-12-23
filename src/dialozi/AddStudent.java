@@ -209,21 +209,10 @@ public class AddStudent extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Student student = collectData();
-				/*if(student.getImeStudenta().equals("") 
-						|| student.getPrezimeStudenta().equals("") 
-						|| student.getDatumRodjenjaStudenta().equals("") 
-						|| student.getAdresaStudenta().equals("")
-						|| student.getKontaktTelefon().equals("")
-						|| student.getEmailAdresa().equals("")
-						|| student.getBrojIndeksa().equals("")
-						|| godinaUpisa.equals("")
-						) {
-					JOptionPane.showMessageDialog(null, "Morate unijeti sva polja");
-				}else {*/
+				
 					StudentiController.getInstance().dodajStudenta(student);
 					
 					dispose();
-				//}
 			}
 		});
 		
