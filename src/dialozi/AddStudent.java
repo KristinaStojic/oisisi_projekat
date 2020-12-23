@@ -15,6 +15,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.StudentiController;
+import listeneri.MyKeyListener1;
+import listeneri.MyKeyListener2;
+import model.Student;
+import model.Student.Status;
+
 public class AddStudent extends JDialog {
 
 	/**
@@ -23,6 +29,7 @@ public class AddStudent extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	protected Dimension dim;
+	protected String godinaUpisa;
 	
 	protected JPanel panCen;
 	protected BoxLayout boxc;
@@ -90,6 +97,7 @@ public class AddStudent extends JDialog {
 		labIme.setPreferredSize(dim);
 		txtIme = new JTextField();
 		txtIme.setPreferredSize(dim);
+		txtIme.addKeyListener(new MyKeyListener1());
 		panIme.add(labIme);
 		panIme.add(txtIme);
 		panCen.add(panIme);
@@ -99,6 +107,7 @@ public class AddStudent extends JDialog {
 		labPrz.setPreferredSize(dim);
 		txtPrz = new JTextField();
 		txtPrz.setPreferredSize(dim);
+		txtPrz.addKeyListener(new MyKeyListener1());
 		panPrz.add(labPrz);
 		panPrz.add(txtPrz);
 		panCen.add(panPrz);
@@ -108,6 +117,7 @@ public class AddStudent extends JDialog {
 		labDat.setPreferredSize(dim);
 		txtDat = new JTextField();
 		txtDat.setPreferredSize(dim);
+		txtDat.addKeyListener(new MyKeyListener2());
 		panDat.add(labDat);
 		panDat.add(txtDat);
 		panCen.add(panDat);
@@ -198,8 +208,26 @@ public class AddStudent extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				dispose();
+				Student student = collectData();
+				/*if(student.getImeStudenta().equals("") 
+						|| student.getPrezimeStudenta().equals("") 
+						|| student.getDatumRodjenjaStudenta().equals("") 
+						|| student.getAdresaStudenta().equals("")
+						|| student.getKontaktTelefon().equals("")
+						|| student.getEmailAdresa().equals("")
+						|| student.getBrojIndeksa().equals("")
+						|| godinaUpisa.equals("")
+						) {
+					JOptionPane.showMessageDialog(null, "Morate unijeti sva polja");
+				}else {*/
+				Student s = new Student(student.getImeStudenta(), student.getPrezimeStudenta(), student.getDatumRodjenjaStudenta(),
+						student.getAdresaStudenta(), student.getKontaktTelefon(), student.getEmailAdresa(), student.getEmailAdresa(), 
+						student.getGodinaUpisa(), student.getTrenutnaGodinaStudija(), student.getStatus(), 0, null, null);
+					StudentiController.getInstance().dodajStudenta(s);
+					System.out.println(s);
+					
+					dispose();
+				//}
 			}
 		});
 		
@@ -220,6 +248,32 @@ public class AddStudent extends JDialog {
 		add(panCen, BorderLayout.CENTER);
 		
 		
+	}
+	
+	public Student collectData() {		
+		String ime = txtIme.getText();
+		String prezime = txtPrz.getText();
+		String datumRodjenja = txtDat.getText();
+		String adresaStanovanja = txtAdr.getText();
+		String brojTelefona = txtBrt.getText();
+		String emailAdresa = txtMail.getText();
+		String brojIndeksa = txtBri.getText();
+		godinaUpisa = txtGodu.getText();
+		int godinaUpisa = Integer.parseInt(txtGodu.getText());
+		int godi = god.getSelectedIndex();
+		int trenutnaGodinaStudija = godi + 1;
+		double prosjek = 0.0;
+		Status s;
+		int id = bs.getSelectedIndex();
+		if(id == 0) {
+			s = Status.B;
+		}else {
+			s = Status.S;
+		}
+		
+		Student st = new Student(ime, prezime, datumRodjenja, adresaStanovanja, brojTelefona, emailAdresa, 
+									brojIndeksa, godinaUpisa, trenutnaGodinaStudija, s, prosjek, null, null);
+		return st;
 	}
 	
 }
