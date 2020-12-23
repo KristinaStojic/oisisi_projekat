@@ -21,6 +21,7 @@ public class GlavniProzor extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	protected MyTabbedPane tabbedPane;
 	
 	private void initialise() {
     	Toolkit kit = Toolkit.getDefaultToolkit();
@@ -42,7 +43,7 @@ public class GlavniProzor extends JFrame {
 		StatusBar status = new StatusBar();
 		this.add(status, BorderLayout.SOUTH);
 		
-		MyTabbedPane tabbedPane = new MyTabbedPane();
+		tabbedPane = new MyTabbedPane();
 		this.add(tabbedPane, BorderLayout.CENTER);
 		
 		tabbedPane = new MyTabbedPane();
