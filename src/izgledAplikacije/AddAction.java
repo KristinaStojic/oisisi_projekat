@@ -7,7 +7,6 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
-import dialozi.AddPredmet;
 import dialozi.AddProfessor;
 import dialozi.AddStudent;
 
