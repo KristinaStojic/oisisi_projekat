@@ -21,6 +21,8 @@ import listeneri.MyFocusListener1;
 import listeneri.MyFocusListener2;
 import listeneri.MyFocusListener3;
 import listeneri.MyFocusListener4;
+import listeneri.MyFocusListener5;
+import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
 import model.Student;
 import model.Student.Status;
@@ -130,6 +132,7 @@ public class AddStudent extends JDialog {
 		labAdr.setPreferredSize(dim);
 		txtAdr = new JTextField();
 		txtAdr.setPreferredSize(dim);
+		txtAdr.addFocusListener(new MyFocusListener5());
 		panAdr.add(labAdr);
 		panAdr.add(txtAdr);
 		panCen.add(panAdr);
@@ -149,6 +152,7 @@ public class AddStudent extends JDialog {
 		labMail.setPreferredSize(dim);
 		txtMail = new JTextField();
 		txtMail.setPreferredSize(dim);
+		txtMail.addFocusListener(new MyFocusListener6());
 		panMail.add(labMail);
 		panMail.add(txtMail);
 		panCen.add(panMail);

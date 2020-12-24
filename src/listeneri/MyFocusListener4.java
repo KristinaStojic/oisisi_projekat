@@ -20,7 +20,7 @@ public class MyFocusListener4 implements FocusListener{
 		JTextField txt = (JTextField) e.getComponent();
 		Pattern pattern = Pattern.compile("[0-9]{4}");
 		
-		if(!pattern.matcher(txt.getText()).matches()) {
+		if(!pattern.matcher(txt.getText()).matches()  && !txt.getText().trim().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Molimo unesite ispravnu godinu!");
 			txt.setText("");
 			txt.requestFocus();

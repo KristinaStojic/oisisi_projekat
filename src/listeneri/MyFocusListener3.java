@@ -20,7 +20,7 @@ public class MyFocusListener3 implements FocusListener{
 		JTextField txt = (JTextField) e.getComponent();
 		Pattern pattern = Pattern.compile("[A-Za-z]{2}[-][0-9]{1,3}[-][0-9]{4}");
 		
-		if(!pattern.matcher(txt.getText()).matches()) {
+		if(!pattern.matcher(txt.getText()).matches()  && !txt.getText().trim().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan broj indeksa u formatu 'RA-XXX-YYY'!");
 			txt.setText("");
 			txt.requestFocus();
