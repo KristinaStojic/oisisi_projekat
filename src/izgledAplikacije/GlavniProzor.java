@@ -30,7 +30,7 @@ public class GlavniProzor extends JFrame {
         int screenWidth = screenSize.width;
         
         setSize(screenWidth / 4*3  , screenHeight / 4*3);
-        setTitle("Studentska služba");
+        setTitle("Studentska slu�ba");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         
