@@ -42,69 +42,7 @@ public class MyKeyListener2 implements KeyListener{
 				JTextField txt1 = (JTextField) e.getComponent();
 				txt1.setText("");
 			}
-		}/*else if(num > 10) {
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu dd.mm.yyyy!");
-			num = 0;
-			JTextField txt = (JTextField) e.getComponent();
-			txt.setText("");
 		}
-		/*if((c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_BACK_SPACE)) {
-			num--;
-		}
-		
-		if((num == 1) && (c != '0') && (c != '1') && (c != '2') && (c != '3')){
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu dd.mm.yyyy!" + num);
-			JTextField txt = (JTextField) e.getComponent();
-			txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
-			num--;
-		}else if((num == 2) && (c != '0') && (c != '1') && (c != '2') && (c != '3') && (c != '4') && (c != '5') && (c != '6') && (c != '7') && (c != '8') && (c != '9')) {
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu dd.mm.yyyy!" + num);
-			JTextField txt = (JTextField) e.getComponent();
-			txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
-			num--;
-		}else if((num == 3) && (c != '.')) {
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu dd.mm.yyyy!" + num);
-			JTextField txt = (JTextField) e.getComponent();
-			txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
-			num--;
-		}else if((num == 4) && (c != '0') && (c != '1')) {
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu dd.mm.yyyy!");
-			JTextField txt = (JTextField) e.getComponent();
-			txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
-			num--;
-		}else if((num == 5) && (c != 0) && (c != '1') && (c != '2') && (c != '3') && (c != '4') && (c != '5') && (c != '6') && (c != '7') && (c != '8') && (c != '9')) {
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu dd.mm.yyyy!");
-			JTextField txt = (JTextField) e.getComponent();
-			txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
-			num--;
-		}else if((num == 6) && (c != '.')) {
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu dd.mm.yyyy!");
-			JTextField txt = (JTextField) e.getComponent();
-			txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
-			num--;
-		}else if((num == 7) && (c != '0') && (c != '1') && (c != '2')){
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu dd.mm.yyyy!");
-			JTextField txt = (JTextField) e.getComponent();
-			txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
-			num--;
-		}else if((num == 8) && (c != 0) && (c != '1') && (c != '2') && (c != '3') && (c != '4') && (c != '5') && (c != '6') && (c != '7') && (c != '8') && (c != '9')) {
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu dd.mm.yyyy!");
-			JTextField txt = (JTextField) e.getComponent();
-			txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
-			num--;
-		}else if((num == 9) && (c != 0) && (c != '1') && (c != '2') && (c != '3') && (c != '4') && (c != '5') && (c != '6') && (c != '7') && (c != '8') && (c != '9')) {
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu dd.mm.yyyy!");
-			JTextField txt = (JTextField) e.getComponent();
-			txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
-			num--;
-		}else if((num == 10) && (c != 0) && (c != '1') && (c != '2') && (c != '3') && (c != '4') && (c != '5') && (c != '6') && (c != '7') && (c != '8') && (c != '9')) {
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu dd.mm.yyyy!");
-			JTextField txt = (JTextField) e.getComponent();
-			txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
-			num--;
-		}else {
-			num = 0;
-		}*/
 	}
 
 	
