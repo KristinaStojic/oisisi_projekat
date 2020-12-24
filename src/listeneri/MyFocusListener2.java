@@ -20,7 +20,7 @@ public class MyFocusListener2 implements FocusListener{
 		JTextField txt = (JTextField) e.getComponent();
 		Pattern pattern = Pattern.compile("[0-9]{9,10}");
 		
-		if(!pattern.matcher(txt.getText()).matches()) {
+		if(!pattern.matcher(txt.getText()).matches()  && !txt.getText().trim().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan broj telefona u formatu '062111111'!");
 			txt.setText("");
 			txt.requestFocus();

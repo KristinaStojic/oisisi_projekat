@@ -20,7 +20,7 @@ public class MyFocusListener6 implements FocusListener {
 		JTextField txt = (JTextField) e.getComponent();
 		Pattern pattern = Pattern.compile("[a-z|0-9]*[@]([a-z]*[.][a-z]*)*");
 		
-		if(!pattern.matcher(txt.getText()).matches()) {
+		if(!pattern.matcher(txt.getText()).matches()  && !txt.getText().trim().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Molimo unesite ispravnu e-mail adresu u formatu xxxxx@xxxx.com");
 			txt.setText("");
 			txt.requestFocus();

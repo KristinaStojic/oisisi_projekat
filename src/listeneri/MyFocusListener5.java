@@ -21,7 +21,7 @@ public class MyFocusListener5 implements FocusListener {
 		JTextField txt = (JTextField) e.getComponent();
 		Pattern pattern = Pattern.compile("[A-Z|a-z_ ]*[0-9]*[,_ ][A-Z|a-z_ ]*");
 
-		if(!pattern.matcher(txt.getText()).matches()) {
+		if(!pattern.matcher(txt.getText()).matches() && !txt.getText().trim().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Molimo unesite ispravnu adresu u formatu NAZIV_ULICE BROJ, NAZIV_GRADA");
 			txt.setText("");
 			txt.requestFocus();
