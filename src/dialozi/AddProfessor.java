@@ -14,10 +14,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.ProfesorController;
-import controller.StudentiController;
+import listeneri.MyFocusListener1;
+import listeneri.MyFocusListener2;
+import listeneri.MyFocusListener5;
+import listeneri.MyFocusListener6;
+import listeneri.MyKeyListener1;
+import listeneri.MyKeyListener2;
 import model.Profesor;
-import model.Student;
-import model.Student.Status;
 
 public class AddProfessor  extends JDialog {
 
@@ -91,6 +94,7 @@ public class AddProfessor  extends JDialog {
 		labIme.setPreferredSize(dimension);
 		txtIme = new JTextField();
 		txtIme.setPreferredSize(dimension);
+		txtIme.addKeyListener(new MyKeyListener1());
 		panIme.add(labIme);
 		panIme.add(txtIme);
 		panCen.add(panIme);
@@ -101,6 +105,7 @@ public class AddProfessor  extends JDialog {
 		labPrz.setPreferredSize(dimension);
 		txtPrz = new JTextField();
 		txtPrz.setPreferredSize(dimension);
+		txtPrz.addKeyListener(new MyKeyListener1());
 		panPrz.add(labPrz);
 		panPrz.add(txtPrz);
 		panCen.add(panPrz);
@@ -110,6 +115,7 @@ public class AddProfessor  extends JDialog {
 		labDatum.setPreferredSize(dimension);
 		txtDatum = new JTextField();
 		txtDatum.setPreferredSize(dimension);
+		txtDatum.addFocusListener(new MyFocusListener1());
 		panDatum.add(labDatum);
 		panDatum.add(txtDatum);
 		panCen.add(panDatum);
@@ -121,6 +127,7 @@ public class AddProfessor  extends JDialog {
 		labAdresa.setPreferredSize(dimension);
 		txtAdresa = new JTextField();
 		txtAdresa.setPreferredSize(dimension);
+		txtAdresa.addFocusListener(new MyFocusListener5());
 		panAdresa.add(labAdresa);
 		panAdresa.add(txtAdresa);
 		panCen.add(panAdresa);
@@ -131,6 +138,7 @@ public class AddProfessor  extends JDialog {
 		labTel.setPreferredSize(dimension);
 		txtTel = new JTextField();
 		txtTel.setPreferredSize(dimension);
+		txtTel.addFocusListener(new MyFocusListener2());
 		panTel.add(labTel);
 		panTel.add(txtTel);
 		panCen.add(panTel);
@@ -141,6 +149,7 @@ public class AddProfessor  extends JDialog {
 		labEmail.setPreferredSize(dimension);
 		txtEmail = new JTextField();
 		txtEmail.setPreferredSize(dimension);
+		txtEmail.addFocusListener(new MyFocusListener6());
 		panEmail.add(labEmail);
 		panEmail.add(txtEmail);
 		panCen.add(panEmail);
@@ -152,6 +161,7 @@ public class AddProfessor  extends JDialog {
 		labAdresaKanc.setPreferredSize(dimension);
 		txtAdresaKanc = new JTextField();
 		txtAdresaKanc.setPreferredSize(dimension);
+		txtAdresaKanc.addFocusListener(new MyFocusListener5());
 		panAdresaKanc.add(labAdresaKanc);
 		panAdresaKanc.add(txtAdresaKanc);
 		panCen.add(panAdresaKanc);
@@ -163,6 +173,7 @@ public class AddProfessor  extends JDialog {
 		labBrLicne.setPreferredSize(dimension);
 		txtBrLicne = new JTextField();
 		txtBrLicne.setPreferredSize(dimension);
+		txtBrLicne.addKeyListener(new MyKeyListener2());
 		panBrLicne.add(labBrLicne);
 		panBrLicne.add(txtBrLicne);
 		panCen.add(panBrLicne);
@@ -173,6 +184,7 @@ public class AddProfessor  extends JDialog {
 		labTitula.setPreferredSize(dimension);
 		txtTitula = new JTextField();
 		txtTitula.setPreferredSize(dimension);
+		txtTitula.addKeyListener(new MyKeyListener1());
 		panTitula.add(labTitula);
 		panTitula.add(txtTitula);
 		panCen.add(panTitula);
@@ -184,6 +196,7 @@ public class AddProfessor  extends JDialog {
 		labZvanje.setPreferredSize(dimension);
 		txtZvanje = new JTextField();
 		txtZvanje.setPreferredSize(dimension);
+		txtZvanje.addKeyListener(new MyKeyListener1());
 		panZvanje.add(labZvanje);
 		panZvanje.add(txtZvanje);
 		panCen.add(panZvanje);
