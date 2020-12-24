@@ -24,11 +24,8 @@ public class JTables extends JTable{
 		case Profesori:
 				AbstractTableModelProfesori modelProfesori = new AbstractTableModelProfesori();
 				this.setModel(modelProfesori);
-				break;
-<<<<<<< HEAD
-		case Predmeti:
-			
-
+				break;	
+		}
 	}
 	
 	@Override
