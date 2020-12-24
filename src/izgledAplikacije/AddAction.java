@@ -37,11 +37,6 @@ public class AddAction extends AbstractAction{
 					addProfessor.setVisible(true);
 					
 				}
-				else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 2) {
-					AddPredmet addPredmet = new AddPredmet();
-					addPredmet.setVisible(true);
-					
-				}
 
 	}
 	
