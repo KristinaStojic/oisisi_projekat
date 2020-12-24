@@ -21,7 +21,7 @@ public class MyFocusListener3 implements FocusListener{
 		Pattern pattern = Pattern.compile("[A-Za-z]{2}[-][0-9]{1,3}[-][0-9]{4}");
 		
 		if(!pattern.matcher(txt.getText()).matches()  && !txt.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan broj indeksa u formatu 'RA-XXX-YYY'!");
+			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan broj indeksa u formatu 'SM-XXX-YYY'!");
 			txt.setText("");
 			txt.requestFocus();
 		}
