@@ -18,6 +18,8 @@ import javax.swing.JTextField;
 import controller.StudentiController;
 import listeneri.MyFocusListener1;
 import listeneri.MyFocusListener2;
+import listeneri.MyFocusListener3;
+import listeneri.MyFocusListener4;
 import listeneri.MyKeyListener1;
 import model.Student;
 import model.Student.Status;
@@ -156,6 +158,7 @@ public class AddStudent extends JDialog {
 		labBri.setPreferredSize(dim);
 		txtBri = new JTextField();
 		txtBri.setPreferredSize(dim);
+		txtBri.addFocusListener(new MyFocusListener3());
 		panBri.add(labBri);
 		panBri.add(txtBri);
 		panCen.add(panBri);
@@ -165,6 +168,7 @@ public class AddStudent extends JDialog {
 		labGodu.setPreferredSize(dim);
 		txtGodu = new JTextField();
 		txtGodu.setPreferredSize(dim);
+		txtGodu.addFocusListener(new MyFocusListener4());
 		panGodu.add(labGodu);
 		panGodu.add(txtGodu);
 		panCen.add(panGodu);
