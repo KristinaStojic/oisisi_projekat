@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -32,7 +33,6 @@ public class AddStudent extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	protected Dimension dim;
-	protected String godinaUpisa;
 	
 	protected JPanel panCen;
 	protected BoxLayout boxc;
@@ -214,11 +214,22 @@ public class AddStudent extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Student student = collectData();
+				try {
+					Student student = collectData();
+					if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
+							|| txtDat.getText().trim().isEmpty() || txtAdr.getText().trim().isEmpty()
+								|| txtBrt.getText().trim().isEmpty() || txtMail.getText().trim().isEmpty()
+									|| txtBri.getText().trim().isEmpty() || txtGodu.getText().trim().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
+					}else {
+						StudentiController.getInstance().dodajStudenta(student);
+						
+						dispose();
+					}
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
 				
-					StudentiController.getInstance().dodajStudenta(student);
-					
-					dispose();
 			}
 		});
 		
@@ -249,8 +260,10 @@ public class AddStudent extends JDialog {
 		String brojTelefona = txtBrt.getText();
 		String emailAdresa = txtMail.getText();
 		String brojIndeksa = txtBri.getText();
-		godinaUpisa = txtGodu.getText();
-		int godinaUpisa = Integer.parseInt(txtGodu.getText());
+		int godinaUpisa = 0;
+		if(!txtGodu.getText().trim().isEmpty()) {
+			godinaUpisa = Integer.parseInt(txtGodu.getText());
+		}
 		int godi = god.getSelectedIndex();
 		int trenutnaGodinaStudija = godi + 1;
 		double prosjek = 0.0;
