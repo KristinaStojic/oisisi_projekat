@@ -29,6 +29,12 @@ enum Tab {Studenti, Profesori, Predmeti};
 	
 	public MyTabbedPane() {
 		
+		studentiPanel.setLayout(new BorderLayout());
+		studentiTabela = new JTables(Tab.Studenti);
+		JScrollPane pane = new JScrollPane(studentiTabela);
+		studentiPanel.add(pane, BorderLayout.CENTER);
+		add(Tab.Studenti.toString(), studentiPanel);
+		
 		profesoriPanel.setLayout(new BorderLayout());
 		profesoriTabela = new JTables(Tab.Profesori);
 		JScrollPane pane1 = new JScrollPane(profesoriTabela);
@@ -42,6 +48,11 @@ enum Tab {Studenti, Profesori, Predmeti};
 	    add(Tab.Predmeti.toString(), predmetiPanel);
 	}
 	
+	public void azurirajPrikazStudenata(String akcija, int vrijednost) {
+		AbstractTableModelStudenti model = (AbstractTableModelStudenti) studentiTabela.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
 	
 	public void azurirajPrikazProfesora(String akcija, int vrijednost) {
 		AbstractTableModelProfesori model = (AbstractTableModelProfesori) profesoriTabela.getModel();
