@@ -43,8 +43,10 @@ public class GlavniProzor extends JFrame {
 		StatusBar status = new StatusBar();
 		this.add(status, BorderLayout.SOUTH);
 		
-		tabbedPane = new MyTabbedPane();
-		this.add(tabbedPane, BorderLayout.CENTER);
+		
+		
+		tabbedPane=new MyTabbedPane();
+		this.add(tabbedPane,BorderLayout.CENTER);
 		
     }
 	
