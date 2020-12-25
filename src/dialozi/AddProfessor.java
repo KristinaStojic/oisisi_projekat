@@ -238,6 +238,7 @@ public class AddProfessor  extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Profesor profesor = collectData();
+					System.out.println(profesor);
 					if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
 							|| txtDatum.getText().trim().isEmpty() || txtAdresa.getText().trim().isEmpty()
 								|| txtTel.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()

@@ -29,7 +29,7 @@ public class Profesor {
 			String email_adresa, String adresa_kancelarije, String broj_licne_karte, Titula titula, Zvanje zvanje,
 			List<Predmet> predmeti_Profesora) {
 		super();
-		DateFormat datformat = new SimpleDateFormat("dd.mm.yyyy.");
+		DateFormat datformat = new SimpleDateFormat("dd.MM.yyyy.");
 		try {
 		this.datum_rodjenja = datformat.parse(datum_rodjenja);
 		}
