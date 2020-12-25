@@ -23,6 +23,7 @@ import listeneri.MyFocusListener5;
 import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
 import listeneri.MyKeyListener2;
+import model.BazaProfesora;
 import model.Profesor;
 import model.Profesor.Titula;
 import model.Profesor.Zvanje;
@@ -243,9 +244,22 @@ public class AddProfessor  extends JDialog {
 									|| txtAdresaKanc.getText().trim().isEmpty() || txtBrLicne.getText().trim().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
 					}else {
-						ProfesorController.getInstance().dodajProfesora(profesor);
+						boolean postoji = false;
+						for(int i = 0; i < BazaProfesora.getInstance().getProfesori().size(); i++) {
+							if((profesor.getBrojLicneKarte().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))) {
+								JOptionPane.showMessageDialog(null, "Uneseni broj lične karte već postoji!");
+								postoji = true;
+							}
+							else if((profesor.getEmailAdresa().equals(BazaProfesora.getInstance().getProfesori().get(i).getEmailAdresa()))) {
+								JOptionPane.showMessageDialog(null, "Unesena email adresa već postoji!");
+								postoji = true;
+							}
+						}
+						if(!postoji) {
+							ProfesorController.getInstance().dodajProfesora(profesor);
+							dispose();
+						}
 						
-						dispose();
 					}
 				}catch(Exception ex) {
 					ex.printStackTrace();
