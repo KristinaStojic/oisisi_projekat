@@ -72,7 +72,7 @@ public class Profesor {
 		prezime = Prezime;
 	}
 	public String getDatumRodjenja() {
-		DateFormat datformat = new SimpleDateFormat("dd.mm.yyyy.");
+		DateFormat datformat = new SimpleDateFormat("dd.MM.yyyy.");
 		return datformat.format(datum_rodjenja);
 	}
 	public void setDatumRodjenja(Date datumRodjenja) {
@@ -131,7 +131,10 @@ public class Profesor {
 
 	@Override
 	public String toString() {
-		return "Profesor [prezime=" + prezime + ", ime=" + ime + ", datum_rodjenja=" + datum_rodjenja
+		
+		DateFormat datformat = new SimpleDateFormat("dd.MM.yyyy.");
+		String datum = datformat.format(datum_rodjenja);
+		return "Profesor [prezime=" + prezime + ", ime=" + ime + ", datum_rodjenja=" + datum
 				+ ", adresa_stanovanja=" + adresa_stanovanja + ", kontakt_telefon=" + kontakt_telefon
 				+ ", email_adresa=" + email_adresa + ", adresa_kancelarije=" + adresa_kancelarije
 				+ ", broj_licne_karte=" + broj_licne_karte + ", titula=" + titula + ", zvanje=" + zvanje
