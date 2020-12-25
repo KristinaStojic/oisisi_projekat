@@ -39,7 +39,7 @@ public class BazaPredmeta {
 	private void inicijalizujPredmete(){
 		
 		this.predmeti = new ArrayList<Predmet>();
-		predmeti.add(new Predmet("E2","OISISI","Letnji",3,null,8,null));
+		predmeti.add(new Predmet("E2","OISISI",model.Predmet.Semestar.Zimski,3,null,8,null));
 		
 		
 	}
