@@ -39,8 +39,8 @@ public class BazaPredmeta {
 	private void inicijalizujPredmete(){
 		
 		this.predmeti = new ArrayList<Predmet>();
-		predmeti.add(new Predmet("E2","OISISI",model.Predmet.Semestar.Zimski,3,null,8,null));
-		
+		predmeti.add(new Predmet("E2","OISISI",model.Predmet.Semestar.Zimski,3,null,8,null,null));
+		predmeti.add(new Predmet("E3","NANS",model.Predmet.Semestar.Letnji,4,null,8,null,null));
 		
 	}
 	
@@ -70,13 +70,13 @@ public class BazaPredmeta {
 		Predmet p = this.predmeti.get(row);
 		switch(column) {
 		case 0:
-			return p.getSifraPredmeta();
+			return p.getSifra_predmeta();
 		case 1:
-			return p.getNazivPredmeta();
+			return p.getNaziv_predmeta();
 		case 2:
-			return String.valueOf(p.getESPB());
+			return String.valueOf(p.getBroj_ESPB());
 		case 3:
-			return String.valueOf(p.getGodinaIzvodjenja());
+			return String.valueOf(p.getGodina_izvodjenja());
 		case 4:
 			return String.valueOf(p.getSemestar());
 		default:

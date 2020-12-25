@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Predmet {
@@ -10,7 +9,7 @@ public class Predmet {
 	protected String naziv_predmeta;
 	protected Semestar semestar;
 	protected int godina_izvodjenja;
-	protected Profesor predmeni_profesor;
+	protected Profesor predmetni_profesor;
 	protected int broj_ESPB;
 	protected List<Student> studenti_polozili;
 	protected List<Student> studenti_nisu_polozili;
@@ -20,14 +19,14 @@ public class Predmet {
 	}
 
 	public Predmet(String sifra_predmeta, String naziv_predmeta, Semestar semestar, int godina_izvodjenja,
-			Profesor predmeni_profesor, int broj_ESPB, List<Student> studenti_polozili,
+			Profesor predmetni_profesor, int broj_ESPB, List<Student> studenti_polozili,
 			List<Student> studenti_nisu_polozili) {
 		super();
 		this.sifra_predmeta = sifra_predmeta;
 		this.naziv_predmeta = naziv_predmeta;
 		this.semestar = semestar;
 		this.godina_izvodjenja = godina_izvodjenja;
-		this.predmeni_profesor = predmeni_profesor;
+		this.predmetni_profesor = predmetni_profesor;
 		this.broj_ESPB = broj_ESPB;
 		this.studenti_polozili = studenti_polozili;
 		this.studenti_nisu_polozili = studenti_nisu_polozili;
@@ -65,12 +64,12 @@ public class Predmet {
 		this.godina_izvodjenja = godina_izvodjenja;
 	}
 
-	public Profesor getPredmeni_profesor() {
-		return predmeni_profesor;
+	public Profesor getPredmetni_profesor() {
+		return predmetni_profesor;
 	}
 
-	public void setPredmeni_profesor(Profesor predmeni_profesor) {
-		this.predmeni_profesor = predmeni_profesor;
+	public void setPredmeni_profesor(Profesor predmetni_profesor) {
+		this.predmetni_profesor = predmetni_profesor;
 	}
 
 	public int getBroj_ESPB() {
