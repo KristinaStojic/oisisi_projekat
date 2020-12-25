@@ -2,6 +2,7 @@ package izgledAplikacije;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
@@ -19,7 +20,7 @@ public class DeleteAction extends AbstractAction{
 		
 		//putValue(MNEMONIC_KEY,KeyEvent.VK_D);
 		putValue(SHORT_DESCRIPTION, "Delete");
-		putValue(SMALL_ICON, new ImageIcon("imgs/delete.jpg"));
+		putValue(SMALL_ICON, new ImageIcon("imgs" + File.separator + "delete.jpg"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		
 	}
