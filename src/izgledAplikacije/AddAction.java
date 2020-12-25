@@ -2,6 +2,7 @@ package izgledAplikacije;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
@@ -20,7 +21,7 @@ public class AddAction extends AbstractAction{
 			
 			//putValue(MNEMONIC_KEY,KeyEvent.VK_N);
 			putValue(SHORT_DESCRIPTION, "New");
-			putValue(SMALL_ICON, new ImageIcon("imgs/insert.jpg"));
+			putValue(SMALL_ICON, new ImageIcon("imgs" + File.separator +"insert.jpg"));
 			putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		}
 
