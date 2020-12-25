@@ -32,6 +32,13 @@ public class MyTabbedPane extends JTabbedPane{
 		profesoriPanel.add(pane1, BorderLayout.CENTER);
 		add(Tab.Profesori.toString(), profesoriPanel);
 		
+		
+		predmetiPanel.setLayout(new BorderLayout());
+	    predmetiTabela = new JTables(Tab.Predmeti);
+	    JScrollPane pane2 = new JScrollPane(predmetiTabela);
+	    predmetiPanel.add(pane2,BorderLayout.CENTER);
+	    add(Tab.Predmeti.toString(), predmetiPanel);
+		
 	}
 	
 	
