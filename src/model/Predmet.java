@@ -12,14 +12,16 @@ public class Predmet {
 	protected int godina_izvodjenja;
 	protected Profesor predmeni_profesor;
 	protected int broj_ESPB;
-	protected List<Student> studenti;
+	protected List<Student> studenti_polozili;
+	protected List<Student> studenti_nisu_polozili;
 	
 	public Predmet() {
 		super();
 	}
-	
+
 	public Predmet(String sifra_predmeta, String naziv_predmeta, Semestar semestar, int godina_izvodjenja,
-			Profesor predmeni_profesor, int broj_ESPB, ArrayList<model.Student> studenti) {
+			Profesor predmeni_profesor, int broj_ESPB, List<Student> studenti_polozili,
+			List<Student> studenti_nisu_polozili) {
 		super();
 		this.sifra_predmeta = sifra_predmeta;
 		this.naziv_predmeta = naziv_predmeta;
@@ -27,70 +29,73 @@ public class Predmet {
 		this.godina_izvodjenja = godina_izvodjenja;
 		this.predmeni_profesor = predmeni_profesor;
 		this.broj_ESPB = broj_ESPB;
-		this.studenti = studenti;
+		this.studenti_polozili = studenti_polozili;
+		this.studenti_nisu_polozili = studenti_nisu_polozili;
 	}
-	
-	public Predmet(String sifra, String naziv, int espb, int godina, Semestar semestar) {
-		this.sifra_predmeta = sifra;
-		this.naziv_predmeta = naziv;
-		this.broj_ESPB = espb;
-		this.godina_izvodjenja = godina;
-		this.semestar = semestar;
-	}
-	
-	
-	public String getSifraPredmeta() {
+
+	public String getSifra_predmeta() {
 		return sifra_predmeta;
 	}
-	public void setSifraPredmeta(String sifraPredmeta) {
-		sifra_predmeta = sifraPredmeta;
+
+	public void setSifra_predmeta(String sifra_predmeta) {
+		this.sifra_predmeta = sifra_predmeta;
 	}
-	public String getNazivPredmeta() {
+
+	public String getNaziv_predmeta() {
 		return naziv_predmeta;
 	}
-	public void setNazivPredmeta(String nazivPredmeta) {
-		naziv_predmeta = nazivPredmeta;
+
+	public void setNaziv_predmeta(String naziv_predmeta) {
+		this.naziv_predmeta = naziv_predmeta;
 	}
+
 	public Semestar getSemestar() {
 		return semestar;
 	}
+
 	public void setSemestar(Semestar semestar) {
 		this.semestar = semestar;
 	}
-	public int getGodinaIzvodjenja() {
+
+	public int getGodina_izvodjenja() {
 		return godina_izvodjenja;
 	}
-	public void setGodinaIzvodjenja(int godinaIzvodjenja) {
-		godina_izvodjenja = godinaIzvodjenja;
+
+	public void setGodina_izvodjenja(int godina_izvodjenja) {
+		this.godina_izvodjenja = godina_izvodjenja;
 	}
 
-	public Profesor getPredmetniProfesor() {
+	public Profesor getPredmeni_profesor() {
 		return predmeni_profesor;
 	}
-	public void setPredmetniProfesor(Profesor predmetniProfesor) {
-		predmeni_profesor = predmetniProfesor;
+
+	public void setPredmeni_profesor(Profesor predmeni_profesor) {
+		this.predmeni_profesor = predmeni_profesor;
 	}
-	
-	
-	public int getESPB() {
+
+	public int getBroj_ESPB() {
 		return broj_ESPB;
 	}
-	public void setESPB(int ESPB) {
-		broj_ESPB = ESPB;
+
+	public void setBroj_ESPB(int broj_ESPB) {
+		this.broj_ESPB = broj_ESPB;
 	}
-	
-	
-	
-	public List<Student> getStudenti(){
-		return studenti;
+
+	public List<Student> getStudenti_polozili() {
+		return studenti_polozili;
 	}
-	
-	public void setStudenti(List<Student> studenti) {
-		this.studenti = studenti;
+
+	public void setStudenti_polozili(List<Student> studenti_polozili) {
+		this.studenti_polozili = studenti_polozili;
 	}
-	
-	
-	
+
+	public List<Student> getStudenti_nisu_polozili() {
+		return studenti_nisu_polozili;
+	}
+
+	public void setStudenti_nisu_polozili(List<Student> studenti_nisu_polozili) {
+		this.studenti_nisu_polozili = studenti_nisu_polozili;
+	}
 	
 	
 	
