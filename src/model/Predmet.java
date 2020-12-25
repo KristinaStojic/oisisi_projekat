@@ -5,13 +5,10 @@ import java.util.List;
 
 public class Predmet {
 	
-	
-
-
-
+	public enum Semestar {Zimski, Letnji};
 	protected String sifra_predmeta;
 	protected String naziv_predmeta;
-	protected String semestar;
+	protected Semestar semestar;
 	protected int godina_izvodjenja;
 	protected Profesor predmeni_profesor;
 	protected int broj_ESPB;
@@ -21,7 +18,7 @@ public class Predmet {
 		super();
 	}
 	
-	public Predmet(String sifra_predmeta, String naziv_predmeta, String semestar, int godina_izvodjenja,
+	public Predmet(String sifra_predmeta, String naziv_predmeta, Semestar semestar, int godina_izvodjenja,
 			Profesor predmeni_profesor, int broj_ESPB, ArrayList<model.Student> studenti) {
 		super();
 		this.sifra_predmeta = sifra_predmeta;
@@ -33,7 +30,7 @@ public class Predmet {
 		this.studenti = studenti;
 	}
 	
-	public Predmet(String sifra, String naziv, int espb, int godina, String semestar) {
+	public Predmet(String sifra, String naziv, int espb, int godina, Semestar semestar) {
 		this.sifra_predmeta = sifra;
 		this.naziv_predmeta = naziv;
 		this.broj_ESPB = espb;
@@ -54,10 +51,10 @@ public class Predmet {
 	public void setNazivPredmeta(String nazivPredmeta) {
 		naziv_predmeta = nazivPredmeta;
 	}
-	public String getSemestar() {
+	public Semestar getSemestar() {
 		return semestar;
 	}
-	public void setSemestar(String semestar) {
+	public void setSemestar(Semestar semestar) {
 		this.semestar = semestar;
 	}
 	public int getGodinaIzvodjenja() {
