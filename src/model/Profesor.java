@@ -1,4 +1,8 @@
 package model;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 public class Profesor {
 	
@@ -6,7 +10,7 @@ public class Profesor {
 	public enum Zvanje {saradnik_u_nastavi, asistent, asistent_sa_doktoratom, docent, vanredni_profesor, redovni_profesor, profesor_emeritus};
 	protected String prezime;
 	protected String ime;
-	protected String datum_rodjenja;
+	protected Date datum_rodjenja;
 	protected String adresa_stanovanja;
 	protected String kontakt_telefon;
 	protected String email_adresa;
@@ -25,9 +29,16 @@ public class Profesor {
 			String email_adresa, String adresa_kancelarije, String broj_licne_karte, Titula titula, Zvanje zvanje,
 			List<Predmet> predmeti_Profesora) {
 		super();
+		DateFormat datformat = new SimpleDateFormat("dd.mm.yyyy.");
+		try {
+		this.datum_rodjenja = datformat.parse(datum_rodjenja);
+		}
+		catch(ParseException e) {
+			e.printStackTrace();
+		}
 		this.prezime = prezime;
 		this.ime = ime;
-		this.datum_rodjenja = datum_rodjenja;
+		//this.datum_rodjenja = datum_rodjenja;
 		this.adresa_stanovanja = adresa_stanovanja;
 		this.kontakt_telefon = kontakt_telefon;
 		this.email_adresa = email_adresa;
@@ -61,9 +72,10 @@ public class Profesor {
 		prezime = Prezime;
 	}
 	public String getDatumRodjenja() {
-		return datum_rodjenja;
+		DateFormat datformat = new SimpleDateFormat("dd.mm.yyyy.");
+		return datformat.format(datum_rodjenja);
 	}
-	public void setDatumRodjenja(String datumRodjenja) {
+	public void setDatumRodjenja(Date datumRodjenja) {
 		this.datum_rodjenja = datumRodjenja;
 	}
 	public String getAdresaStanovanja() {
@@ -115,6 +127,15 @@ public class Profesor {
 
 	public void setPredmetiProfesora(List<Predmet> predmetiProfesora) {
 		predmeti_Profesora = predmetiProfesora;
+	}
+
+	@Override
+	public String toString() {
+		return "Profesor [prezime=" + prezime + ", ime=" + ime + ", datum_rodjenja=" + datum_rodjenja
+				+ ", adresa_stanovanja=" + adresa_stanovanja + ", kontakt_telefon=" + kontakt_telefon
+				+ ", email_adresa=" + email_adresa + ", adresa_kancelarije=" + adresa_kancelarije
+				+ ", broj_licne_karte=" + broj_licne_karte + ", titula=" + titula + ", zvanje=" + zvanje
+				+ ", predmeti_Profesora=" + predmeti_Profesora + "]";
 	}
 	
 	
