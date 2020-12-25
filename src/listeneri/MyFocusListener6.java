@@ -18,10 +18,10 @@ public class MyFocusListener6 implements FocusListener {
 	@Override
 	public void focusLost(FocusEvent e) {
 		JTextField txt = (JTextField) e.getComponent();
-		Pattern pattern = Pattern.compile("[a-z|0-9]+[@]([a-z]+[.][a-z]+)+");
+		Pattern pattern = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
 		
 		if(!pattern.matcher(txt.getText()).matches()  && !txt.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravnu e-mail adresu u formatu xxxxx@xxxx.com");
+			JOptionPane.showMessageDialog(null, "Molimo unesite ispravnu e-mail adresu u formatu xxxxx@xxxx.xxx");
 			txt.setText("");
 			txt.requestFocus();
 		}
