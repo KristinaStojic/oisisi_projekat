@@ -1,16 +1,18 @@
 package model;
 
+import java.util.Date;
 import java.util.List;
 
 public class Student {
 	public enum Status {B, S};
 	protected String imeStudenta;
 	protected String prezimeStudenta;
-	protected String datumRodjenjaStudenta;
+	protected Date datumRodjenjaStudenta;
 	protected String adresaStudenta;
 	protected String kontaktTelefon;
 	protected String emailAdresa;
 	protected String brojIndeksa;
+
 	protected int godinaUpisa;
 	protected int trenutnaGodinaStudija;
 	protected Status status;
@@ -23,7 +25,7 @@ public class Student {
 		
 	}
 
-	public Student(String imeStudenta, String prezimeStudenta, String datumRodjenjaStudenta, String adresaStudenta,
+	public Student(String imeStudenta, String prezimeStudenta, Date datumRodjenjaStudenta, String adresaStudenta,
 			String kontaktTelefon, String emailAdresa, String brojIndeksa, int godinaUpisa, int trenutnaGodinaStudija,
 			Status status, double prosjecnaOcjena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti) {
 		super();
@@ -60,11 +62,11 @@ public class Student {
 		this.prezimeStudenta = prezimeStudenta;
 	}
 
-	public String getDatumRodjenjaStudenta() {
+	public Date getDatumRodjenjaStudenta() {
 		return datumRodjenjaStudenta;
 	}
 
-	public void setDatumRodjenjaStudenta(String datumRodjenjaStudenta) {
+	public void setDatumRodjenjaStudenta(Date datumRodjenjaStudenta) {
 		this.datumRodjenjaStudenta = datumRodjenjaStudenta;
 	}
 
@@ -147,7 +149,7 @@ public class Student {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	
+
 	
 	
 }

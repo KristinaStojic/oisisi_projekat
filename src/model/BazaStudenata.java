@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BazaStudenata {
@@ -32,7 +33,7 @@ public class BazaStudenata {
 	
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
-		studenti.add(new Student("Katarina", "Zerajic", "20.10.1999", "Nemanjica, bb", "062/847-27-43", "katarinazer6@gmail.com", "RA-95", 2018, 3, model.Student.Status.B, 9.41, null, null));
+		studenti.add(new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/847-27-43", "katarinazer6@gmail.com", "RA-95/2018", 2018, 3, model.Student.Status.B, 9.41, null, null));
 	}
 	
 	public List<Student> getStudenti(){
@@ -75,7 +76,7 @@ public class BazaStudenata {
 		}
 	}
 	
-	public void dodajStudenta(String imeStudenta, String prezimeStudenta, String datumRodjenjaStudenta, String adresaStudenta,
+	public void dodajStudenta(String imeStudenta, String prezimeStudenta, Date datumRodjenjaStudenta, String adresaStudenta,
 			String kontaktTelefon, String emailAdresa, String brojIndeksa, int godinaUpisa, int trenutnaGodinaStudija, model.Student.Status status,
 			double prosjecnaOcjena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti) {
 		Student s = new Student(imeStudenta, prezimeStudenta, datumRodjenjaStudenta, adresaStudenta, kontaktTelefon, emailAdresa, brojIndeksa, godinaUpisa, trenutnaGodinaStudija, status, prosjecnaOcjena, polozeniIspiti, nepolozeniIspiti);

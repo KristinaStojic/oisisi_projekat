@@ -39,7 +39,7 @@ public class MyKeyListener1 implements KeyListener {
 		}
 		
 		JTextField txt = (JTextField) e.getComponent();
-		Pattern pattern = Pattern.compile("[A-Z|a-z]*");
+		Pattern pattern = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č]*");
 				
 		if(!pattern.matcher(txt.getText()).matches()) {
 			JOptionPane.showMessageDialog(null, "Dozvoljen je samo unos slova!");

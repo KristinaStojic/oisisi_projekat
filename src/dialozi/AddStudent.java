@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -19,11 +22,11 @@ import javax.swing.JTextField;
 import controller.StudentiController;
 import listeneri.MyFocusListener1;
 import listeneri.MyFocusListener2;
-import listeneri.MyFocusListener3;
 import listeneri.MyFocusListener4;
 import listeneri.MyFocusListener5;
 import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
+import model.BazaStudenata;
 import model.Student;
 import model.Student.Status;
 
@@ -162,7 +165,6 @@ public class AddStudent extends JDialog {
 		labBri.setPreferredSize(dim);
 		txtBri = new JTextField();
 		txtBri.setPreferredSize(dim);
-		txtBri.addFocusListener(new MyFocusListener3());
 		panBri.add(labBri);
 		panBri.add(txtBri);
 		panCen.add(panBri);
@@ -220,15 +222,25 @@ public class AddStudent extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Student student = collectData();
+					System.out.println(student);
 					if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
 							|| txtDat.getText().trim().isEmpty() || txtAdr.getText().trim().isEmpty()
 								|| txtBrt.getText().trim().isEmpty() || txtMail.getText().trim().isEmpty()
 									|| txtBri.getText().trim().isEmpty() || txtGodu.getText().trim().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
 					}else {
-						StudentiController.getInstance().dodajStudenta(student);
+						boolean postoji = false;
+						for(int i = 0; i < BazaStudenata.getInstance().getStudenti().size(); i++) {
+							if((student.getBrojIndeksa().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))) {
+								JOptionPane.showMessageDialog(null, "Uneseni indeks vec postoji!");
+								postoji = true;
+							}
+						}
+						if(!postoji) {
+							StudentiController.getInstance().dodajStudenta(student);
+							dispose();
+						}
 						
-						dispose();
 					}
 				}catch(Exception ex) {
 					ex.printStackTrace();
@@ -256,14 +268,15 @@ public class AddStudent extends JDialog {
 		
 	}
 	
-	public Student collectData() {		
-		String ime = txtIme.getText();
-		String prezime = txtPrz.getText();
-		String datumRodjenja = txtDat.getText();
+	public Student collectData() throws ParseException {		
+		String ime = Character.toUpperCase(txtIme.getText().charAt(0)) + txtIme.getText().substring(1, txtIme.getText().length()).toLowerCase();
+		String prezime = Character.toUpperCase(txtPrz.getText().charAt(0)) + txtPrz.getText().substring(1, txtPrz.getText().length()).toLowerCase();
+		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy.");
+		Date datumRodjenja = formatter.parse(txtDat.getText());
 		String adresaStanovanja = txtAdr.getText();
 		String brojTelefona = txtBrt.getText();
 		String emailAdresa = txtMail.getText();
-		String brojIndeksa = txtBri.getText();
+		String brojIndeksa = txtBri.getText().substring(0,2).toUpperCase() + txtBri.getText().substring(2,txtBri.getText().length());
 		int godinaUpisa = 0;
 		if(!txtGodu.getText().trim().isEmpty()) {
 			godinaUpisa = Integer.parseInt(txtGodu.getText());
@@ -281,6 +294,7 @@ public class AddStudent extends JDialog {
 		
 		Student st = new Student(ime, prezime, datumRodjenja, adresaStanovanja, brojTelefona, emailAdresa, 
 							brojIndeksa, godinaUpisa, trenutnaGodinaStudija, s, prosjek, null, null);
+		
 		return st;
 	}
 	
