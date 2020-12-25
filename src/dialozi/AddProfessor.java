@@ -10,6 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -20,6 +21,7 @@ import listeneri.MyFocusListener5;
 import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
 import listeneri.MyKeyListener2;
+import listeneri.MyKeyListener3;
 import model.Profesor;
 
 public class AddProfessor  extends JDialog {
@@ -184,7 +186,7 @@ public class AddProfessor  extends JDialog {
 		labTitula.setPreferredSize(dimension);
 		txtTitula = new JTextField();
 		txtTitula.setPreferredSize(dimension);
-		txtTitula.addKeyListener(new MyKeyListener1());
+		txtTitula.addKeyListener(new MyKeyListener3());
 		panTitula.add(labTitula);
 		panTitula.add(txtTitula);
 		panCen.add(panTitula);
@@ -196,7 +198,7 @@ public class AddProfessor  extends JDialog {
 		labZvanje.setPreferredSize(dimension);
 		txtZvanje = new JTextField();
 		txtZvanje.setPreferredSize(dimension);
-		txtZvanje.addKeyListener(new MyKeyListener1());
+		txtZvanje.addKeyListener(new MyKeyListener3());
 		panZvanje.add(labZvanje);
 		panZvanje.add(txtZvanje);
 		panCen.add(panZvanje);
@@ -208,10 +210,21 @@ public class AddProfessor  extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			Profesor profesor = collectData();
-			ProfesorController.getInstance().dodajProfesora(profesor);
-			
-			dispose();
+				try {
+					Profesor profesor = collectData();
+					if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
+							|| txtDatum.getText().trim().isEmpty() || txtAdresa.getText().trim().isEmpty()
+								|| txtTel.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()
+									|| txtAdresaKanc.getText().trim().isEmpty() || txtBrLicne.getText().trim().isEmpty() || txtTitula.getText().trim().isEmpty() || txtZvanje.getText().trim().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
+					}else {
+						ProfesorController.getInstance().dodajProfesora(profesor);
+						
+						dispose();
+					}
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
 			}
 		});
 		
