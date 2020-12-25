@@ -2,7 +2,8 @@ package model;
 import java.util.List;
 public class Profesor {
 	
-
+	public enum Titula {BSc, MSc, mr, dr, prof, prof_dr, dipl_ing};
+	public enum Zvanje {saradnik_u_nastavi, asistent, asistent_sa_doktoratom, docent, vanredni_profesor, redovni_profesor, profesor_emeritus};
 	protected String prezime;
 	protected String ime;
 	protected String datum_rodjenja;
@@ -11,8 +12,8 @@ public class Profesor {
 	protected String email_adresa;
 	protected String adresa_kancelarije;
 	protected String broj_licne_karte;
-	protected String titula;
-	protected String zvanje;
+	protected Titula titula;
+	protected Zvanje zvanje;
 	List<Predmet> predmeti_Profesora;
 	
 
@@ -21,7 +22,7 @@ public class Profesor {
 	}
 	
 	public Profesor(String prezime, String ime, String datum_rodjenja, String adresa_stanovanja, String kontakt_telefon,
-			String email_adresa, String adresa_kancelarije, String broj_licne_karte, String titula, String zvanje,
+			String email_adresa, String adresa_kancelarije, String broj_licne_karte, Titula titula, Zvanje zvanje,
 			List<Predmet> predmeti_Profesora) {
 		super();
 		this.prezime = prezime;
@@ -38,7 +39,7 @@ public class Profesor {
 	}
 	
 	
-	public Profesor(String ime, String prezime, String titula, String zvanje) {
+	public Profesor(String ime, String prezime, Titula titula, Zvanje zvanje) {
 		this.ime = ime;
 		this.prezime = prezime;
 		this.titula = titula;
@@ -95,16 +96,16 @@ public class Profesor {
 	public void setBrojLicneKarte(String brojLicneKarte) {
 		this.broj_licne_karte = brojLicneKarte;
 	}
-	public String getTitula() {
+	public Titula getTitula() {
 		return titula;
 	}
-	public void setTitula(String Titula) {
+	public void setTitula(Titula Titula) {
 		titula = Titula;
 	}
-	public String getZvanje() {
+	public Zvanje getZvanje() {
 		return zvanje;
 	}
-	public void setZvanje(String Zvanje) {
+	public void setZvanje(Zvanje Zvanje) {
 		zvanje = Zvanje;
 	}
 	

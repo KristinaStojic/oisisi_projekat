@@ -31,9 +31,9 @@ public class BazaProfesora {
 	
 	private void inicijalizujProfesore() {
 		this.profesori=new ArrayList<Profesor>();
-		profesori.add(new Profesor("Stojic", "Kristina", "05.03.1999.","Jardan 129","064/351-58-64","stojic.kris@gmail.com","Futoska 50","KA10101", "dr", "Profesor", null));
-		profesori.add(new Profesor("Delic", "Nikolina", "19.12.1999.","Caparde 201","064/375-75-67","delicnikolina@gmail.com","Futoska 55","MA101S", "dr", "Dekan", null));
-		profesori.add(new Profesor("Hrnjak", "Jelena", "28.08.1999.","Backa Topola 20","064/785-25-67","hrnjakjelena@gmail.com","Svetojovanska 2","JH909", "dr", "Prodekan", null));
+		profesori.add(new Profesor("Stojic", "Kristina", "05.03.1999.","Jardan 129","064/351-58-64","stojic.kris@gmail.com","Futoska 50","KA10101", model.Profesor.Titula.dr, model.Profesor.Zvanje.redovni_profesor, null));
+		profesori.add(new Profesor("Delic", "Nikolina", "19.12.1999.","Caparde 201","064/375-75-67","delicnikolina@gmail.com","Futoska 55","MA101S", model.Profesor.Titula.dr,model.Profesor.Zvanje.profesor_emeritus, null));
+		profesori.add(new Profesor("Hrnjak", "Jelena", "28.08.1999.","Backa Topola 20","064/785-25-67","hrnjakjelena@gmail.com","Svetojovanska 2","JH909", model.Profesor.Titula.BSc, model.Profesor.Zvanje.docent, null));
 	}
 	
 	public void dodajProfesor(Profesor p) {
@@ -68,9 +68,9 @@ public class BazaProfesora {
 		case 1:
 			return p.getPrezime();
 		case 2:
-			return p.getTitula();
+			return String.valueOf(p.getTitula());
 		case 3:
-			return p.getZvanje();
+			return String.valueOf(p.getZvanje());
 		default:
 			return null;
 		}

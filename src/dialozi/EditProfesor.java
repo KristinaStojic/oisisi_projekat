@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controller.ProfesorController;
 import listeneri.MyFocusListener1;
 import listeneri.MyFocusListener2;
 import listeneri.MyFocusListener5;
@@ -27,12 +26,8 @@ import model.Profesor;
 import model.Profesor.Titula;
 import model.Profesor.Zvanje;
 
-public class AddProfessor  extends JDialog {
+public class EditProfesor extends JDialog {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	protected Dimension dimension;
 	protected JPanel panCen;
 	protected BoxLayout boxcen;
@@ -83,8 +78,10 @@ public class AddProfessor  extends JDialog {
 	protected JButton potvrdi;
 	protected JButton odustani;
 	
-	public AddProfessor() {
-		setTitle("Dodavanje profesora");
+	 public EditProfesor() {
+		
+		 
+		setTitle("Izmena profesora");
 		setSize(450,600);
 		setLocationRelativeTo(null);
 		setModal(true);
@@ -193,12 +190,12 @@ public class AddProfessor  extends JDialog {
 		titModel = new DefaultComboBoxModel<String>();
 		titModel.addElement("BSc");
 		titModel.addElement("MSc");
-		titModel.addElement("mr");
+		titModel.addElement(" mr");
 		titModel.addElement("dr");
 		titModel.addElement("prof");
 		titModel.addElement("prof.dr");
 		titModel.addElement("dipl.ing.");
-		tit.setModel(titModel);
+		tit.setModel(godModel);
 		tit.setSelectedIndex(0);
 		tit.setPreferredSize(dimension);
 		//god.setEditable(true);
@@ -228,7 +225,6 @@ public class AddProfessor  extends JDialog {
 		panTgs.add(god);
 		panCen.add(panTgs);
 		
-		
 		panBtn = new JPanel();
 		potvrdi = new JButton("Potvrdi");
 		potvrdi.addActionListener(new ActionListener() {
@@ -243,7 +239,7 @@ public class AddProfessor  extends JDialog {
 									|| txtAdresaKanc.getText().trim().isEmpty() || txtBrLicne.getText().trim().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
 					}else {
-						ProfesorController.getInstance().dodajProfesora(profesor);
+						//ProfesorController.getInstance().izmeniProfesora(profesor);
 						
 						dispose();
 					}
@@ -268,16 +264,9 @@ public class AddProfessor  extends JDialog {
 		panCen.add(panBtn);
 		
 		add(panCen, BorderLayout.CENTER);
-		
-		
-		
-		
-		
 	}
 	
-	
-	
-	public Profesor collectData() {		
+	 public Profesor collectData() {		
 		 String prezime = txtPrz.getText();
 		 String ime = txtIme.getText();
 		 String datum_rodjenja = txtDatum.getText();
@@ -339,4 +328,5 @@ public class AddProfessor  extends JDialog {
 			 email_adresa, adresa_kancelarije, broj_licne_karte, titula, zvanje, null);
 		return prof;
 	}
+		
 }
