@@ -7,24 +7,36 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 
-import izgledAplikacije.MyTabbedPan.Tab;
-
 public class MyTabbedPane extends JTabbedPane{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/*private static MyTabbedPane instance = null;
+	
+	public static MyTabbedPane getInstance() {
+		if(instance == null) {
+			instance = new MyTabbedPane();
+		}
+		return instance;
+	}*/
+	
 	
 	enum Tab {Studenti, Profesori, Predmeti};
-	public static Tab tab = Tab.Studenti;
 	
 	JPanel studentiPanel = new JPanel();
 	JPanel profesoriPanel = new JPanel();
 	JPanel predmetiPanel = new JPanel();
+	
+	public static Tab tab = Tab.Studenti;
 	
 	static JTable studentiTabela;
 	static JTable profesoriTabela;
 	static JTable predmetiTabela;
 	
 	public MyTabbedPane() {
-		
 		studentiPanel.setLayout(new BorderLayout());
 		studentiTabela = new JTables(Tab.Studenti);
 		JScrollPane pane = new JScrollPane(studentiTabela);
@@ -51,6 +63,7 @@ public class MyTabbedPane extends JTabbedPane{
 		model.fireTableDataChanged();
 		validate();
 	}
+	
 	
 	public void azurirajPrikazProfesora(String akcija, int vrijednost) {
 		AbstractTableModelProfesori model = (AbstractTableModelProfesori) profesoriTabela.getModel();
