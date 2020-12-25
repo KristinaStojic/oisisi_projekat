@@ -56,7 +56,7 @@ public class GlavniProzor extends JFrame {
 	}
 	
 	public void azurirajPrikaz(String str, int i) {
-		tabbedPane.azurirajPrikazStudenata(str, i);
+		//tabbedPane.azurirajPrikazStudenata(str, i);
 		tabbedPane.azurirajPrikazProfesora(str, i);
 		validate();
 	}
