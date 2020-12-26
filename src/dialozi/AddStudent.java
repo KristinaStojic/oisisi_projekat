@@ -221,14 +221,14 @@ public class AddStudent extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Student student = collectData();
-					System.out.println(student);
+					
 					if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
 							|| txtDat.getText().trim().isEmpty() || txtAdr.getText().trim().isEmpty()
 								|| txtBrt.getText().trim().isEmpty() || txtMail.getText().trim().isEmpty()
 									|| txtBri.getText().trim().isEmpty() || txtGodu.getText().trim().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
 					}else {
+						Student student = collectData();
 						boolean postoji = false;
 						for(int i = 0; i < BazaStudenata.getInstance().getStudenti().size(); i++) {
 							if((student.getBrojIndeksa().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))) {
