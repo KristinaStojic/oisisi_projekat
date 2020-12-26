@@ -251,10 +251,10 @@ public class AddProfessor  extends JDialog {
 								JOptionPane.showMessageDialog(null, "Uneseni broj lične karte već postoji!");
 								postoji = true;
 							}
-							else if((profesor.getEmailAdresa().equals(BazaProfesora.getInstance().getProfesori().get(i).getEmailAdresa()))) {
+							/*else if((profesor.getEmailAdresa().equals(BazaProfesora.getInstance().getProfesori().get(i).getEmailAdresa()))) {
 								JOptionPane.showMessageDialog(null, "Unesena email adresa već postoji!");
 								postoji = true;
-							}
+							}*/
 						}
 						if(!postoji) {
 							ProfesorController.getInstance().dodajProfesora(profesor);
