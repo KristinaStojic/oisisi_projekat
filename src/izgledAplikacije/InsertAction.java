@@ -6,7 +6,11 @@ import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+
+import dialozi.EditProfesor;
+import model.Profesor;
 
 public class InsertAction extends AbstractAction{
 	/**
@@ -27,6 +31,16 @@ public class InsertAction extends AbstractAction{
 	public void actionPerformed(ActionEvent arg0) {
 		System.out.println("Pritisnuto dugme");
 	
+		if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 1) {
+		    Profesor izabraniProfesor = GlavniProzor.getInstance().tabbedPane.getIzabraniProfesor();
+		   //System.out.println(izabraniProfesor);
+			if(izabraniProfesor !=null) {
+			EditProfesor editProfesor = new EditProfesor(izabraniProfesor);
+			editProfesor.setVisible(true);
+			}else {
+			JOptionPane.showMessageDialog(null, "Morate izabrati profesora!");
+			}
+		}
 
 }
 }

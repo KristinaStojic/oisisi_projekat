@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.ProfesorController;
 import listeneri.MyFocusListener1;
 import listeneri.MyFocusListener2;
 import listeneri.MyFocusListener5;
@@ -28,6 +29,10 @@ import model.Profesor.Zvanje;
 
 public class EditProfesor extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected Dimension dimension;
 	protected JPanel panCen;
 	protected BoxLayout boxcen;
@@ -78,7 +83,7 @@ public class EditProfesor extends JDialog {
 	protected JButton potvrdi;
 	protected JButton odustani;
 	
-	 public EditProfesor() {
+	 public EditProfesor(Profesor profesor) {
 		
 		 
 		setTitle("Izmena profesora");
@@ -97,6 +102,7 @@ public class EditProfesor extends JDialog {
 		labIme = new JLabel("Ime*");
 		labIme.setPreferredSize(dimension);
 		txtIme = new JTextField();
+		txtIme.setText(profesor.getIme());
 		txtIme.setPreferredSize(dimension);
 		txtIme.addKeyListener(new MyKeyListener1());
 		panIme.add(labIme);
@@ -109,6 +115,7 @@ public class EditProfesor extends JDialog {
 		labPrz.setPreferredSize(dimension);
 		txtPrz = new JTextField();
 		txtPrz.setPreferredSize(dimension);
+		txtPrz.setText(profesor.getPrezime());
 		txtPrz.addKeyListener(new MyKeyListener1());
 		panPrz.add(labPrz);
 		panPrz.add(txtPrz);
@@ -119,6 +126,7 @@ public class EditProfesor extends JDialog {
 		labDatum.setPreferredSize(dimension);
 		txtDatum = new JTextField();
 		txtDatum.setPreferredSize(dimension);
+		txtDatum.setText(profesor.getDatumRodjenja());
 		txtDatum.addFocusListener(new MyFocusListener1());
 		panDatum.add(labDatum);
 		panDatum.add(txtDatum);
@@ -131,6 +139,7 @@ public class EditProfesor extends JDialog {
 		labAdresa.setPreferredSize(dimension);
 		txtAdresa = new JTextField();
 		txtAdresa.setPreferredSize(dimension);
+		txtAdresa.setText(profesor.getAdresaStanovanja());
 		txtAdresa.addFocusListener(new MyFocusListener5());
 		panAdresa.add(labAdresa);
 		panAdresa.add(txtAdresa);
@@ -142,6 +151,7 @@ public class EditProfesor extends JDialog {
 		labTel.setPreferredSize(dimension);
 		txtTel = new JTextField();
 		txtTel.setPreferredSize(dimension);
+		txtTel.setText(profesor.getKontaktTelefon());
 		txtTel.addFocusListener(new MyFocusListener2());
 		panTel.add(labTel);
 		panTel.add(txtTel);
@@ -153,6 +163,7 @@ public class EditProfesor extends JDialog {
 		labEmail.setPreferredSize(dimension);
 		txtEmail = new JTextField();
 		txtEmail.setPreferredSize(dimension);
+		txtEmail.setText(profesor.getEmailAdresa());
 		txtEmail.addFocusListener(new MyFocusListener6());
 		panEmail.add(labEmail);
 		panEmail.add(txtEmail);
@@ -165,6 +176,7 @@ public class EditProfesor extends JDialog {
 		labAdresaKanc.setPreferredSize(dimension);
 		txtAdresaKanc = new JTextField();
 		txtAdresaKanc.setPreferredSize(dimension);
+		txtAdresaKanc.setText(profesor.getAdresaKancelarije());
 		txtAdresaKanc.addFocusListener(new MyFocusListener5());
 		panAdresaKanc.add(labAdresaKanc);
 		panAdresaKanc.add(txtAdresaKanc);
@@ -177,6 +189,7 @@ public class EditProfesor extends JDialog {
 		labBrLicne.setPreferredSize(dimension);
 		txtBrLicne = new JTextField();
 		txtBrLicne.setPreferredSize(dimension);
+		txtBrLicne.setText(profesor.getBrojLicneKarte());
 		txtBrLicne.addKeyListener(new MyKeyListener2());
 		panBrLicne.add(labBrLicne);
 		panBrLicne.add(txtBrLicne);
@@ -195,10 +208,10 @@ public class EditProfesor extends JDialog {
 		titModel.addElement("prof");
 		titModel.addElement("prof.dr");
 		titModel.addElement("dipl.ing.");
-		tit.setModel(godModel);
-		tit.setSelectedIndex(0);
+		tit.setModel(titModel);
+		//napravi da prikaze titulu profesora koji je oznacen
+		//tit.setSelectedItem(profesor.getTitula());
 		tit.setPreferredSize(dimension);
-		//god.setEditable(true);
 		panTitula.add(labTitula);
 		panTitula.add(tit);
 		panCen.add(panTitula);
@@ -218,9 +231,8 @@ public class EditProfesor extends JDialog {
 		godModel.addElement("Redovni profesor");
 		godModel.addElement("Profesor emeritus");
 		god.setModel(godModel);
-		god.setSelectedIndex(0);
+		god.getSelectedIndex();
 		god.setPreferredSize(dimension);
-		//god.setEditable(true);
 		panTgs.add(labTgs);
 		panTgs.add(god);
 		panCen.add(panTgs);
@@ -232,6 +244,7 @@ public class EditProfesor extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+					//uzmemo prosledjenog profesora
 					Profesor profesor = collectData();
 					if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
 							|| txtDatum.getText().trim().isEmpty() || txtAdresa.getText().trim().isEmpty()
@@ -239,11 +252,13 @@ public class EditProfesor extends JDialog {
 									|| txtAdresaKanc.getText().trim().isEmpty() || txtBrLicne.getText().trim().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
 					}else {
-						//ProfesorController.getInstance().izmeniProfesora(profesor);
 						
+						ProfesorController.getInstance().izmeniProfesora(profesor);
+						//System.out.println(profesor);
 						dispose();
 					}
 				}catch(Exception ex) {
+					System.out.println("GRESKA");
 					ex.printStackTrace();
 				}
 			}

@@ -39,6 +39,23 @@ public class BazaProfesora {
 	public void dodajProfesor(Profesor p) {
 		profesori.add(p);
 	}
+	
+	public void izmeniProfesora(Profesor p) {
+		for(Profesor i: profesori) {
+			if(i.getBrojLicneKarte().equals(p.getBrojLicneKarte())) {
+				i.setIme(p.getIme());
+				i.setPrezime(p.getPrezime());
+				i.setDatumRodjenja(p.getDatumRodjenja());
+				i.setAdresaStanovanja(p.getAdresaStanovanja());
+				i.setKontaktTelefon(p.getKontaktTelefon());
+				i.setEmailAdresa(p.getEmailAdresa());
+				i.setAdresaKancelarije(p.getAdresaKancelarije());
+				i.setBrojLicneKarte(p.getBrojLicneKarte());
+				i.setTitula(p.getTitula());
+				i.setZvanje(p.getZvanje());
+				//System.out.println(i);
+			}	}
+	}
 	public List<Profesor> getProfesori(){
 		return profesori;
 	}

@@ -7,6 +7,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 
+import model.BazaProfesora;
+import model.Profesor;
+
 public class MyTabbedPane extends JTabbedPane{
 
 /**
@@ -59,4 +62,15 @@ enum Tab {Studenti, Profesori, Predmeti};
 		model.fireTableDataChanged();
 		validate();
 	}
+	
+	//cuva vrstu izabranog profesora
+	public Profesor getIzabraniProfesor() {
+		if (profesoriTabela.getSelectedRow() < 0)
+		{
+			return null;
+		}
+		Profesor profesor = BazaProfesora.getInstance().getRow(profesoriTabela.getSelectedRow());
+		return profesor;
+	}
+	
 }

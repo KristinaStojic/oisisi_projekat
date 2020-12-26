@@ -72,12 +72,19 @@ public class Profesor {
 		prezime = Prezime;
 	}
 	public String getDatumRodjenja() {
-		DateFormat datformat = new SimpleDateFormat("dd.mm.yyyy.");
+		DateFormat datformat = new SimpleDateFormat("dd.MM.yyyy.");
 		return datformat.format(datum_rodjenja);
 	}
-	public void setDatumRodjenja(Date datumRodjenja) {
-		this.datum_rodjenja = datumRodjenja;
+	public void setDatumRodjenja(String datumRodjenja) {
+		try{
+		Date date1=new SimpleDateFormat("dd.mm.yyyy.").parse(datumRodjenja);
+		this.datum_rodjenja = date1;
 	}
+	catch(ParseException e) {
+		e.printStackTrace();
+	}
+	}	
+	
 	public String getAdresaStanovanja() {
 		return adresa_stanovanja;
 	}

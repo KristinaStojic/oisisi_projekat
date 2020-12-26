@@ -21,5 +21,11 @@ private static ProfesorController instance = null;
 	public void dodajProfesora(Profesor p) {
 		BazaProfesora.getInstance().dodajProfesor(p);
 		GlavniProzor.getInstance().azurirajPrikaz("DODAT", -1);
+		
+	}
+	
+	public void izmeniProfesora(Profesor p) {
+		BazaProfesora.getInstance().izmeniProfesora(p);
+		GlavniProzor.getInstance().azurirajPrikaz("IZMENJEN", -1);
 	}
 }
