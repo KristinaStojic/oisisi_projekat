@@ -89,8 +89,9 @@ public class BazaStudenata {
 	
 	public void izbrisiStudenta(String brojIndeksa) {
 		for(Student s : studenti) {
-			if(s.getBrojIndeksa() == brojIndeksa) {
+			if(s.getBrojIndeksa().equals(brojIndeksa)) {
 				studenti.remove(s);
+				break;
 			}
 		}
 	}

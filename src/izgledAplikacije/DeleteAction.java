@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import dialozi.DeletePredmet;
-import dialozi.EditProfesor;
+import dialozi.DeleteStudent;
 import model.Predmet;
-import model.Profesor;
+import model.Student;
 
 public class DeleteAction extends AbstractAction{
 
@@ -43,6 +43,15 @@ public class DeleteAction extends AbstractAction{
 		    deletePredmet.setVisible(true);
 			}else {
 			JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
+			}
+		}else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 0) {
+			Student izabraniStudent = GlavniProzor.getInstance().tabbedPane.getIzabraniStudent();
+			
+			if(izabraniStudent != null) {
+				DeleteStudent deleteStudent = new DeleteStudent(izabraniStudent);
+				deleteStudent.setVisible(true);
+			}else {
+				JOptionPane.showMessageDialog(null, "Morate izabrati studenta!");
 			}
 		}
 
