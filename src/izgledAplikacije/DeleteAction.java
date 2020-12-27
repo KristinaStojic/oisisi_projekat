@@ -6,7 +6,13 @@ import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+
+import dialozi.DeletePredmet;
+import dialozi.EditProfesor;
+import model.Predmet;
+import model.Profesor;
 
 public class DeleteAction extends AbstractAction{
 
@@ -28,7 +34,17 @@ public class DeleteAction extends AbstractAction{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		System.out.println("Pritisnuto dugme");
-	
+
+		if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 2) {
+		    Predmet izabraniPredmet = GlavniProzor.getInstance().tabbedPane.getIzabraniPredmet();
+		  
+			if(izabraniPredmet !=null) {
+		    DeletePredmet deletePredmet = new DeletePredmet(izabraniPredmet);
+		    deletePredmet.setVisible(true);
+			}else {
+			JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
+			}
+		}
 
 }
 }

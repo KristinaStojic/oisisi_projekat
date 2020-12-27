@@ -7,7 +7,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 
+import model.BazaPredmeta;
 import model.BazaProfesora;
+import model.Predmet;
 import model.Profesor;
 
 public class MyTabbedPane extends JTabbedPane{
@@ -71,6 +73,22 @@ enum Tab {Studenti, Profesori, Predmeti};
 		}
 		Profesor profesor = BazaProfesora.getInstance().getRow(profesoriTabela.getSelectedRow());
 		return profesor;
+	}
+	
+	public Predmet getIzabraniPredmet() {
+		if (predmetiTabela.getSelectedRow() < 0)
+		{
+			return null;
+		}
+		Predmet predmet = BazaPredmeta.getInstance().getRow(predmetiTabela.getSelectedRow());
+		return predmet;
+	}
+	
+	
+	public void azurirajPrikazPredmeta(String akcija, int vrijednost) {
+		AbstractTableModelPredmeti model = (AbstractTableModelPredmeti) predmetiTabela.getModel();
+		model.fireTableDataChanged();
+		validate();
 	}
 	
 }

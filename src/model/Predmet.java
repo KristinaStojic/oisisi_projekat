@@ -95,6 +95,14 @@ public class Predmet {
 	public void setStudenti_nisu_polozili(List<Student> studenti_nisu_polozili) {
 		this.studenti_nisu_polozili = studenti_nisu_polozili;
 	}
+
+	@Override
+	public String toString() {
+		return "Predmet [sifra_predmeta=" + sifra_predmeta + ", naziv_predmeta=" + naziv_predmeta + ", semestar="
+				+ semestar + ", godina_izvodjenja=" + godina_izvodjenja + ", predmetni_profesor=" + predmetni_profesor
+				+ ", broj_ESPB=" + broj_ESPB + ", studenti_polozili=" + studenti_polozili + ", studenti_nisu_polozili="
+				+ studenti_nisu_polozili + "]";
+	}
 	
 	
 	

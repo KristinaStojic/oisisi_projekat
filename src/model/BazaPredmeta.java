@@ -44,6 +44,14 @@ public class BazaPredmeta {
 		
 	}
 	
+	public void obrisiPredmet(Predmet p) {
+		for(Predmet i : predmeti) {
+			if(i.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+				predmeti.remove(p);
+				break;
+			}
+		}
+	}
 	
 	public List<Predmet> getPredmeti() {
 		return predmeti;
