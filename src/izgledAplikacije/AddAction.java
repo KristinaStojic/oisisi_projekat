@@ -8,6 +8,7 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import dialozi.AddPredmet;
 import dialozi.AddProfessor;
 import dialozi.AddStudent;
 
@@ -36,6 +37,9 @@ public class AddAction extends AbstractAction{
 					AddProfessor addProfessor = new AddProfessor();
 					addProfessor.setVisible(true);
 					
+				}else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 2) {
+					AddPredmet addPredmet = new AddPredmet();
+					addPredmet.setVisible(true);
 				}
 
 	}

@@ -102,17 +102,6 @@ public class Predmet {
 				+ semestar + ", godina_izvodjenja=" + godina_izvodjenja + ", predmetni_profesor=" + predmetni_profesor
 				+ ", broj_ESPB=" + broj_ESPB + ", studenti_polozili=" + studenti_polozili + ", studenti_nisu_polozili="
 				+ studenti_nisu_polozili + "]";
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 }

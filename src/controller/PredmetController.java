@@ -2,9 +2,7 @@ package controller;
 
 import izgledAplikacije.GlavniProzor;
 import model.BazaPredmeta;
-import model.BazaProfesora;
 import model.Predmet;
-import model.Profesor;
 
 public class PredmetController {
 
@@ -20,6 +18,10 @@ private static PredmetController instance = null;
 	
 	private PredmetController() {}
 	
+	public void dodajPredmet(Predmet p) {
+		BazaPredmeta.getInstance().dodajPredmet(p);
+		GlavniProzor.getInstance().azurirajPrikaz("DODAT", -1);
+	}
 	
 	public void izbrisiPredmet(Predmet p) {
 		BazaPredmeta.getInstance().obrisiPredmet(p);

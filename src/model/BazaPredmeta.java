@@ -64,6 +64,10 @@ public class BazaPredmeta {
 	public int getColumnCount() {
 		return 5;
 	}
+	
+	public void dodajPredmet(Predmet p) {
+		this.predmeti.add(p);
+	}
 
 	public String getColumnName(int index) {
 		return this.kolone.get(index);
