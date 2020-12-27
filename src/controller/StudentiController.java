@@ -21,4 +21,9 @@ public class StudentiController {
 		BazaStudenata.getInstance().dodajStudenta(s);
 		GlavniProzor.getInstance().azurirajPrikaz("DODAT", -1);
 	}
+	
+	public void izmeniStudenta(Student s) {
+		BazaStudenata.getInstance().izmeniStudenta(s);
+		GlavniProzor.getInstance().azurirajPrikaz("IZMJENJEN", -1);
+	}
 }

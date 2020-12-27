@@ -10,7 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import dialozi.EditProfesor;
+import dialozi.EditStudent;
 import model.Profesor;
+import model.Student;
 
 public class InsertAction extends AbstractAction{
 	/**
@@ -39,6 +41,14 @@ public class InsertAction extends AbstractAction{
 			editProfesor.setVisible(true);
 			}else {
 			JOptionPane.showMessageDialog(null, "Morate izabrati profesora!");
+			}
+		}else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 0) {
+			Student izabraniStudent = GlavniProzor.getInstance().tabbedPane.getIzabraniStudent();
+			if(izabraniStudent != null) {
+				EditStudent editStudent = new EditStudent(izabraniStudent);
+				editStudent.setVisible(true);
+			}else {
+				JOptionPane.showMessageDialog(null, "Morate izabrati studenta!");
 			}
 		}
 

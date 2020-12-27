@@ -95,4 +95,24 @@ public class BazaStudenata {
 		}
 	}
 	
+	public void izmeniStudenta(Student s) {
+		for(Student st : studenti) {
+			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+				st.setImeStudenta(s.getImeStudenta());
+				st.setPrezimeStudenta(s.getPrezimeStudenta());
+				st.setDatumRodjenjaStudenta(s.getDatumRodjenjaStudenta());
+				st.setAdresaStudenta(s.getAdresaStudenta());
+				st.setKontaktTelefon(s.getKontaktTelefon());
+				st.setEmailAdresa(s.getEmailAdresa());
+				st.setBrojIndeksa(s.getBrojIndeksa());
+				st.setGodinaUpisa(s.getGodinaUpisa());
+				st.setTrenutnaGodinaStudija(s.getTrenutnaGodinaStudija());
+				st.setStatus(s.getStatus());
+				st.setProsjecnaOcjena(s.getProsjecnaOcjena());
+				st.setPolozeniIspiti(s.getPolozeniIspiti());
+				st.setNepolozeniIspiti(s.getNepolozeniIspiti());
+			}
+		}
+	}
+	
 }

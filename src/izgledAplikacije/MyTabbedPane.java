@@ -9,8 +9,10 @@ import javax.swing.JTable;
 
 import model.BazaPredmeta;
 import model.BazaProfesora;
+import model.BazaStudenata;
 import model.Predmet;
 import model.Profesor;
+import model.Student;
 
 public class MyTabbedPane extends JTabbedPane{
 
@@ -63,6 +65,14 @@ enum Tab {Studenti, Profesori, Predmeti};
 		AbstractTableModelProfesori model = (AbstractTableModelProfesori) profesoriTabela.getModel();
 		model.fireTableDataChanged();
 		validate();
+	}
+	
+	public Student getIzabraniStudent() {
+		if(studentiTabela.getSelectedRow() < 0) {
+			return null;
+		}
+		Student student = BazaStudenata.getInstance().getRow(studentiTabela.getSelectedRow());
+		return student;
 	}
 	
 	//cuva vrstu izabranog profesora
