@@ -1,5 +1,6 @@
 package dialozi;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -17,10 +18,13 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import controller.StudentiController;
+import izgledAplikacije.AbstractTableModelOcjena;
 import listeneri.MyFocusListener1;
 import listeneri.MyFocusListener2;
 import listeneri.MyFocusListener4;
@@ -91,6 +95,19 @@ public class EditStudent extends JDialog {
 	protected JPanel panBtn;
 	protected JButton potvrdi;
 	protected JButton odustani;
+	
+	protected JPanel ocPan;
+	protected JPanel ponPan;
+	protected JPanel polPan;
+	protected JPanel labPan;
+	protected JPanel espbPan;
+	protected JLabel prosjecnaLab;
+	protected JLabel espbLab;
+	protected JButton ponistiOcjenu;
+	
+	static JTable polozeniTabela;
+	protected AbstractTableModelOcjena polozeniModel;
+	JScrollPane pane1;
 
 	public EditStudent(Student s) {
 		
@@ -99,6 +116,8 @@ public class EditStudent extends JDialog {
 		informacijePanel = informacijeIzmjena(s);
 		pane.add("Informacije",informacijePanel);
 		
+		
+		polozeniPanel = polozeniIzmjena();
 		pane.add("Položeni",polozeniPanel);
 		
 		pane.add("Nepoloženi",nepolozeniPanel);
@@ -107,9 +126,39 @@ public class EditStudent extends JDialog {
 		
 	}
 	
+	private JPanel polozeniIzmjena() {
+		polPan = new JPanel();
+		
+		ponPan = new JPanel();
+		ponistiOcjenu = new JButton("Ponisti ocjenu");
+		ponPan.add(ponistiOcjenu);
+		
+		ocPan = new JPanel();
+		polozeniTabela = new JTable();
+		polozeniModel = new AbstractTableModelOcjena();
+		polozeniTabela.setModel(polozeniModel);
+		pane1 = new JScrollPane(polozeniTabela);
+		ocPan.add(pane1, BorderLayout.CENTER);
+		
+		labPan = new JPanel();
+		prosjecnaLab = new JLabel("Prosjecna ocjena:");
+		labPan.add(prosjecnaLab);
+		
+		espbPan = new JPanel();
+		espbLab = new JLabel("Ukupno ESPB:");
+		espbPan.add(espbLab);
+		
+		polPan.add(ponPan, BorderLayout.NORTH);
+		polPan.add(ocPan, BorderLayout.CENTER);
+		polPan.add(labPan, BorderLayout.SOUTH);
+		polPan.add(espbLab);
+		
+		return polPan;
+	}
+	
 	private JPanel informacijeIzmjena(Student s) {
 		setTitle("Dodavanje studenta");
-		setSize(450,600);
+		setSize(500,600);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
