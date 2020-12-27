@@ -96,8 +96,20 @@ public class BazaPredmeta {
 		}
 	}
 	
-	
-	
+	public void izmeniPredmet(Predmet p) {
+		for(Predmet pr : predmeti) {
+			if(pr.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+				pr.setSifra_predmeta(p.getSifra_predmeta());
+				pr.setNaziv_predmeta(p.getNaziv_predmeta());
+				pr.setSemestar(p.getSemestar());
+				pr.setGodina_izvodjenja(p.getGodina_izvodjenja());
+				pr.setPredmeni_profesor(p.getPredmetni_profesor());
+				pr.setBroj_ESPB(p.getBroj_ESPB());
+				pr.setStudenti_polozili(p.getStudenti_polozili());
+				pr.setStudenti_nisu_polozili(p.getStudenti_nisu_polozili());
+			}
+		}
+	}
 	
 	
 	

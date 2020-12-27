@@ -23,6 +23,12 @@ private static PredmetController instance = null;
 		GlavniProzor.getInstance().azurirajPrikaz("DODAT", -1);
 	}
 	
+	public void izmeniPredmet(Predmet p) {
+		BazaPredmeta.getInstance().izmeniPredmet(p);
+		GlavniProzor.getInstance().azurirajPrikaz("IZMJENJEN",-1);
+		
+	}
+	
 	public void izbrisiPredmet(Predmet p) {
 		BazaPredmeta.getInstance().obrisiPredmet(p);
 		GlavniProzor.getInstance().azurirajPrikaz("IZBRISI",-1);

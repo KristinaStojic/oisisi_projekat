@@ -1,6 +1,5 @@
 package dialozi;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -20,16 +19,16 @@ import javax.swing.JTextField;
 import controller.PredmetController;
 import listeneri.MyFocusListener7;
 import listeneri.MyFocusListener8;
-import model.BazaPredmeta;
 import model.Predmet;
 import model.Predmet.Semestar;
 
-public class AddPredmet  extends JDialog {
+public class EditPredmet extends JDialog{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	protected Dimension dim;
 	protected JPanel panCen;
 	protected BoxLayout boxcen;
@@ -64,9 +63,12 @@ public class AddPredmet  extends JDialog {
 	protected JComboBox<String> sem;
 	protected DefaultComboBoxModel<String> semModel;
 	
-	public AddPredmet() {
-		
-		
+
+	public EditPredmet(Predmet p) {
+		add(editPredmet(p));
+	}
+	
+	private JPanel editPredmet(Predmet p) {
 		setTitle("Dodavanje predmeta");
 		setSize(450,600);
 		setLocationRelativeTo(null);
@@ -82,7 +84,7 @@ public class AddPredmet  extends JDialog {
 		panSifra = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		labSifra = new JLabel("Šifra predmeta*");
 		labSifra.setPreferredSize(dim);
-		txtSifra = new JTextField();
+		txtSifra = new JTextField(p.getSifra_predmeta());
 		txtSifra.setPreferredSize(dim);
 		panSifra.add(labSifra);
 		panSifra.add(txtSifra);
@@ -91,7 +93,7 @@ public class AddPredmet  extends JDialog {
 		panNaziv = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		labNaziv = new JLabel("Naziv predmeta*");
 		labNaziv.setPreferredSize(dim);
-		txtNaziv = new JTextField();
+		txtNaziv = new JTextField(p.getNaziv_predmeta());
 		txtNaziv.setPreferredSize(dim);
 		panNaziv.add(labNaziv);
 		panNaziv.add(txtNaziv);
@@ -100,7 +102,7 @@ public class AddPredmet  extends JDialog {
 		panGodina = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		labGodina = new JLabel("Godina izvođenja*");
 		labGodina.setPreferredSize(dim);
-		txtGodina = new JTextField();
+		txtGodina = new JTextField(String.valueOf(p.getGodina_izvodjenja()));
 		txtGodina.setPreferredSize(dim);
 		txtGodina.addFocusListener(new MyFocusListener7());
 		panGodina.add(labGodina);
@@ -110,7 +112,7 @@ public class AddPredmet  extends JDialog {
 		panESPB = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		labESPB = new JLabel("Broj ESPB bodova*");
 		labESPB.setPreferredSize(dim);
-		txtESPB = new JTextField();
+		txtESPB = new JTextField(String.valueOf(p.getBroj_ESPB()));
 		txtESPB.setPreferredSize(dim);
 		txtESPB.addFocusListener(new MyFocusListener8());
 		panESPB.add(labESPB);
@@ -125,7 +127,13 @@ public class AddPredmet  extends JDialog {
 		semModel.addElement("Zimski");
 		semModel.addElement("Letnji");
 		sem.setModel(semModel);
-		sem.setSelectedIndex(0);
+		int semestar;
+		if(p.getSemestar() == Semestar.Letnji) {
+			semestar = 1;
+		}else {
+			semestar = 0;
+		}
+		sem.setSelectedIndex(semestar);
 		sem.setPreferredSize(dim);
 		panSem.add(labSem);
 		panSem.add(sem);
@@ -143,13 +151,14 @@ public class AddPredmet  extends JDialog {
 						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
 					}else {
 						Predmet predmet = collectData();
-						boolean postoji = false;
+						/*boolean postoji = false;
 						for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
 							if((predmet.getSifra_predmeta().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta()))) {
 								JOptionPane.showMessageDialog(null, "Unesena sifra predmeta vec postoji!");
 								postoji = true;
 							}
 						}
+						if(!postoji) {*/
 						boolean ispravan_unos = false;
 						Pattern godina = Pattern.compile("[1-6]");
 						Pattern espb = Pattern.compile("[1-9][0-9]?");
@@ -158,9 +167,8 @@ public class AddPredmet  extends JDialog {
 						}
 						if(!ispravan_unos) {
 							JOptionPane.showMessageDialog(null, "Neispravan unos!");
-						}
-						if(!postoji && ispravan_unos) {
-							PredmetController.getInstance().dodajPredmet(predmet);
+						}else {
+							PredmetController.getInstance().izmeniPredmet(predmet);
 							dispose();
 						}
 						
@@ -185,7 +193,7 @@ public class AddPredmet  extends JDialog {
 		panCen.add(panBtn);
 		
 		
-		add(panCen, BorderLayout.CENTER);
+		return panCen;
 	}
 	
 	
@@ -208,4 +216,6 @@ public class AddPredmet  extends JDialog {
 		
 		return predmet;
 	}
+
+	
 }

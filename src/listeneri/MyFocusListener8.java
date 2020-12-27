@@ -19,7 +19,7 @@ public class MyFocusListener8 implements FocusListener{
 	public void focusLost(FocusEvent e) {
 		
 		JTextField txt = (JTextField) e.getComponent();
-		Pattern pattern = Pattern.compile("[1-100]");
+		Pattern pattern = Pattern.compile("[1-9][0-9]?");
 		
 		if(!pattern.matcher(txt.getText()).matches()  && !txt.getText().trim().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan broj ESPB bodova[1-100]!");

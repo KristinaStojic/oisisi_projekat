@@ -33,7 +33,7 @@ public class BazaStudenata {
 	
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
-		studenti.add(new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/847-27-43", "katarinazer6@gmail.com", "RA-95/2018", 2018, 3, model.Student.Status.B, 9.41, null, null));
+		studenti.add(new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-95/2018", 2018, 3, model.Student.Status.B, 9.41, null, null));
 	}
 	
 	public List<Student> getStudenti(){
@@ -108,9 +108,9 @@ public class BazaStudenata {
 				st.setGodinaUpisa(s.getGodinaUpisa());
 				st.setTrenutnaGodinaStudija(s.getTrenutnaGodinaStudija());
 				st.setStatus(s.getStatus());
-				st.setProsjecnaOcjena(s.getProsjecnaOcjena());
-				st.setPolozeniIspiti(s.getPolozeniIspiti());
-				st.setNepolozeniIspiti(s.getNepolozeniIspiti());
+				//st.setProsjecnaOcjena(s.getProsjecnaOcjena());
+				//st.setPolozeniIspiti(s.getPolozeniIspiti());
+				//st.setNepolozeniIspiti(s.getNepolozeniIspiti());
 			}
 		}
 	}
