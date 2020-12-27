@@ -1,5 +1,8 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -62,12 +65,19 @@ public class Student {
 		this.prezimeStudenta = prezimeStudenta;
 	}
 
-	public Date getDatumRodjenjaStudenta() {
-		return datumRodjenjaStudenta;
+	public String getDatumRodjenjaStudenta() {
+		DateFormat datformat = new SimpleDateFormat("dd.MM.yyyy.");
+		return datformat.format(datumRodjenjaStudenta);
 	}
 
-	public void setDatumRodjenjaStudenta(Date datumRodjenjaStudenta) {
-		this.datumRodjenjaStudenta = datumRodjenjaStudenta;
+	public void setDatumRodjenjaStudenta(String datumRodjenjaStudenta) {
+		try{
+			Date date = new SimpleDateFormat("dd.mm.yyyy.").parse(datumRodjenjaStudenta);
+			this.datumRodjenjaStudenta = date;
+		}
+		catch(ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getAdresaStudenta() {
