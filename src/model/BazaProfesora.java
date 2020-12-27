@@ -40,6 +40,15 @@ public class BazaProfesora {
 		profesori.add(p);
 	}
 	
+	public void izbrisiProfesora(String brojLicneKarte) {
+		for(Profesor p : profesori) {
+			if(p.getBrojLicneKarte().equals(brojLicneKarte)) {
+				profesori.remove(p);
+				break;
+			}
+		}
+	}
+	
 	public void izmeniProfesora(Profesor p) {
 		for(Profesor i: profesori) {
 			if(i.getBrojLicneKarte().equals(p.getBrojLicneKarte())) {
