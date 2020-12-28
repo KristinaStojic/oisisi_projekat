@@ -2,6 +2,7 @@ package model;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 public class Profesor {
@@ -18,7 +19,7 @@ public class Profesor {
 	protected String broj_licne_karte;
 	protected Titula titula;
 	protected Zvanje zvanje;
-	List<Predmet> predmeti_Profesora;
+	List<Predmet> predmeti_Profesora = new ArrayList<Predmet>();
 	
 
 	public Profesor() {
@@ -135,17 +136,5 @@ public class Profesor {
 	public void setPredmetiProfesora(List<Predmet> predmetiProfesora) {
 		predmeti_Profesora = predmetiProfesora;
 	}
-
-	@Override
-	public String toString() {
-		DateFormat datformat = new SimpleDateFormat("dd.MM.yyyy.");
-		String datum = datformat.format(datum_rodjenja);
-		return "Profesor [prezime=" + prezime + ", ime=" + ime + ", datum_rodjenja=" + datum
-				+ ", adresa_stanovanja=" + adresa_stanovanja + ", kontakt_telefon=" + kontakt_telefon
-				+ ", email_adresa=" + email_adresa + ", adresa_kancelarije=" + adresa_kancelarije
-				+ ", broj_licne_karte=" + broj_licne_karte + ", titula=" + titula + ", zvanje=" + zvanje
-				+ ", predmeti_Profesora=" + predmeti_Profesora + "]";
-	}
-	
 	
 }

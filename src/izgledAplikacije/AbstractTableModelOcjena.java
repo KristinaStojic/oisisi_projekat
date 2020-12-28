@@ -27,7 +27,11 @@ public class AbstractTableModelOcjena extends AbstractTableModel{
 	
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		return BazaOcjena.getInstance().getValueAt(rowIndex, columnIndex);
+		try {
+			return BazaOcjena.getInstance().getValueAt(rowIndex, columnIndex);
+		}catch(NullPointerException e) {
+			return null;
+		}
 	}
 
 }

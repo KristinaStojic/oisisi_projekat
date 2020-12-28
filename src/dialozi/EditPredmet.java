@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import javax.swing.BoxLayout;
@@ -179,6 +180,14 @@ public class EditPredmet extends JDialog{
 					chooseProffesor.setVisible(true);
 					if(chooseProffesor.getIzabrani() != null) {
 						txtProf.setText(chooseProffesor.getIzabrani().getIme() + " " + chooseProffesor.getIzabrani().getPrezime());
+						if(chooseProffesor.getIzabrani().getPredmetiProfesora() == null) {
+							ArrayList<Predmet> prp = new ArrayList<Predmet>();
+							prp.add(p);
+							chooseProffesor.getIzabrani().setPredmetiProfesora(prp);
+						}else {
+							chooseProffesor.getIzabrani().getPredmetiProfesora().add(p);
+						}
+						
 					}else {
 						txtProf.setText("");
 					}

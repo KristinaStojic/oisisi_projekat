@@ -29,7 +29,11 @@ public class AbstractTableModelStudenti extends AbstractTableModel{
 		
 		@Override
 		public Object getValueAt(int rowIndex, int columnIndex) {
-			return BazaStudenata.getInstance().getValueAt(rowIndex, columnIndex);
+			try {
+				return BazaStudenata.getInstance().getValueAt(rowIndex, columnIndex);
+			}catch(NullPointerException e) {
+				return null;
+			}
 		}
 		
 }
