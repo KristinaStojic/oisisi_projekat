@@ -37,10 +37,12 @@ public class BazaOcjena {
 	
 	private void initOcjene() {
 		this.ocjene = new ArrayList<Ocena>();
+		try {
 		Student s = GlavniProzor.getInstance().tabbedPane.getIzabraniStudent();
 		for(Ocena o : s.getPolozeniIspiti()){
 			ocjene.add(o);
 		}
+		}catch(NullPointerException e) {}
 	}
 	
 	public List<Ocena> getOcene(){

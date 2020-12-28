@@ -32,6 +32,7 @@ public class BazaProfesora {
 	
 	private void inicijalizujProfesore() {
 		this.profesori=new ArrayList<Profesor>();
+		try {
 		Profesor p1 = new Profesor("Stojic", "Kristina", "05.03.1999.","Jardan 129, ZV","064/3515864","stojic.kris@gmail.com","Futoska 50, NS","KA10101", model.Profesor.Titula.dr, model.Profesor.Zvanje.redovni_profesor, null);
 		p1.setId(id++);
 		profesori.add(p1);
@@ -43,6 +44,7 @@ public class BazaProfesora {
 		Profesor p3 = new Profesor("Hrnjak", "Jelena", "28.08.1999.","Backa Topola 20, NS","064/7852567","hrnjakjelena@gmail.com","Svetojovanska 2","JH909", model.Profesor.Titula.BSc, model.Profesor.Zvanje.docent, null);
 		p3.setId(id++);
 		profesori.add(p3);
+		}catch(NullPointerException e) {}
 	}
 	
 	public void dodajProfesor(Profesor p) {

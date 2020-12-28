@@ -38,6 +38,7 @@ public class BazaStudenata {
 	
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
+		try {
 		Student s1 = new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-95/2018", 2018, 3, model.Student.Status.B, 9.41, null, null);
 		s1.setId(id++);
 		ArrayList<Ocena> pi = new ArrayList<Ocena>();
@@ -58,6 +59,7 @@ public class BazaStudenata {
 		//s1.setNepolozeniIspiti(nep);
 		studenti.add(s2);
 		privremeno = studenti;
+		}catch(NullPointerException e) {}
 	}
 	
 	public List<Student> getStudenti(){
