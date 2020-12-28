@@ -141,6 +141,8 @@ public class EditStudent extends JDialog {
 		polozeniTabela = new JTable();
 		polozeniModel = new AbstractTableModelOcjena();
 		polozeniTabela.setModel(polozeniModel);
+		polozeniTabela.setShowHorizontalLines(false);
+		polozeniTabela.setAutoCreateRowSorter(true);
 		pane1 = new JScrollPane(polozeniTabela);
 		
 		prosjecnaLab = new JLabel("Prosjecna ocjena: " + prosjek);;

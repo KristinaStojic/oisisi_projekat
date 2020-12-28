@@ -38,6 +38,12 @@ public class EditPredmet extends JDialog{
 	protected JLabel labSifra;
 	protected JTextField txtSifra;
 	
+	protected JPanel panProf;
+	protected JLabel labProf;
+	protected JTextField txtProf;
+	protected JButton plus;
+	protected JButton minus;
+	
 	protected JPanel panNaziv;
 	protected JLabel labNaziv;
 	protected JTextField txtNaziv;
@@ -71,7 +77,7 @@ public class EditPredmet extends JDialog{
 	
 	private JPanel editPredmet(Predmet p) {
 		setTitle("Dodavanje predmeta");
-		setSize(450,600);
+		setSize(450,500);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
@@ -139,6 +145,44 @@ public class EditPredmet extends JDialog{
 		panSem.add(labSem);
 		panSem.add(sem);
 		panCen.add(panSem);
+		
+		panProf = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		labProf = new JLabel("Profesor*");
+		labProf.setPreferredSize(dim);
+		if(p.getPredmetni_profesor() == null) {
+			txtProf = new JTextField("");
+			
+		}else {
+			txtProf = new JTextField(p.getPredmetni_profesor().getIme() + p.getPredmetni_profesor().getPrezime()); 
+		}
+		txtProf.setPreferredSize(new Dimension(100, 20));
+		plus = new JButton("+");
+		minus = new JButton("-");
+		panProf.add(labProf);
+		panProf.add(txtProf);
+		panProf.add(plus);
+		panProf.add(minus);
+		panCen.add(panProf);
+		
+		if(p.getPredmetni_profesor() == null) {
+			plus.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					ChooseProffesor chooseProffesor = new ChooseProffesor();
+					chooseProffesor.setVisible(true);
+				}
+			});
+			
+		}else {
+			 minus.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+				}
+			});
+		}
 		
 		panBtn = new JPanel();
 		potvrdi = new JButton("Potvrdi");

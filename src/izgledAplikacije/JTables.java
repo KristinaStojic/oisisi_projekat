@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JTable;
-import javax.swing.RowSorter;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableRowSorter;
 
 import izgledAplikacije.MyTabbedPane.Tab;
 
