@@ -35,8 +35,12 @@ private static BazaNepolozeniIspiti instance = null;
 	private void initNepolozeni() {
 		this.nepolozeni = new ArrayList<Predmet>();
 		Student s = GlavniProzor.getInstance().tabbedPane.getIzabraniStudent();
+		try {
 		for(Predmet o : s.getNepolozeniIspiti()){
 			nepolozeni.add(o);
+		}
+		}catch(NullPointerException e) {
+			
 		}
 	}
 	

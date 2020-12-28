@@ -55,7 +55,7 @@ public class BazaStudenata {
 		s2.setId(id++);
 		s2.setPolozeniIspiti(pi);
 		s2.setNepolozeniIspiti(nep);
-		s1.setNepolozeniIspiti(nep);
+		//s1.setNepolozeniIspiti(nep);
 		studenti.add(s2);
 		privremeno = studenti;
 	}
