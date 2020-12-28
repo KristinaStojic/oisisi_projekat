@@ -1,8 +1,11 @@
 package dialozi;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -10,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -31,6 +35,7 @@ import listeneri.MyFocusListener4;
 import listeneri.MyFocusListener5;
 import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
+import model.BazaStudenata;
 import model.Student;
 import model.Student.Status;
 
@@ -96,11 +101,8 @@ public class EditStudent extends JDialog {
 	protected JButton potvrdi;
 	protected JButton odustani;
 	
-	protected JPanel ocPan;
-	protected JPanel ponPan;
 	protected JPanel polPan;
-	protected JPanel labPan;
-	protected JPanel espbPan;
+	protected JPanel status;
 	protected JLabel prosjecnaLab;
 	protected JLabel espbLab;
 	protected JButton ponistiOcjenu;
@@ -113,9 +115,10 @@ public class EditStudent extends JDialog {
 		
 		JTabbedPane pane = new JTabbedPane();
 		
+		setResizable(false);
+		
 		informacijePanel = informacijeIzmjena(s);
 		pane.add("Informacije",informacijePanel);
-		
 		
 		polozeniPanel = polozeniIzmjena();
 		pane.add("Položeni",polozeniPanel);
@@ -129,36 +132,62 @@ public class EditStudent extends JDialog {
 	private JPanel polozeniIzmjena() {
 		polPan = new JPanel();
 		
-		ponPan = new JPanel();
 		ponistiOcjenu = new JButton("Ponisti ocjenu");
-		ponPan.add(ponistiOcjenu);
 		
-		ocPan = new JPanel();
 		polozeniTabela = new JTable();
 		polozeniModel = new AbstractTableModelOcjena();
 		polozeniTabela.setModel(polozeniModel);
 		pane1 = new JScrollPane(polozeniTabela);
-		ocPan.add(pane1, BorderLayout.CENTER);
 		
-		labPan = new JPanel();
-		prosjecnaLab = new JLabel("Prosjecna ocjena:");
-		labPan.add(prosjecnaLab);
+		prosjecnaLab = new JLabel("Prosjecna ocjena:");;
 		
-		espbPan = new JPanel();
 		espbLab = new JLabel("Ukupno ESPB:");
-		espbPan.add(espbLab);
 		
-		polPan.add(ponPan, BorderLayout.NORTH);
-		polPan.add(ocPan, BorderLayout.CENTER);
-		polPan.add(labPan, BorderLayout.SOUTH);
-		polPan.add(espbLab);
+		status = new JPanel();
+		status.setBorder(BorderFactory.createLineBorder(Color.BLACK));//dodaj na dno stranice??
+		
+		setLayout();
 		
 		return polPan;
 	}
 	
+	private void setLayout() {
+		polPan.setLayout(new GridBagLayout());
+		GridBagConstraints gc = new GridBagConstraints();
+		
+		gc.gridx = 0;
+		gc.gridy = 0;
+		gc.insets = new Insets(5, 5, 20, 0);
+		gc.anchor = GridBagConstraints.NORTHWEST;
+		polPan.add(ponistiOcjenu, gc);
+		
+		gc.gridx = 0;
+		gc.gridy = 1;
+		gc.gridwidth = 2;
+		gc.gridheight = 4;
+		gc.insets = new Insets(2, 2, 2, 2);
+		gc.anchor = GridBagConstraints.CENTER;
+		polPan.add(pane1, gc);
+		
+		gc.gridx = 1;
+		gc.gridy = 5;
+		gc.gridheight = 2;
+		gc.insets = new Insets(1, 90, 1, 1);
+		gc.anchor = GridBagConstraints.WEST;
+		polPan.add(prosjecnaLab, gc);
+		
+		gc.gridx = 1;
+		gc.gridy = 7;
+		gc.gridheight = 2;
+		gc.insets = new Insets(1, 90, 1, 1);
+		gc.anchor = GridBagConstraints.WEST;
+		polPan.add(espbLab, gc);
+		
+	}
+	
 	private JPanel informacijeIzmjena(Student s) {
 		setTitle("Dodavanje studenta");
-		setSize(500,600);
+		setSize(550,650);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
@@ -301,39 +330,39 @@ public class EditStudent extends JDialog {
 						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
 					}else {
 						Student student = collectData();
-						/*boolean postoji = false;
+						student.setId(s.getId());
+						boolean postoji = false;
 						for(int i = 0; i < BazaStudenata.getInstance().getStudenti().size(); i++) {
 							if((student.getBrojIndeksa().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))
-									&& !student.equals(BazaStudenata.getInstance().getStudenti().get(i))) {
+									&& student.getId() != BazaStudenata.getInstance().getStudenti().get(i).getId()) {
 								JOptionPane.showMessageDialog(null, "Uneseni indeks vec postoji!");
 								postoji = true;
 							}
 						}
-						if(!postoji) {*/
-						Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
-						Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
-						Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
-						Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
-						Pattern godina = Pattern.compile("[0-9]{4}");
-						boolean ispravan_unos = false;
-						if(datum.matcher(student.getDatumRodjenjaStudenta()).matches() && adresa.matcher(student.getAdresaStudenta()).matches()
-								&& telefon.matcher(student.getKontaktTelefon()).matches() && mejl.matcher(student.getEmailAdresa()).matches()
+						if(!postoji) {
+							Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
+							Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
+							Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
+							Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
+							Pattern godina = Pattern.compile("[0-9]{4}");
+							boolean ispravan_unos = false;
+							if(datum.matcher(student.getDatumRodjenjaStudenta()).matches() && adresa.matcher(student.getAdresaStudenta()).matches()
+									&& telefon.matcher(student.getKontaktTelefon()).matches() && mejl.matcher(student.getEmailAdresa()).matches()
 									&& godina.matcher(String.valueOf(student.getGodinaUpisa())).matches()) {
-							ispravan_unos = true;
+								ispravan_unos = true;
+							}
+							if(!ispravan_unos) {
+								JOptionPane.showMessageDialog(null, "Neispravan unos!");
+							}else {
+								StudentiController.getInstance().izmeniStudenta(student);
+								dispose();
+							}
 						}
-						if(!ispravan_unos) {
-							JOptionPane.showMessageDialog(null, "Neispravan unos!");
-						}else {
-							StudentiController.getInstance().izmeniStudenta(student);
-							dispose();
-						}
-					
 					}
 				}catch(Exception ex) {
 					ex.printStackTrace();
 				}
-				
-			}
+			}	
 		});
 		
 		odustani = new JButton("Odustani");

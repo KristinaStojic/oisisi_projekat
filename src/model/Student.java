@@ -22,6 +22,7 @@ public class Student {
 	protected double prosjecnaOcjena;
 	List<Ocena> polozeniIspiti;
 	List<Predmet> nepolozeniIspiti;
+	protected int id;
 	
 	public Student() {
 		super();
@@ -48,6 +49,70 @@ public class Student {
 	}
 
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (adresaStudenta == null) {
+			if (other.adresaStudenta != null)
+				return false;
+		} else if (!adresaStudenta.equals(other.adresaStudenta))
+			return false;
+		if (brojIndeksa == null) {
+			if (other.brojIndeksa != null)
+				return false;
+		} else if (!brojIndeksa.equals(other.brojIndeksa))
+			return false;
+		if (datumRodjenjaStudenta == null) {
+			if (other.datumRodjenjaStudenta != null)
+				return false;
+		} else if (!datumRodjenjaStudenta.equals(other.datumRodjenjaStudenta))
+			return false;
+		if (emailAdresa == null) {
+			if (other.emailAdresa != null)
+				return false;
+		} else if (!emailAdresa.equals(other.emailAdresa))
+			return false;
+		if (godinaUpisa != other.godinaUpisa)
+			return false;
+		if (imeStudenta == null) {
+			if (other.imeStudenta != null)
+				return false;
+		} else if (!imeStudenta.equals(other.imeStudenta))
+			return false;
+		if (kontaktTelefon == null) {
+			if (other.kontaktTelefon != null)
+				return false;
+		} else if (!kontaktTelefon.equals(other.kontaktTelefon))
+			return false;
+		if (nepolozeniIspiti == null) {
+			if (other.nepolozeniIspiti != null)
+				return false;
+		} else if (!nepolozeniIspiti.equals(other.nepolozeniIspiti))
+			return false;
+		if (polozeniIspiti == null) {
+			if (other.polozeniIspiti != null)
+				return false;
+		} else if (!polozeniIspiti.equals(other.polozeniIspiti))
+			return false;
+		if (prezimeStudenta == null) {
+			if (other.prezimeStudenta != null)
+				return false;
+		} else if (!prezimeStudenta.equals(other.prezimeStudenta))
+			return false;
+		if (Double.doubleToLongBits(prosjecnaOcjena) != Double.doubleToLongBits(other.prosjecnaOcjena))
+			return false;
+		if (status != other.status)
+			return false;
+		if (trenutnaGodinaStudija != other.trenutnaGodinaStudija)
+			return false;
+		return true;
+	}
 
 	public String getImeStudenta() {
 		return imeStudenta;
@@ -160,6 +225,24 @@ public class Student {
 		this.status = status;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [imeStudenta=" + imeStudenta + ", prezimeStudenta=" + prezimeStudenta
+				+ ", datumRodjenjaStudenta=" + datumRodjenjaStudenta + ", adresaStudenta=" + adresaStudenta
+				+ ", kontaktTelefon=" + kontaktTelefon + ", emailAdresa=" + emailAdresa + ", brojIndeksa=" + brojIndeksa
+				+ ", godinaUpisa=" + godinaUpisa + ", trenutnaGodinaStudija=" + trenutnaGodinaStudija + ", status="
+				+ status + ", prosjecnaOcjena=" + prosjecnaOcjena + ", polozeniIspiti=" + polozeniIspiti
+				+ ", nepolozeniIspiti=" + nepolozeniIspiti + ", id=" + id + "]";
+	}
 	
 	
+
 }

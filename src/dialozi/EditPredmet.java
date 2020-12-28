@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import controller.PredmetController;
 import listeneri.MyFocusListener7;
 import listeneri.MyFocusListener8;
+import model.BazaPredmeta;
 import model.Predmet;
 import model.Predmet.Semestar;
 
@@ -151,14 +152,16 @@ public class EditPredmet extends JDialog{
 						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
 					}else {
 						Predmet predmet = collectData();
-						/*boolean postoji = false;
+						predmet.setId(p.getId());
+						boolean postoji = false;
 						for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
-							if((predmet.getSifra_predmeta().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta()))) {
+							if((predmet.getSifra_predmeta().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta())
+									&& predmet.getId() != BazaPredmeta.getInstance().getPredmeti().get(i).getId())) {
 								JOptionPane.showMessageDialog(null, "Unesena sifra predmeta vec postoji!");
 								postoji = true;
 							}
 						}
-						if(!postoji) {*/
+						if(!postoji) {
 						boolean ispravan_unos = false;
 						Pattern godina = Pattern.compile("[1-6]");
 						Pattern espb = Pattern.compile("[1-9][0-9]?");
@@ -171,7 +174,7 @@ public class EditPredmet extends JDialog{
 							PredmetController.getInstance().izmeniPredmet(predmet);
 							dispose();
 						}
-						
+						}
 					}
 				}catch(Exception ex) {
 					ex.printStackTrace();
@@ -199,7 +202,7 @@ public class EditPredmet extends JDialog{
 	
 	
 	public Predmet collectData() {		
-		String sifra_predmeta = (txtSifra.getText()).toUpperCase();
+		String sifra_predmeta = txtSifra.getText();
 	    String naziv_predmeta = txtNaziv.getText();
 		int godina_izvodjenja = Integer.parseInt(txtGodina.getText());
 		int broj_ESPB = Integer.parseInt(txtESPB.getText());

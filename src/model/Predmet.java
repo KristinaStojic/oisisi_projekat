@@ -13,6 +13,7 @@ public class Predmet {
 	protected int broj_ESPB;
 	protected List<Student> studenti_polozili;
 	protected List<Student> studenti_nisu_polozili;
+	protected int id;
 	
 	public Predmet() {
 		super();
@@ -96,12 +97,22 @@ public class Predmet {
 		this.studenti_nisu_polozili = studenti_nisu_polozili;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "Predmet [sifra_predmeta=" + sifra_predmeta + ", naziv_predmeta=" + naziv_predmeta + ", semestar="
 				+ semestar + ", godina_izvodjenja=" + godina_izvodjenja + ", predmetni_profesor=" + predmetni_profesor
 				+ ", broj_ESPB=" + broj_ESPB + ", studenti_polozili=" + studenti_polozili + ", studenti_nisu_polozili="
-				+ studenti_nisu_polozili + "]";
-	}	
+				+ studenti_nisu_polozili + ", id=" + id + "]";
+	}
+	
+	
 	
 }

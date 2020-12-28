@@ -17,8 +17,11 @@ public class BazaStudenata {
 	
 	private List<Student> studenti;
 	private List<String> kolone;
+	private int id;
 	
 	private BazaStudenata() {
+		
+		id = 0;
 		
 		initStudente();
 		
@@ -33,8 +36,12 @@ public class BazaStudenata {
 	
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
-		studenti.add(new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-95/2018", 2018, 3, model.Student.Status.B, 9.41, null, null));
-		studenti.add(new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-99/2018", 2018, 3, model.Student.Status.B, 9.41, null, null));
+		Student s1 = new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-95/2018", 2018, 3, model.Student.Status.B, 9.41, null, null);
+		s1.setId(id++);
+		studenti.add(s1);
+		Student s2 = new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-99/2018", 2018, 3, model.Student.Status.B, 9.41, null, null);
+		s2.setId(id++);
+		studenti.add(s2);
 	}
 	
 	public List<Student> getStudenti(){
@@ -81,10 +88,12 @@ public class BazaStudenata {
 			String kontaktTelefon, String emailAdresa, String brojIndeksa, int godinaUpisa, int trenutnaGodinaStudija, model.Student.Status status,
 			double prosjecnaOcjena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti) {
 		Student s = new Student(imeStudenta, prezimeStudenta, datumRodjenjaStudenta, adresaStudenta, kontaktTelefon, emailAdresa, brojIndeksa, godinaUpisa, trenutnaGodinaStudija, status, prosjecnaOcjena, polozeniIspiti, nepolozeniIspiti);
+		s.setId(id++);
 		this.studenti.add(s);
 	}
 	
 	public void dodajStudenta(Student s) {
+		s.setId(id++);
 		this.studenti.add(s);
 	}
 	
@@ -98,8 +107,10 @@ public class BazaStudenata {
 	}
 	
 	public void izmeniStudenta(Student s) {
+		System.out.println(s);
 		for(Student st : studenti) {
-			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+			System.out.println(st);
+			if(st.getId() == s.getId()) {
 				st.setImeStudenta(s.getImeStudenta());
 				st.setPrezimeStudenta(s.getPrezimeStudenta());
 				st.setDatumRodjenjaStudenta(s.getDatumRodjenjaStudenta());

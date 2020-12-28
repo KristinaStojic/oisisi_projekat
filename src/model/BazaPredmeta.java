@@ -16,10 +16,11 @@ public class BazaPredmeta {
 	
 	private List<Predmet> predmeti;
 	private List<String> kolone;
-	
-	
+	private int id;
 	
 	private BazaPredmeta() {
+
+		id = 0;
 		
 		inicijalizujPredmete();
 		
@@ -39,8 +40,12 @@ public class BazaPredmeta {
 	private void inicijalizujPredmete(){
 		
 		this.predmeti = new ArrayList<Predmet>();
-		predmeti.add(new Predmet("E2","OISISI",model.Predmet.Semestar.Zimski,3,null,8,null,null));
-		predmeti.add(new Predmet("E3","NANS",model.Predmet.Semestar.Letnji,4,null,8,null,null));
+		Predmet p1 = new Predmet("E2","OISISI",model.Predmet.Semestar.Zimski,3,null,8,null,null);
+		p1.setId(id++);
+		predmeti.add(p1);
+		Predmet p2 = new Predmet("E3","NANS",model.Predmet.Semestar.Letnji,4,null,8,null,null);
+		p2.setId(id++);
+		predmeti.add(p2);
 		
 	}
 	
@@ -66,6 +71,7 @@ public class BazaPredmeta {
 	}
 	
 	public void dodajPredmet(Predmet p) {
+		p.setId(id++);
 		this.predmeti.add(p);
 	}
 
@@ -98,7 +104,7 @@ public class BazaPredmeta {
 	
 	public void izmeniPredmet(Predmet p) {
 		for(Predmet pr : predmeti) {
-			if(pr.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+			if(pr.getId() == p.getId()) {
 				pr.setSifra_predmeta(p.getSifra_predmeta());
 				pr.setNaziv_predmeta(p.getNaziv_predmeta());
 				pr.setSemestar(p.getSemestar());
