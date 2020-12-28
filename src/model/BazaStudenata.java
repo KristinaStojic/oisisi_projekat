@@ -142,7 +142,7 @@ public class BazaStudenata {
 	
 	public void pretraziStudente(String txt) {
 		zadovoljavajuPretragu = new ArrayList<Student>();
-		for(Student s : studenti) {
+		for(Student s : privremeno) {
 			String rijeci[] = txt.split(" ");
 			if(rijeci.length == 3) {
 				String prezime = rijeci[0];

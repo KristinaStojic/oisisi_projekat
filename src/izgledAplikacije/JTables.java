@@ -22,8 +22,7 @@ public class JTables extends JTable{
 		case Studenti:
 				AbstractTableModelStudenti modelStudenti = new AbstractTableModelStudenti();
 				this.setModel(modelStudenti);
-				 RowSorter<AbstractTableModelStudenti> sorter = new TableRowSorter<AbstractTableModelStudenti>(modelStudenti);
-				 this.setRowSorter(sorter);
+				this.setAutoCreateRowSorter(true);
 				break;
 		case Profesori:
 				AbstractTableModelProfesori modelProfesori = new AbstractTableModelProfesori();
