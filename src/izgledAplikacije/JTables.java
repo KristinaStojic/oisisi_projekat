@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JTable;
+import javax.swing.RowSorter;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableRowSorter;
 
 import izgledAplikacije.MyTabbedPane.Tab;
 
@@ -20,6 +22,8 @@ public class JTables extends JTable{
 		case Studenti:
 				AbstractTableModelStudenti modelStudenti = new AbstractTableModelStudenti();
 				this.setModel(modelStudenti);
+				 RowSorter<AbstractTableModelStudenti> sorter = new TableRowSorter<AbstractTableModelStudenti>(modelStudenti);
+				 this.setRowSorter(sorter);
 				break;
 		case Profesori:
 				AbstractTableModelProfesori modelProfesori = new AbstractTableModelProfesori();
