@@ -38,9 +38,14 @@ public class BazaStudenata {
 		this.studenti = new ArrayList<Student>();
 		Student s1 = new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-95/2018", 2018, 3, model.Student.Status.B, 9.41, null, null);
 		s1.setId(id++);
+		ArrayList<Ocena> pi = new ArrayList<Ocena>();
+		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(0), 10, new Date()));
+		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(1), 10, new Date()));
+		s1.setPolozeniIspiti(pi);
 		studenti.add(s1);
 		Student s2 = new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-99/2018", 2018, 3, model.Student.Status.B, 9.41, null, null);
 		s2.setId(id++);
+		s2.setPolozeniIspiti(pi);
 		studenti.add(s2);
 	}
 	

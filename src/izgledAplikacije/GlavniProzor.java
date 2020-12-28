@@ -21,7 +21,7 @@ public class GlavniProzor extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected MyTabbedPane tabbedPane;
+	public MyTabbedPane tabbedPane;
 	
 	private void initialise() {
     	Toolkit kit = Toolkit.getDefaultToolkit();

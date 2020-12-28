@@ -3,8 +3,9 @@ package model;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import izgledAplikacije.GlavniProzor;
 
 public class BazaOcjena {
 
@@ -36,7 +37,10 @@ public class BazaOcjena {
 	
 	private void initOcjene() {
 		this.ocjene = new ArrayList<Ocena>();
-		ocjene.add(new Ocena(BazaStudenata.getInstance().getStudenti().get(0), BazaPredmeta.getInstance().getPredmeti().get(0), 10, new Date()));
+		Student s = GlavniProzor.getInstance().tabbedPane.getIzabraniStudent();
+		for(Ocena o : s.getPolozeniIspiti()){
+			ocjene.add(o);
+		}
 	}
 	
 	public List<Ocena> getOcene(){

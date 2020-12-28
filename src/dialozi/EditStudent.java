@@ -36,6 +36,7 @@ import listeneri.MyFocusListener5;
 import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
 import model.BazaStudenata;
+import model.Ocena;
 import model.Student;
 import model.Student.Status;
 
@@ -111,6 +112,9 @@ public class EditStudent extends JDialog {
 	protected AbstractTableModelOcjena polozeniModel;
 	JScrollPane pane1;
 
+	protected int ESPB;
+	protected double  prosjek;
+	
 	public EditStudent(Student s) {
 		
 		JTabbedPane pane = new JTabbedPane();
@@ -139,9 +143,10 @@ public class EditStudent extends JDialog {
 		polozeniTabela.setModel(polozeniModel);
 		pane1 = new JScrollPane(polozeniTabela);
 		
-		prosjecnaLab = new JLabel("Prosjecna ocjena:");;
+		prosjecnaLab = new JLabel("Prosjecna ocjena: " + prosjek);;
 		
-		espbLab = new JLabel("Ukupno ESPB:");
+		
+		espbLab = new JLabel("Ukupno ESPB: " + ESPB);
 		
 		status = new JPanel();
 		status.setBorder(BorderFactory.createLineBorder(Color.BLACK));//dodaj na dno stranice??
@@ -196,6 +201,15 @@ public class EditStudent extends JDialog {
 		panCen = new JPanel();
 		boxc = new BoxLayout(panCen, BoxLayout.Y_AXIS);
 		panCen.setLayout(boxc);
+		
+		int suma = 0;
+		
+		for(Ocena o : s.getPolozeniIspiti()) {
+			suma += o.getOcena();
+			ESPB += o.getPredmet().getBroj_ESPB();
+		}
+		
+		prosjek = suma/s.getPolozeniIspiti().size();
 		
 		panIme = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		labIme = new JLabel("Ime*");
