@@ -19,7 +19,15 @@ public class Profesor {
 	protected Titula titula;
 	protected Zvanje zvanje;
 	List<Predmet> predmeti_Profesora;
-	
+	protected int id;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Profesor() {
 		super();
@@ -138,14 +146,13 @@ public class Profesor {
 
 	@Override
 	public String toString() {
-		DateFormat datformat = new SimpleDateFormat("dd.MM.yyyy.");
-		String datum = datformat.format(datum_rodjenja);
-		return "Profesor [prezime=" + prezime + ", ime=" + ime + ", datum_rodjenja=" + datum
+		return "Profesor [prezime=" + prezime + ", ime=" + ime + ", datum_rodjenja=" + datum_rodjenja
 				+ ", adresa_stanovanja=" + adresa_stanovanja + ", kontakt_telefon=" + kontakt_telefon
 				+ ", email_adresa=" + email_adresa + ", adresa_kancelarije=" + adresa_kancelarije
 				+ ", broj_licne_karte=" + broj_licne_karte + ", titula=" + titula + ", zvanje=" + zvanje
-				+ ", predmeti_Profesora=" + predmeti_Profesora + "]";
+				+ ", predmeti_Profesora=" + predmeti_Profesora + ", id=" + id + "]";
 	}
+
 	
 	
 }
