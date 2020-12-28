@@ -25,6 +25,7 @@ import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
 import listeneri.MyKeyListener2;
 import model.BazaProfesora;
+import model.BazaStudenata;
 import model.Profesor;
 import model.Profesor.Titula;
 import model.Profesor.Zvanje;
@@ -85,7 +86,7 @@ public class EditProfesor extends JDialog {
 	protected JButton potvrdi;
 	protected JButton odustani;
 	
-	 public EditProfesor(Profesor profesor) {
+	 public EditProfesor(Profesor p) {
 		
 		 
 		setTitle("Izmena profesora");
@@ -104,7 +105,7 @@ public class EditProfesor extends JDialog {
 		labIme = new JLabel("Ime*");
 		labIme.setPreferredSize(dimension);
 		txtIme = new JTextField();
-		txtIme.setText(profesor.getIme());
+		txtIme.setText(p.getIme());
 		txtIme.setPreferredSize(dimension);
 		txtIme.addKeyListener(new MyKeyListener1());
 		panIme.add(labIme);
@@ -117,7 +118,7 @@ public class EditProfesor extends JDialog {
 		labPrz.setPreferredSize(dimension);
 		txtPrz = new JTextField();
 		txtPrz.setPreferredSize(dimension);
-		txtPrz.setText(profesor.getPrezime());
+		txtPrz.setText(p.getPrezime());
 		txtPrz.addKeyListener(new MyKeyListener1());
 		panPrz.add(labPrz);
 		panPrz.add(txtPrz);
@@ -128,7 +129,7 @@ public class EditProfesor extends JDialog {
 		labDatum.setPreferredSize(dimension);
 		txtDatum = new JTextField();
 		txtDatum.setPreferredSize(dimension);
-		txtDatum.setText(profesor.getDatumRodjenja());
+		txtDatum.setText(p.getDatumRodjenja());
 		txtDatum.addFocusListener(new MyFocusListener1());
 		panDatum.add(labDatum);
 		panDatum.add(txtDatum);
@@ -141,7 +142,7 @@ public class EditProfesor extends JDialog {
 		labAdresa.setPreferredSize(dimension);
 		txtAdresa = new JTextField();
 		txtAdresa.setPreferredSize(dimension);
-		txtAdresa.setText(profesor.getAdresaStanovanja());
+		txtAdresa.setText(p.getAdresaStanovanja());
 		txtAdresa.addFocusListener(new MyFocusListener5());
 		panAdresa.add(labAdresa);
 		panAdresa.add(txtAdresa);
@@ -153,7 +154,7 @@ public class EditProfesor extends JDialog {
 		labTel.setPreferredSize(dimension);
 		txtTel = new JTextField();
 		txtTel.setPreferredSize(dimension);
-		txtTel.setText(profesor.getKontaktTelefon());
+		txtTel.setText(p.getKontaktTelefon());
 		txtTel.addFocusListener(new MyFocusListener2());
 		panTel.add(labTel);
 		panTel.add(txtTel);
@@ -165,7 +166,7 @@ public class EditProfesor extends JDialog {
 		labEmail.setPreferredSize(dimension);
 		txtEmail = new JTextField();
 		txtEmail.setPreferredSize(dimension);
-		txtEmail.setText(profesor.getEmailAdresa());
+		txtEmail.setText(p.getEmailAdresa());
 		txtEmail.addFocusListener(new MyFocusListener6());
 		panEmail.add(labEmail);
 		panEmail.add(txtEmail);
@@ -178,7 +179,7 @@ public class EditProfesor extends JDialog {
 		labAdresaKanc.setPreferredSize(dimension);
 		txtAdresaKanc = new JTextField();
 		txtAdresaKanc.setPreferredSize(dimension);
-		txtAdresaKanc.setText(profesor.getAdresaKancelarije());
+		txtAdresaKanc.setText(p.getAdresaKancelarije());
 		txtAdresaKanc.addFocusListener(new MyFocusListener5());
 		panAdresaKanc.add(labAdresaKanc);
 		panAdresaKanc.add(txtAdresaKanc);
@@ -191,7 +192,7 @@ public class EditProfesor extends JDialog {
 		labBrLicne.setPreferredSize(dimension);
 		txtBrLicne = new JTextField();
 		txtBrLicne.setPreferredSize(dimension);
-		txtBrLicne.setText(profesor.getBrojLicneKarte());
+		txtBrLicne.setText(p.getBrojLicneKarte());
 		txtBrLicne.addKeyListener(new MyKeyListener2());
 		panBrLicne.add(labBrLicne);
 		panBrLicne.add(txtBrLicne);
@@ -255,16 +256,17 @@ public class EditProfesor extends JDialog {
 						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
 					}else {
 						Profesor profesor = collectData();
-						//System.out.println(profesor);
+						profesor.setId(p.getId());
 						boolean postoji = false;
-						//provjera da li vec postoji uneseni broj licne karte
 						for(int i = 0; i < BazaProfesora.getInstance().getProfesori().size(); i++) {
-							if((profesor.getBrojLicneKarte().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))) {
+							if((profesor.getBrojLicneKarte().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))
+									&& profesor.getId() != BazaProfesora.getInstance().getProfesori().get(i).getId()) {
 								JOptionPane.showMessageDialog(null, "Uneseni broj lične karte već postoji!");
 								postoji = true;
 							}
+						}	
 							if(!postoji) {
-								//provjera da li polja dobro popunjena
+								//provjera da li su polja dobro popunjena
 								Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
 								Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
 								Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
@@ -279,14 +281,14 @@ public class EditProfesor extends JDialog {
 								if(!ispravan_unos) {
 									JOptionPane.showMessageDialog(null, "Neispravan unos!");
 								}
-								if(!postoji && ispravan_unos) {
-									ProfesorController.getInstance().dodajProfesora(profesor);
+								else{
+									ProfesorController.getInstance().izmeniProfesora(profesor);
 									dispose();
 								}
 							}
 						}
 					
-					}
+					
 				}catch(Exception ex) {
 					System.out.println("GRESKA");
 					ex.printStackTrace();

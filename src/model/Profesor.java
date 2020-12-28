@@ -19,8 +19,17 @@ public class Profesor {
 	protected String broj_licne_karte;
 	protected Titula titula;
 	protected Zvanje zvanje;
-	List<Predmet> predmeti_Profesora = new ArrayList<Predmet>();
-	
+
+	List<Predmet> predmeti_Profesora;
+	protected int id;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Profesor() {
 		super();
@@ -136,5 +145,6 @@ public class Profesor {
 	public void setPredmetiProfesora(List<Predmet> predmetiProfesora) {
 		predmeti_Profesora = predmetiProfesora;
 	}
+
 	
 }

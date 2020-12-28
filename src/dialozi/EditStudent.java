@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -28,6 +29,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import controller.StudentiController;
+import izgledAplikacije.AbstractTableModelNepolozeniIspiti;
 import izgledAplikacije.AbstractTableModelOcjena;
 import listeneri.MyFocusListener1;
 import listeneri.MyFocusListener2;
@@ -108,10 +110,19 @@ public class EditStudent extends JDialog {
 	protected JLabel espbLab;
 	protected JButton ponistiOcjenu;
 	
+	protected JPanel nepolPanel;
+	protected JButton dodaj;
+	protected JButton obrisi;
+	protected JButton polaganje;
+	protected JPanel status2;
 	static JTable polozeniTabela;
 	protected AbstractTableModelOcjena polozeniModel;
 	JScrollPane pane1;
 
+	static JTable nepolozeniTabela;
+	protected AbstractTableModelNepolozeniIspiti nepolozeniModel;
+	JScrollPane pane2;
+	
 	protected int ESPB;
 	protected double  prosjek;
 	
@@ -127,6 +138,7 @@ public class EditStudent extends JDialog {
 		polozeniPanel = polozeniIzmjena();
 		pane.add("Položeni",polozeniPanel);
 		
+		nepolozeniPanel = nepolozeniIzmjena();
 		pane.add("Nepoloženi",nepolozeniPanel);
 		
 		add(pane);
@@ -156,6 +168,30 @@ public class EditStudent extends JDialog {
 		setLayout();
 		
 		return polPan;
+	}
+	
+	
+	private JPanel nepolozeniIzmjena() {
+		nepolPanel = new JPanel();
+		
+		dodaj = new JButton("Dodaj");
+		obrisi = new JButton("Obrisi");
+		polaganje = new JButton("Polaganje");
+		
+		nepolozeniTabela = new JTable();
+		nepolozeniModel = new AbstractTableModelNepolozeniIspiti();
+		nepolozeniTabela.setModel(nepolozeniModel);
+		nepolozeniTabela.setShowHorizontalLines(false);
+		nepolozeniTabela.setAutoCreateRowSorter(true);
+		pane2 = new JScrollPane(nepolozeniTabela);
+		
+		
+		status2 = new JPanel();
+		status2.setBorder(BorderFactory.createLineBorder(Color.BLACK));//dodaj na dno stranice??
+		
+		setLayout2();
+		
+		return nepolPanel;
 	}
 	
 	private void setLayout() {
@@ -192,9 +228,44 @@ public class EditStudent extends JDialog {
 		
 	}
 	
+	
+	//izgled taba nepolozeni
+	private void setLayout2() {
+		nepolPanel.setLayout(new GridBagLayout());
+		GridBagConstraints gc = new GridBagConstraints();
+		
+		gc.gridx = 0;
+		gc.gridy = 0;
+		gc.insets = new Insets(5, 5, 20, 0);
+		gc.anchor = GridBagConstraints.NORTHWEST;
+		nepolPanel.add(dodaj, gc);
+		
+		gc.gridx = 1;
+		gc.gridy = 0;
+		gc.insets = new Insets(5, 5, 20, 0);
+		gc.anchor = GridBagConstraints.NORTHWEST;
+		nepolPanel.add(obrisi, gc);
+		
+		
+		gc.gridx = 1;
+		gc.gridy = 0;
+		gc.insets = new Insets(5, 78, 20, 0);
+		gc.anchor = GridBagConstraints.NORTHWEST;
+		nepolPanel.add(polaganje, gc);
+		
+		gc.gridx = 0;
+		gc.gridy = 1;
+		gc.gridwidth = 2;
+		gc.gridheight = 4;
+		gc.insets = new Insets(2, 2, 2, 2);
+		gc.anchor = GridBagConstraints.CENTER;
+		nepolPanel.add(pane2, gc);
+		
+	}
+	
 	private JPanel informacijeIzmjena(Student s) {
 		setTitle("Dodavanje studenta");
-		setSize(550,650);
+		setSize(550,600);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
