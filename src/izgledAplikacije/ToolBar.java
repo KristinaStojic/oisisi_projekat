@@ -2,6 +2,7 @@ package izgledAplikacije;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
@@ -14,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
+
+import controller.StudentiController;
 
 public class ToolBar extends JToolBar{
 	
@@ -69,6 +72,19 @@ public class ToolBar extends JToolBar{
 	Btn4.setIcon(new ImageIcon("imgs" + File.separator +"search.jpg"));
 	add(Btn4);
 	
+	Btn4.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 0) {
+				String txt = trazi.getText();
+				if(txt.trim().equals("")) {
+					StudentiController.getInstance().vratiPrikaz();
+				}
+				StudentiController.getInstance().pretragaStudenata(txt);
+			}
+		}
+	});
 	
 	/*oolBar toolbar = new JToolBar();
 	toolbar.add(dodaj);*/

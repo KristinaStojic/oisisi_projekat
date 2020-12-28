@@ -16,6 +16,8 @@ public class BazaStudenata {
 	}
 	
 	private List<Student> studenti;
+	private List<Student> privremeno;
+	private List<Student> zadovoljavajuPretragu;
 	private List<String> kolone;
 	private int id;
 	
@@ -43,10 +45,11 @@ public class BazaStudenata {
 		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(1), 10, new Date()));
 		s1.setPolozeniIspiti(pi);
 		studenti.add(s1);
-		Student s2 = new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-99/2018", 2018, 3, model.Student.Status.B, 9.41, null, null);
+		Student s2 = new Student("Ivana", "Markovic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-99/2018", 2018, 3, model.Student.Status.B, 9.41, null, null);
 		s2.setId(id++);
 		s2.setPolozeniIspiti(pi);
 		studenti.add(s2);
+		privremeno = studenti;
 	}
 	
 	public List<Student> getStudenti(){
@@ -95,11 +98,13 @@ public class BazaStudenata {
 		Student s = new Student(imeStudenta, prezimeStudenta, datumRodjenjaStudenta, adresaStudenta, kontaktTelefon, emailAdresa, brojIndeksa, godinaUpisa, trenutnaGodinaStudija, status, prosjecnaOcjena, polozeniIspiti, nepolozeniIspiti);
 		s.setId(id++);
 		this.studenti.add(s);
+		privremeno = studenti;
 	}
 	
 	public void dodajStudenta(Student s) {
 		s.setId(id++);
 		this.studenti.add(s);
+		privremeno = studenti;
 	}
 	
 	public void izbrisiStudenta(String brojIndeksa) {
@@ -109,6 +114,7 @@ public class BazaStudenata {
 				break;
 			}
 		}
+		privremeno = studenti;
 	}
 	
 	public void izmeniStudenta(Student s) {
@@ -131,6 +137,42 @@ public class BazaStudenata {
 				//st.setNepolozeniIspiti(s.getNepolozeniIspiti());
 			}
 		}
+		privremeno = studenti;
+	}
+	
+	public void pretraziStudente(String txt) {
+		zadovoljavajuPretragu = new ArrayList<Student>();
+		for(Student s : studenti) {
+			String rijeci[] = txt.split(" ");
+			if(rijeci.length == 3) {
+				String prezime = rijeci[0];
+				String ime = rijeci[1];
+				String index = rijeci[2];
+				if(s.getPrezimeStudenta().contains(prezime) && s.getImeStudenta().contains(ime) && s.getBrojIndeksa().contains(index)) {
+					zadovoljavajuPretragu.add(s);
+				}
+			}
+			if(rijeci.length == 2) {
+
+				String prezime = rijeci[0];
+				String ime = rijeci[1];
+				if(s.getPrezimeStudenta().contains(prezime) && s.getImeStudenta().contains(ime)) {
+					zadovoljavajuPretragu.add(s);
+				}
+			}
+			if(rijeci.length == 1) {
+
+				String prezime = rijeci[0];
+				if(s.getPrezimeStudenta().contains(prezime)) {
+					zadovoljavajuPretragu.add(s);
+				}
+			}
+		}
+		studenti = zadovoljavajuPretragu;
+	}
+	
+	public void vratiPrikaz() {
+		studenti = privremeno;
 	}
 	
 }

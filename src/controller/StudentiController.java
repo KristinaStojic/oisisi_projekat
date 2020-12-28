@@ -22,6 +22,11 @@ public class StudentiController {
 		GlavniProzor.getInstance().azurirajPrikaz("DODAT", -1);
 	}
 	
+	public void vratiPrikaz() {
+		BazaStudenata.getInstance().vratiPrikaz();
+		GlavniProzor.getInstance().azurirajPrikaz("VRACENO", -1);
+	}
+	
 	public void izmeniStudenta(Student s) {
 		BazaStudenata.getInstance().izmeniStudenta(s);
 		GlavniProzor.getInstance().azurirajPrikaz("IZMJENJEN", -1);
@@ -30,5 +35,10 @@ public class StudentiController {
 	public void izbrisiStudenta(Student s) {
 		BazaStudenata.getInstance().izbrisiStudenta(s.getBrojIndeksa());
 		GlavniProzor.getInstance().azurirajPrikaz("IZBRISAN", -1);
+	}
+	
+	public void pretragaStudenata(String txt) {
+		BazaStudenata.getInstance().pretraziStudente(txt);
+		GlavniProzor.getInstance().azurirajPrikaz("NADJEN", -1);
 	}
 }
