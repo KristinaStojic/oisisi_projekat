@@ -46,6 +46,7 @@ public class BazaProfesora {
 	}
 	
 	public void dodajProfesor(Profesor p) {
+		p.setId(id++);
 		profesori.add(p);
 	}
 	
