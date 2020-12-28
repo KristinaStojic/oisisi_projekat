@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -23,6 +24,7 @@ import listeneri.MyFocusListener5;
 import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
 import listeneri.MyKeyListener2;
+import model.BazaProfesora;
 import model.Profesor;
 import model.Profesor.Titula;
 import model.Profesor.Zvanje;
@@ -244,18 +246,46 @@ public class EditProfesor extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					//uzmemo prosledjenog profesora
-					Profesor profesor = collectData();
+					
+					
 					if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
 							|| txtDatum.getText().trim().isEmpty() || txtAdresa.getText().trim().isEmpty()
 								|| txtTel.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()
 									|| txtAdresaKanc.getText().trim().isEmpty() || txtBrLicne.getText().trim().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
 					}else {
-						
-						ProfesorController.getInstance().izmeniProfesora(profesor);
+						Profesor profesor = collectData();
 						//System.out.println(profesor);
-						dispose();
+						boolean postoji = false;
+						//provjera da li vec postoji uneseni broj licne karte
+						for(int i = 0; i < BazaProfesora.getInstance().getProfesori().size(); i++) {
+							if((profesor.getBrojLicneKarte().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))) {
+								JOptionPane.showMessageDialog(null, "Uneseni broj lične karte već postoji!");
+								postoji = true;
+							}
+							if(!postoji) {
+								//provjera da li polja dobro popunjena
+								Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
+								Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
+								Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
+								Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
+								
+								boolean ispravan_unos = false;
+								if(datum.matcher(profesor.getDatumRodjenja()).matches() && adresa.matcher(profesor.getAdresaStanovanja()).matches()
+										&& telefon.matcher(profesor.getKontaktTelefon()).matches() && mejl.matcher(profesor.getEmailAdresa()).matches()
+										&& adresa.matcher(profesor.getAdresaKancelarije()).matches()) {
+									ispravan_unos = true;
+								}
+								if(!ispravan_unos) {
+									JOptionPane.showMessageDialog(null, "Neispravan unos!");
+								}
+								if(!postoji && ispravan_unos) {
+									ProfesorController.getInstance().dodajProfesora(profesor);
+									dispose();
+								}
+							}
+						}
+					
 					}
 				}catch(Exception ex) {
 					System.out.println("GRESKA");
