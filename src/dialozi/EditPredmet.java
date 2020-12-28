@@ -34,6 +34,12 @@ public class EditPredmet extends JDialog{
 	protected JPanel panCen;
 	protected BoxLayout boxcen;
 	
+	String sifra_predmeta;
+    String naziv_predmeta;
+    int godina_izvodjenja;
+	int broj_ESPB;
+	Semestar semestar;
+	
 	protected JPanel panSifra;
 	protected JLabel labSifra;
 	protected JTextField txtSifra;
@@ -169,8 +175,13 @@ public class EditPredmet extends JDialog{
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					ChooseProffesor chooseProffesor = new ChooseProffesor();
+					ChooseProffesor chooseProffesor = new ChooseProffesor(p);
 					chooseProffesor.setVisible(true);
+					if(chooseProffesor.getIzabrani() != null) {
+						txtProf.setText(chooseProffesor.getIzabrani().getIme() + " " + chooseProffesor.getIzabrani().getPrezime());
+					}else {
+						txtProf.setText("");
+					}
 				}
 			});
 			
@@ -197,6 +208,7 @@ public class EditPredmet extends JDialog{
 					}else {
 						Predmet predmet = collectData();
 						predmet.setId(p.getId());
+						predmet.setPredmeni_profesor(p.getPredmetni_profesor());
 						boolean postoji = false;
 						for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
 							if((predmet.getSifra_predmeta().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta())
@@ -246,18 +258,16 @@ public class EditPredmet extends JDialog{
 	
 	
 	public Predmet collectData() {		
-		String sifra_predmeta = txtSifra.getText();
-	    String naziv_predmeta = txtNaziv.getText();
-		int godina_izvodjenja = Integer.parseInt(txtGodina.getText());
-		int broj_ESPB = Integer.parseInt(txtESPB.getText());
-		Semestar semestar;
+		sifra_predmeta = txtSifra.getText();
+	    naziv_predmeta = txtNaziv.getText();
+		godina_izvodjenja = Integer.parseInt(txtGodina.getText());
+		broj_ESPB = Integer.parseInt(txtESPB.getText());
 		int id = sem.getSelectedIndex();
 		if(id == 0) {
 			semestar = Semestar.Zimski;
 		}else {
 			semestar = Semestar.Letnji;
-		}
-				
+		}	
 		Predmet predmet = new Predmet(sifra_predmeta,naziv_predmeta,semestar,godina_izvodjenja,
 				null, broj_ESPB, null, null);
 		
