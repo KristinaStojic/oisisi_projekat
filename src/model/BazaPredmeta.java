@@ -18,6 +18,9 @@ public class BazaPredmeta {
 	private List<String> kolone;
 	private int id;
 	
+	private List<Predmet> pomocni;
+	private List<Predmet> zadovoljavajuPretragu;
+	
 	private BazaPredmeta() {
 
 		id = 0;
@@ -46,6 +49,7 @@ public class BazaPredmeta {
 		Predmet p2 = new Predmet("E3","NANS",model.Predmet.Semestar.Letnji,4,null,8,null,null);
 		p2.setId(id++);
 		predmeti.add(p2);
+		pomocni = predmeti;
 		
 	}
 	
@@ -56,6 +60,7 @@ public class BazaPredmeta {
 				break;
 			}
 		}
+		pomocni = predmeti;
 	}
 	
 	public List<Predmet> getPredmeti() {
@@ -73,6 +78,7 @@ public class BazaPredmeta {
 	public void dodajPredmet(Predmet p) {
 		p.setId(id++);
 		this.predmeti.add(p);
+		pomocni = predmeti;
 	}
 
 	public String getColumnName(int index) {
@@ -115,7 +121,30 @@ public class BazaPredmeta {
 				pr.setStudenti_nisu_polozili(p.getStudenti_nisu_polozili());
 			}
 		}
+		pomocni = predmeti;
 	}
+	
+	
+	// u slucaju da je polje za pretragu prazno, vraca pocetnu tabelu
+		public void vratiPrikaz() {
+			predmeti = pomocni;
+		}
+		
+		public void pretraziPredmete(String txt) {
+			zadovoljavajuPretragu = new ArrayList<Predmet>();
+			
+			
+			for(Predmet pred : pomocni) {
+				String rijeci[] = txt.split(" ");
+				if(rijeci.length == 1) {
+					String naziv = rijeci[0];
+					if(pred.getNaziv_predmeta().toUpperCase().contains(naziv.toUpperCase())) {
+						zadovoljavajuPretragu.add(pred);
+					}
+				}
+			}
+			predmeti = zadovoljavajuPretragu;
+		}
 	
 	
 	

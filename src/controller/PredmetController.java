@@ -2,6 +2,7 @@ package controller;
 
 import izgledAplikacije.GlavniProzor;
 import model.BazaPredmeta;
+import model.BazaProfesora;
 import model.Predmet;
 
 public class PredmetController {
@@ -34,5 +35,18 @@ private static PredmetController instance = null;
 		GlavniProzor.getInstance().azurirajPrikaz("IZBRISI",-1);
 		
 	}
+	
+	
+	//za pretragu
+		public void vratiPrikaz() {
+			BazaPredmeta.getInstance().vratiPrikaz();
+			GlavniProzor.getInstance().azurirajPrikaz("VRACENO", -1);
+		}
+		
+		
+		public void pretragaPredmeta(String txt) {
+			BazaPredmeta.getInstance().pretraziPredmete(txt);
+			GlavniProzor.getInstance().azurirajPrikaz("NADJEN", -1);
+		}
 	
 }

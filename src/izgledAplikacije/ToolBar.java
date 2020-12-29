@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 
+import controller.PredmetController;
 import controller.ProfesorController;
 import controller.StudentiController;
 
@@ -91,6 +92,14 @@ public class ToolBar extends JToolBar{
 					ProfesorController.getInstance().vratiPrikaz();
 				}
 				ProfesorController.getInstance().pretragaProfesora(txt);
+			}
+			else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 2) {
+				String txt = trazi.getText();
+				//ako je polje za pretragu prazno
+				if(txt.trim().equals("")) {
+					PredmetController.getInstance().vratiPrikaz();
+				}
+				PredmetController.getInstance().pretragaPredmeta(txt);
 			}
 		}
 	});
