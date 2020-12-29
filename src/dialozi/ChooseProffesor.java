@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -72,10 +73,14 @@ public class ChooseProffesor extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				izabrani = BazaProfesora.getInstance().getProfesori().get(profList.getSelectedIndex());
-				EditPredmet.txtProf.setText(izabrani.getIme() + " " + izabrani.getPrezime());
-				predmet.setPredmeni_profesor(izabrani);
-				dispose();
+				if(profList.isSelectionEmpty()) {
+					JOptionPane.showMessageDialog(null, "Morate izabrati profesora");
+				}else {
+					izabrani = BazaProfesora.getInstance().getProfesori().get(profList.getSelectedIndex());
+					EditPredmet.txtProf.setText(izabrani.getIme() + " " + izabrani.getPrezime());
+					predmet.setPredmeni_profesor(izabrani);
+					dispose();
+				}
 			}	
 			
 		});
