@@ -46,9 +46,18 @@ public class BazaPredmeta {
 		Predmet p1 = new Predmet("E2","OISISI",model.Predmet.Semestar.Zimski,3,null,8,null,null);
 		p1.setId(id++);
 		predmeti.add(p1);
-		Predmet p2 = new Predmet("E3","NANS",model.Predmet.Semestar.Letnji,4,null,8,null,null);
+		Predmet p2 = new Predmet("E33","NANS",model.Predmet.Semestar.Letnji,4,null,8,null,null);
 		p2.setId(id++);
 		predmeti.add(p2);
+		Predmet nep1 = new Predmet("P13","Baze podataka",model.Predmet.Semestar.Letnji,4,null,6,null,null);
+		Predmet nep2 = new Predmet("E3","SAU",model.Predmet.Semestar.Zimski,2,null,8,null,null);
+		predmeti.add(nep2);
+		predmeti.add(nep1);
+		Predmet pr1 = new Predmet("P132","Baze podataka3",model.Predmet.Semestar.Letnji,4,null,6,null,null);
+		Predmet pr2 = new Predmet("E32","SAU3",model.Predmet.Semestar.Zimski,6,null,8,null,null);
+		predmeti.add(pr2);
+		predmeti.add(pr1);
+		
 		pomocni = predmeti;
 		
 	}

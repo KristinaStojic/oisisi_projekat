@@ -1,9 +1,10 @@
 package controller;
 
 import izgledAplikacije.GlavniProzor;
+import model.BazaNepolozeniIspiti;
 import model.BazaPredmeta;
-import model.BazaProfesora;
 import model.Predmet;
+import model.Student;
 
 public class PredmetController {
 
@@ -48,5 +49,9 @@ private static PredmetController instance = null;
 			BazaPredmeta.getInstance().pretraziPredmete(txt);
 			GlavniProzor.getInstance().azurirajPrikaz("NADJEN", -1);
 		}
+	
+	public void dodajNepolozeni(Predmet p, Student s) {
+		BazaNepolozeniIspiti.getInstance().dodajNepolozene(p, s);
+	}
 	
 }

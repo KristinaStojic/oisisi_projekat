@@ -30,6 +30,7 @@ import javax.swing.JTextField;
 import controller.StudentiController;
 import izgledAplikacije.AbstractTableModelNepolozeniIspiti;
 import izgledAplikacije.AbstractTableModelOcjena;
+import izgledAplikacije.GlavniProzor;
 import listeneri.MyFocusListener1;
 import listeneri.MyFocusListener2;
 import listeneri.MyFocusListener4;
@@ -174,6 +175,15 @@ public class EditStudent extends JDialog {
 		nepolPanel = new JPanel();
 		
 		dodaj = new JButton("Dodaj");
+		dodaj.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AddPredmetToStudent addPredmetToStudent = new AddPredmetToStudent(GlavniProzor.getInstance().tabbedPane.getIzabraniStudent());
+				addPredmetToStudent.setVisible(true);
+				azurirajPrikazNepolozenihPredmeta("DODAT", -1);
+			}
+		});
 		obrisi = new JButton("Obrisi");
 		polaganje = new JButton("Polaganje");
 		
@@ -497,6 +507,12 @@ public class EditStudent extends JDialog {
 							brojIndeksa, godinaUpisa, trenutnaGodinaStudija, s, prosjek, null, null);
 		
 		return st;
+	}
+	
+	public void azurirajPrikazNepolozenihPredmeta(String akcija, int vrijednost) {
+		AbstractTableModelNepolozeniIspiti model = (AbstractTableModelNepolozeniIspiti) nepolozeniTabela.getModel();
+		model.fireTableDataChanged();
+		validate();
 	}
 	
 }

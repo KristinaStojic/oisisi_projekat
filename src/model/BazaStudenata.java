@@ -45,12 +45,13 @@ public class BazaStudenata {
 		List<Predmet> nep = new ArrayList<Predmet>();
 		
 		nep.add(new Predmet("P13","Baze podataka",model.Predmet.Semestar.Letnji,4,null,6,null,null));
-		nep.add( new Predmet("E3","SAU",model.Predmet.Semestar.Zimski,2,null,8,null,null));
+		nep.add( new Predmet("E31","SAU",model.Predmet.Semestar.Zimski,2,null,8,null,null));
 		
 		
 		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(0), 10, new Date()));
 		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(1), 10, new Date()));
 		s1.setPolozeniIspiti(pi);
+		s1.setNepolozeniIspiti(nep);
 		studenti.add(s1);
 		Student s2 = new Student("Ivana", "Markovic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-99/2018", 2018, 3, model.Student.Status.B, 9.41, null, null);
 		s2.setId(id++);

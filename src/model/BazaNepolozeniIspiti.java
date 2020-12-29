@@ -85,4 +85,16 @@ private static BazaNepolozeniIspiti instance = null;
 			return null;
 		}
 	}
+	
+	public void dodajNepolozene(Predmet p, Student s) {
+		if(s.getNepolozeniIspiti() == null) {
+			ArrayList<Predmet> n = new ArrayList<Predmet>();
+			n.add(p);
+			s.setNepolozeniIspiti(n);
+		}else {
+			s.getNepolozeniIspiti().add(p);
+		}
+		nepolozeni.add(p);
+	}
+	
 }
