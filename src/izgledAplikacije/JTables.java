@@ -25,6 +25,7 @@ public class JTables extends JTable{
 		case Profesori:
 				AbstractTableModelProfesori modelProfesori = new AbstractTableModelProfesori();
 				this.setModel(modelProfesori);
+				this.setAutoCreateRowSorter(true);
 				break;
 		
 		case Predmeti:
