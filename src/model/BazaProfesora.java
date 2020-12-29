@@ -151,5 +151,18 @@ public class BazaProfesora {
 		profesori = zadovoljavajuPretragu;
 	}
 	
+	public void dodajPredmet(Predmet p, Profesor pr) {
+		for(Profesor prf : profesori) {
+			if(prf.getId() == pr.getId()) {
+				if(prf.getPredmetiProfesora() == null) {
+					ArrayList<Predmet> predmeti = new ArrayList<Predmet>();
+					predmeti.add(p);
+					prf.setPredmetiProfesora(predmeti);
+				}else {
+					prf.getPredmetiProfesora().add(p);
+				}
+			}
+		}
+	}
 	
 }

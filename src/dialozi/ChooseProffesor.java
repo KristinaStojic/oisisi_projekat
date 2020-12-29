@@ -73,15 +73,17 @@ public class ChooseProffesor extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				izabrani = BazaProfesora.getInstance().getProfesori().get(profList.getSelectedIndex());
-				predmet.setPredmeni_profesor(izabrani);
+				EditPredmet.txtProf.setText(getIzabrani().getIme() + " " + getIzabrani().getPrezime());
 				dispose();
-			}
+			}	
+			
 		});
 		
 		odustani.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				izabrani = null;
 				dispose();
 			}
 		});

@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import javax.swing.BoxLayout;
@@ -18,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.PredmetController;
+import controller.ProfesorController;
 import listeneri.MyFocusListener7;
 import listeneri.MyFocusListener8;
 import model.BazaPredmeta;
@@ -47,7 +47,7 @@ public class EditPredmet extends JDialog{
 	
 	protected JPanel panProf;
 	protected JLabel labProf;
-	protected JTextField txtProf;
+	protected static JTextField txtProf;
 	protected JButton plus;
 	protected JButton minus;
 	
@@ -71,6 +71,8 @@ public class EditPredmet extends JDialog{
 	protected JPanel panBtn;
 	protected JButton potvrdi;
 	protected JButton odustani;
+	ChooseProffesor chooseProffesor;
+	MoveProffesor moveProffesor;
 	
 	protected JPanel panSem;
 	protected JLabel labSem;
@@ -172,34 +174,32 @@ public class EditPredmet extends JDialog{
 		panCen.add(panProf);
 		
 		if(p.getPredmetni_profesor() == null) {
+			minus.setEnabled(false);
 			plus.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					ChooseProffesor chooseProffesor = new ChooseProffesor(p);
+					chooseProffesor = new ChooseProffesor(p);
 					chooseProffesor.setVisible(true);
-					if(chooseProffesor.getIzabrani() != null) {
-						txtProf.setText(chooseProffesor.getIzabrani().getIme() + " " + chooseProffesor.getIzabrani().getPrezime());
-						if(chooseProffesor.getIzabrani().getPredmetiProfesora() == null) {
-							ArrayList<Predmet> prp = new ArrayList<Predmet>();
-							prp.add(p);
-							chooseProffesor.getIzabrani().setPredmetiProfesora(prp);
-						}else {
-							chooseProffesor.getIzabrani().getPredmetiProfesora().add(p);
-						}
-						
+					if(p.getPredmetni_profesor() != null) {
+						minus.setEnabled(true);
+						plus.setEnabled(false);
 					}else {
-						txtProf.setText("");
+
+						minus.setEnabled(false);
+						plus.setEnabled(true);
 					}
 				}
 			});
 			
 		}else {
+			plus.setEnabled(false);
 			 minus.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
+					moveProffesor = new MoveProffesor(p);
+					moveProffesor.setVisible(true);
 				}
 			});
 		}
@@ -217,7 +217,9 @@ public class EditPredmet extends JDialog{
 					}else {
 						Predmet predmet = collectData();
 						predmet.setId(p.getId());
-						predmet.setPredmeni_profesor(p.getPredmetni_profesor());
+						if(chooseProffesor.getIzabrani() != null) {
+							predmet.setPredmeni_profesor(chooseProffesor.getIzabrani());
+						}
 						boolean postoji = false;
 						for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
 							if((predmet.getSifra_predmeta().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta())
@@ -237,6 +239,9 @@ public class EditPredmet extends JDialog{
 							JOptionPane.showMessageDialog(null, "Neispravan unos!");
 						}else {
 							PredmetController.getInstance().izmeniPredmet(predmet);
+							if(chooseProffesor.getIzabrani() != null) {
+								ProfesorController.getInstance().dodajPredmet(predmet, chooseProffesor.getIzabrani());
+							}
 							dispose();
 						}
 						}
@@ -255,6 +260,7 @@ public class EditPredmet extends JDialog{
 				dispose();
 			}
 		});
+		
 		
 		panBtn.add(potvrdi);
 		panBtn.add(odustani);

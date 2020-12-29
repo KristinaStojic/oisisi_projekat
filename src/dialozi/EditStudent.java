@@ -14,7 +14,6 @@ import java.util.Date;
 import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -275,6 +274,7 @@ public class EditStudent extends JDialog {
 		boxc = new BoxLayout(panCen, BoxLayout.Y_AXIS);
 		panCen.setLayout(boxc);
 		
+		try {
 		int suma = 0;
 		
 		for(Ocena o : s.getPolozeniIspiti()) {
@@ -283,6 +283,7 @@ public class EditStudent extends JDialog {
 		}
 		
 		prosjek = suma/s.getPolozeniIspiti().size();
+		}catch(NullPointerException e) {}
 		
 		panIme = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		labIme = new JLabel("Ime*");

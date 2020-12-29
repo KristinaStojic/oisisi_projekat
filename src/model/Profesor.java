@@ -144,6 +144,5 @@ public class Profesor {
 	public void setPredmetiProfesora(List<Predmet> predmetiProfesora) {
 		predmeti_Profesora = predmetiProfesora;
 	}
-
 	
 }

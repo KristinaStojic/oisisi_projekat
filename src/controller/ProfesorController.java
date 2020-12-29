@@ -2,7 +2,7 @@ package controller;
 
 import izgledAplikacije.GlavniProzor;
 import model.BazaProfesora;
-import model.BazaStudenata;
+import model.Predmet;
 import model.Profesor;
 
 public class ProfesorController {
@@ -45,5 +45,9 @@ private static ProfesorController instance = null;
 	public void pretragaProfesora(String txt) {
 		BazaProfesora.getInstance().pretraziProfesore(txt);
 		GlavniProzor.getInstance().azurirajPrikaz("NADJEN", -1);
+	}
+	
+	public void dodajPredmet(Predmet predmet, Profesor profesor) {
+		BazaProfesora.getInstance().dodajPredmet(predmet, profesor);
 	}
 }

@@ -158,7 +158,7 @@ public class BazaStudenata {
 				String prezime = rijeci[0];
 				String ime = rijeci[1];
 				String index = rijeci[2];
-				if(s.getPrezimeStudenta().contains(prezime) && s.getImeStudenta().contains(ime) && s.getBrojIndeksa().contains(index)) {
+				if(s.getPrezimeStudenta().toUpperCase().contains(prezime.toUpperCase()) && s.getImeStudenta().toUpperCase().contains(ime.toUpperCase()) && s.getBrojIndeksa().toUpperCase().contains(index.toUpperCase())) {
 					zadovoljavajuPretragu.add(s);
 				}
 			}
@@ -166,14 +166,14 @@ public class BazaStudenata {
 
 				String prezime = rijeci[0];
 				String ime = rijeci[1];
-				if(s.getPrezimeStudenta().contains(prezime) && s.getImeStudenta().contains(ime)) {
+				if(s.getPrezimeStudenta().toUpperCase().contains(prezime.toUpperCase()) && s.getImeStudenta().toUpperCase().contains(ime.toUpperCase())) {
 					zadovoljavajuPretragu.add(s);
 				}
 			}
 			if(rijeci.length == 1) {
 
 				String prezime = rijeci[0];
-				if(s.getPrezimeStudenta().contains(prezime)) {
+				if(s.getPrezimeStudenta().toUpperCase().contains(prezime.toUpperCase())) {
 					zadovoljavajuPretragu.add(s);
 				}
 			}

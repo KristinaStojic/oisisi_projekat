@@ -25,7 +25,6 @@ import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
 import listeneri.MyKeyListener2;
 import model.BazaProfesora;
-import model.BazaStudenata;
 import model.Profesor;
 import model.Profesor.Titula;
 import model.Profesor.Zvanje;
