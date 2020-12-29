@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.PredmetController;
-import controller.ProfesorController;
 import listeneri.MyFocusListener7;
 import listeneri.MyFocusListener8;
 import model.BazaPredmeta;
@@ -72,7 +71,6 @@ public class EditPredmet extends JDialog{
 	protected JButton potvrdi;
 	protected JButton odustani;
 	ChooseProffesor chooseProffesor;
-	MoveProffesor moveProffesor;
 	
 	protected JPanel panSem;
 	protected JLabel labSem;
@@ -165,6 +163,7 @@ public class EditPredmet extends JDialog{
 			txtProf = new JTextField(p.getPredmetni_profesor().getIme() + p.getPredmetni_profesor().getPrezime()); 
 		}
 		txtProf.setPreferredSize(new Dimension(100, 20));
+		txtProf.setEditable(false);
 		plus = new JButton("+");
 		minus = new JButton("-");
 		panProf.add(labProf);
@@ -184,13 +183,18 @@ public class EditPredmet extends JDialog{
 					if(p.getPredmetni_profesor() != null) {
 						minus.setEnabled(true);
 						plus.setEnabled(false);
+						
 					}else {
 
 						minus.setEnabled(false);
 						plus.setEnabled(true);
+							
 					}
+						
 				}
 			});
+				
+			
 			
 		}else {
 			plus.setEnabled(false);
@@ -198,8 +202,7 @@ public class EditPredmet extends JDialog{
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					moveProffesor = new MoveProffesor(p);
-					moveProffesor.setVisible(true);
+					dispose();
 				}
 			});
 		}
@@ -217,9 +220,8 @@ public class EditPredmet extends JDialog{
 					}else {
 						Predmet predmet = collectData();
 						predmet.setId(p.getId());
-						if(chooseProffesor.getIzabrani() != null) {
-							predmet.setPredmeni_profesor(chooseProffesor.getIzabrani());
-						}
+						predmet.setPredmeni_profesor(p.getPredmetni_profesor());
+						
 						boolean postoji = false;
 						for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
 							if((predmet.getSifra_predmeta().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta())
@@ -229,21 +231,19 @@ public class EditPredmet extends JDialog{
 							}
 						}
 						if(!postoji) {
-						boolean ispravan_unos = false;
-						Pattern godina = Pattern.compile("[1-6]");
-						Pattern espb = Pattern.compile("[1-9][0-9]?");
-						if(godina.matcher(String.valueOf(predmet.getGodina_izvodjenja())).matches() && espb.matcher(String.valueOf(predmet.getBroj_ESPB())).matches()){
-							ispravan_unos = true;
-						}
-						if(!ispravan_unos) {
-							JOptionPane.showMessageDialog(null, "Neispravan unos!");
-						}else {
-							PredmetController.getInstance().izmeniPredmet(predmet);
-							if(chooseProffesor.getIzabrani() != null) {
-								ProfesorController.getInstance().dodajPredmet(predmet, chooseProffesor.getIzabrani());
+							boolean ispravan_unos = false;
+							Pattern godina = Pattern.compile("[1-6]");
+							Pattern espb = Pattern.compile("[1-9][0-9]?");
+							if(godina.matcher(String.valueOf(predmet.getGodina_izvodjenja())).matches() && espb.matcher(String.valueOf(predmet.getBroj_ESPB())).matches()){
+								ispravan_unos = true;
+							}	
+							if(!ispravan_unos) {
+								JOptionPane.showMessageDialog(null, "Neispravan unos!");
+							}else {
+								PredmetController.getInstance().izmeniPredmet(predmet);
+								System.out.println(predmet);
+								dispose();
 							}
-							dispose();
-						}
 						}
 					}
 				}catch(Exception ex) {

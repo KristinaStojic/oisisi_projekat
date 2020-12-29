@@ -73,7 +73,8 @@ public class ChooseProffesor extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				izabrani = BazaProfesora.getInstance().getProfesori().get(profList.getSelectedIndex());
-				EditPredmet.txtProf.setText(getIzabrani().getIme() + " " + getIzabrani().getPrezime());
+				EditPredmet.txtProf.setText(izabrani.getIme() + " " + izabrani.getPrezime());
+				predmet.setPredmeni_profesor(izabrani);
 				dispose();
 			}	
 			
@@ -83,7 +84,6 @@ public class ChooseProffesor extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				izabrani = null;
 				dispose();
 			}
 		});
@@ -91,10 +91,6 @@ public class ChooseProffesor extends JDialog{
 		add(profPan, BorderLayout.CENTER);
 		add(btnPan, BorderLayout.SOUTH);
 		
-	}
-	
-	public Profesor getIzabrani() {
-		return izabrani;
 	}
 	
 }

@@ -5,7 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 public class Profesor {
-	
+
+
 	public enum Titula {BSc, MSc, mr, dr, prof, prof_dr, dipl_ing};
 	public enum Zvanje {saradnik_u_nastavi, asistent, asistent_sa_doktoratom, docent, vanredni_profesor, redovni_profesor, profesor_emeritus};
 	protected String prezime;
@@ -145,4 +146,12 @@ public class Profesor {
 		predmeti_Profesora = predmetiProfesora;
 	}
 	
+	@Override
+	public String toString() {
+		return "Profesor [prezime=" + prezime + ", ime=" + ime + ", datum_rodjenja=" + datum_rodjenja
+				+ ", adresa_stanovanja=" + adresa_stanovanja + ", kontakt_telefon=" + kontakt_telefon
+				+ ", email_adresa=" + email_adresa + ", adresa_kancelarije=" + adresa_kancelarije
+				+ ", broj_licne_karte=" + broj_licne_karte + ", titula=" + titula + ", zvanje=" + zvanje
+				+ ", predmeti_Profesora=" + predmeti_Profesora + ", id=" + id + "]";
+	}
 }
