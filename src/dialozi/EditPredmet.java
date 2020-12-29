@@ -241,7 +241,6 @@ public class EditPredmet extends JDialog{
 								JOptionPane.showMessageDialog(null, "Neispravan unos!");
 							}else {
 								PredmetController.getInstance().izmeniPredmet(predmet);
-								System.out.println(predmet);
 								dispose();
 							}
 						}

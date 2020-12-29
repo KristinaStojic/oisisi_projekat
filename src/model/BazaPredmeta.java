@@ -146,6 +146,14 @@ public class BazaPredmeta {
 			predmeti = zadovoljavajuPretragu;
 		}
 	
-	
+	public void ukloniProfesora(String lk) {
+		for(Predmet p : predmeti) {
+			if(p.getPredmetni_profesor() != null) {
+				if(p.getPredmetni_profesor().getBrojLicneKarte().equals(lk)) {
+					p.setPredmeni_profesor(null);
+				}
+			}
+		}
+	}
 	
 }

@@ -84,6 +84,7 @@ public class ChooseProffesor extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				predmet.setPredmeni_profesor(null);
 				dispose();
 			}
 		});

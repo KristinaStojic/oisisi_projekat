@@ -1,6 +1,7 @@
 package controller;
 
 import izgledAplikacije.GlavniProzor;
+import model.BazaPredmeta;
 import model.BazaProfesora;
 import model.Profesor;
 
@@ -31,6 +32,7 @@ private static ProfesorController instance = null;
 	
 	public void izbrisiProfesora(Profesor p) {
 		BazaProfesora.getInstance().izbrisiProfesora(p.getBrojLicneKarte());
+		BazaPredmeta.getInstance().ukloniProfesora(p.getBrojLicneKarte());
 		GlavniProzor.getInstance().azurirajPrikaz("IZBRISAN", -1);
 	}
 	
