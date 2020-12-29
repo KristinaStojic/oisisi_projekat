@@ -182,6 +182,9 @@ public class EditStudent extends JDialog {
 				AddPredmetToStudent addPredmetToStudent = new AddPredmetToStudent(GlavniProzor.getInstance().tabbedPane.getIzabraniStudent());
 				addPredmetToStudent.setVisible(true);
 				azurirajPrikazNepolozenihPredmeta("DODAT", -1);
+				for(Student stud : BazaStudenata.getInstance().getStudenti()) {
+					System.out.println(stud);
+				}
 			}
 		});
 		obrisi = new JButton("Obrisi");

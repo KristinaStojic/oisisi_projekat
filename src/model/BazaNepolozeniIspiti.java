@@ -90,11 +90,19 @@ private static BazaNepolozeniIspiti instance = null;
 		if(s.getNepolozeniIspiti() == null) {
 			ArrayList<Predmet> n = new ArrayList<Predmet>();
 			n.add(p);
-			s.setNepolozeniIspiti(n);
+			for(Student st : BazaStudenata.getInstance().getStudenti()) {
+				if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+					st.setNepolozeniIspiti(n);
+				}
+			}
 		}else {
-			s.getNepolozeniIspiti().add(p);
+			for(Student st : BazaStudenata.getInstance().getStudenti()) {
+				if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+					s.getNepolozeniIspiti().add(p);
+				}
+			}
 		}
-		nepolozeni.add(p);
+		initNepolozeni();
 	}
 	
 }
