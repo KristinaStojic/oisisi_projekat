@@ -16,6 +16,8 @@ public class BazaProfesora {
 	
 	
 	private List<Profesor> profesori;
+	private List<Profesor> pomocni;
+	private List<Profesor> zadovoljavajuPretragu;
 	private List<String> kolone;
 	private int id;
 	
@@ -44,12 +46,14 @@ public class BazaProfesora {
 		Profesor p3 = new Profesor("Hrnjak", "Jelena", "28.08.1999.","Backa Topola 20, NS","064/7852567","hrnjakjelena@gmail.com","Svetojovanska 2","JH909", model.Profesor.Titula.BSc, model.Profesor.Zvanje.docent, null);
 		p3.setId(id++);
 		profesori.add(p3);
+		pomocni = profesori;
 		}catch(NullPointerException e) {}
 	}
 	
 	public void dodajProfesor(Profesor p) {
 		p.setId(id++);
 		profesori.add(p);
+		pomocni = profesori;
 	}
 	
 	public void izbrisiProfesora(String brojLicneKarte) {
@@ -59,6 +63,7 @@ public class BazaProfesora {
 				break;
 			}
 		}
+		pomocni = profesori;
 	}
 	
 	public void izmeniProfesora(Profesor p) {
@@ -75,7 +80,9 @@ public class BazaProfesora {
 				i.setTitula(p.getTitula());
 				i.setZvanje(p.getZvanje());
 				//System.out.println(i);
-			}	}
+			}	
+			}
+		pomocni = profesori;
 	}
 	public List<Profesor> getProfesori(){
 		return profesori;
@@ -113,5 +120,36 @@ public class BazaProfesora {
 			return null;
 		}
 	}
+	
+	// u slucaju da je polje za pretragu prazno, vraca pocetnu tabelu
+	public void vratiPrikaz() {
+		 profesori = pomocni;
+	}
+	
+	public void pretraziProfesore(String txt) {
+		zadovoljavajuPretragu = new ArrayList<Profesor>();
+		
+		
+		for(Profesor prof : pomocni) {
+			String rijeci[] = txt.split(" ");
+			if(rijeci.length == 2) {
+
+				String prezime = rijeci[0];
+				String ime = rijeci[1];
+				if(prof.getPrezime().toUpperCase().contains(prezime.toUpperCase()) && prof.getIme().toUpperCase().contains(ime.toUpperCase())) {
+					zadovoljavajuPretragu.add(prof);
+				}
+			}
+			if(rijeci.length == 1) {
+
+				String prezime = rijeci[0];
+				if(prof.getPrezime().toUpperCase().contains(prezime.toUpperCase())) {
+					zadovoljavajuPretragu.add(prof);
+				}
+			}
+		}
+		profesori = zadovoljavajuPretragu;
+	}
+	
 	
 }
