@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import sun.jvm.hotspot.tools.SysPropsDumper;
+
 public class BazaStudenata {
 	
 	private static BazaStudenata instance = null;
@@ -190,6 +192,20 @@ public class BazaStudenata {
 	
 	public void vratiPrikaz() {
 		studenti = privremeno;
+	}
+	
+	public void ukloniPredmet(Student s, Predmet p) {
+		for(Student st : studenti) {
+			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())){
+				for(Predmet pr : st.getNepolozeniIspiti()) {
+					System.out.println(pr);
+				}
+				st.getNepolozeniIspiti().remove(p);
+				for(Predmet pr : st.getNepolozeniIspiti()) {
+					System.out.println(pr);
+				}
+			}
+		}
 	}
 	
 }

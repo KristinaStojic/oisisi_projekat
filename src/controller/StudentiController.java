@@ -2,6 +2,7 @@ package controller;
 
 import izgledAplikacije.GlavniProzor;
 import model.BazaStudenata;
+import model.Predmet;
 import model.Student;
 
 public class StudentiController {
@@ -40,5 +41,9 @@ public class StudentiController {
 	public void pretragaStudenata(String txt) {
 		BazaStudenata.getInstance().pretraziStudente(txt);
 		GlavniProzor.getInstance().azurirajPrikaz("NADJEN", -1);
+	}
+	
+	public void ukloniPredmet(Student s, Predmet p) {
+		BazaStudenata.getInstance().ukloniPredmet(s, p);
 	}
 }

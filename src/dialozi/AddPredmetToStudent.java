@@ -53,12 +53,12 @@ public class AddPredmetToStudent extends JDialog{
 		
 		for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
 			for(Ocena o : s.getPolozeniIspiti()) {
-				if(p.getSifra_predmeta() == o.getPredmet().getSifra_predmeta()) {
+				if(p.getSifra_predmeta().equals(o.getPredmet().getSifra_predmeta())) {
 					suma += 1;
 				}
 			}
 			for(Predmet pr : s.getNepolozeniIspiti()) {
-				if(p.getSifra_predmeta() == pr.getSifra_predmeta()) {
+				if(p.getSifra_predmeta().equals(pr.getSifra_predmeta())) {
 					suma += 1;
 				}
 			}

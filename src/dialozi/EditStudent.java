@@ -37,6 +37,7 @@ import listeneri.MyFocusListener4;
 import listeneri.MyFocusListener5;
 import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
+import model.BazaNepolozeniIspiti;
 import model.BazaStudenata;
 import model.Ocena;
 import model.Student;
@@ -122,6 +123,7 @@ public class EditStudent extends JDialog {
 	static JTable nepolozeniTabela;
 	protected AbstractTableModelNepolozeniIspiti nepolozeniModel;
 	JScrollPane pane2;
+	AddPredmetToStudent addPredmetToStudent;
 	
 	protected int ESPB;
 	protected double  prosjek;
@@ -179,15 +181,28 @@ public class EditStudent extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AddPredmetToStudent addPredmetToStudent = new AddPredmetToStudent(GlavniProzor.getInstance().tabbedPane.getIzabraniStudent());
+				addPredmetToStudent = new AddPredmetToStudent(GlavniProzor.getInstance().tabbedPane.getIzabraniStudent());
 				addPredmetToStudent.setVisible(true);
 				azurirajPrikazNepolozenihPredmeta("DODAT", -1);
-				for(Student stud : BazaStudenata.getInstance().getStudenti()) {
-					System.out.println(stud);
-				}
 			}
 		});
 		obrisi = new JButton("Obrisi");
+		obrisi.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(nepolozeniTabela.getSelectedRow() != -1) {
+					MovePredmetFromStudent movePredmetFromStudent = new MovePredmetFromStudent(GlavniProzor.getInstance().tabbedPane.getIzabraniStudent(),BazaNepolozeniIspiti.getInstance().getNepolozeni().get(nepolozeniTabela.getSelectedRow()));
+					movePredmetFromStudent.setVisible(true);
+					//addPredmetToStudent.azurirajListuMogucihPredmeta(GlavniProzor.getInstance().tabbedPane.getIzabraniStudent());
+					azurirajPrikazNepolozenihPredmeta("UKLONJEN", -1);
+					 
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
+				}
+			}
+		});
 		polaganje = new JButton("Polaganje");
 		
 		nepolozeniTabela = new JTable();
