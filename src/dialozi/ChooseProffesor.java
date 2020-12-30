@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 
 import model.BazaProfesora;
 import model.Predmet;
@@ -56,6 +57,7 @@ public class ChooseProffesor extends JDialog{
 		JScrollPane pane1 = new JScrollPane();
 		pane1.setViewportView(profList);
 		profList.setLayoutOrientation(JList.VERTICAL);
+		profList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		profPan.add(pane1);
 		profPan.setBorder(BorderFactory.createEmptyBorder(30,10,10,10));

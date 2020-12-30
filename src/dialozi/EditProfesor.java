@@ -25,7 +25,6 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 import controller.ProfesorController;
-import izgledAplikacije.AbstractTableModelNepolozeniIspiti;
 import izgledAplikacije.AbstractTableModelPredmetiProfesora;
 import izgledAplikacije.GlavniProzor;
 import listeneri.MyFocusListener1;

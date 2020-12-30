@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 
 import model.BazaPredmeta;
 import model.BazaProfesora;
@@ -38,6 +39,7 @@ enum Tab {Studenti, Profesori, Predmeti};
 		
 		studentiPanel.setLayout(new BorderLayout());
 		studentiTabela = new JTables(Tab.Studenti);
+		studentiTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane pane = new JScrollPane(studentiTabela);
 		studentiPanel.add(pane, BorderLayout.CENTER);
 		add(Tab.Studenti.toString(), studentiPanel);

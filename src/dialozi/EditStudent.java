@@ -26,6 +26,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 import controller.StudentiController;
 import izgledAplikacije.AbstractTableModelNepolozeniIspiti;
@@ -169,6 +170,7 @@ public class EditStudent extends JDialog {
 		
 		polozeniTabela = new JTable();
 		polozeniModel = new AbstractTableModelOcjena();
+		polozeniTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		polozeniTabela.setModel(polozeniModel);
 		polozeniTabela.setShowHorizontalLines(false);
 		polozeniTabela.setAutoCreateRowSorter(true);
@@ -222,6 +224,7 @@ public class EditStudent extends JDialog {
 		
 		nepolozeniTabela = new JTable();
 		nepolozeniModel = new AbstractTableModelNepolozeniIspiti();
+		nepolozeniTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		nepolozeniTabela.setModel(nepolozeniModel);
 		nepolozeniTabela.setShowHorizontalLines(false);
 		nepolozeniTabela.setAutoCreateRowSorter(true);
