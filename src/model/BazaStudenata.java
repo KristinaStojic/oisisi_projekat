@@ -44,9 +44,15 @@ public class BazaStudenata {
 		ArrayList<Ocena> pi = new ArrayList<Ocena>();
 		List<Predmet> nep = new ArrayList<Predmet>();
 		
-		nep.add(new Predmet("P13","Baze podataka",model.Predmet.Semestar.Letnji,4,null,6,null,null));
-		nep.add(new Predmet("P132","Algebra",model.Predmet.Semestar.Letnji,4,null,6,null,null));
-		nep.add(new Predmet("S13","Fizika",model.Predmet.Semestar.Zimski,2,null,6,null,null));
+		Predmet p11 = new Predmet("P13","Baze podataka",model.Predmet.Semestar.Letnji,4,null,6,null,null);
+		Predmet p12 = new Predmet("S13","Fizika",model.Predmet.Semestar.Zimski,2,null,6,null,null);
+		Predmet p13 = new Predmet("P132","Algebra",model.Predmet.Semestar.Letnji,4,null,6,null,null);
+		nep.add(p11);
+		nep.add(p12);
+		nep.add(p13);
+		BazaPredmeta.getInstance().dodajPredmet(p11);
+		BazaPredmeta.getInstance().dodajPredmet(p12);
+		BazaPredmeta.getInstance().dodajPredmet(p13);
 		
 		
 		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(0), 10, new Date()));
@@ -195,13 +201,7 @@ public class BazaStudenata {
 	public void ukloniPredmet(Student s, Predmet p) {
 		for(Student st : studenti) {
 			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())){
-				for(Predmet pr : st.getNepolozeniIspiti()) {
-					System.out.println(pr);
-				}
 				st.getNepolozeniIspiti().remove(p);
-				for(Predmet pr : st.getNepolozeniIspiti()) {
-					System.out.println(pr);
-				}
 			}
 		}
 	}

@@ -66,6 +66,7 @@ public class AddPredmetToStudent extends JDialog{
 				suma += 1;
 			}
 			if(suma == 0) {
+				System.out.println(p);
 				list.add(p.getSifra_predmeta() + " - " + p.getNaziv_predmeta());
 				listaMogucihPredmeta.add(p);
 			}
@@ -93,9 +94,11 @@ public class AddPredmetToStudent extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Predmet predmet = listaMogucihPredmeta.get(predList.getSelectedIndex());
-				PredmetController.getInstance().dodajNepolozeni(predmet, s);
-				dispose();
+				if(predList.getSelectedIndex() != -1) {
+					Predmet predmet = listaMogucihPredmeta.get(predList.getSelectedIndex());
+					PredmetController.getInstance().dodajNepolozeni(predmet, s);
+					dispose();
+				}
 			}
 		});
 		
