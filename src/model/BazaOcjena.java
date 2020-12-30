@@ -12,9 +12,9 @@ public class BazaOcjena {
 	private static BazaOcjena instance = null;
 	
 	public static BazaOcjena getInstance() {
-		if(instance == null) {
+		//if(instance == null) {
 			instance = new BazaOcjena();
-		}
+		//}
 		return instance;
 	}
 	
@@ -71,7 +71,6 @@ public class BazaOcjena {
 	
 	public String getValueAt(int row, int col) {
 		Ocena o = this.ocjene.get(row);
-		initOcjene();
 		switch(col) {
 		case 0:
 			return o.getPredmet().getSifra_predmeta();

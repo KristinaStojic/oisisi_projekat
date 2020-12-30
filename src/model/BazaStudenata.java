@@ -50,7 +50,7 @@ public class BazaStudenata {
 		
 		
 		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(0), 10, new Date()));
-		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(1), 10, new Date()));
+		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(2), 10, new Date()));
 		s1.setPolozeniIspiti(pi);
 		s1.setNepolozeniIspiti(nep);
 		studenti.add(s1);
