@@ -1,5 +1,9 @@
 package model;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -210,6 +214,28 @@ public class BazaStudenata {
 			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
 				st.getPolozeniIspiti().remove(o);
 				st.getNepolozeniIspiti().add(o.getPredmet());
+			}
+		}
+	}
+	
+	
+	public void saveDataStudentTxt()throws IOException{
+		ObjectOutputStream out=null;
+		
+		try {
+			out=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("studenti.txt")));
+			for(Student s:studenti) {
+				out.writeObject(s);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(out!=null) {
+				try {
+					out.close();
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
 			}
 		}
 	}

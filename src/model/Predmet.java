@@ -1,9 +1,15 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Predmet {
+public class Predmet implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public enum Semestar {Zimski, Letnji};
 	protected String sifra_predmeta;
 	protected String naziv_predmeta;

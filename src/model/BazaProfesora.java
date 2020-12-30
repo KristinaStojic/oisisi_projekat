@@ -1,5 +1,9 @@
 package model;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -184,6 +188,28 @@ public class BazaProfesora {
 						pom.add(pp);
 						p.setPredmetiProfesora(pom);
 					}
+			}
+		}
+	}
+	
+	
+	public void saveDataProfesorTxt()throws IOException{
+		ObjectOutputStream out=null;
+		
+		try {
+			out=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("profesori.txt")));
+			for(Profesor p:profesori) {
+				out.writeObject(p);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(out!=null) {
+				try {
+					out.close();
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
 			}
 		}
 	}
