@@ -9,9 +9,9 @@ public class BazaNepolozeniIspiti {
 private static BazaNepolozeniIspiti instance = null;
 	
 	public static BazaNepolozeniIspiti getInstance() {
-		if(instance == null) {
+		//if(instance == null) {
 			instance = new BazaNepolozeniIspiti();
-		}
+		//}
 		return instance;
 	}
 	
@@ -102,7 +102,7 @@ private static BazaNepolozeniIspiti instance = null;
 				}
 			}
 		}
-		initNepolozeni();
+		//initNepolozeni();
 	}
 	
 }

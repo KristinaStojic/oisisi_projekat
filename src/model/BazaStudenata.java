@@ -45,11 +45,12 @@ public class BazaStudenata {
 		List<Predmet> nep = new ArrayList<Predmet>();
 		
 		nep.add(new Predmet("P13","Baze podataka",model.Predmet.Semestar.Letnji,4,null,6,null,null));
-		
+		nep.add(new Predmet("P132","Algebra",model.Predmet.Semestar.Letnji,4,null,6,null,null));
+		nep.add(new Predmet("S13","Fizika",model.Predmet.Semestar.Zimski,2,null,6,null,null));
 		
 		
 		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(0), 10, new Date()));
-		
+		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(1), 10, new Date()));
 		s1.setPolozeniIspiti(pi);
 		s1.setNepolozeniIspiti(nep);
 		studenti.add(s1);
@@ -57,6 +58,7 @@ public class BazaStudenata {
 		ArrayList<Ocena> pi1 = new ArrayList<Ocena>();
 		List<Predmet> nep1 = new ArrayList<Predmet>();
 		pi1.add(new Ocena(s2, BazaPredmeta.getInstance().getPredmeti().get(1), 10, new Date()));
+		pi1.add(new Ocena(s2, BazaPredmeta.getInstance().getPredmeti().get(0), 10, new Date()));
 		nep1.add( new Predmet("E31","SAU",model.Predmet.Semestar.Zimski,2,null,8,null,null));
 		s2.setId(id++);
 		s2.setPolozeniIspiti(pi1);
