@@ -117,7 +117,9 @@ public class AddPredmetToProfesor extends JDialog{
 			public void actionPerformed(ActionEvent e) {
 				if(predList.getSelectedIndex() != -1) {
 					Predmet predmet = listaMogucihPredmeta.get(predList.getSelectedIndex());
+					predmet.setPredmeni_profesor(p);
 					ProfesorController.getInstance().dodajPredmet(p, predmet);
+					predmet.setPredmeni_profesor(p);
 					dispose();
 				}
 			}
