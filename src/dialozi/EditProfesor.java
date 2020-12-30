@@ -25,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 import controller.ProfesorController;
+import izgledAplikacije.AbstractTableModelOcjena;
 import izgledAplikacije.AbstractTableModelPredmetiProfesora;
 import izgledAplikacije.GlavniProzor;
 import listeneri.MyFocusListener1;
@@ -357,6 +358,16 @@ public class EditProfesor extends JDialog {
 		 	predPanel = new JPanel();
 			
 		    dodajPredmet = new JButton("Dodaj predmet");
+		    dodajPredmet.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					AddPredmetToProfesor pp = new AddPredmetToProfesor(GlavniProzor.getInstance().tabbedPane.getIzabraniProfesor());
+					pp.setVisible(true);
+					azurirajPrikazPredmetaProfesora("DODAT", -1);
+					
+				}
+			});
 		    ukloniPredmet = new JButton("Ukloni predmet");
 			
 		    ukloniPredmet.addActionListener(new ActionListener() {
@@ -491,5 +502,6 @@ public class EditProfesor extends JDialog {
 			model.fireTableDataChanged();
 			validate();
 		}
+	 
 		
 }

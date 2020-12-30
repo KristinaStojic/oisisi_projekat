@@ -54,5 +54,9 @@ private static ProfesorController instance = null;
 	public void ukloniPredmete(Profesor pf, ArrayList<Predmet> pp) {
 		BazaProfesora.getInstance().ukloniPredmete(pf, pp);
 	}
+	
+	public void dodajPredmet(Profesor p, Predmet pp) {
+		BazaProfesora.getInstance().dodajPredmete(p, pp);
+	}
 
 }
