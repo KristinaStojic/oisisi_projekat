@@ -162,5 +162,14 @@ public class BazaProfesora {
 		profesori = zadovoljavajuPretragu;
 	}
 
+	public void ukloniPredmete(Profesor pf, ArrayList<Predmet> pp) {
+		for(Profesor p : profesori) {
+			if(p.getBrojLicneKarte().equals(pf.getBrojLicneKarte())) {
+				for(Predmet predmet : pp) {
+					p.getPredmetiProfesora().remove(predmet);
+				}
+			}
+		}
+	}
 	
 }

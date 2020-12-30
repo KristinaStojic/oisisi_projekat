@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import javax.swing.BoxLayout;
@@ -21,16 +22,21 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 import controller.ProfesorController;
+import izgledAplikacije.AbstractTableModelNepolozeniIspiti;
 import izgledAplikacije.AbstractTableModelPredmetiProfesora;
+import izgledAplikacije.GlavniProzor;
 import listeneri.MyFocusListener1;
 import listeneri.MyFocusListener2;
 import listeneri.MyFocusListener5;
 import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
 import listeneri.MyKeyListener2;
+import model.BazaPredmetiProfesora;
 import model.BazaProfesora;
+import model.Predmet;
 import model.Profesor;
 import model.Profesor.Titula;
 import model.Profesor.Zvanje;
@@ -354,7 +360,27 @@ public class EditProfesor extends JDialog {
 		    dodajPredmet = new JButton("Dodaj predmet");
 		    ukloniPredmet = new JButton("Ukloni predmet");
 			
+		    ukloniPredmet.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(predmetTabela.getSelectedRow() != -1) {
+						ArrayList<Predmet> predmeti = new ArrayList<Predmet>();
+						for(int i = 0; i < predmetTabela.getSelectedRows().length; i++) {
+							Predmet pr = BazaPredmetiProfesora.getInstance().getPredmetiProfesora().get(predmetTabela.getSelectedRows()[i]);
+							predmeti.add(pr);
+						}
+						UkloniPredmetProfesoru ukloniPredmetProfesoru = new UkloniPredmetProfesoru(GlavniProzor.getInstance().tabbedPane.getIzabraniProfesor(), predmeti);
+						ukloniPredmetProfesoru.setVisible(true);
+						azurirajPrikazPredmetaProfesora("UKLONJENO", -1);
+					}else {
+						JOptionPane.showMessageDialog(null, "Morate izabrati predmet");
+					}
+				}
+			});
+		    
 		    predmetTabela = new JTable();
+		    predmetTabela.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		    predmetiProfesoraModel = new AbstractTableModelPredmetiProfesora();
 		    predmetTabela.setModel(predmetiProfesoraModel);
 		    predmetTabela.setShowHorizontalLines(false);
@@ -460,5 +486,11 @@ public class EditProfesor extends JDialog {
 			 email_adresa, adresa_kancelarije, broj_licne_karte, titula, zvanje, null);
 		return prof;
 	}
+	 
+	 public void azurirajPrikazPredmetaProfesora(String akcija, int vrijednost) {
+			AbstractTableModelPredmetiProfesora model = (AbstractTableModelPredmetiProfesora) predmetTabela.getModel();
+			model.fireTableDataChanged();
+			validate();
+		}
 		
 }

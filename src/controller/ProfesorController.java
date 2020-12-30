@@ -1,8 +1,11 @@
 package controller;
 
+import java.util.ArrayList;
+
 import izgledAplikacije.GlavniProzor;
 import model.BazaPredmeta;
 import model.BazaProfesora;
+import model.Predmet;
 import model.Profesor;
 
 public class ProfesorController {
@@ -46,6 +49,10 @@ private static ProfesorController instance = null;
 	public void pretragaProfesora(String txt) {
 		BazaProfesora.getInstance().pretraziProfesore(txt);
 		GlavniProzor.getInstance().azurirajPrikaz("NADJEN", -1);
+	}
+	
+	public void ukloniPredmete(Profesor pf, ArrayList<Predmet> pp) {
+		BazaProfesora.getInstance().ukloniPredmete(pf, pp);
 	}
 
 }
