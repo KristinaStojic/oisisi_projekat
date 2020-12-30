@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
+import controller.ProfesorController;
 import model.BazaProfesora;
 import model.Predmet;
 import model.Profesor;
@@ -81,6 +82,7 @@ public class ChooseProffesor extends JDialog{
 					izabrani = BazaProfesora.getInstance().getProfesori().get(profList.getSelectedIndex());
 					EditPredmet.txtProf.setText(izabrani.getIme() + " " + izabrani.getPrezime());
 					predmet.setPredmeni_profesor(izabrani);
+					ProfesorController.getInstance().dodajPredmet(izabrani, predmet);
 					dispose();
 				}
 			}	
