@@ -50,28 +50,29 @@ public class AddPredmetToStudent extends JDialog{
 		list = new ArrayList<String>();
 		listaMogucihPredmeta = new ArrayList<Predmet>();
 		int suma = 0;
-		
-		for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
-			for(Ocena o : s.getPolozeniIspiti()) {
-				if(p.getSifra_predmeta().equals(o.getPredmet().getSifra_predmeta())) {
+		try {
+			for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+				for(Ocena o : s.getPolozeniIspiti()) {
+					if(p.getSifra_predmeta().equals(o.getPredmet().getSifra_predmeta())) {
+						suma += 1;
+					}
+				}
+				for(Predmet pr : s.getNepolozeniIspiti()) {
+					if(p.getSifra_predmeta().equals(pr.getSifra_predmeta())) {
+						suma += 1;
+					}
+				}
+				if(p.getGodina_izvodjenja() > s.getTrenutnaGodinaStudija()) {
 					suma += 1;
 				}
-			}
-			for(Predmet pr : s.getNepolozeniIspiti()) {
-				if(p.getSifra_predmeta().equals(pr.getSifra_predmeta())) {
-					suma += 1;
+				if(suma == 0) {
+					System.out.println(p);
+					list.add(p.getSifra_predmeta() + " - " + p.getNaziv_predmeta());
+					listaMogucihPredmeta.add(p);
 				}
+				suma = 0;
 			}
-			if(p.getGodina_izvodjenja() > s.getTrenutnaGodinaStudija()) {
-				suma += 1;
-			}
-			if(suma == 0) {
-				System.out.println(p);
-				list.add(p.getSifra_predmeta() + " - " + p.getNaziv_predmeta());
-				listaMogucihPredmeta.add(p);
-			}
-			suma = 0;
-		}
+		}catch(NullPointerException e) {}
 		predList = new JList<String>(list.toArray(new String[list.size()]));
 		JScrollPane pane1 = new JScrollPane();
 		pane1.setViewportView(predList);
