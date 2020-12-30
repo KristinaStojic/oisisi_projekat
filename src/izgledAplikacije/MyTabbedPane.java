@@ -53,6 +53,7 @@ enum Tab {Studenti, Profesori, Predmeti};
 		
 		predmetiPanel.setLayout(new BorderLayout());
 	    predmetiTabela = new JTables(Tab.Predmeti);
+	    predmetiTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	    JScrollPane pane2 = new JScrollPane(predmetiTabela);
 	    predmetiPanel.add(pane2,BorderLayout.CENTER);
 	    add(Tab.Predmeti.toString(), predmetiPanel);
