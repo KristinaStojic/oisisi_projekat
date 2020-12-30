@@ -160,7 +160,7 @@ public class EditPredmet extends JDialog{
 			txtProf = new JTextField("");
 			
 		}else {
-			txtProf = new JTextField(p.getPredmetni_profesor().getIme() + p.getPredmetni_profesor().getPrezime()); 
+			txtProf = new JTextField(p.getPredmetni_profesor().getIme() + " " + p.getPredmetni_profesor().getPrezime()); 
 		}
 		txtProf.setPreferredSize(new Dimension(100, 20));
 		txtProf.setEditable(false);

@@ -24,8 +24,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
+import controller.PredmetController;
 import controller.ProfesorController;
-import izgledAplikacije.AbstractTableModelOcjena;
 import izgledAplikacije.AbstractTableModelPredmetiProfesora;
 import izgledAplikacije.GlavniProzor;
 import listeneri.MyFocusListener1;
@@ -381,6 +381,7 @@ public class EditProfesor extends JDialog {
 							predmeti.add(pr);
 						}
 						UkloniPredmetProfesoru ukloniPredmetProfesoru = new UkloniPredmetProfesoru(GlavniProzor.getInstance().tabbedPane.getIzabraniProfesor(), predmeti);
+						PredmetController.getInstance().ukloniProfPredmetima(predmeti);
 						ukloniPredmetProfesoru.setVisible(true);
 						azurirajPrikazPredmetaProfesora("UKLONJENO", -1);
 					}else {

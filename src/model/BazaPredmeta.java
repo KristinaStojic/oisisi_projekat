@@ -169,4 +169,14 @@ public class BazaPredmeta {
 		}
 	}
 	
+	public void ukloniProfesoraPredmetima(ArrayList<Predmet> predm) {
+		for(Predmet p : predm) {
+			for(Predmet pr : predmeti) {
+				if(pr.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+					pr.setPredmeni_profesor(null);
+				}
+			}
+		}
+	}
+	
 }

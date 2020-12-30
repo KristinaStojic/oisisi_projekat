@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import izgledAplikacije.GlavniProzor;
@@ -7,6 +8,7 @@ import model.BazaNepolozeniIspiti;
 import model.BazaOcjena;
 import model.BazaPredmeta;
 import model.Predmet;
+import model.Profesor;
 import model.Student;
 
 public class PredmetController {
@@ -63,6 +65,10 @@ private static PredmetController instance = null;
 	
 	public void dodajPolozeni(Predmet p, Student s, int ocjena, Date datumPolaganja) {
 		BazaOcjena.getInstance().dodajPolozeni(s, p, ocjena, datumPolaganja);
+	}
+	
+	public void ukloniProfPredmetima(ArrayList<Predmet> predmeti) {
+		BazaPredmeta.getInstance().ukloniProfesoraPredmetima(predmeti);
 	}
 	
 }
