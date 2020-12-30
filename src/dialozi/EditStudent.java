@@ -221,7 +221,38 @@ public class EditStudent extends JDialog {
 			}
 		});
 		polaganje = new JButton("Polaganje");
-		
+		polaganje.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(nepolozeniTabela.getSelectedRow() != -1) {
+					UpisOcene upisOcene = new UpisOcene(GlavniProzor.getInstance().tabbedPane.getIzabraniStudent(),BazaNepolozeniIspiti.getInstance().getNepolozeni().get(nepolozeniTabela.getSelectedRow()));
+					upisOcene.setVisible(true);
+					
+					azurirajPrikazNepolozenihPredmeta("UKLONJEN", -1);
+					try {
+						double suma = 0;
+						ESPB = 0;
+						for(Ocena o : GlavniProzor.getInstance().tabbedPane.getIzabraniStudent().getPolozeniIspiti()) {
+							suma += o.getOcena();
+							ESPB += o.getPredmet().getBroj_ESPB();
+						}
+						
+						prosjek = suma/GlavniProzor.getInstance().tabbedPane.getIzabraniStudent().getPolozeniIspiti().size();
+						}catch(NullPointerException ex) {}
+					
+					prosjecnaLab.setText("Prosjecna ocjena: " + Math.round(prosjek * 100.0) / 100.0);
+					espbLab.setText("Ukupno ESPB: " + ESPB);
+					azurirajPrikazPolozenihPredmeta("DODAT", -1);
+					
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
+				}
+				
+			}
+			
+		});
 		nepolozeniTabela = new JTable();
 		nepolozeniModel = new AbstractTableModelNepolozeniIspiti();
 		nepolozeniTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

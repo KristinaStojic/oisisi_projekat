@@ -105,4 +105,12 @@ private static BazaNepolozeniIspiti instance = null;
 		//initNepolozeni();
 	}
 	
+	public void izbrisiNepolozeni(Predmet p, Student s) {
+		for(int i=0; i<BazaStudenata.getInstance().getStudenti().size();i++) {
+			if(s.getBrojIndeksa().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa())) {
+				s.getNepolozeniIspiti().remove(p);
+			}
+		}
+	}
+	
 }

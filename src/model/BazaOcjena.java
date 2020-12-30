@@ -3,6 +3,7 @@ package model;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import izgledAplikacije.GlavniProzor;
@@ -85,6 +86,34 @@ public class BazaOcjena {
 			return datformat.format(o.getDatumPolaganja());
 		default:
 			return null;
+		}
+	}
+	
+	public void dodajPolozeni(Student s, Predmet p, int ocjena, Date datumPolaganja) {
+		if(s.getPolozeniIspiti() == null) {
+			ArrayList<Ocena> pol = new ArrayList<Ocena>();
+			Ocena o = new Ocena();
+			o.setPredmet(p);
+			o.setDatumPolaganja(datumPolaganja);
+			o.setOcena(ocjena);
+			o.setStudentPolozio(s);
+			pol.add(o);
+			for(Student st : BazaStudenata.getInstance().getStudenti()) {
+				if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+					st.setPolozeniIspiti(pol);
+				}
+			}
+		}else {
+			for(Student st : BazaStudenata.getInstance().getStudenti()) {
+				if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+					Ocena o = new Ocena();
+					o.setPredmet(p);
+					o.setDatumPolaganja(datumPolaganja);
+					o.setOcena(ocjena);
+					o.setStudentPolozio(s);
+					s.dodajPolozeneIspite(o);
+				}
+			}
 		}
 	}
 	

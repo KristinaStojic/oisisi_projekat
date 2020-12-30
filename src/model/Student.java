@@ -233,6 +233,9 @@ public class Student {
 		this.id = id;
 	}
 
+	public void dodajPolozeneIspite(Ocena o) {
+		polozeniIspiti.add(o);
+	}
 	@Override
 	public String toString() {
 		return "Student [imeStudenta=" + imeStudenta + ", prezimeStudenta=" + prezimeStudenta
