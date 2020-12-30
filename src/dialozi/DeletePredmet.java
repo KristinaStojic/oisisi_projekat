@@ -18,6 +18,10 @@ import model.Predmet;
 
 public class DeletePredmet extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel lbldlt;
 	protected JPanel pandlt;
 	
