@@ -173,9 +173,17 @@ public class BazaProfesora {
 	}
 	
 	public void dodajPredmete(Profesor pe,Predmet pp) {
+		
 		for(Profesor p : profesori) {
 			if(p.getBrojLicneKarte().equals(pe.getBrojLicneKarte())) {
-					p.getPredmetiProfesora().add(pp);
+					if(p.getPredmetiProfesora()!=null) {
+						p.getPredmetiProfesora().add(pp);
+					}
+					else {
+						List<Predmet> pom = new ArrayList<Predmet>();
+						pom.add(pp);
+						p.setPredmetiProfesora(pom);
+					}
 			}
 		}
 	}
