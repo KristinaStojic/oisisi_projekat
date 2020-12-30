@@ -38,6 +38,7 @@ import listeneri.MyFocusListener5;
 import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
 import model.BazaNepolozeniIspiti;
+import model.BazaOcjena;
 import model.BazaStudenata;
 import model.Ocena;
 import model.Student;
@@ -151,6 +152,20 @@ public class EditStudent extends JDialog {
 		polPan = new JPanel();
 		
 		ponistiOcjenu = new JButton("Ponisti ocjenu");
+		ponistiOcjenu.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(polozeniTabela.getSelectedRow() != -1) {
+					PonistiOcjenu ponistiOcjenu = new PonistiOcjenu(GlavniProzor.getInstance().tabbedPane.getIzabraniStudent(), BazaOcjena.getInstance().getOcene().get(polozeniTabela.getSelectedRow()));
+					ponistiOcjenu.setVisible(true);
+					azurirajPrikazNepolozenihPredmeta("DODAT", -1);
+					azurirajPrikazPolozenihPredmeta("SKLONJEN", -1);
+				}else {
+					JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
+				}
+			}
+		});
 		
 		polozeniTabela = new JTable();
 		polozeniModel = new AbstractTableModelOcjena();
@@ -529,6 +544,12 @@ public class EditStudent extends JDialog {
 	
 	public void azurirajPrikazNepolozenihPredmeta(String akcija, int vrijednost) {
 		AbstractTableModelNepolozeniIspiti model = (AbstractTableModelNepolozeniIspiti) nepolozeniTabela.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
+	
+	public void azurirajPrikazPolozenihPredmeta(String akcija, int vrijednost) {
+		AbstractTableModelOcjena model = (AbstractTableModelOcjena) polozeniTabela.getModel();
 		model.fireTableDataChanged();
 		validate();
 	}

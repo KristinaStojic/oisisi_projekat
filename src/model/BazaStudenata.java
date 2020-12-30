@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import sun.jvm.hotspot.tools.SysPropsDumper;
-
 public class BazaStudenata {
 	
 	private static BazaStudenata instance = null;
@@ -204,6 +202,14 @@ public class BazaStudenata {
 				for(Predmet pr : st.getNepolozeniIspiti()) {
 					System.out.println(pr);
 				}
+			}
+		}
+	}
+	public void ponistiOcjenu(Student s, Ocena o) {
+		for(Student st : studenti) {
+			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+				st.getPolozeniIspiti().remove(o);
+				st.getNepolozeniIspiti().add(o.getPredmet());
 			}
 		}
 	}

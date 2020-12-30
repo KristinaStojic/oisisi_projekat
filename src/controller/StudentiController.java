@@ -2,6 +2,7 @@ package controller;
 
 import izgledAplikacije.GlavniProzor;
 import model.BazaStudenata;
+import model.Ocena;
 import model.Predmet;
 import model.Student;
 
@@ -45,5 +46,9 @@ public class StudentiController {
 	
 	public void ukloniPredmet(Student s, Predmet p) {
 		BazaStudenata.getInstance().ukloniPredmet(s, p);
+	}
+	
+	public void ponistiOcjenu(Student s, Ocena o) {
+		BazaStudenata.getInstance().ponistiOcjenu(s, o);
 	}
 }
