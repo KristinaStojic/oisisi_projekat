@@ -71,4 +71,8 @@ private static PredmetController instance = null;
 		BazaPredmeta.getInstance().ukloniProfesoraPredmetima(predmeti);
 	}
 	
+	public void ukloniProfesoraPredmetu(Profesor prof, Predmet pred) {
+		BazaPredmeta.getInstance().ukloniProfesoraPredmetu(prof, pred);
+	}
+	
 }

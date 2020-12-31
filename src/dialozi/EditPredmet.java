@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.PredmetController;
+import izgledAplikacije.GlavniProzor;
 import listeneri.MyFocusListener7;
 import listeneri.MyFocusListener8;
 import model.BazaPredmeta;
@@ -197,12 +198,23 @@ public class EditPredmet extends JDialog{
 			
 			
 		}else {
-			plus.setEnabled(false);
+			 plus.setEnabled(false);
 			 minus.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					dispose();
+					DeleteProfesorFromPredmet dp = new DeleteProfesorFromPredmet(p.getPredmetni_profesor(),p);
+					dp.setVisible(true);
+					if(p.getPredmetni_profesor() != null) {
+						minus.setEnabled(true);
+						plus.setEnabled(false);
+						
+					}else {
+						txtProf.setText("");
+						minus.setEnabled(false);
+						plus.setEnabled(true);
+							
+					}
 				}
 			});
 		}
