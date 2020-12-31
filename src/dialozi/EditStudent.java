@@ -160,6 +160,19 @@ public class EditStudent extends JDialog {
 				if(polozeniTabela.getSelectedRow() != -1) {
 					PonistiOcjenu ponistiOcjenu = new PonistiOcjenu(GlavniProzor.getInstance().tabbedPane.getIzabraniStudent(), BazaOcjena.getInstance().getOcene().get(polozeniTabela.getSelectedRow()));
 					ponistiOcjenu.setVisible(true);
+					try {
+						double suma = 0;
+						ESPB = 0;
+						for(Ocena o : GlavniProzor.getInstance().tabbedPane.getIzabraniStudent().getPolozeniIspiti()) {
+							suma += o.getOcena();
+							ESPB += o.getPredmet().getBroj_ESPB();
+						}
+						
+						prosjek = suma/GlavniProzor.getInstance().tabbedPane.getIzabraniStudent().getPolozeniIspiti().size();
+						}catch(NullPointerException ex) {}
+					
+					prosjecnaLab.setText("Prosjecna ocjena: " + Math.round(prosjek * 100.0) / 100.0);
+					espbLab.setText("Ukupno ESPB: " + ESPB);
 					azurirajPrikazNepolozenihPredmeta("DODAT", -1);
 					azurirajPrikazPolozenihPredmeta("SKLONJEN", -1);
 				}else {
@@ -352,14 +365,14 @@ public class EditStudent extends JDialog {
 		panCen.setLayout(boxc);
 		
 		try {
-		int suma = 0;
+			double suma = 0;
 		
-		for(Ocena o : s.getPolozeniIspiti()) {
-			suma += o.getOcena();
-			ESPB += o.getPredmet().getBroj_ESPB();
-		}
-		
-		prosjek = suma/s.getPolozeniIspiti().size();
+			for(Ocena o : s.getPolozeniIspiti()) {
+				suma += o.getOcena();
+				ESPB += o.getPredmet().getBroj_ESPB();
+			}
+			
+			prosjek = suma/s.getPolozeniIspiti().size();
 		}catch(NullPointerException e) {}
 		
 		panIme = new JPanel(new FlowLayout(FlowLayout.CENTER));

@@ -1,8 +1,11 @@
 package model;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,7 +45,7 @@ public class BazaStudenata {
 	
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
-		try {
+		/*try {
 		Student s1 = new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-95/2018", 2018, 3, model.Student.Status.B, 9.41, null, null);
 		s1.setId(id++);
 		ArrayList<Ocena> pi = new ArrayList<Ocena>();
@@ -76,7 +79,26 @@ public class BazaStudenata {
 		
 		studenti.add(s2);
 		privremeno = studenti;
-		}catch(NullPointerException e) {}
+		}catch(NullPointerException e) {}*/
+		ObjectInputStream in=null;
+		Student s=null;
+		
+		try {
+			in=new ObjectInputStream(new BufferedInputStream(new FileInputStream("studenti.txt")));
+			while(true) {
+				s=(Student) in.readObject();
+				dodajStudenta(s);
+			}
+		}catch (Exception e) {
+		}finally {
+			if(in!=null) {
+				try {
+					in.close();
+				}catch (Exception e) {
+				}
+			}
+		}
+		privremeno = studenti;
 	}
 	
 	public List<Student> getStudenti(){
@@ -145,9 +167,7 @@ public class BazaStudenata {
 	}
 	
 	public void izmeniStudenta(Student s) {
-		System.out.println(s);
 		for(Student st : studenti) {
-			System.out.println(st);
 			if(st.getId() == s.getId()) {
 				st.setImeStudenta(s.getImeStudenta());
 				st.setPrezimeStudenta(s.getPrezimeStudenta());

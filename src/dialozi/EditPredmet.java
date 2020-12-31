@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.PredmetController;
-import izgledAplikacije.GlavniProzor;
 import listeneri.MyFocusListener7;
 import listeneri.MyFocusListener8;
 import model.BazaPredmeta;

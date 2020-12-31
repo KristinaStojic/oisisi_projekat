@@ -1,8 +1,11 @@
 package model;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +41,7 @@ public class BazaProfesora {
 	
 	private void inicijalizujProfesore() {
 		this.profesori=new ArrayList<Profesor>();
-		try {
+		/*try {
 		Profesor p1 = new Profesor("Stojic", "Kristina", "05.03.1999.","Jardan 129, ZV","064/3515864","stojic.kris@gmail.com","Futoska 50, NS","KA10101", model.Profesor.Titula.dr, model.Profesor.Zvanje.redovni_profesor, null);
 		
 		List<Predmet> pred = new ArrayList<Predmet>();
@@ -62,7 +65,26 @@ public class BazaProfesora {
 		p3.setId(id++);
 		profesori.add(p3);
 		pomocni = profesori;
-		}catch(NullPointerException e) {}
+		}catch(NullPointerException e) {}*/
+		ObjectInputStream in=null;
+		Profesor p=null;
+		
+		try {
+			in=new ObjectInputStream(new BufferedInputStream(new FileInputStream("profesori.txt")));
+			while(true) {
+				p=(Profesor) in.readObject();
+				dodajProfesor(p);
+			}
+		}catch (Exception e) {
+		}finally {
+			if(in!=null) {
+				try {
+					in.close();
+				}catch (Exception e) {
+				}
+			}
+		}
+		pomocni = profesori;
 	}
 	
 	public void dodajProfesor(Profesor p) {

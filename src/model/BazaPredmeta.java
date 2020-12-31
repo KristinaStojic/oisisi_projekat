@@ -1,8 +1,11 @@
 package model;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +50,7 @@ public class BazaPredmeta {
 	private void inicijalizujPredmete(){
 		
 		this.predmeti = new ArrayList<Predmet>();
-		Predmet p1 = new Predmet("E2","OISISI",model.Predmet.Semestar.Zimski,3,null,8,null,null);
+		/*Predmet p1 = new Predmet("E2","OISISI",model.Predmet.Semestar.Zimski,3,null,8,null,null);
 		p1.setId(id++);
 		predmeti.add(p1);
 		Predmet p2 = new Predmet("E33","NANS",model.Predmet.Semestar.Letnji,4,null,8,null,null);
@@ -64,7 +67,26 @@ public class BazaPredmeta {
 		pr1.setId(id++);
 		pr2.setId(id++);
 		predmeti.add(pr2);
-		predmeti.add(pr1);
+		predmeti.add(pr1);*/
+		
+		ObjectInputStream in = null;
+		Predmet pr = null;
+		
+		try {
+			in=new ObjectInputStream(new BufferedInputStream(new FileInputStream("predmeti.txt")));
+			while(true) {
+				pr=(Predmet) in.readObject();
+				dodajPredmet(pr);
+			}
+		}catch (Exception e) {
+		}finally {
+			if(in!=null) {
+				try {
+					in.close();
+				}catch (Exception e) {
+				}
+			}
+		}
 		
 		pomocni = predmeti;
 		
