@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import izgledAplikacije.GlavniProzor;
+
 public class BazaStudenata {
 	
 	private static BazaStudenata instance = null;
@@ -234,6 +236,14 @@ public class BazaStudenata {
 			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
 				st.getPolozeniIspiti().remove(o);
 				st.getNepolozeniIspiti().add(o.getPredmet());
+				double prosjecna = 0;
+				double suma = 0;
+				for(Ocena oc : s.getPolozeniIspiti()) {
+					suma += oc.getOcena();
+				}
+				prosjecna = suma / s.getPolozeniIspiti().size();
+				st.setProsjecnaOcjena(prosjecna);
+				GlavniProzor.getInstance().azurirajPrikaz("OCENA", -1);
 			}
 		}
 	}
