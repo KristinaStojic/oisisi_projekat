@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.PredmetController;
+import izgledAplikacije.GlavniProzor;
 import model.Predmet;
 import model.Student;
 
@@ -63,7 +64,7 @@ public class UpisOcene extends JDialog{
 	
 	public UpisOcene(Student student, Predmet p) {
 		
-		setTitle("Unos ocene");
+		setTitle(GlavniProzor.getInstance().resourceBundle.getString("unosOcene"));
 		setSize(320,420);
 		setLocationRelativeTo(null);
 		setModal(true);
@@ -78,7 +79,7 @@ public class UpisOcene extends JDialog{
 		
 		
 		panSifra = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labSifra = new JLabel("Sifra*");
+		labSifra = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("sifraOcene"));
 		labSifra.setPreferredSize(dimension);
 		txtSifra = new JTextField();
 		txtSifra.setText(p.getSifra_predmeta());
@@ -91,7 +92,7 @@ public class UpisOcene extends JDialog{
 		
 		
 		panNaziv = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labNaziv = new JLabel("Naziv*");
+		labNaziv = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("polaganjeNaziv"));
 		labNaziv.setPreferredSize(dimension);
 		txtNaziv = new JTextField();
 		txtNaziv.setText(p.getNaziv_predmeta());
@@ -103,7 +104,7 @@ public class UpisOcene extends JDialog{
 		
 		
 		panOcena = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labOcena = new JLabel("Ocena*");
+		labOcena = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("polaganjeOcena"));
 		labOcena.setPreferredSize(dimension);
 		ocena = new JComboBox<String>();
 		ocenaModel = new DefaultComboBoxModel<String>();
@@ -120,7 +121,7 @@ public class UpisOcene extends JDialog{
 		
 		
 		panDatum = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labDatum = new JLabel("Datum*");
+		labDatum = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("polaganjeDatum"));
 		labDatum.setPreferredSize(dimension);
 		txtDatum = new JTextField();
 		txtDatum.setPreferredSize(dimension);
@@ -131,13 +132,13 @@ public class UpisOcene extends JDialog{
 		
 		
 		panBtn = new JPanel();
-		potvrdi = new JButton("Potvrdi");
+		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
 		potvrdi.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(txtDatum.getText().trim().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
+					JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("svaPolja"));
 				}else {
 					Pattern datum1 = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
 					boolean ispravan_unos = false;
@@ -145,7 +146,7 @@ public class UpisOcene extends JDialog{
 						ispravan_unos = true;
 					}
 					if(!ispravan_unos) {
-						JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu 'dd.mm.yyyy.'!");
+						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("ispravanDatum"));
 						txtDatum.setText("");
 						txtDatum.requestFocus();
 					}
@@ -189,7 +190,7 @@ public class UpisOcene extends JDialog{
 				}
 			}
 		});
-		odustani = new JButton("Odustani");
+		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
 		
 		odustani.addActionListener(new ActionListener() {
 			

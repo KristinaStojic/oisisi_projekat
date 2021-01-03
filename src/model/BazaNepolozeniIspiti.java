@@ -24,11 +24,11 @@ private static BazaNepolozeniIspiti instance = null;
 		
 		this.kolone = new ArrayList<String>();
 		
-		this.kolone.add("Šifra predmeta");
-		this.kolone.add("Naziv predmeta");
-		this.kolone.add("ESPB");
-		this.kolone.add("Godina studija");
-		this.kolone.add("Semestar");
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("kolSifra"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("kolNaziv"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("kolESPB"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("kolGodina"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("kolSemestar"));
 		
 	}
 	

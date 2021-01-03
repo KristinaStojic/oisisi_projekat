@@ -12,16 +12,15 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.ProfesorController;
 import izgledAplikacije.GlavniProzor;
-import model.Profesor;
 
-public class DeleteProfesor extends JDialog{
+public class Close extends JDialog{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	protected JLabel lblDlt;
 	protected JPanel panDlt;
 	
@@ -31,15 +30,15 @@ public class DeleteProfesor extends JDialog{
 	
 	protected BoxLayout boxCen;
 	
-	public DeleteProfesor(Profesor p) {
-		setTitle(GlavniProzor.getInstance().resourceBundle.getString("delProfesor"));
+	public Close() {
+		setTitle(GlavniProzor.getInstance().resourceBundle.getString("close"));
 		setSize(new Dimension(420, 150));
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setModal(true);
 		
 		panDlt = new JPanel();
-		lblDlt = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("potvrdaBrisanjaProf"));
+		lblDlt = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("potvrdaZatvaranja"));
 		lblDlt.setFont(new Font("TimesNewRoman", Font.PLAIN, 17));
 		panDlt.add(lblDlt);
 		
@@ -52,8 +51,7 @@ public class DeleteProfesor extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ProfesorController.getInstance().izbrisiProfesora(p);
-				dispose();
+				System.exit(-1);
 			}
 		});
 		
@@ -71,5 +69,5 @@ public class DeleteProfesor extends JDialog{
 		add(panDlt, BorderLayout.CENTER);
 		add(panBtn, BorderLayout.SOUTH);
 	}
-
+	
 }

@@ -27,7 +27,7 @@ public class DeleteAction extends AbstractAction{
 	public DeleteAction() {
 		
 		//putValue(MNEMONIC_KEY,KeyEvent.VK_D);
-		putValue(SHORT_DESCRIPTION, "Delete");
+		putValue(SHORT_DESCRIPTION, GlavniProzor.getInstance().getResourceBundle().getString("mniDelete"));
 		putValue(SMALL_ICON, new ImageIcon("imgs" + File.separator + "delete.jpg"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		
@@ -44,7 +44,7 @@ public class DeleteAction extends AbstractAction{
 		    DeletePredmet deletePredmet = new DeletePredmet(izabraniPredmet);
 		    deletePredmet.setVisible(true);
 			}else {
-			JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
+			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiPredmet"));
 			}
 		}else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 0) {
 			Student izabraniStudent = GlavniProzor.getInstance().tabbedPane.getIzabraniStudent();
@@ -53,7 +53,7 @@ public class DeleteAction extends AbstractAction{
 				DeleteStudent deleteStudent = new DeleteStudent(izabraniStudent);
 				deleteStudent.setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(null, "Morate izabrati studenta!");
+				JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiStudenta"));
 			}
 		}else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 1) {
 			Profesor izabraniProfesor = GlavniProzor.getInstance().tabbedPane.getIzabraniProfesor();

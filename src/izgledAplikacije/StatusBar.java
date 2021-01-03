@@ -22,7 +22,7 @@ public class StatusBar extends JPanel{
 		setLayout(new BorderLayout());
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
-		JLabel label = new JLabel("Studentska sluzba");
+		JLabel label = new JLabel(GlavniProzor.getInstance().getResourceBundle().getString("Naslov"));
 		
 		Date dNow = new Date();
 	    SimpleDateFormat ft = new SimpleDateFormat ("hh:mm MM.dd.yyy ");

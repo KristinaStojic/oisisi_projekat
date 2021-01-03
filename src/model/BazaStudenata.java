@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import izgledAplikacije.GlavniProzor;
+
 public class BazaStudenata {
 	
 	private static BazaStudenata instance = null;
@@ -35,12 +37,12 @@ public class BazaStudenata {
 		initStudente();
 		
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("Indeks");
-		this.kolone.add("Ime");
-		this.kolone.add("Prezime");
-		this.kolone.add("Godina studija");
-		this.kolone.add("Status");
-		this.kolone.add("Prosjek");
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtIndeks"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtIme"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtPrezime"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtGodinaStudija"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtStatus"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtProsjek"));
 	}
 	
 	private void initStudente() {
@@ -95,6 +97,9 @@ public class BazaStudenata {
 	}
 	
 	public void setStudenti(List<Student> studenti) {
+		for(Student s : studenti) {
+			s.setId(id++);
+		}
 		this.studenti = studenti;
 	}
 	

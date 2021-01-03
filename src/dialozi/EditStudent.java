@@ -137,13 +137,13 @@ public class EditStudent extends JDialog {
 		setResizable(false);
 		
 		informacijePanel = informacijeIzmjena(s);
-		pane.add("Informacije",informacijePanel);
+		pane.add(GlavniProzor.getInstance().resourceBundle.getString("editInfoTab"),informacijePanel);
 		
 		polozeniPanel = polozeniIzmjena();
-		pane.add("Položeni",polozeniPanel);
+		pane.add(GlavniProzor.getInstance().resourceBundle.getString("editPolozeniTab"),polozeniPanel);
 		
 		nepolozeniPanel = nepolozeniIzmjena();
-		pane.add("Nepoloženi",nepolozeniPanel);
+		pane.add(GlavniProzor.getInstance().resourceBundle.getString("editNepolozeniTab"),nepolozeniPanel);
 		
 		add(pane);
 		
@@ -152,7 +152,7 @@ public class EditStudent extends JDialog {
 	private JPanel polozeniIzmjena() {
 		polPan = new JPanel();
 		
-		ponistiOcjenu = new JButton("Ponisti ocjenu");
+		ponistiOcjenu = new JButton(GlavniProzor.getInstance().resourceBundle.getString("ponistiOcjenu"));
 		ponistiOcjenu.addActionListener(new ActionListener() {
 			
 			@Override
@@ -176,12 +176,12 @@ public class EditStudent extends JDialog {
 						}
 						}catch(NullPointerException ex) {}
 					
-					prosjecnaLab.setText("Prosjecna ocjena: " + Math.round(prosjek * 100.0) / 100.0);
-					espbLab.setText("Ukupno ESPB: " + ESPB);
+					prosjecnaLab.setText(GlavniProzor.getInstance().resourceBundle.getString("polProsjecna") + Math.round(prosjek * 100.0) / 100.0);
+					espbLab.setText(GlavniProzor.getInstance().resourceBundle.getString("polUkupnoEspb") + ESPB);
 
 					azurirajPrikazPolozenihPredmeta("SKLONJEN", -1);
 				}else {
-					JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
+					JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiPredmet"));
 				}
 			}
 		});
@@ -194,10 +194,10 @@ public class EditStudent extends JDialog {
 		polozeniTabela.setAutoCreateRowSorter(true);
 		pane1 = new JScrollPane(polozeniTabela);
 		
-		prosjecnaLab = new JLabel("Prosjecna ocjena: " + prosjek);;
+		prosjecnaLab = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("polProsjecna") + prosjek);;
 		
 		
-		espbLab = new JLabel("Ukupno ESPB: " + ESPB);
+		espbLab = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("polUkupnoEspb") + ESPB);
 		
 		status = new JPanel();
 		status.setBorder(BorderFactory.createLineBorder(Color.BLACK));//dodaj na dno stranice??
@@ -211,7 +211,7 @@ public class EditStudent extends JDialog {
 	private JPanel nepolozeniIzmjena() {
 		nepolPanel = new JPanel();
 		
-		dodaj = new JButton("Dodaj");
+		dodaj = new JButton(GlavniProzor.getInstance().resourceBundle.getString("nepDodaj"));
 		dodaj.addActionListener(new ActionListener() {
 			
 			@Override
@@ -221,7 +221,7 @@ public class EditStudent extends JDialog {
 				azurirajPrikazNepolozenihPredmeta("DODAT", -1);
 			}
 		});
-		obrisi = new JButton("Obrisi");
+		obrisi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("nepObrisi"));
 		obrisi.addActionListener(new ActionListener() {
 			
 			@Override
@@ -234,11 +234,11 @@ public class EditStudent extends JDialog {
 					 
 					
 				}else {
-					JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
+					JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiPredmet"));
 				}
 			}
 		});
-		polaganje = new JButton("Polaganje");
+		polaganje = new JButton(GlavniProzor.getInstance().resourceBundle.getString("nepPolaganje"));
 		polaganje.addActionListener(new ActionListener() {
 
 			@Override
@@ -260,13 +260,13 @@ public class EditStudent extends JDialog {
 						
 						}catch(NullPointerException ex) {}
 					
-					prosjecnaLab.setText("Prosjecna ocjena: " + Math.round(prosjek * 100.0) / 100.0);
-					espbLab.setText("Ukupno ESPB: " + ESPB);
+					prosjecnaLab.setText(GlavniProzor.getInstance().resourceBundle.getString("polProsjecna") + Math.round(prosjek * 100.0) / 100.0);
+					espbLab.setText(GlavniProzor.getInstance().resourceBundle.getString("polUkupnoEspb") + ESPB);
 					azurirajPrikazPolozenihPredmeta("DODAT", -1);
 					
 					
 				}else {
-					JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
+					JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiPredmet"));
 				}
 				
 			}
@@ -359,7 +359,7 @@ public class EditStudent extends JDialog {
 	}
 	
 	private JPanel informacijeIzmjena(Student s) {
-		setTitle("Dodavanje studenta");
+		setTitle(GlavniProzor.getInstance().resourceBundle.getString("editStudent"));
 		setSize(550,600);
 		setLocationRelativeTo(null);
 		setModal(true);
@@ -382,7 +382,7 @@ public class EditStudent extends JDialog {
 		}catch(NullPointerException e) {}
 		
 		panIme = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labIme = new JLabel("Ime*");
+		labIme = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newIme"));
 		labIme.setPreferredSize(dim);
 		txtIme = new JTextField(s.getImeStudenta());
 		txtIme.setPreferredSize(dim);
@@ -392,7 +392,7 @@ public class EditStudent extends JDialog {
 		panCen.add(panIme);
 		
 		panPrz = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labPrz = new JLabel("Prezime*");
+		labPrz = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newPrezime"));
 		labPrz.setPreferredSize(dim);
 		txtPrz = new JTextField(s.getPrezimeStudenta());
 		txtPrz.setPreferredSize(dim);
@@ -402,7 +402,7 @@ public class EditStudent extends JDialog {
 		panCen.add(panPrz);
 		
 		panDat = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labDat = new JLabel("Datum rođenja*");
+		labDat = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newDatumRodjenja"));
 		labDat.setPreferredSize(dim);
 		txtDat = new JTextField(s.getDatumRodjenjaStudenta());
 		txtDat.setPreferredSize(dim); 
@@ -412,7 +412,7 @@ public class EditStudent extends JDialog {
 		panCen.add(panDat);
 		
 		panAdr = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labAdr = new JLabel("Adresa stanovanja*");
+		labAdr = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newAdresaStanovanja"));
 		labAdr.setPreferredSize(dim);
 		txtAdr = new JTextField(s.getAdresaStudenta());
 		txtAdr.setPreferredSize(dim);
@@ -422,7 +422,7 @@ public class EditStudent extends JDialog {
 		panCen.add(panAdr);
 		
 		panBrt = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labBrt = new JLabel("Broj telefona*");
+		labBrt = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newBrojTelefona"));
 		labBrt.setPreferredSize(dim);
 		txtBrt = new JTextField(s.getKontaktTelefon());
 		txtBrt.setPreferredSize(dim);
@@ -432,7 +432,7 @@ public class EditStudent extends JDialog {
 		panCen.add(panBrt);
 		
 		panMail = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labMail = new JLabel("E-mail adresa*");
+		labMail = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newEmail"));
 		labMail.setPreferredSize(dim);
 		txtMail = new JTextField(s.getEmailAdresa());
 		txtMail.setPreferredSize(dim);
@@ -442,7 +442,7 @@ public class EditStudent extends JDialog {
 		panCen.add(panMail);
 		
 		panBri = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labBri = new JLabel("Broj indeksa*");
+		labBri = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newBrojInd"));
 		labBri.setPreferredSize(dim);
 		txtBri = new JTextField(s.getBrojIndeksa());
 		txtBri.setPreferredSize(dim);
@@ -451,7 +451,7 @@ public class EditStudent extends JDialog {
 		panCen.add(panBri);
 		
 		panGodu = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labGodu = new JLabel("Godina upisa*");
+		labGodu = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newGodinaUpisa"));
 		labGodu.setPreferredSize(dim);
 		txtGodu = new JTextField(String.valueOf(s.getGodinaUpisa()));
 		txtGodu.setPreferredSize(dim);
@@ -461,16 +461,16 @@ public class EditStudent extends JDialog {
 		panCen.add(panGodu);
 		
 		panTgs = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labTgs = new JLabel("Trenutna godina studija*");
+		labTgs = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newTrenutnaGodinaStudija"));
 		labTgs.setPreferredSize(dim);
 		god = new JComboBox<String>();
 		godModel = new DefaultComboBoxModel<String>();
-		godModel.addElement("I (Prva)");
-		godModel.addElement("II (Druga)");
-		godModel.addElement("III (Treća)");
-		godModel.addElement("IV (Četvrta)");
-		godModel.addElement("V (Master)");
-		godModel.addElement("VI (Doktorske studije)");
+		godModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxPrva"));
+		godModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxDruga"));
+		godModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxTreca"));
+		godModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxCetvrta"));
+		godModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxPeta"));
+		godModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxSesta"));
 		god.setModel(godModel);
 		god.setSelectedIndex(s.getTrenutnaGodinaStudija() - 1);
 		god.setPreferredSize(dim);
@@ -480,12 +480,12 @@ public class EditStudent extends JDialog {
 		panCen.add(panTgs);
 		
 		panNfs = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labNfs = new JLabel("Način finansiranja*");
+		labNfs = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newNacinFinansiranja"));
 		labNfs.setPreferredSize(dim);
 		bs = new JComboBox<String>();
 		bsModel = new DefaultComboBoxModel<String>();
-		bsModel.addElement("Budžet");
-		bsModel.addElement("Samofinansiranje");
+		bsModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxBudzet"));
+		bsModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxSamofinansiranje"));
 		bs.setModel(bsModel);
 		if(s.getStatus() == Status.B) {
 			bs.setSelectedIndex(0);
@@ -500,7 +500,7 @@ public class EditStudent extends JDialog {
 		
 		panBtn = new JPanel();
 		
-		potvrdi = new JButton("Potvrdi");
+		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
 		potvrdi.addActionListener(new ActionListener() {
 			
 			@Override
@@ -511,7 +511,7 @@ public class EditStudent extends JDialog {
 							|| txtDat.getText().trim().isEmpty() || txtAdr.getText().trim().isEmpty()
 								|| txtBrt.getText().trim().isEmpty() || txtMail.getText().trim().isEmpty()
 									|| txtBri.getText().trim().isEmpty() || txtGodu.getText().trim().isEmpty()) {
-						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
+						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("svaPolja"));
 					}else {
 						Student student = collectData();
 						student.setId(s.getId());
@@ -519,7 +519,7 @@ public class EditStudent extends JDialog {
 						for(int i = 0; i < BazaStudenata.getInstance().getStudenti().size(); i++) {
 							if((student.getBrojIndeksa().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))
 									&& student.getId() != BazaStudenata.getInstance().getStudenti().get(i).getId()) {
-								JOptionPane.showMessageDialog(null, "Uneseni indeks vec postoji!");
+								JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));
 								postoji = true;
 							}
 						}
@@ -536,7 +536,7 @@ public class EditStudent extends JDialog {
 								ispravan_unos = true;
 							}
 							if(!ispravan_unos) {
-								JOptionPane.showMessageDialog(null, "Neispravan unos!");
+								JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("neispravanUnos"));
 							}else {
 								StudentiController.getInstance().izmeniStudenta(student);
 								dispose();
@@ -549,7 +549,7 @@ public class EditStudent extends JDialog {
 			}	
 		});
 		
-		odustani = new JButton("Odustani");
+		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
 		odustani.addActionListener(new ActionListener() {
 			
 			@Override

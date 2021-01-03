@@ -42,21 +42,21 @@ enum Tab {Studenti, Profesori, Predmeti};
 		studentiTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane pane = new JScrollPane(studentiTabela);
 		studentiPanel.add(pane, BorderLayout.CENTER);
-		add(Tab.Studenti.toString(), studentiPanel);
+		add(GlavniProzor.getInstance().getResourceBundle().getString("tabStudenti"), studentiPanel);
 		
 		profesoriPanel.setLayout(new BorderLayout());
 		profesoriTabela = new JTables(Tab.Profesori);
 		profesoriTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane pane1 = new JScrollPane(profesoriTabela);
 		profesoriPanel.add(pane1, BorderLayout.CENTER);
-		add(Tab.Profesori.toString(), profesoriPanel);
+		add(GlavniProzor.getInstance().getResourceBundle().getString("tabProfesori"), profesoriPanel);
 		
 		predmetiPanel.setLayout(new BorderLayout());
 	    predmetiTabela = new JTables(Tab.Predmeti);
 	    predmetiTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	    JScrollPane pane2 = new JScrollPane(predmetiTabela);
 	    predmetiPanel.add(pane2,BorderLayout.CENTER);
-	    add(Tab.Predmeti.toString(), predmetiPanel);
+	    add(GlavniProzor.getInstance().getResourceBundle().getString("tabPredmeti"), predmetiPanel);
 	}
 	
 	public void azurirajPrikazStudenata(String akcija, int vrijednost) {
