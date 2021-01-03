@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import izgledAplikacije.GlavniProzor;
+
 public class MyFocusListener2 implements FocusListener{
 
 	@Override
@@ -21,7 +23,7 @@ public class MyFocusListener2 implements FocusListener{
 		Pattern pattern = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
 		
 		if(!pattern.matcher(txt.getText()).matches()  && !txt.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan broj telefona u formatu '062/111111'!");
+			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("ispravanBroj"));
 			txt.setText("");
 			txt.requestFocus();
 		}

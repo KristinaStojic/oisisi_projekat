@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import dialozi.About;
@@ -24,49 +25,59 @@ public class MenuBar extends JMenuBar{
 	private static final long serialVersionUID = 1L;
 
 	public MenuBar() {
-		JMenu file = new JMenu("File");
+		JMenu file = new JMenu(GlavniProzor.getInstance().getResourceBundle().getString("mnuFile"));
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		file.setMnemonic(KeyEvent.VK_F);
 		AddAction dodaj = new AddAction();
 		//Icon icon = new ImageIcon("imgs/Plus_sign.jpg");
 		JMenuItem miNew = new JMenuItem();
 		miNew.setAction(dodaj);
-		miNew.setText("New");
+		miNew.setText(GlavniProzor.getInstance().getResourceBundle().getString("mniNew"));
 		miNew.setMnemonic(KeyEvent.VK_N);
 		//miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 
 		Icon icon = new ImageIcon("imgs" + File.separator + "close.jpg");
-		JMenuItem miClose = new JMenuItem("Close", icon);
+		JMenuItem miClose = new JMenuItem(GlavniProzor.getInstance().getResourceBundle().getString("mniClose"), icon);
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
 		miClose.setMnemonic(KeyEvent.VK_C);
+		miClose.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int izbor=JOptionPane.showConfirmDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("potvrdaZatvaranja"));
+				if(izbor==JOptionPane.YES_OPTION) {
+					System.exit(-1);
+				}
+			}
+		});
 		file.add(miNew);
 		file.addSeparator();
 		file.add(miClose);
 		
-		JMenu edit = new JMenu("Edit");
+		JMenu edit = new JMenu(GlavniProzor.getInstance().getResourceBundle().getString("mnuEdit"));
 		edit.setMnemonic(KeyEvent.VK_E);
 		icon = new ImageIcon("imgs" + File.separator + "edit.jpg");
-		JMenuItem miEdit = new JMenuItem("Edit", icon);
+		JMenuItem miEdit = new JMenuItem(GlavniProzor.getInstance().getResourceBundle().getString("mniEdit"), icon);
 		//miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		InsertAction ed = new InsertAction();
 		miEdit.setAction(ed);
-		miEdit.setText("Edit");
+		miEdit.setText(GlavniProzor.getInstance().getResourceBundle().getString("mniEdit"));
 		miEdit.setMnemonic(KeyEvent.VK_E);
 		//icon = new ImageIcon("imgs/Redx.jpg");
-		JMenuItem miDelete = new JMenuItem("Delete", icon);
+		JMenuItem miDelete = new JMenuItem(GlavniProzor.getInstance().getResourceBundle().getString("mniDelete"), icon);
 		DeleteAction del = new DeleteAction();
 		miDelete.setAction(del);
-		miDelete.setText("Delete");
+		miDelete.setText(GlavniProzor.getInstance().getResourceBundle().getString("mniDelete"));
 		miDelete.setMnemonic(KeyEvent.VK_D);
 		//miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		edit.add(miEdit);
 		edit.addSeparator();
 		edit.add(miDelete);
 		
-		JMenu help = new JMenu("Help");
+		JMenu help = new JMenu(GlavniProzor.getInstance().getResourceBundle().getString("mnuHelp"));
 		help.setMnemonic(KeyEvent.VK_H);
 		icon = new ImageIcon("imgs" + File.separator + "help.jpg");
-		JMenuItem miHelp = new JMenuItem("Help", icon);
+		JMenuItem miHelp = new JMenuItem(GlavniProzor.getInstance().getResourceBundle().getString("mniHelp"), icon);
 		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 		miHelp.addActionListener(new ActionListener() {
 
@@ -79,7 +90,7 @@ public class MenuBar extends JMenuBar{
 		});
 		miHelp.setMnemonic(KeyEvent.VK_H);
 		icon = new ImageIcon("imgs" + File.separator + "about.jpg");
-		JMenuItem miAbout = new JMenuItem("About", icon);
+		JMenuItem miAbout = new JMenuItem(GlavniProzor.getInstance().getResourceBundle().getString("mniAbout"), icon);
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
 		miAbout.addActionListener(new ActionListener(){
 
