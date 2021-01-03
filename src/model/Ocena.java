@@ -57,6 +57,11 @@ public class Ocena implements Serializable{
 	public void setDatumPolaganja(Date datumPolaganja) {
 		this.datumPolaganja = datumPolaganja;
 	}
+
+	@Override
+	public String toString() {
+		return " predmet=" + predmet;
+	}
 	
 	
 	

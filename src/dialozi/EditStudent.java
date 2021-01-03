@@ -160,6 +160,8 @@ public class EditStudent extends JDialog {
 				if(polozeniTabela.getSelectedRow() != -1) {
 					PonistiOcjenu ponistiOcjenu = new PonistiOcjenu(GlavniProzor.getInstance().tabbedPane.getIzabraniStudent(), BazaOcjena.getInstance().getOcene().get(polozeniTabela.getSelectedRow()));
 					ponistiOcjenu.setVisible(true);
+
+					azurirajPrikazNepolozenihPredmeta("DODAT", -1);
 					try {
 						double suma = 0;
 						ESPB = 0;
@@ -169,11 +171,14 @@ public class EditStudent extends JDialog {
 						}
 						
 						prosjek = suma/GlavniProzor.getInstance().tabbedPane.getIzabraniStudent().getPolozeniIspiti().size();
+						if(GlavniProzor.getInstance().tabbedPane.getIzabraniStudent().getPolozeniIspiti().size() == 0) {
+							prosjek = 0.0;
+						}
 						}catch(NullPointerException ex) {}
 					
 					prosjecnaLab.setText("Prosjecna ocjena: " + Math.round(prosjek * 100.0) / 100.0);
 					espbLab.setText("Ukupno ESPB: " + ESPB);
-					azurirajPrikazNepolozenihPredmeta("DODAT", -1);
+
 					azurirajPrikazPolozenihPredmeta("SKLONJEN", -1);
 				}else {
 					JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
@@ -252,6 +257,7 @@ public class EditStudent extends JDialog {
 						}
 						
 						prosjek = suma/GlavniProzor.getInstance().tabbedPane.getIzabraniStudent().getPolozeniIspiti().size();
+						
 						}catch(NullPointerException ex) {}
 					
 					prosjecnaLab.setText("Prosjecna ocjena: " + Math.round(prosjek * 100.0) / 100.0);

@@ -32,4 +32,12 @@ public class AbstractTableModelStudenti extends AbstractTableModel{
 				return BazaStudenata.getInstance().getValueAt(rowIndex, columnIndex);
 		}
 		
+		@Override
+	    public Class<?> getColumnClass(int columnIndex) {
+	        if (BazaStudenata.getInstance().getStudenti().isEmpty()) {
+	            return Object.class;
+	        }
+	        return getValueAt(0, columnIndex).getClass();
+	    }
+		
 }

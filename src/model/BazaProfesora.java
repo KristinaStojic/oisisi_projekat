@@ -43,22 +43,11 @@ public class BazaProfesora {
 		this.profesori=new ArrayList<Profesor>();
 		/*try {
 		Profesor p1 = new Profesor("Stojic", "Kristina", "05.03.1999.","Jardan 129, ZV","064/3515864","stojic.kris@gmail.com","Futoska 50, NS","KA10101", model.Profesor.Titula.dr, model.Profesor.Zvanje.redovni_profesor, null);
-		
-		List<Predmet> pred = new ArrayList<Predmet>();
-		pred.add(new Predmet("P13","Baze podataka",model.Predmet.Semestar.Letnji,4,null,6,null,null));
-		pred.add(new Predmet("P132","Algebra",model.Predmet.Semestar.Letnji,4,null,6,null,null));
-		pred.add(new Predmet("S13","Fizika",model.Predmet.Semestar.Zimski,2,null,6,null,null));
-		
-		
 		p1.setId(id++);
-		p1.setPredmetiProfesora(pred);
 		profesori.add(p1);
 		
 		Profesor p2 = new Profesor("Delic", "Nikolina", "19.12.1999.","Caparde 201, NS","064/3757567","delicnikolina@gmail.com","Futoska 55","MA101S", model.Profesor.Titula.dr,model.Profesor.Zvanje.profesor_emeritus, null);
-		List<Predmet> pred2 = new ArrayList<Predmet>();
-		pred2.add(new Predmet("S13","Fizika",model.Predmet.Semestar.Zimski,2,null,6,null,null));
 		p2.setId(id++);
-		p2.setPredmetiProfesora(pred2);
 		profesori.add(p2);
 		
 		Profesor p3 = new Profesor("Hrnjak", "Jelena", "28.08.1999.","Backa Topola 20, NS","064/7852567","hrnjakjelena@gmail.com","Svetojovanska 2","JH909", model.Profesor.Titula.BSc, model.Profesor.Zvanje.docent, null);

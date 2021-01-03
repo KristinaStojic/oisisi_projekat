@@ -5,6 +5,7 @@ import java.awt.Component;
 
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableRowSorter;
 
 import izgledAplikacije.MyTabbedPane.Tab;
 
@@ -20,7 +21,11 @@ public class JTables extends JTable{
 		case Studenti:
 				AbstractTableModelStudenti modelStudenti = new AbstractTableModelStudenti();
 				this.setModel(modelStudenti);
-				this.setAutoCreateRowSorter(true);
+				//this.setAutoCreateRowSorter(true);
+				TableRowSorter<AbstractTableModelStudenti> sorter = new TableRowSorter<AbstractTableModelStudenti>(modelStudenti);
+				ComparatorSortiranje comp = new ComparatorSortiranje();
+				sorter.setComparator(0, comp);
+				this.setRowSorter(sorter);
 				break;
 		case Profesori:
 				AbstractTableModelProfesori modelProfesori = new AbstractTableModelProfesori();

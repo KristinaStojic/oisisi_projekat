@@ -24,7 +24,6 @@ import javax.swing.JTextField;
 import controller.PredmetController;
 import model.Predmet;
 import model.Student;
-import model.Predmet.Semestar;
 
 public class UpisOcene extends JDialog{
 

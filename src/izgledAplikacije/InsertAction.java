@@ -57,6 +57,7 @@ public class InsertAction extends AbstractAction{
 			if(izabraniPredmet != null) {
 				EditPredmet editPredmet = new EditPredmet(izabraniPredmet);
 				editPredmet.setVisible(true);
+				GlavniProzor.getInstance().azurirajPrikaz("IZMJENE", -1);
 			}else {
 				JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
 			}

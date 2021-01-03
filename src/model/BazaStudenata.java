@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import izgledAplikacije.GlavniProzor;
-
 public class BazaStudenata {
 	
 	private static BazaStudenata instance = null;
@@ -48,40 +46,29 @@ public class BazaStudenata {
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
 		/*try {
-		Student s1 = new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-95/2018", 2018, 3, model.Student.Status.B, 9.41, null, null);
+		Student s1 = new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-95/2018", 2018, 3, model.Student.Status.B, 0.0, null, null);
 		s1.setId(id++);
-		ArrayList<Ocena> pi = new ArrayList<Ocena>();
-		List<Predmet> nep = new ArrayList<Predmet>();
-		
-		Predmet p11 = new Predmet("P13","Baze podataka",model.Predmet.Semestar.Letnji,4,null,6,null,null);
-		Predmet p12 = new Predmet("S13","Fizika",model.Predmet.Semestar.Zimski,2,null,6,null,null);
-		Predmet p13 = new Predmet("P132","Algebra",model.Predmet.Semestar.Letnji,4,null,6,null,null);
-		nep.add(p11);
-		nep.add(p12);
-		nep.add(p13);
-		BazaPredmeta.getInstance().dodajPredmet(p11);
-		BazaPredmeta.getInstance().dodajPredmet(p12);
-		BazaPredmeta.getInstance().dodajPredmet(p13);
-		
-		
-		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(0), 10, new Date()));
-		pi.add(new Ocena(s1, BazaPredmeta.getInstance().getPredmeti().get(2), 10, new Date()));
-		s1.setPolozeniIspiti(pi);
-		s1.setNepolozeniIspiti(nep);
 		studenti.add(s1);
-		Student s2 = new Student("Ivana", "Markovic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-99/2018", 2018, 3, model.Student.Status.B, 9.41, null, null);
-		ArrayList<Ocena> pi1 = new ArrayList<Ocena>();
-		List<Predmet> nep1 = new ArrayList<Predmet>();
-		pi1.add(new Ocena(s2, BazaPredmeta.getInstance().getPredmeti().get(1), 10, new Date()));
-		pi1.add(new Ocena(s2, BazaPredmeta.getInstance().getPredmeti().get(0), 10, new Date()));
-		nep1.add( new Predmet("E31","SAU",model.Predmet.Semestar.Zimski,2,null,8,null,null));
-		s2.setId(id++);
-		s2.setPolozeniIspiti(pi1);
-		s2.setNepolozeniIspiti(nep1);
 		
+		Student s2 = new Student("Ivana", "Markovic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-99/2019", 2019, 4, model.Student.Status.B, 0.0, null, null);
 		studenti.add(s2);
+		s2.setId(id++);
+		
+		Student s3 = new Student("Marko", "Markovic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "PR-19/2010", 2010, 1, model.Student.Status.B, 0.0, null, null);
+		studenti.add(s3);
+		s3.setId(id++);
+		
+		Student s4 = new Student("Nikola", "Nikolic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "SW-10/2018", 2018, 6, model.Student.Status.B, 0.0, null, null);
+		studenti.add(s4);
+		s4.setId(id++);
+		
+		Student s5 = new Student("Ivana", "Markovic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "PR-9/2020", 2020, 2, model.Student.Status.B, 0.0, null, null);
+		studenti.add(s5);
+		s5.setId(id++);
+		
 		privremeno = studenti;
 		}catch(NullPointerException e) {}*/
+		privremeno = studenti;
 		ObjectInputStream in=null;
 		Student s=null;
 		
@@ -242,8 +229,10 @@ public class BazaStudenata {
 					suma += oc.getOcena();
 				}
 				prosjecna = suma / s.getPolozeniIspiti().size();
+				if(s.getPolozeniIspiti().size() == 0) {
+					prosjecna = 0.0;
+				}
 				st.setProsjecnaOcjena(prosjecna);
-				GlavniProzor.getInstance().azurirajPrikaz("OCENA", -1);
 			}
 		}
 	}

@@ -28,7 +28,6 @@ public class AddAction extends AbstractAction{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Pritisnuto dugme");
 				if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 0) {
 					AddStudent addStudent = new AddStudent();
 					addStudent.setVisible(true);
