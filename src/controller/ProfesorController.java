@@ -34,8 +34,8 @@ private static ProfesorController instance = null;
 	}
 	
 	public void izbrisiProfesora(Profesor p) {
-		BazaProfesora.getInstance().izbrisiProfesora(p.getBrojLicneKarte());
-		BazaPredmeta.getInstance().ukloniProfesora(p.getBrojLicneKarte());
+		BazaProfesora.getInstance().izbrisiProfesora(p.getId());
+		BazaPredmeta.getInstance().ukloniProfesora(p.getId());
 		GlavniProzor.getInstance().azurirajPrikaz("IZBRISAN", -1);
 	}
 	

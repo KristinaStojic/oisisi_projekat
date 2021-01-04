@@ -41,7 +41,7 @@ public class ChooseProffesor extends JDialog{
 	
 	Profesor izabrani;
 	
-	public ChooseProffesor(Predmet predmet) {
+	public ChooseProffesor(Predmet predmet, JButton plus, JButton minus) {
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("odaberiProfesora"));
 		setSize(400,400);
 		setLocationRelativeTo(null);
@@ -84,6 +84,13 @@ public class ChooseProffesor extends JDialog{
 					EditPredmet.txtProf.setText(izabrani.getIme() + " " + izabrani.getPrezime());
 					predmet.setPredmeni_profesor(izabrani);
 					ProfesorController.getInstance().dodajPredmet(izabrani, predmet);
+					if(predmet.getPredmetni_profesor() != null) {
+						plus.setEnabled(false);
+						minus.setEnabled(true);
+					}else {
+						plus.setEnabled(true);
+						minus.setEnabled(false);
+					}
 					dispose();
 				}
 			}	

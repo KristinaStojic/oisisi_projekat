@@ -173,52 +173,38 @@ public class EditPredmet extends JDialog{
 		panProf.add(minus);
 		panCen.add(panProf);
 		
-		if(p.getPredmetni_profesor() == null) {
+		if(txtProf.getText().trim().isEmpty()) {
+			plus.setEnabled(true);
 			minus.setEnabled(false);
+		}else {
+			plus.setEnabled(false);
+			minus.setEnabled(true);
+		}
+		
 			plus.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					chooseProffesor = new ChooseProffesor(p);
+					chooseProffesor = new ChooseProffesor(p, plus, minus);
 					chooseProffesor.setVisible(true);
-					if(p.getPredmetni_profesor() != null) {
-						minus.setEnabled(true);
-						plus.setEnabled(false);
-						
-					}else {
-
-						minus.setEnabled(false);
-						plus.setEnabled(true);
-							
-					}
+					
 						
 				}
 			});
 				
-			
-			
-		}else {
-			 plus.setEnabled(false);
 			 minus.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					DeleteProfesorFromPredmet dp = new DeleteProfesorFromPredmet(p.getPredmetni_profesor(),p);
 					dp.setVisible(true);
-					if(p.getPredmetni_profesor() != null) {
-						minus.setEnabled(true);
-						plus.setEnabled(false);
-						
-					}else {
+					if(p.getPredmetni_profesor() == null) {
 						txtProf.setText("");
-						minus.setEnabled(false);
-						plus.setEnabled(true);
 							
 					}
 				}
 			});
-		}
-		
+				
 		panBtn = new JPanel();
 		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
 		potvrdi.addActionListener(new ActionListener() {

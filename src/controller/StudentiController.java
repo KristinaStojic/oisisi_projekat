@@ -35,7 +35,7 @@ public class StudentiController {
 	}
 	
 	public void izbrisiStudenta(Student s) {
-		BazaStudenata.getInstance().izbrisiStudenta(s.getBrojIndeksa());
+		BazaStudenata.getInstance().izbrisiStudenta(s.getId());
 		GlavniProzor.getInstance().azurirajPrikaz("IZBRISAN", -1);
 	}
 	

@@ -150,9 +150,9 @@ public class BazaStudenata {
 		privremeno = studenti;
 	}
 	
-	public void izbrisiStudenta(String brojIndeksa) {
+	public void izbrisiStudenta(int id) {
 		for(Student s : studenti) {
-			if(s.getBrojIndeksa().equals(brojIndeksa)) {
+			if(s.getId() == id) {
 				studenti.remove(s);
 				break;
 			}
@@ -212,6 +212,35 @@ public class BazaStudenata {
 		studenti = zadovoljavajuPretragu;
 	}
 	
+
+
+	public void naprednaPretraga(String txt) {
+		zadovoljavajuPretragu = new ArrayList<Student>();
+		String[] tekst = txt.split(" ");
+		for(Student s : privremeno) {
+			if(tekst[1].equals("=") && tekst[2].equals("(")) {
+				for(int i = 0; i < tekst.length; i++) {
+					if(tekst[i].equals("indeks")) {
+						
+					}else if(tekst[i].equals("ime")) {
+						
+					}else if(tekst[i].equals("prezime")) {
+						
+					}else if(tekst[i].equals("godina")) {
+						
+					}else if(tekst[i].equals("prosek")) {
+						
+					}else if(tekst[i].equals("slusa_predmete")) {
+						System.out.println(s);
+					}
+				}
+			
+			}
+		}
+		studenti = zadovoljavajuPretragu;
+	}
+	
+
 	public void vratiPrikaz() {
 		studenti = privremeno;
 	}
