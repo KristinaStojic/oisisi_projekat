@@ -264,6 +264,7 @@ public class EditStudent extends JDialog {
 					
 					prosjecnaLab.setText(GlavniProzor.getInstance().resourceBundle.getString("polProsjecna") + Math.round(prosjek * 100.0) / 100.0);
 					espbLab.setText(GlavniProzor.getInstance().resourceBundle.getString("polUkupnoEspb") + ESPB);
+					GlavniProzor.getInstance().tabbedPane.getIzabraniStudent().setProsjecnaOcjena(prosjek);
 					azurirajPrikazPolozenihPredmeta("DODAT", -1);
 					
 					

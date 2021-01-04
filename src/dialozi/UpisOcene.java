@@ -181,6 +181,7 @@ public class UpisOcene extends JDialog{
 								ocjena = 10;
 							}
 							PredmetController.getInstance().dodajPolozeni(p, student, ocjena, datumPolaganja);
+							
 							dispose();
 							
 						}

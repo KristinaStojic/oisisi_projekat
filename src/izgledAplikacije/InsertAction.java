@@ -48,6 +48,7 @@ public class InsertAction extends AbstractAction{
 			if(izabraniStudent != null) {
 				EditStudent editStudent = new EditStudent(izabraniStudent);
 				editStudent.setVisible(true);
+				GlavniProzor.getInstance().azurirajPrikaz("IZMJENI", -1);
 			}else {
 				JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiStudenta"));
 			}
