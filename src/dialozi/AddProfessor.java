@@ -253,7 +253,7 @@ public class AddProfessor  extends JDialog {
 							if((profesor.getBrojLicneKarte().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))) {
 								JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiLicna"));
 								postoji = true;
-							}
+							}}
 							if(!postoji) {
 								Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
 								Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
@@ -274,7 +274,7 @@ public class AddProfessor  extends JDialog {
 									dispose();
 								}
 							}
-						}
+						
 					}
 				}catch(Exception ex) {
 					ex.printStackTrace();
