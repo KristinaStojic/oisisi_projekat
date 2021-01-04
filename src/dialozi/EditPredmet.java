@@ -213,7 +213,7 @@ public class EditPredmet extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {		
+				/*try {		
 					if(txtSifra.getText().trim().isEmpty()|| txtNaziv.getText().trim().isEmpty() 
 							|| txtGodina.getText().trim().isEmpty()	|| txtESPB.getText().trim().isEmpty()) {
 						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("svaPolja"));
@@ -247,7 +247,11 @@ public class EditPredmet extends JDialog{
 					}
 				}catch(Exception ex) {
 					ex.printStackTrace();
-				}
+				}*/
+				Predmet predmet = collectData();
+				PredmetController.getInstance().izmeniPredmet(predmet);
+				dispose();
+
 			}
 		});
 		
@@ -279,6 +283,7 @@ public class EditPredmet extends JDialog{
 					if((txtSifra.getText().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta())
 							&& GlavniProzor.getInstance().tabbedPane.getIzabraniPredmet().getId() != BazaPredmeta.getInstance().getPredmeti().get(i).getId())) {
 						txtSifra.setToolTipText("Predmet sa unesenom sifrom vec postoji!");
+						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiSifra"));
 						postoji = true;
 					}
 				}

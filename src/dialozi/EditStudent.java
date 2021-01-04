@@ -595,6 +595,7 @@ public class EditStudent extends JDialog {
 							&& BazaStudenata.getInstance().getStudenti().get(i).getId() != GlavniProzor.getInstance().tabbedPane.getIzabraniStudent().getId()) {
 						postoji = true;
 						txtBri.setToolTipText("Uneseni broj indeksa vec postoji!");
+						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));
 					}
 				}
 				if(ispravan_unos && sve_uneseno && !postoji) {

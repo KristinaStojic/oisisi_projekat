@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -307,6 +308,7 @@ public class AddStudent extends JDialog {
 					if((txtBri.getText().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))) {
 						postoji = true;
 						txtBri.setToolTipText("Uneseni broj indeksa vec postoji!");
+						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));
 					}
 				}
 				if(ispravan_unos && sve_uneseno && !postoji) {

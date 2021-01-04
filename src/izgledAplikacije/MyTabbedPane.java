@@ -75,7 +75,13 @@ enum Tab {Studenti, Profesori, Predmeti};
 		if(studentiTabela.getSelectedRow() < 0) {
 			return null;
 		}
-		Student student = BazaStudenata.getInstance().getRow(studentiTabela.getSelectedRow());
+		Student student = new Student();
+		String izabraniIndeks = studentiTabela.getValueAt(studentiTabela.getSelectedRow(), 0).toString();
+		for(Student s : BazaStudenata.getInstance().getStudenti()) {
+			if(s.getBrojIndeksa().equals(izabraniIndeks)) {
+				student = s;
+			}
+		}
 		return student;
 	}
 	
@@ -94,7 +100,13 @@ enum Tab {Studenti, Profesori, Predmeti};
 		{
 			return null;
 		}
-		Predmet predmet = BazaPredmeta.getInstance().getRow(predmetiTabela.getSelectedRow());
+		Predmet predmet = new Predmet();
+		String izabranaSifra = predmetiTabela.getValueAt(predmetiTabela.getSelectedRow(), 0).toString();
+		for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+			if(p.getSifra_predmeta().equals(izabranaSifra)) {
+				predmet = p;
+			}
+		}
 		return predmet;
 	}
 	
