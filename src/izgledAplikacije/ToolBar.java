@@ -80,10 +80,15 @@ public class ToolBar extends JToolBar{
 		public void actionPerformed(ActionEvent e) {
 			if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 0) {
 				String txt = trazi.getText();
+				String[] txt1 = txt.split(" ");
 				if(txt.trim().equals("")) {
 					StudentiController.getInstance().vratiPrikaz();
 				}
-				StudentiController.getInstance().pretragaStudenata(txt);
+				if(txt1[0].equals("studenti")) {
+					StudentiController.getInstance().naprednaPretragaStudenata(txt);
+				}else {
+					StudentiController.getInstance().pretragaStudenata(txt);
+				}
 			}
 			else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 1) {
 				String txt = trazi.getText();

@@ -1,12 +1,14 @@
 package izgledAplikacije;
 
 import java.util.Comparator;
+import java.util.regex.Pattern;
 
 public class ComparatorSortiranje implements Comparator<String>{
 
 	@Override
 	public int compare(String s1, String s2) {
-		
+		Pattern pattern = Pattern.compile("[A-Za-z]{2}[-][0-9]{3}[/][0-9]{4}");
+		if(pattern.matcher(s1).matches() && pattern.matcher(s2).matches()) {
 			String[] podjela1 = s1.split("-");
 			String[] podjela2 = s2.split("-");
 			String smjer1 = podjela1[0];
@@ -27,6 +29,10 @@ public class ComparatorSortiranje implements Comparator<String>{
 			}
 			
 			return broj1.compareTo(broj2);
+		}else {
+			return s1.compareTo(s2);
+		}
+		
 	}
 	
 }

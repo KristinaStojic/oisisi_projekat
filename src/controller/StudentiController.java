@@ -51,4 +51,9 @@ public class StudentiController {
 	public void ponistiOcjenu(Student s, Ocena o) {
 		BazaStudenata.getInstance().ponistiOcjenu(s, o);
 	}
+	
+	public void naprednaPretragaStudenata(String txt) {
+		BazaStudenata.getInstance().naprednaPretraga(txt);
+		GlavniProzor.getInstance().azurirajPrikaz("NADJEN", -1);
+	}
 }
