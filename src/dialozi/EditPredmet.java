@@ -196,7 +196,7 @@ public class EditPredmet extends JDialog{
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					DeleteProfesorFromPredmet dp = new DeleteProfesorFromPredmet(p.getPredmetni_profesor(),p);
+					DeleteProfesorFromPredmet dp = new DeleteProfesorFromPredmet(p.getPredmetni_profesor(),p,plus,minus);
 					dp.setVisible(true);
 					if(p.getPredmetni_profesor() == null) {
 						txtProf.setText("");

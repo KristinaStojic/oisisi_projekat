@@ -28,7 +28,7 @@ public class DeleteProfesorFromPredmet extends JDialog{
 	JButton potvrdi;
 	JButton odustani;
 	
-	public DeleteProfesorFromPredmet(Profesor prof, Predmet pred) {
+	public DeleteProfesorFromPredmet(Profesor prof, Predmet pred, JButton plus, JButton minus) {
 		
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("delProfFromPredm"));
 		setSize(new Dimension(420, 150));
@@ -52,6 +52,13 @@ public class DeleteProfesorFromPredmet extends JDialog{
 			public void actionPerformed(ActionEvent e) {
 				PredmetController.getInstance().ukloniProfesoraPredmetu(prof, pred);
 				prof.getPredmetiProfesora().remove(pred);
+				if(prof.getPredmetiProfesora() != null) {
+					plus.setEnabled(true);
+					minus.setEnabled(false);
+				}else {
+					plus.setEnabled(false);
+					minus.setEnabled(true);
+				}
 				dispose();
 			}
 		});
