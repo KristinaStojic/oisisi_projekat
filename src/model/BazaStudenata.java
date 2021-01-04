@@ -229,7 +229,7 @@ public class BazaStudenata {
 					}else if(tekst[i].equals("prosek")) {
 						
 					}else if(tekst[i].equals("slusa_predmete")) {
-						
+						System.out.println(s);
 					}
 				}
 			
