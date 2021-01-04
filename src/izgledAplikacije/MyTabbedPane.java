@@ -91,8 +91,10 @@ enum Tab {Studenti, Profesori, Predmeti};
 		{
 			return null;
 		}
-		Profesor profesor = BazaProfesora.getInstance().getRow(profesoriTabela.getSelectedRow());
-		return profesor;
+		//Profesor profesor = BazaProfesora.getInstance().getRow(profesoriTabela.getSelectedRow());
+		Profesor prof = BazaProfesora.getInstance().getProfesori().get(profesoriTabela.convertRowIndexToModel(profesoriTabela.getSelectedRow()));
+		
+		return prof;
 	}
 	
 	public Predmet getIzabraniPredmet() {
