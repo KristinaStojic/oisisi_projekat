@@ -190,10 +190,10 @@ public class BazaPredmeta {
 			predmeti = zadovoljavajuPretragu;
 		}
 	
-	public void ukloniProfesora(String lk) {
+	public void ukloniProfesora(int id) {
 		for(Predmet p : predmeti) {
 			if(p.getPredmetni_profesor() != null) {
-				if(p.getPredmetni_profesor().getBrojLicneKarte().equals(lk)) {
+				if(p.getPredmetni_profesor().getId() == id) {
 					p.setPredmeni_profesor(null);
 				}
 			}

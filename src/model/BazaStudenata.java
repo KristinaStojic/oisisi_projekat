@@ -150,9 +150,9 @@ public class BazaStudenata {
 		privremeno = studenti;
 	}
 	
-	public void izbrisiStudenta(String brojIndeksa) {
+	public void izbrisiStudenta(int id) {
 		for(Student s : studenti) {
-			if(s.getBrojIndeksa().equals(brojIndeksa)) {
+			if(s.getId() == id) {
 				studenti.remove(s);
 				break;
 			}
@@ -218,6 +218,7 @@ public class BazaStudenata {
 		for(Student s : privremeno) {
 			if(tekst[1].equals("=") || tekst[2].equals("(")) {
 				for(int i = 0; i < tekst.length; i++) {
+					System.out.println(s);
 				}
 			
 			}
