@@ -212,6 +212,8 @@ public class BazaStudenata {
 		studenti = zadovoljavajuPretragu;
 	}
 	
+
+
 	public void naprednaPretraga(String txt) {
 		zadovoljavajuPretragu = new ArrayList<Student>();
 		String[] tekst = txt.split(" ");
@@ -238,6 +240,7 @@ public class BazaStudenata {
 		studenti = zadovoljavajuPretragu;
 	}
 	
+
 	public void vratiPrikaz() {
 		studenti = privremeno;
 	}
