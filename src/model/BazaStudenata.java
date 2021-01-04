@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import izgledAplikacije.GlavniProzor;
 
@@ -217,11 +218,43 @@ public class BazaStudenata {
 	public void naprednaPretraga(String txt) {
 		zadovoljavajuPretragu = new ArrayList<Student>();
 		String[] tekst = txt.split(" ");
+		boolean prosao = true;
 		for(Student s : privremeno) {
-			if(tekst[1].equals("=") && tekst[2].equals("(")) {
-				for(int i = 0; i < tekst.length; i++) {
+			if(tekst[1].equals("=")) {
+				for(int i = 2; i < tekst.length; i++) {
+					tekst[i] = tekst[i].replaceAll("[()]", "");
 					if(tekst[i].equals("indeks")) {
-						
+						i++;
+						if(tekst[i].equals("==")) {
+							i++;
+							if(tekst[i].charAt(0) == '/') {
+								tekst[i] = tekst[i].replaceAll("[/]", "");
+								System.out.println(tekst[i]);
+								Pattern pattern = Pattern.compile(tekst[i]);
+								if(!pattern.matcher(s.getBrojIndeksa().toUpperCase()).matches()) {
+									prosao = false;
+								}
+							}else {
+								tekst[i] = tekst[i].replaceAll("[\"]", "");
+								if(!s.getBrojIndeksa().toUpperCase().equals(tekst[i].toUpperCase())) {
+									prosao = false;
+								}
+							}
+						}else if(tekst[i].equals("!=")) {	
+							i++;
+							if(tekst[i].charAt(0) == '/') {
+								tekst[i] = tekst[i].replaceAll("[/]", "");
+								Pattern pattern = Pattern.compile(tekst[i]);
+								if(pattern.matcher(s.getBrojIndeksa().toUpperCase()).matches()) {
+									prosao = false;
+								}
+							}else {
+								tekst[i] = tekst[i].replaceAll("[\"]", "");
+								if(s.getBrojIndeksa().toUpperCase().equals(tekst[i].toUpperCase())) {
+									prosao = false;
+								}
+							}
+						}
 					}else if(tekst[i].equals("ime")) {
 						
 					}else if(tekst[i].equals("prezime")) {
@@ -234,8 +267,11 @@ public class BazaStudenata {
 						System.out.println(s);
 					}
 				}
-			
+				if(prosao) {
+					zadovoljavajuPretragu.add(s);
+				}
 			}
+			prosao = true;
 		}
 		studenti = zadovoljavajuPretragu;
 	}

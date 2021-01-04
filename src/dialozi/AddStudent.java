@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +18,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -217,20 +218,29 @@ public class AddStudent extends JDialog {
 		
 		panBtn = new JPanel();
 		
-		potvrdi = new JButton("Potvrdi");
+		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
+		potvrdi.setEnabled(false);
 		potvrdi.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
+				/*try {
 					if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
 							|| txtDat.getText().trim().isEmpty() || txtAdr.getText().trim().isEmpty()
 								|| txtBrt.getText().trim().isEmpty() || txtMail.getText().trim().isEmpty()
 									|| txtBri.getText().trim().isEmpty() || txtGodu.getText().trim().isEmpty()) {
 						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("svaPolja"));
-					}else {
-						Student student = collectData();
-						boolean postoji = false;
+					}else {*/
+						Student student;
+						try {
+							student = collectData();
+							StudentiController.getInstance().dodajStudenta(student);
+							dispose();
+						} catch (ParseException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						/*boolean postoji = false;
 						for(int i = 0; i < BazaStudenata.getInstance().getStudenti().size(); i++) {
 							if((student.getBrojIndeksa().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))) {
 								JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));
@@ -252,17 +262,73 @@ public class AddStudent extends JDialog {
 							JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("neispravanUnos"));
 						}
 						if(!postoji && ispravan_unos) {
-							StudentiController.getInstance().dodajStudenta(student);
-							dispose();
-						}
+							
+						//}
 						
 					}
 				}catch(Exception ex) {
 					ex.printStackTrace();
-				}
-				
+				}*/
+						
 			}
 		});
+		
+		KeyListener provjera = new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				boolean sve_uneseno = false;
+				if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
+						|| txtDat.getText().trim().isEmpty() || txtAdr.getText().trim().isEmpty()
+							|| txtBrt.getText().trim().isEmpty() || txtMail.getText().trim().isEmpty()
+								|| txtBri.getText().trim().isEmpty() || txtGodu.getText().trim().isEmpty()) {
+					sve_uneseno = false;
+				}else {
+					sve_uneseno = true;
+				}
+				Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
+				Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
+				Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
+				Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
+				Pattern godina = Pattern.compile("[0-9]{4}");
+				boolean ispravan_unos = false;
+				if(datum.matcher(txtDat.getText()).matches() && adresa.matcher(txtAdr.getText()).matches()
+						&& telefon.matcher(txtBrt.getText()).matches() && mejl.matcher(txtMail.getText()).matches()
+							&& godina.matcher(txtGodu.getText()).matches()) {
+					ispravan_unos = true;
+				}
+				boolean postoji = false;
+				for(int i = 0; i < BazaStudenata.getInstance().getStudenti().size(); i++) {
+					if((txtBri.getText().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))) {
+						postoji = true;
+						txtBri.setToolTipText("Uneseni broj indeksa vec postoji!");
+					}
+				}
+				if(ispravan_unos && sve_uneseno && !postoji) {
+					potvrdi.setEnabled(true);
+				}else {
+					potvrdi.setEnabled(false);
+				}
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {}};
+				
+			txtAdr.addKeyListener(provjera);
+			txtBri.addKeyListener(provjera);
+			txtBrt.addKeyListener(provjera);
+			txtDat.addKeyListener(provjera);
+			txtGodu.addKeyListener(provjera);
+			txtIme.addKeyListener(provjera);
+			txtMail.addKeyListener(provjera);
+			txtPrz.addKeyListener(provjera);
+			
+		
 		
 		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
 		odustani.addActionListener(new ActionListener() {

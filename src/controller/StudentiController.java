@@ -44,6 +44,11 @@ public class StudentiController {
 		GlavniProzor.getInstance().azurirajPrikaz("NADJEN", -1);
 	}
 	
+	public void naprednaPretragaStudenata(String txt) {
+		BazaStudenata.getInstance().naprednaPretraga(txt);
+		GlavniProzor.getInstance().azurirajPrikaz("NADJEN", -1);
+	}
+	
 	public void ukloniPredmet(Student s, Predmet p) {
 		BazaStudenata.getInstance().ukloniPredmet(s, p);
 	}

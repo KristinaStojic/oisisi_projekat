@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.regex.Pattern;
 
 import javax.swing.BoxLayout;
@@ -248,6 +250,57 @@ public class EditPredmet extends JDialog{
 				}
 			}
 		});
+		
+		KeyListener provjera = new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				boolean sve_uneseno = false;
+				if(txtSifra.getText().trim().isEmpty()|| txtNaziv.getText().trim().isEmpty() 
+						|| txtGodina.getText().trim().isEmpty()	|| txtESPB.getText().trim().isEmpty()) {
+					sve_uneseno = false;
+				}else {
+					sve_uneseno = true;
+				}
+				boolean ispravan_unos = false;
+				Pattern godina = Pattern.compile("[1-6]");
+				Pattern espb = Pattern.compile("[1-9][0-9]?");
+				if(godina.matcher(txtGodina.getText()).matches() && espb.matcher(txtESPB.getText()).matches()){
+					ispravan_unos = true;
+				}
+				boolean postoji = false;
+				for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
+					if((txtSifra.getText().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta())
+							&& GlavniProzor.getInstance().tabbedPane.getIzabraniPredmet().getId() != BazaPredmeta.getInstance().getPredmeti().get(i).getId())) {
+						txtSifra.setToolTipText("Predmet sa unesenom sifrom vec postoji!");
+						postoji = true;
+					}
+				}
+				if(ispravan_unos && sve_uneseno && !postoji) {
+					potvrdi.setEnabled(true);
+				}else {
+					potvrdi.setEnabled(false);
+				}
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+		
+		txtESPB.addKeyListener(provjera);
+		txtGodina.addKeyListener(provjera);
+		txtNaziv.addKeyListener(provjera);
+		txtProf.addKeyListener(provjera);
+		txtSifra.addKeyListener(provjera);
 		
 		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
 		odustani.addActionListener(new ActionListener() {

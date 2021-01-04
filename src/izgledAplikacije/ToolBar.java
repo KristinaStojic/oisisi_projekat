@@ -83,7 +83,11 @@ public class ToolBar extends JToolBar{
 				if(txt.trim().equals("")) {
 					StudentiController.getInstance().vratiPrikaz();
 				}
-				StudentiController.getInstance().pretragaStudenata(txt);
+				if(txt.contains("student")) {
+					StudentiController.getInstance().naprednaPretragaStudenata(txt);
+				}else {
+					StudentiController.getInstance().pretragaStudenata(txt);
+				}
 			}
 			else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 1) {
 				String txt = trazi.getText();
