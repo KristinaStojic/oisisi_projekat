@@ -216,9 +216,21 @@ public class BazaStudenata {
 		zadovoljavajuPretragu = new ArrayList<Student>();
 		String[] tekst = txt.split(" ");
 		for(Student s : privremeno) {
-			if(tekst[1].equals("=") || tekst[2].equals("(")) {
+			if(tekst[1].equals("=") && tekst[2].equals("(")) {
 				for(int i = 0; i < tekst.length; i++) {
-					System.out.println(s);
+					if(tekst[i].equals("indeks")) {
+						
+					}else if(tekst[i].equals("ime")) {
+						
+					}else if(tekst[i].equals("prezime")) {
+						
+					}else if(tekst[i].equals("godina")) {
+						
+					}else if(tekst[i].equals("prosek")) {
+						
+					}else if(tekst[i].equals("slusa_predmete")) {
+						
+					}
 				}
 			
 			}
