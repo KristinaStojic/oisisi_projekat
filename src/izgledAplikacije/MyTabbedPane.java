@@ -128,6 +128,22 @@ enum Tab {Studenti, Profesori, Predmeti};
 		studentiTabela.getColumnModel().getColumn(3).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtGodinaStudija"));
 		studentiTabela.getColumnModel().getColumn(4).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtStatus"));
 		studentiTabela.getColumnModel().getColumn(5).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtProsjek"));
+		
+		setTitleAt(1, GlavniProzor.getInstance().getResourceBundle().getString("tabProfesori"));
+		profesoriTabela.getColumnModel().getColumn(0).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtIme"));
+		profesoriTabela.getColumnModel().getColumn(1).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtPrezime"));
+		profesoriTabela.getColumnModel().getColumn(2).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtprTitula"));
+		profesoriTabela.getColumnModel().getColumn(3).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtprZvanje"));
+		
+		
+		setTitleAt(2, GlavniProzor.getInstance().getResourceBundle().getString("tabPredmeti"));
+		predmetiTabela.getColumnModel().getColumn(0).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtpSifra"));
+		predmetiTabela.getColumnModel().getColumn(1).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtpNaziv"));
+		predmetiTabela.getColumnModel().getColumn(2).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtpESPB"));
+		predmetiTabela.getColumnModel().getColumn(3).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtpGodina"));
+		predmetiTabela.getColumnModel().getColumn(4).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtpSemestar"));
+
 	}
+	
 	
 }

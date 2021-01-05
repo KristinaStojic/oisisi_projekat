@@ -137,7 +137,15 @@ public class MenuBar extends JMenuBar{
 		});
 		
 		mniEngleski = new JCheckBoxMenuItem(GlavniProzor.getInstance().getResourceBundle().getString("mniEngleski"));
-		
+		mniEngleski.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Locale.setDefault(new Locale("en", "US"));
+				GlavniProzor.getInstance().changeLanguage();
+				
+			}
+		});
 		administracija.add(mniSrpski);
 		administracija.add(mniEngleski);
 		

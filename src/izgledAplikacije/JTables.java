@@ -35,7 +35,12 @@ public class JTables extends JTable{
 		
 		case Predmeti:
 			AbstractTableModelPredmeti modelPredmeti= new AbstractTableModelPredmeti();
+			this.setAutoCreateRowSorter(true);
 			this.setModel(modelPredmeti	);
+			TableRowSorter<AbstractTableModelPredmeti> sorterPred = new TableRowSorter<AbstractTableModelPredmeti>(modelPredmeti);
+			ComparatorSortiranjePredmeta compPred = new ComparatorSortiranjePredmeta();
+			sorterPred.setComparator(0, compPred);
+			this.setRowSorter(sorterPred);
 			break;	
 		}
 	}
