@@ -7,8 +7,10 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -106,8 +108,23 @@ public class MenuBar extends JMenuBar{
 		help.addSeparator();
 		help.add(miAbout);
 		
+		JMenu administracija = new JMenu(GlavniProzor.getInstance().getResourceBundle().getString("mnuAdministracija"));
+		
+		JMenuItem mniSrpski = new JCheckBoxMenuItem(GlavniProzor.getInstance().getResourceBundle().getString("mniSrpski"));
+		mniSrpski.setSelected(true);
+		
+		JMenuItem mniEngleski = new JCheckBoxMenuItem(GlavniProzor.getInstance().getResourceBundle().getString("mniEngleski"));
+		
+		administracija.add(mniSrpski);
+		administracija.add(mniEngleski);
+		
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(mniSrpski);
+		bg.add(mniEngleski);
+		
 		add(file);
 		add(edit);
 		add(help);
+		add(administracija);
 	}
 }

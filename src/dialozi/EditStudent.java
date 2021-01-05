@@ -552,6 +552,7 @@ public class EditStudent extends JDialog {
 				Student student;
 				try {
 					student = collectData();
+					student.setId(s.getId());
 					StudentiController.getInstance().izmeniStudenta(student);
 					dispose();
 				} catch (ParseException e1) {

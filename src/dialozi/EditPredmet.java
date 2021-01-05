@@ -249,6 +249,8 @@ public class EditPredmet extends JDialog{
 					ex.printStackTrace();
 				}*/
 				Predmet predmet = collectData();
+				predmet.setId(p.getId());
+				predmet.setPredmeni_profesor(p.getPredmetni_profesor());
 				PredmetController.getInstance().izmeniPredmet(predmet);
 				dispose();
 
@@ -304,7 +306,7 @@ public class EditPredmet extends JDialog{
 		txtESPB.addKeyListener(provjera);
 		txtGodina.addKeyListener(provjera);
 		txtNaziv.addKeyListener(provjera);
-		txtProf.addKeyListener(provjera);
+		//txtProf.addKeyListener(provjera);
 		txtSifra.addKeyListener(provjera);
 		
 		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
