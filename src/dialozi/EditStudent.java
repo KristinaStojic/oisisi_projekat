@@ -238,7 +238,7 @@ public class EditStudent extends JDialog {
 					 
 					
 				}else {
-					JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
+					JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiPredmet"));
 				}
 			}
 		});
