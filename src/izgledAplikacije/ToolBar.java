@@ -27,14 +27,15 @@ public class ToolBar extends JToolBar{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	JButton btn1;
+	
 	public ToolBar() {
 	
 	AddAction dodaj = new AddAction();
-	JButton btn1 = new JButton(dodaj);
-	//btn1.setToolTipText("Dodaj");
+    btn1 = new JButton(dodaj);
 	add(btn1);
-	btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-    KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), GlavniProzor.getInstance().getResourceBundle().getString("toolNew"));
+	
+	btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), GlavniProzor.getInstance().getResourceBundle().getString("toolNew"));
 	addSeparator();
 	
 	
@@ -112,5 +113,10 @@ public class ToolBar extends JToolBar{
 	toolbar.add(dodaj);*/
 	
 	setVisible(true);
+	}
+	
+	
+	public void initToolBar() {
+		
 	}
 }
