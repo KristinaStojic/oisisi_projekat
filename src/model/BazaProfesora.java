@@ -10,8 +10,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import izgledAplikacije.GlavniProzor;
-
 public class BazaProfesora {
 
 	public static BazaProfesora instance = null;
@@ -35,10 +33,10 @@ public class BazaProfesora {
 		
 		this.kolone = new ArrayList<String>();
 		
-		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtIme"));
-		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtPrezime"));
-		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtprTitula"));
-		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtprZvanje"));
+		this.kolone.add("Ime");
+		this.kolone.add("Prezime");
+		this.kolone.add("Titula");
+		this.kolone.add("Zvanje");
 	}
 	
 	private void inicijalizujProfesore() {

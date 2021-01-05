@@ -10,8 +10,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import izgledAplikacije.GlavniProzor;
-
 public class BazaPredmeta {
 		
 	private static BazaPredmeta instance = null;
@@ -40,11 +38,11 @@ public class BazaPredmeta {
 	
 		this.kolone = new ArrayList<String>();
 		
-		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtpSifra"));
-		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtpNaziv"));
-		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtpESPB"));
-		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtpGodina"));
-		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtpSemestar"));
+		this.kolone.add("Sifra predmeta");
+		this.kolone.add("Naziv predmeta");
+		this.kolone.add("Broj ESPB bodova");
+		this.kolone.add("Godina na kojoj se predmet izvodi");
+		this.kolone.add("Semestar u kome se predmet izvodi");
 		
 		
 	}
@@ -109,9 +107,6 @@ public class BazaPredmeta {
 	}
 
 	public void setPredmeti(List<Predmet> predmeti) {
-		for(Predmet p : predmeti) {
-			p.setId(id++);
-		}
 		this.predmeti = predmeti;
 	}
 

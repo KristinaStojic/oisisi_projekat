@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.PredmetController;
-import izgledAplikacije.GlavniProzor;
 import model.Predmet;
 
 public class DeletePredmet extends JDialog {
@@ -34,14 +33,16 @@ public class DeletePredmet extends JDialog {
 	protected BoxLayout boxcen;
 	
 	public DeletePredmet(Predmet p) {
-		setTitle(GlavniProzor.getInstance().resourceBundle.getString("delPredmet"));
+		setTitle("Brisanje predmeta");
 		setSize(new Dimension(420, 150));
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setModal(true);
+				
+		setTitle("Brisanje predmeta");
 		
 		pandlt = new JPanel();
-		lbldlt = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("potvrdaBrisanjaPredm"));
+		lbldlt = new JLabel("Da li ste sigurni da zelite da obrisete predmet?");
 		//https://www.oreilly.com/library/view/java-awt-reference/9781565922402/06_chapter-03.html
 		lbldlt.setFont(new Font("TimesNewRoman", Font.PLAIN, 17));
 		pandlt.add(lbldlt);
@@ -49,8 +50,8 @@ public class DeletePredmet extends JDialog {
 		
 		
 		panBtn = new JPanel();
-		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("da"));
-		odustani=new JButton(GlavniProzor.getInstance().resourceBundle.getString("ne"));
+		potvrdi = new JButton("DA");
+		odustani=new JButton("NE");
 		
 		potvrdi.addActionListener(new ActionListener() {
 			

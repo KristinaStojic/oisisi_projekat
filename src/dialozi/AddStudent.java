@@ -18,12 +18,10 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.StudentiController;
-import izgledAplikacije.GlavniProzor;
 import listeneri.MyFocusListener1;
 import listeneri.MyFocusListener2;
 import listeneri.MyFocusListener4;
@@ -93,7 +91,7 @@ public class AddStudent extends JDialog {
 	protected JButton odustani;
 	
 	public AddStudent() {
-		setTitle(GlavniProzor.getInstance().resourceBundle.getString("addStudent"));
+		setTitle("Dodavanje studenta");
 		setSize(450,600);
 		setLocationRelativeTo(null);
 		setModal(true);
@@ -105,7 +103,7 @@ public class AddStudent extends JDialog {
 		panCen.setLayout(boxc);
 		
 		panIme = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labIme = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newIme"));
+		labIme = new JLabel("Ime*");
 		labIme.setPreferredSize(dim);
 		txtIme = new JTextField();
 		txtIme.setPreferredSize(dim);
@@ -115,7 +113,7 @@ public class AddStudent extends JDialog {
 		panCen.add(panIme);
 		
 		panPrz = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labPrz = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newPrezime"));
+		labPrz = new JLabel("Prezime*");
 		labPrz.setPreferredSize(dim);
 		txtPrz = new JTextField();
 		txtPrz.setPreferredSize(dim);
@@ -125,7 +123,7 @@ public class AddStudent extends JDialog {
 		panCen.add(panPrz);
 		
 		panDat = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labDat = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newDatumRodjenja"));
+		labDat = new JLabel("Datum rođenja*");
 		labDat.setPreferredSize(dim);
 		txtDat = new JTextField();
 		txtDat.setPreferredSize(dim);
@@ -135,7 +133,7 @@ public class AddStudent extends JDialog {
 		panCen.add(panDat);
 		
 		panAdr = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labAdr = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newAdresaStanovanja"));
+		labAdr = new JLabel("Adresa stanovanja*");
 		labAdr.setPreferredSize(dim);
 		txtAdr = new JTextField();
 		txtAdr.setPreferredSize(dim);
@@ -145,7 +143,7 @@ public class AddStudent extends JDialog {
 		panCen.add(panAdr);
 		
 		panBrt = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labBrt = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newBrojTelefona"));
+		labBrt = new JLabel("Broj telefona*");
 		labBrt.setPreferredSize(dim);
 		txtBrt = new JTextField();
 		txtBrt.setPreferredSize(dim);
@@ -155,7 +153,7 @@ public class AddStudent extends JDialog {
 		panCen.add(panBrt);
 		
 		panMail = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labMail = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newEmail"));
+		labMail = new JLabel("E-mail adresa*");
 		labMail.setPreferredSize(dim);
 		txtMail = new JTextField();
 		txtMail.setPreferredSize(dim);
@@ -165,7 +163,7 @@ public class AddStudent extends JDialog {
 		panCen.add(panMail);
 		
 		panBri = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labBri = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newBrojInd"));
+		labBri = new JLabel("Broj indeksa*");
 		labBri.setPreferredSize(dim);
 		txtBri = new JTextField();
 		txtBri.setPreferredSize(dim);
@@ -174,7 +172,7 @@ public class AddStudent extends JDialog {
 		panCen.add(panBri);
 		
 		panGodu = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labGodu = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newGodinaUpisa"));
+		labGodu = new JLabel("Godina upisa*");
 		labGodu.setPreferredSize(dim);
 		txtGodu = new JTextField();
 		txtGodu.setPreferredSize(dim);
@@ -184,16 +182,16 @@ public class AddStudent extends JDialog {
 		panCen.add(panGodu);
 		
 		panTgs = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labTgs = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newTrenutnaGodinaStudija"));
+		labTgs = new JLabel("Trenutna godina studija*");
 		labTgs.setPreferredSize(dim);
 		god = new JComboBox<String>();
 		godModel = new DefaultComboBoxModel<String>();
-		godModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxPrva"));
-		godModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxDruga"));
-		godModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxTreca"));
-		godModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxCetvrta"));
-		godModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxPeta"));
-		godModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxSesta"));
+		godModel.addElement("I (Prva)");
+		godModel.addElement("II (Druga)");
+		godModel.addElement("III (Treća)");
+		godModel.addElement("IV (Četvrta)");
+		godModel.addElement("V (Master)");
+		godModel.addElement("VI (Doktorske studije)");
 		god.setModel(godModel);
 		god.setSelectedIndex(0);
 		god.setPreferredSize(dim);
@@ -203,12 +201,12 @@ public class AddStudent extends JDialog {
 		panCen.add(panTgs);
 		
 		panNfs = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labNfs = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newNacinFinansiranja"));
+		labNfs = new JLabel("Način finansiranja*");
 		labNfs.setPreferredSize(dim);
 		bs = new JComboBox<String>();
 		bsModel = new DefaultComboBoxModel<String>();
-		bsModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxBudzet"));
-		bsModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxSamofinansiranje"));
+		bsModel.addElement("Budžet");
+		bsModel.addElement("Samofinansiranje");
 		bs.setModel(bsModel);
 		bs.setSelectedIndex(0);
 		bs.setPreferredSize(dim);
@@ -219,7 +217,7 @@ public class AddStudent extends JDialog {
 		
 		panBtn = new JPanel();
 		
-		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
+		//potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
 		potvrdi.setEnabled(false);
 		potvrdi.addActionListener(new ActionListener() {
 			
@@ -230,6 +228,7 @@ public class AddStudent extends JDialog {
 							|| txtDat.getText().trim().isEmpty() || txtAdr.getText().trim().isEmpty()
 								|| txtBrt.getText().trim().isEmpty() || txtMail.getText().trim().isEmpty()
 									|| txtBri.getText().trim().isEmpty() || txtGodu.getText().trim().isEmpty()) {
+<<<<<<< HEAD
 						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("svaPolja"));
 					}else {*/
 						Student student;
@@ -242,9 +241,15 @@ public class AddStudent extends JDialog {
 							e1.printStackTrace();
 						}
 						/*boolean postoji = false;
+=======
+						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
+					}else {
+						Student student = collectData();
+						boolean postoji = false;
+>>>>>>> parent of f287f03... #lokalizacija
 						for(int i = 0; i < BazaStudenata.getInstance().getStudenti().size(); i++) {
 							if((student.getBrojIndeksa().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))) {
-								JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));
+								JOptionPane.showMessageDialog(null, "Uneseni indeks vec postoji!");
 								postoji = true;
 							}
 						}
@@ -260,7 +265,7 @@ public class AddStudent extends JDialog {
 							ispravan_unos = true;
 						}
 						if(!ispravan_unos) {
-							JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("neispravanUnos"));
+							JOptionPane.showMessageDialog(null, "Neispravan unos!");
 						}
 						if(!postoji && ispravan_unos) {
 							
@@ -274,6 +279,7 @@ public class AddStudent extends JDialog {
 			}
 		});
 		
+
 		KeyListener provjera = new KeyListener() {
 			
 			@Override
@@ -308,7 +314,7 @@ public class AddStudent extends JDialog {
 					if((txtBri.getText().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))) {
 						postoji = true;
 						txtBri.setToolTipText("Uneseni broj indeksa vec postoji!");
-						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));
+						//JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));
 					}
 				}
 				if(ispravan_unos && sve_uneseno && !postoji) {
@@ -332,7 +338,10 @@ public class AddStudent extends JDialog {
 			
 		
 		
-		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
+//		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
+
+		odustani = new JButton("Odustani");
+
 		odustani.addActionListener(new ActionListener() {
 			
 			@Override

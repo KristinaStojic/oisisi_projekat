@@ -25,7 +25,7 @@ public class InsertAction extends AbstractAction{
 	public InsertAction() {
 		
 		//putValue(MNEMONIC_KEY,KeyEvent.VK_I);
-		putValue(SHORT_DESCRIPTION, GlavniProzor.getInstance().getResourceBundle().getString("mniEdit"));
+		putValue(SHORT_DESCRIPTION, "Edit");
 		putValue(SMALL_ICON, new ImageIcon("imgs" + File.separator +"search.jpg"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		
@@ -33,6 +33,7 @@ public class InsertAction extends AbstractAction{
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		System.out.println("Pritisnuto dugme");
 	
 		if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 1) {
 		    Profesor izabraniProfesor = GlavniProzor.getInstance().tabbedPane.getIzabraniProfesor();
@@ -41,7 +42,7 @@ public class InsertAction extends AbstractAction{
 			EditProfesor editProfesor = new EditProfesor(izabraniProfesor);
 			editProfesor.setVisible(true);
 			}else {
-			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiProfesora"));
+			JOptionPane.showMessageDialog(null, "Morate izabrati profesora!");
 			}
 		}else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 0) {
 			Student izabraniStudent = GlavniProzor.getInstance().tabbedPane.getIzabraniStudent();
@@ -50,7 +51,7 @@ public class InsertAction extends AbstractAction{
 				editStudent.setVisible(true);
 				GlavniProzor.getInstance().azurirajPrikaz("IZMJENI", -1);
 			}else {
-				JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiStudenta"));
+				JOptionPane.showMessageDialog(null, "Morate izabrati studenta!");
 			}
 		}else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 2) {
 			Predmet izabraniPredmet = GlavniProzor.getInstance().tabbedPane.getIzabraniPredmet();
@@ -59,7 +60,7 @@ public class InsertAction extends AbstractAction{
 				editPredmet.setVisible(true);
 				GlavniProzor.getInstance().azurirajPrikaz("IZMJENE", -1);
 			}else {
-				JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiPredmet"));
+				JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
 			}
 		}
 

@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import izgledAplikacije.GlavniProzor;
-
 public class MyFocusListener7 implements FocusListener{
 
 	@Override
@@ -23,7 +21,7 @@ public class MyFocusListener7 implements FocusListener{
 		Pattern pattern = Pattern.compile("[1-6]");
 		
 		if(!pattern.matcher(txt.getText()).matches()  && !txt.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("ispravnaGodina1"));
+			JOptionPane.showMessageDialog(null, "Molimo unesite ispravnu godinu(1-6)!");
 			txt.setText("");
 			txt.requestFocus();
 		}

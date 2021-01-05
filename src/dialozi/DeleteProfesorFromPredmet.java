@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.PredmetController;
-import izgledAplikacije.GlavniProzor;
 import model.Predmet;
 import model.Profesor;
 
@@ -30,21 +29,21 @@ public class DeleteProfesorFromPredmet extends JDialog{
 	
 	public DeleteProfesorFromPredmet(Profesor prof, Predmet pred, JButton plus, JButton minus) {
 		
-		setTitle(GlavniProzor.getInstance().resourceBundle.getString("delProfFromPredm"));
+		setTitle("Ukloni profesora");
 		setSize(new Dimension(420, 150));
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setModal(true);
 		
 		panDlt = new JPanel();
-		lblDlt = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("potvrda"));
+		lblDlt = new JLabel("Da li ste sigurni?");
 		lblDlt.setFont(new Font("TimesNewRoman", Font.PLAIN, 17));
 		panDlt.add(lblDlt);
 		
 		
 		panBtn = new JPanel();
-		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("da"));
-		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("ne"));
+		potvrdi = new JButton("DA");
+		odustani = new JButton("NE");
 		
 		potvrdi.addActionListener(new ActionListener() {
 			

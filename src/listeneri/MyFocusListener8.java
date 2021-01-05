@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import izgledAplikacije.GlavniProzor;
-
 public class MyFocusListener8 implements FocusListener{
 
 	@Override
@@ -24,7 +22,7 @@ public class MyFocusListener8 implements FocusListener{
 		Pattern pattern = Pattern.compile("[1-9][0-9]?");
 		
 		if(!pattern.matcher(txt.getText()).matches()  && !txt.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("ispravnoESPB"));
+			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan broj ESPB bodova[1-100]!");
 			txt.setText("");
 			txt.requestFocus();
 		}

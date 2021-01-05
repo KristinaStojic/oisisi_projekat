@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.PredmetController;
-import izgledAplikacije.GlavniProzor;
 import listeneri.MyFocusListener7;
 import listeneri.MyFocusListener8;
 import model.BazaPredmeta;
@@ -68,7 +67,7 @@ public class AddPredmet  extends JDialog {
 	public AddPredmet() {
 		
 		
-		setTitle(GlavniProzor.getInstance().resourceBundle.getString("addPredmet"));
+		setTitle("Dodavanje predmeta");
 		setSize(450,600);
 		setLocationRelativeTo(null);
 		setModal(true);
@@ -81,7 +80,7 @@ public class AddPredmet  extends JDialog {
 		
 		
 		panSifra = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labSifra = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newSifra"));
+		labSifra = new JLabel("Šifra predmeta*");
 		labSifra.setPreferredSize(dim);
 		txtSifra = new JTextField();
 		txtSifra.setPreferredSize(dim);
@@ -90,7 +89,7 @@ public class AddPredmet  extends JDialog {
 		panCen.add(panSifra);
 		
 		panNaziv = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labNaziv = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newNaziv"));
+		labNaziv = new JLabel("Naziv predmeta*");
 		labNaziv.setPreferredSize(dim);
 		txtNaziv = new JTextField();
 		txtNaziv.setPreferredSize(dim);
@@ -99,7 +98,7 @@ public class AddPredmet  extends JDialog {
 		panCen.add(panNaziv);
 		
 		panGodina = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labGodina = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newGodina"));
+		labGodina = new JLabel("Godina izvođenja*");
 		labGodina.setPreferredSize(dim);
 		txtGodina = new JTextField();
 		txtGodina.setPreferredSize(dim);
@@ -109,7 +108,7 @@ public class AddPredmet  extends JDialog {
 		panCen.add(panGodina);
 		
 		panESPB = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labESPB = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newESPB"));
+		labESPB = new JLabel("Broj ESPB bodova*");
 		labESPB.setPreferredSize(dim);
 		txtESPB = new JTextField();
 		txtESPB.setPreferredSize(dim);
@@ -119,12 +118,12 @@ public class AddPredmet  extends JDialog {
 		panCen.add(panESPB);
 		
 		panSem = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		labSem = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("newSemestar"));
+		labSem = new JLabel("Semestar*");
 		labSem.setPreferredSize(dim);
 		sem = new JComboBox<String>();
 		semModel = new DefaultComboBoxModel<String>();
-		semModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxZimski"));
-		semModel.addElement(GlavniProzor.getInstance().resourceBundle.getString("newBoxLetnji"));
+		semModel.addElement("Zimski");
+		semModel.addElement("Letnji");
 		sem.setModel(semModel);
 		sem.setSelectedIndex(0);
 		sem.setPreferredSize(dim);
@@ -133,7 +132,7 @@ public class AddPredmet  extends JDialog {
 		panCen.add(panSem);
 		
 		panBtn = new JPanel();
-		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
+		potvrdi = new JButton("Potvrdi");
 		potvrdi.addActionListener(new ActionListener() {
 			
 			@Override
@@ -141,13 +140,13 @@ public class AddPredmet  extends JDialog {
 				try {		
 					if(txtSifra.getText().trim().isEmpty()|| txtNaziv.getText().trim().isEmpty() 
 							|| txtGodina.getText().trim().isEmpty()	|| txtESPB.getText().trim().isEmpty()) {
-						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("svaPolja"));
+						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
 					}else {
 						Predmet predmet = collectData();
 						boolean postoji = false;
 						for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
 							if((predmet.getSifra_predmeta().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta()))) {
-								JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiSifra"));
+								JOptionPane.showMessageDialog(null, "Unesena sifra predmeta vec postoji!");
 								postoji = true;
 							}
 						}
@@ -158,7 +157,7 @@ public class AddPredmet  extends JDialog {
 							ispravan_unos = true;
 						}
 						if(!ispravan_unos) {
-							JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("neispravanUnos"));
+							JOptionPane.showMessageDialog(null, "Neispravan unos!");
 						}
 						if(!postoji && ispravan_unos) {
 							PredmetController.getInstance().dodajPredmet(predmet);
@@ -172,7 +171,7 @@ public class AddPredmet  extends JDialog {
 			}
 		});
 		
-		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
+		odustani = new JButton("Odustani");
 		odustani.addActionListener(new ActionListener() {
 			
 			@Override

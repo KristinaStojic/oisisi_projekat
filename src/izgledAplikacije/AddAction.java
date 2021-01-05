@@ -21,7 +21,7 @@ public class AddAction extends AbstractAction{
 		public AddAction() {
 			
 			//putValue(MNEMONIC_KEY,KeyEvent.VK_N);
-			putValue(SHORT_DESCRIPTION, GlavniProzor.getInstance().getResourceBundle().getString("mniNew"));
+			putValue(SHORT_DESCRIPTION, "New");
 			putValue(SMALL_ICON, new ImageIcon("imgs" + File.separator+ "insert.jpg"));
 			putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		}

@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import izgledAplikacije.GlavniProzor;
-
 public class MyFocusListener5 implements FocusListener {
 
 	@Override
@@ -24,7 +22,7 @@ public class MyFocusListener5 implements FocusListener {
 		Pattern pattern = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]+[0-9]{0,4}[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]+");
 
 		if(!pattern.matcher(txt.getText()).matches() && !txt.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("ispravnaAdresa"));
+			JOptionPane.showMessageDialog(null, "Molimo unesite ispravnu adresu u formatu NAZIV_ULICE BROJ, NAZIV_GRADA");
 			txt.setText("");
 			txt.requestFocus();
 		}

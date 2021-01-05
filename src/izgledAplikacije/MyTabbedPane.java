@@ -42,21 +42,21 @@ enum Tab {Studenti, Profesori, Predmeti};
 		studentiTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane pane = new JScrollPane(studentiTabela);
 		studentiPanel.add(pane, BorderLayout.CENTER);
-		add(GlavniProzor.getInstance().getResourceBundle().getString("tabStudenti"), studentiPanel);
+		add(Tab.Studenti.toString(), studentiPanel);
 		
 		profesoriPanel.setLayout(new BorderLayout());
 		profesoriTabela = new JTables(Tab.Profesori);
 		profesoriTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane pane1 = new JScrollPane(profesoriTabela);
 		profesoriPanel.add(pane1, BorderLayout.CENTER);
-		add(GlavniProzor.getInstance().getResourceBundle().getString("tabProfesori"), profesoriPanel);
+		add(Tab.Profesori.toString(), profesoriPanel);
 		
 		predmetiPanel.setLayout(new BorderLayout());
 	    predmetiTabela = new JTables(Tab.Predmeti);
 	    predmetiTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	    JScrollPane pane2 = new JScrollPane(predmetiTabela);
 	    predmetiPanel.add(pane2,BorderLayout.CENTER);
-	    add(GlavniProzor.getInstance().getResourceBundle().getString("tabPredmeti"), predmetiPanel);
+	    add(Tab.Predmeti.toString(), predmetiPanel);
 	}
 	
 	public void azurirajPrikazStudenata(String akcija, int vrijednost) {
@@ -120,7 +120,7 @@ enum Tab {Studenti, Profesori, Predmeti};
 		validate();
 	}
 	
-	public void initTab() {
+	/*public void initTab() {
 		setTitleAt(0, GlavniProzor.getInstance().getResourceBundle().getString("tabStudenti"));
 		studentiTabela.getColumnModel().getColumn(0).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtIndeks"));
 		studentiTabela.getColumnModel().getColumn(1).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtIme"));
@@ -143,7 +143,7 @@ enum Tab {Studenti, Profesori, Predmeti};
 		predmetiTabela.getColumnModel().getColumn(3).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtpGodina"));
 		predmetiTabela.getColumnModel().getColumn(4).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtpSemestar"));
 
-	}
+	}*/
 	
 	
 }

@@ -19,7 +19,6 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 import controller.ProfesorController;
-import izgledAplikacije.GlavniProzor;
 import model.BazaPredmeta;
 import model.Predmet;
 import model.Profesor;
@@ -48,7 +47,7 @@ public class AddPredmetToProfesor extends JDialog{
 	
 	public AddPredmetToProfesor(Profesor p){
 		
-		setTitle(GlavniProzor.getInstance().resourceBundle.getString("addPredmet"));
+		setTitle("Dodaj predmet");
 		setSize(400,400);
 		setLocationRelativeTo(null);
 		setModal(true);
@@ -57,7 +56,7 @@ public class AddPredmetToProfesor extends JDialog{
 		predmetPane = new JPanel(new BorderLayout());
 		
 		//ISPRAVI OVO, STAVI DA PREDMETI STOJI SKROZ LIJEVO
-		JLabel lab= new JLabel(GlavniProzor.getInstance().resourceBundle.getString("predmeti"));
+		JLabel lab= new JLabel("Predmeti:");
 		JPanel labsPanel = new JPanel (new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
@@ -107,8 +106,8 @@ public class AddPredmetToProfesor extends JDialog{
         
 
 		btnPan = new JPanel();
-		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
-		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
+		potvrdi = new JButton("Potvrdi");
+		odustani = new JButton("Odustani");
 		btnPan.add(potvrdi);
 		btnPan.add(odustani);
 		

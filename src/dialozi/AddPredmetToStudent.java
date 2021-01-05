@@ -15,7 +15,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import controller.PredmetController;
-import izgledAplikacije.GlavniProzor;
 import model.BazaPredmeta;
 import model.Ocena;
 import model.Predmet;
@@ -40,7 +39,7 @@ public class AddPredmetToStudent extends JDialog{
 	JButton odustani;
 	
 	public AddPredmetToStudent(Student s) {
-		setTitle(GlavniProzor.getInstance().resourceBundle.getString("addPredmet"));
+		setTitle("Dodavanje predmeta");
 		setSize(400,400);
 		setLocationRelativeTo(null);
 		setModal(true);
@@ -92,9 +91,9 @@ public class AddPredmetToStudent extends JDialog{
 		
 		btnPan = new JPanel();
 		
-		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnDodaj"));
+		potvrdi = new JButton("Dodaj");
 		
-		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
+		odustani = new JButton("Odustani");
 		
 		btnPan.add(potvrdi);
 		btnPan.add(odustani);

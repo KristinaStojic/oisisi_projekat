@@ -5,8 +5,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -23,8 +21,7 @@ public class GlavniProzor extends JFrame {
 	private static GlavniProzor instance = null;
 	
 	private GlavniProzor() {
-		Locale.setDefault(new Locale("sr", "RS"));
-		resourceBundle = ResourceBundle.getBundle("MessageResources.MessageResources", Locale.getDefault());
+		initialise();
 	}
 	
     /**
@@ -34,24 +31,27 @@ public class GlavniProzor extends JFrame {
 
 	public MyTabbedPane tabbedPane;
 	
-	public ResourceBundle resourceBundle;
 	
+
 	MenuBar menu;
 	StatusBar status;
+
+	
+
 	
 	private void initialise() {
-		
     	Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
     	int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
         
         setSize(screenWidth / 4*3  , screenHeight / 4*3);
-        setTitle(resourceBundle.getString("Naslov"));
+        setTitle("Studentska služba");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         
-        	menu = new MenuBar();
+
+        	/*menu = new MenuBar();
       		this.setJMenuBar(menu);
       		
       		ToolBar tool = new ToolBar();
@@ -62,8 +62,11 @@ public class GlavniProzor extends JFrame {
       		
       		tabbedPane = new MyTabbedPane();
       		this.add(tabbedPane, BorderLayout.CENTER);
+*/
+
         
-        this.addWindowListener(new WindowListener() {
+        
+this.addWindowListener(new WindowListener() {
 			
 			@Override
 			public void windowOpened(WindowEvent arg0) {
@@ -93,7 +96,7 @@ public class GlavniProzor extends JFrame {
 			public void windowClosing(WindowEvent e) {
 				// TODO Auto-generated method stub
 				JFrame frame=(JFrame) e.getComponent();
-				int a=JOptionPane.showConfirmDialog(null, resourceBundle.getString("potvrdaZatvaranja"));
+				int a=JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da zatvorite aplikaciju ?");
 				if(a==JOptionPane.YES_OPTION) {
 					try {
 						BazaStudenata.getInstance().saveDataStudentTxt();
@@ -125,20 +128,25 @@ public class GlavniProzor extends JFrame {
 			}
 		});
         
-      
+        MenuBar menu = new MenuBar();
+		this.setJMenuBar(menu);
+		
+		ToolBar tool = new ToolBar();
+		this.add(tool, BorderLayout.NORTH);
+
+		StatusBar status = new StatusBar();
+		this.add(status, BorderLayout.SOUTH);
+		
+		tabbedPane = new MyTabbedPane();
+		this.add(tabbedPane, BorderLayout.CENTER);
 		
     }
 	
 	public static GlavniProzor getInstance() {
 		if(instance == null) {
 			instance = new GlavniProzor();
-			instance.initialise();
 		}
 		return instance;
-	}
-	
-	public ResourceBundle getResourceBundle() {
-		return resourceBundle;
 	}
 	
 	public void azurirajPrikaz(String str, int i) {
@@ -150,12 +158,12 @@ public class GlavniProzor extends JFrame {
  
 	public void changeLanguage() {
 	
-		resourceBundle = ResourceBundle.getBundle("MessageResources.MessageResources", Locale.getDefault());
+		/*resourceBundle = ResourceBundle.getBundle("MessageResources.MessageResources", Locale.getDefault());
 		setTitle(resourceBundle.getString("Naslov"));
 		 
-		menu.initMenu();
+		menu.initMenu();*/
 		status.initStatus();
-		tabbedPane.initTab();
+		//tabbedPane.initTab();
 	}
 	
 }

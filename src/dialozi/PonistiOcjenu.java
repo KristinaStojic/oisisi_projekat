@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.StudentiController;
-import izgledAplikacije.GlavniProzor;
 import model.Ocena;
 import model.Student;
 
@@ -31,21 +30,21 @@ public class PonistiOcjenu extends JDialog{
 	
 	
 	public PonistiOcjenu(Student s, Ocena o) {
-		setTitle(GlavniProzor.getInstance().resourceBundle.getString("ponistiOcjenu"));
+		setTitle("Ponistavanje ocene");
 		setSize(new Dimension(420, 150));
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setModal(true);
 		
 		panDlt = new JPanel();
-		lblDlt = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("potvrdaPonistavanjaOcene"));
+		lblDlt = new JLabel("Da li ste sigurni da zelite da ponistite ocenu?");
 		lblDlt.setFont(new Font("TimesNewRoman", Font.PLAIN, 17));
 		panDlt.add(lblDlt);
 		
 		
 		panBtn = new JPanel();
-		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("da"));
-		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("ne"));
+		potvrdi = new JButton("DA");
+		odustani = new JButton("NE");
 		
 		potvrdi.addActionListener(new ActionListener() {
 			

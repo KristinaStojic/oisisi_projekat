@@ -17,7 +17,6 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import controller.ProfesorController;
-import izgledAplikacije.GlavniProzor;
 import model.BazaProfesora;
 import model.Predmet;
 import model.Profesor;
@@ -42,7 +41,11 @@ public class ChooseProffesor extends JDialog{
 	Profesor izabrani;
 	
 	public ChooseProffesor(Predmet predmet, JButton plus, JButton minus) {
-		setTitle(GlavniProzor.getInstance().resourceBundle.getString("odaberiProfesora"));
+		//setTitle(GlavniProzor.getInstance().resourceBundle.getString("odaberiProfesora"));
+	}
+	public ChooseProffesor(Predmet predmet) {
+		setTitle("Odaberi profesora");
+
 		setSize(400,400);
 		setLocationRelativeTo(null);
 		setModal(true);
@@ -66,9 +69,9 @@ public class ChooseProffesor extends JDialog{
 		
 		btnPan = new JPanel();
 		
-		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
+		potvrdi = new JButton("Potvrdi");
 		
-		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
+		odustani = new JButton("Odustani");
 		
 		btnPan.add(potvrdi);
 		btnPan.add(odustani);
@@ -78,18 +81,18 @@ public class ChooseProffesor extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(profList.isSelectionEmpty()) {
-					JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiProfesora"));
+					JOptionPane.showMessageDialog(null, "Morate izabrati profesora");
 				}else {
 					izabrani = BazaProfesora.getInstance().getProfesori().get(profList.getSelectedIndex());
 					EditPredmet.txtProf.setText(izabrani.getIme() + " " + izabrani.getPrezime());
 					predmet.setPredmeni_profesor(izabrani);
 					ProfesorController.getInstance().dodajPredmet(izabrani, predmet);
 					if(predmet.getPredmetni_profesor() != null) {
-						plus.setEnabled(false);
-						minus.setEnabled(true);
+						//plus.setEnabled(false);
+						//minus.setEnabled(true);
 					}else {
-						plus.setEnabled(true);
-						minus.setEnabled(false);
+						//plus.setEnabled(true);
+						//minus.setEnabled(false);
 					}
 					dispose();
 				}

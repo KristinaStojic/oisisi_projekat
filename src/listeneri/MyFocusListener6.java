@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import izgledAplikacije.GlavniProzor;
-
 public class MyFocusListener6 implements FocusListener {
 
 	@Override
@@ -23,7 +21,7 @@ public class MyFocusListener6 implements FocusListener {
 		Pattern pattern = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
 		
 		if(!pattern.matcher(txt.getText()).matches()  && !txt.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("ispravanMejl"));
+			JOptionPane.showMessageDialog(null, "Molimo unesite ispravnu e-mail adresu u formatu xxxxx@xxxx.xxx");
 			txt.setText("");
 			txt.requestFocus();
 		}

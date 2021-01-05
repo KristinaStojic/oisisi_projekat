@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import izgledAplikacije.GlavniProzor;
-
 public class MyFocusListener1 implements FocusListener {
 
 	@Override
@@ -23,7 +21,7 @@ public class MyFocusListener1 implements FocusListener {
 		Pattern pattern = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
 		
 		if(!pattern.matcher(txt.getText()).matches()  && !txt.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("ispravanDatum"));
+			JOptionPane.showMessageDialog(null, "Molimo unesite ispravan datum u formatu 'dd.mm.yyyy.'!");
 			txt.setText("");
 			txt.requestFocus();
 		}
