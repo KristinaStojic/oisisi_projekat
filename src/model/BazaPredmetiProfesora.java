@@ -26,10 +26,10 @@ public class BazaPredmetiProfesora {
 				
 				this.kolone = new ArrayList<String>();
 				
-				this.kolone.add("Šifra");
-				this.kolone.add("Naziv");
-				this.kolone.add("Godina studija");
-				this.kolone.add("Semestar");
+				this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("kolSifra"));
+				this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("kolNaziv"));
+				this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("godStud"));
+				this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("semStud"));
 				
 			}
 			

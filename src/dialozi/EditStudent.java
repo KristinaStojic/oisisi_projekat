@@ -215,7 +215,7 @@ public class EditStudent extends JDialog {
 	private JPanel nepolozeniIzmjena() {
 		nepolPanel = new JPanel();
 		
-		dodaj = new JButton("Dodaj");
+		dodaj = new JButton(GlavniProzor.getInstance().resourceBundle.getString("nepDodaj"));
 		dodaj.addActionListener(new ActionListener() {
 			
 			@Override
@@ -225,7 +225,7 @@ public class EditStudent extends JDialog {
 				azurirajPrikazNepolozenihPredmeta("DODAT", -1);
 			}
 		});
-		obrisi = new JButton("Obrisi");
+		obrisi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("nepObrisi"));
 		obrisi.addActionListener(new ActionListener() {
 			
 			@Override
@@ -242,7 +242,7 @@ public class EditStudent extends JDialog {
 				}
 			}
 		});
-		polaganje = new JButton("Polaganje");
+		polaganje = new JButton(GlavniProzor.getInstance().resourceBundle.getString("nepPolaganje"));
 		polaganje.addActionListener(new ActionListener() {
 
 			@Override
@@ -269,14 +269,14 @@ public class EditStudent extends JDialog {
 	//				espbLab.setText(GlavniProzor.getInstance().resourceBundle.getString("polUkupnoEspb") + ESPB);
 					GlavniProzor.getInstance().tabbedPane.getIzabraniStudent().setProsjecnaOcjena(prosjek);
 
-					prosjecnaLab.setText("Prosjecna ocjena: " + Math.round(prosjek * 100.0) / 100.0);
-					espbLab.setText("Ukupno ESPB: " + ESPB);
+					prosjecnaLab.setText(GlavniProzor.getInstance().resourceBundle.getString("polProsjecna") + Math.round(prosjek * 100.0) / 100.0);
+					espbLab.setText(GlavniProzor.getInstance().resourceBundle.getString("polUkupnoEspb") + " " + ESPB);
 					
 					azurirajPrikazPolozenihPredmeta("DODAT", -1);
 					
 					
 				}else {
-					JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
+					JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiPredmet"));
 				}
 				
 			}

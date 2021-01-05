@@ -28,7 +28,10 @@ public class ToolBar extends JToolBar{
 	private static final long serialVersionUID = 1L;
 	
 	JButton btn1;
-	
+	JButton btn2;
+	JButton btn3;
+	JButton Btn4;
+
 	public ToolBar() {
 	
 	AddAction dodaj = new AddAction();
@@ -39,27 +42,29 @@ public class ToolBar extends JToolBar{
 	//btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), GlavniProzor.getInstance().getResourceBundle().getString("toolNew"));
 
 	btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-    KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), "New");
-
+    //KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), "New");
+	KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), GlavniProzor.getInstance().getResourceBundle().getString("toolNew"));
 	addSeparator();
 	
 	
 	InsertAction izmeni = new InsertAction();
-	JButton btn2 = new JButton(izmeni);
-	//btn2.setToolTipText("Izmeni");
+     btn2 = new JButton(izmeni);
+	//btn2.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("toolEdit"));
 	btn2.setIcon(new ImageIcon("imgs" + File.separator + "olovka.jpg"));
 	add(btn2);
 	btn2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-	        KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK), "Edit");
+	      //  KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK), "Edit");
+	KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK), GlavniProzor.getInstance().getResourceBundle().getString("toolEdit"));
 	addSeparator();
 	
 	
 	DeleteAction izbrisi = new DeleteAction();
-	JButton btn3 = new JButton(izbrisi);
+	 btn3 = new JButton(izbrisi);
 	//btn3.setToolTipText("Obrisi");
 	add(btn3);
 	btn3.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-	        KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK), "Delete");
+	       // KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK), "Delete");
+	 KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK), GlavniProzor.getInstance().getResourceBundle().getString("toolDelete"));
 	setFloatable(false);
 	
 	
@@ -75,8 +80,8 @@ public class ToolBar extends JToolBar{
 	add(panBottom);
 	
 	
-	JButton Btn4 = new JButton();
-	Btn4.setToolTipText("Search");
+	Btn4 = new JButton();
+	Btn4.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("toolSearch"));
 	Btn4.setIcon(new ImageIcon("imgs" + File.separator +"search.jpg"));
 	add(Btn4);
 	
@@ -114,14 +119,29 @@ public class ToolBar extends JToolBar{
 		}
 	});
 	
-	/*oolBar toolbar = new JToolBar();
-	toolbar.add(dodaj);*/
 	
 	setVisible(true);
 	}
 	
 	
 	public void initToolBar() {
+		
+		/*btn1.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("toolNew"));
+		btn2.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("toolEdit"));
+		btn3.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("toolDelete"));*/
+		//Btn4.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("toolSearch"));
+
+		/*btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+			    //KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), "New");
+				KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), GlavniProzor.getInstance().getResourceBundle().getString("toolNew"));
+		btn3.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+			       // KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK), "Delete");
+			 KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK), GlavniProzor.getInstance().getResourceBundle().getString("toolDelete"));
+			setFloatable(false);
+			
+			btn2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+				      //  KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK), "Edit");
+				KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK), GlavniProzor.getInstance().getResourceBundle().getString("toolEdit"));*/
 		
 	}
 }
