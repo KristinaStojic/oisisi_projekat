@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -21,7 +23,8 @@ public class GlavniProzor extends JFrame {
 	private static GlavniProzor instance = null;
 	
 	private GlavniProzor() {
-		initialise();
+		Locale.setDefault(new Locale("sr", "RS"));
+		resourceBundle = ResourceBundle.getBundle("MessageResources.MessageResources", Locale.getDefault());
 	}
 	
     /**
@@ -31,7 +34,7 @@ public class GlavniProzor extends JFrame {
 
 	public MyTabbedPane tabbedPane;
 	
-	
+	public ResourceBundle resourceBundle;
 
 	MenuBar menu;
 	StatusBar status;
@@ -51,7 +54,7 @@ public class GlavniProzor extends JFrame {
         setLocationRelativeTo(null);
         
 
-        	/*menu = new MenuBar();
+        	menu = new MenuBar();
       		this.setJMenuBar(menu);
       		
       		ToolBar tool = new ToolBar();
@@ -62,7 +65,7 @@ public class GlavniProzor extends JFrame {
       		
       		tabbedPane = new MyTabbedPane();
       		this.add(tabbedPane, BorderLayout.CENTER);
-*/
+
 
         
         
@@ -127,26 +130,19 @@ this.addWindowListener(new WindowListener() {
 				
 			}
 		});
-        
-        MenuBar menu = new MenuBar();
-		this.setJMenuBar(menu);
-		
-		ToolBar tool = new ToolBar();
-		this.add(tool, BorderLayout.NORTH);
-
-		StatusBar status = new StatusBar();
-		this.add(status, BorderLayout.SOUTH);
-		
-		tabbedPane = new MyTabbedPane();
-		this.add(tabbedPane, BorderLayout.CENTER);
 		
     }
 	
 	public static GlavniProzor getInstance() {
 		if(instance == null) {
 			instance = new GlavniProzor();
+			instance.initialise();
 		}
 		return instance;
+	}
+	
+	public ResourceBundle getResourceBundle() {
+		return resourceBundle;
 	}
 	
 	public void azurirajPrikaz(String str, int i) {
@@ -158,12 +154,12 @@ this.addWindowListener(new WindowListener() {
  
 	public void changeLanguage() {
 	
-		/*resourceBundle = ResourceBundle.getBundle("MessageResources.MessageResources", Locale.getDefault());
+		resourceBundle = ResourceBundle.getBundle("MessageResources.MessageResources", Locale.getDefault());
 		setTitle(resourceBundle.getString("Naslov"));
 		 
-		menu.initMenu();*/
+		menu.initMenu();
 		status.initStatus();
-		//tabbedPane.initTab();
+		tabbedPane.initTab();
 	}
 	
 }

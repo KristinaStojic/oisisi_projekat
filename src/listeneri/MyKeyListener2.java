@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import izgledAplikacije.GlavniProzor;
+
 public class MyKeyListener2 implements KeyListener {
 
 	@Override
@@ -23,7 +25,7 @@ public class MyKeyListener2 implements KeyListener {
 		}
 		JTextField txt = (JTextField) e.getComponent();
 		if (txt.getText().length() == 10) {
-			JOptionPane.showMessageDialog(null, "Možete unijeti maksimalno 10 karaktera!");
+			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("max10"));
 			txt.setText(txt.getText().substring(0, 10));
 		}
 
@@ -40,7 +42,7 @@ public class MyKeyListener2 implements KeyListener {
 		Pattern pattern = Pattern.compile("[A-Z|0-9]*");
 				
 		if(!pattern.matcher(txt.getText()).matches()) {
-			JOptionPane.showMessageDialog(null, "Dozvoljen je samo unos velikih slova i brojeva!");
+			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("slovaIVb"));
 			txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
 		}
 

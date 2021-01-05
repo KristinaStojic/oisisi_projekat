@@ -28,11 +28,12 @@ public class BazaOcjena {
 		
 		this.kolone = new ArrayList<String>();
 		
-		this.kolone.add("Šifra predmeta");
-		this.kolone.add("Naziv predmeta");
-		this.kolone.add("ESPB");
-		this.kolone.add("Ocena");
-		this.kolone.add("Datum");
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("kolSifra"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("kolNaziv"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("kolESPB"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("kolOcena"));
+		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("kolDatum"));
+		
 		
 	}
 	

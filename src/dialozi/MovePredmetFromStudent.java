@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.StudentiController;
+import izgledAplikacije.GlavniProzor;
 import model.Predmet;
 import model.Student;
 
@@ -28,21 +29,22 @@ public class MovePredmetFromStudent extends JDialog{
 	JButton odustani;
 	
 	public MovePredmetFromStudent(Student student, Predmet predmet) {
-		setTitle("Uklanjanje predmeta");
+		setTitle(GlavniProzor.getInstance().resourceBundle.getString("uklanjanjePredmeta"));
 		setSize(new Dimension(420, 150));
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setModal(true);
 		
 		panDlt = new JPanel();
-		lblDlt = new JLabel("Da li ste sigurni da zelite da uklonite predmet?");
+		lblDlt = new JLabel(GlavniProzor.getInstance().resourceBundle.getString("potvrdaUklanjanjaPredmeta"));
 		lblDlt.setFont(new Font("TimesNewRoman", Font.PLAIN, 17));
 		panDlt.add(lblDlt);
 		
 		
 		panBtn = new JPanel();
-		potvrdi = new JButton("DA");
-		odustani = new JButton("NE");
+		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("da"));
+		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("ne"));
+		
 		
 		potvrdi.addActionListener(new ActionListener() {
 			

@@ -17,6 +17,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import controller.ProfesorController;
+import izgledAplikacije.GlavniProzor;
 import model.BazaProfesora;
 import model.Predmet;
 import model.Profesor;
@@ -41,11 +42,8 @@ public class ChooseProffesor extends JDialog{
 	Profesor izabrani;
 	
 	public ChooseProffesor(Predmet predmet, JButton plus, JButton minus) {
-		//setTitle(GlavniProzor.getInstance().resourceBundle.getString("odaberiProfesora"));
-	}
-	public ChooseProffesor(Predmet predmet) {
-		setTitle("Odaberi profesora");
-
+		
+		setTitle(GlavniProzor.getInstance().resourceBundle.getString("odaberiProfesora"));
 		setSize(400,400);
 		setLocationRelativeTo(null);
 		setModal(true);
@@ -69,9 +67,9 @@ public class ChooseProffesor extends JDialog{
 		
 		btnPan = new JPanel();
 		
-		potvrdi = new JButton("Potvrdi");
+		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
 		
-		odustani = new JButton("Odustani");
+		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
 		
 		btnPan.add(potvrdi);
 		btnPan.add(odustani);
@@ -81,18 +79,18 @@ public class ChooseProffesor extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(profList.isSelectionEmpty()) {
-					JOptionPane.showMessageDialog(null, "Morate izabrati profesora");
+					JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiProfesora"));
 				}else {
 					izabrani = BazaProfesora.getInstance().getProfesori().get(profList.getSelectedIndex());
 					EditPredmet.txtProf.setText(izabrani.getIme() + " " + izabrani.getPrezime());
 					predmet.setPredmeni_profesor(izabrani);
 					ProfesorController.getInstance().dodajPredmet(izabrani, predmet);
 					if(predmet.getPredmetni_profesor() != null) {
-						//plus.setEnabled(false);
-						//minus.setEnabled(true);
+						plus.setEnabled(false);
+						minus.setEnabled(true);
 					}else {
-						//plus.setEnabled(true);
-						//minus.setEnabled(false);
+						plus.setEnabled(true);
+						minus.setEnabled(false);
 					}
 					dispose();
 				}
