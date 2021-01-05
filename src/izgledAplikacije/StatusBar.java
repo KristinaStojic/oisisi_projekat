@@ -18,11 +18,13 @@ public class StatusBar extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	JLabel label;
+	
 	public StatusBar() {
 		setLayout(new BorderLayout());
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
-		JLabel label = new JLabel(GlavniProzor.getInstance().getResourceBundle().getString("Naslov"));
+		label = new JLabel(GlavniProzor.getInstance().getResourceBundle().getString("Naslov"));
 		
 		Date dNow = new Date();
 	    SimpleDateFormat ft = new SimpleDateFormat ("hh:mm MM.dd.yyy ");
@@ -40,4 +42,9 @@ public class StatusBar extends JPanel{
 		this.add(clock,BorderLayout.EAST);
 
 	}
+	
+	public void initStatus() {
+		label.setText(GlavniProzor.getInstance().getResourceBundle().getString("Naslov"));
+	}
+	
 }

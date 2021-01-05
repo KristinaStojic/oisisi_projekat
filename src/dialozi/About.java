@@ -14,9 +14,11 @@ public class About extends JDialog{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	JTextPane txt;
+	
 	public About(GlavniProzor gp) {
 		super(gp,"About",true);
-		JTextPane txt = new JTextPane();
+		txt = new JTextPane();
 		String tekst = GlavniProzor.getInstance().resourceBundle.getString("about");
 				
 		txt.setText(tekst);
@@ -26,4 +28,5 @@ public class About extends JDialog{
 		setSize(new Dimension(500,400));
 		setLocationRelativeTo(null);		
 	}
+	
 }

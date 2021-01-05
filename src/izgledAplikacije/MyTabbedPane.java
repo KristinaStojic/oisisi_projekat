@@ -120,4 +120,9 @@ enum Tab {Studenti, Profesori, Predmeti};
 		validate();
 	}
 	
+	public void initTab() {
+		setTitleAt(0, GlavniProzor.getInstance().getResourceBundle().getString("tabStudenti"));
+		BazaStudenata.getInstance().initKoloneStudenti();
+	}
+	
 }

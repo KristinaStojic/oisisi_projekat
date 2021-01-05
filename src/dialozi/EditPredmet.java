@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -189,7 +188,6 @@ public class EditPredmet extends JDialog{
 				public void actionPerformed(ActionEvent e) {
 					chooseProffesor = new ChooseProffesor(p, plus, minus);
 					chooseProffesor.setVisible(true);
-					
 						
 				}
 			});
@@ -283,9 +281,9 @@ public class EditPredmet extends JDialog{
 				boolean postoji = false;
 				for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
 					if((txtSifra.getText().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta())
-							&& GlavniProzor.getInstance().tabbedPane.getIzabraniPredmet().getId() != BazaPredmeta.getInstance().getPredmeti().get(i).getId())) {
+							&& p.getId() != BazaPredmeta.getInstance().getPredmeti().get(i).getId())) {
 						txtSifra.setToolTipText("Predmet sa unesenom sifrom vec postoji!");
-						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiSifra"));
+						//JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiSifra"));
 						postoji = true;
 					}
 				}

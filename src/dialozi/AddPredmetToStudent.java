@@ -122,5 +122,5 @@ public class AddPredmetToStudent extends JDialog{
 		add(profPan, BorderLayout.CENTER);
 		add(btnPan, BorderLayout.SOUTH);
 	}
-
+	
 }

@@ -594,10 +594,10 @@ public class EditStudent extends JDialog {
 				boolean postoji = false;
 				for(int i = 0; i < BazaStudenata.getInstance().getStudenti().size(); i++) {
 					if((txtBri.getText().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))
-							&& BazaStudenata.getInstance().getStudenti().get(i).getId() != GlavniProzor.getInstance().tabbedPane.getIzabraniStudent().getId()) {
+							&& BazaStudenata.getInstance().getStudenti().get(i).getId() != s.getId()) {
 						postoji = true;
 						txtBri.setToolTipText("Uneseni broj indeksa vec postoji!");
-						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));
+						//JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));
 					}
 				}
 				if(ispravan_unos && sve_uneseno && !postoji) {

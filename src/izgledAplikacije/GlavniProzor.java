@@ -37,6 +37,7 @@ public class GlavniProzor extends JFrame {
 	public ResourceBundle resourceBundle;
 	
 	MenuBar menu;
+	StatusBar status;
 	
 	private void initialise() {
 		
@@ -50,13 +51,13 @@ public class GlavniProzor extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         
-        menu = new MenuBar();
+        	menu = new MenuBar();
       		this.setJMenuBar(menu);
       		
       		ToolBar tool = new ToolBar();
       		this.add(tool, BorderLayout.NORTH);
 
-      		StatusBar status = new StatusBar();
+      		status = new StatusBar();
       		this.add(status, BorderLayout.SOUTH);
       		
       		tabbedPane = new MyTabbedPane();
@@ -147,5 +148,15 @@ public class GlavniProzor extends JFrame {
 		validate();
 	}
  
+	public void changeLanguage() {
+	
+		resourceBundle = ResourceBundle.getBundle("MessageResources.MessageResources", Locale.getDefault());
+		setTitle(resourceBundle.getString("Naslov"));
+		 
+		menu.initMenu();
+		status.initStatus();
+		tabbedPane.initTab();
+		tabbedPane.azurirajPrikazStudenata("PREVEDENO", -1);
+	}
 	
 }
