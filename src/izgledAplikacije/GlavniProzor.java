@@ -156,7 +156,6 @@ public class GlavniProzor extends JFrame {
 		menu.initMenu();
 		status.initStatus();
 		tabbedPane.initTab();
-		tabbedPane.azurirajPrikazStudenata("PREVEDENO", -1);
 	}
 	
 }

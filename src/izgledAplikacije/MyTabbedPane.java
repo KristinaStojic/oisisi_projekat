@@ -122,7 +122,12 @@ enum Tab {Studenti, Profesori, Predmeti};
 	
 	public void initTab() {
 		setTitleAt(0, GlavniProzor.getInstance().getResourceBundle().getString("tabStudenti"));
-		BazaStudenata.getInstance().initKoloneStudenti();
+		studentiTabela.getColumnModel().getColumn(0).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtIndeks"));
+		studentiTabela.getColumnModel().getColumn(1).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtIme"));
+		studentiTabela.getColumnModel().getColumn(2).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtPrezime"));
+		studentiTabela.getColumnModel().getColumn(3).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtGodinaStudija"));
+		studentiTabela.getColumnModel().getColumn(4).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtStatus"));
+		studentiTabela.getColumnModel().getColumn(5).setHeaderValue(GlavniProzor.getInstance().getResourceBundle().getString("jtProsjek"));
 	}
 	
 }

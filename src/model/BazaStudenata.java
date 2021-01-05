@@ -46,15 +46,6 @@ public class BazaStudenata {
 		this.kolone.add(GlavniProzor.getInstance().getResourceBundle().getString("jtProsjek"));
 	}
 	
-	public void initKoloneStudenti() {
-		this.kolone.set(0, GlavniProzor.getInstance().getResourceBundle().getString("jtIndeks"));
-		this.kolone.set(1, GlavniProzor.getInstance().getResourceBundle().getString("jtIme"));
-		this.kolone.set(2, GlavniProzor.getInstance().getResourceBundle().getString("jtPrezime"));
-		this.kolone.set(3, GlavniProzor.getInstance().getResourceBundle().getString("jtGodinaStudija"));
-		this.kolone.set(4, GlavniProzor.getInstance().getResourceBundle().getString("jtStatus"));
-		this.kolone.set(5, GlavniProzor.getInstance().getResourceBundle().getString("jtProsjek"));
-	}
-	
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
 		/*try {
