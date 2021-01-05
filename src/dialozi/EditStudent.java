@@ -139,13 +139,13 @@ public class EditStudent extends JDialog {
 		setResizable(false);
 		
 		informacijePanel = informacijeIzmjena(s);
-		pane.add("Informacije",informacijePanel);
+		pane.add(GlavniProzor.getInstance().getResourceBundle().getString("editInfoTab"),informacijePanel);
 		
 		polozeniPanel = polozeniIzmjena();
-		pane.add("Položeni",polozeniPanel);
+		pane.add(GlavniProzor.getInstance().getResourceBundle().getString("editPolozeniTab"),polozeniPanel);
 		
 		nepolozeniPanel = nepolozeniIzmjena();
-		pane.add("Nepoloženi",nepolozeniPanel);
+		pane.add(GlavniProzor.getInstance().getResourceBundle().getString("editNepolozeni"),nepolozeniPanel);
 		
 		add(pane);
 		
@@ -604,7 +604,7 @@ public class EditStudent extends JDialog {
 					if((txtBri.getText().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))
 							&& BazaStudenata.getInstance().getStudenti().get(i).getId() != s.getId()) {
 						postoji = true;
-						txtBri.setToolTipText("Uneseni broj indeksa vec postoji!");
+						txtBri.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("postojiIndeks"));
 						//JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));
 					}
 				}

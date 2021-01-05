@@ -17,22 +17,12 @@ public class About extends JDialog{
 	JTextPane txt;
 	
 	public About(GlavniProzor gp) {
-		super(gp,"About",true);
+		super(gp,GlavniProzor.getInstance().getResourceBundle().getString("mniAbout"),true);
 
 		txt = new JTextPane();
-//		String tekst = GlavniProzor.getInstance().resourceBundle.getString("about");
-				
 
 		JTextPane txt = new JTextPane();
-		String tekst = "Verzija: 2020/2021\n"
-						+ "Aplikacija studentska sluzba\n"
-						+ "Student 1:\n"
-						+ "Katarina Žerajić\n"
-						+ "Rođena 20.10.1999 u Nevesinju. Student treće godine racunarstva i automatike.\n"
-						+ "Student 2:\n"
-						+ "Kristina Stojić\n"
-						+ "Rođena 5.03.1999 u Zvorniku. Student treće godine racunarstva i automatike.";
-
+		String tekst = GlavniProzor.getInstance().getResourceBundle().getString("about");
 		txt.setText(tekst);
 		txt.setEditable(false);
 		add(txt);

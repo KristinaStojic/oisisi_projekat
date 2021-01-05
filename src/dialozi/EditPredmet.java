@@ -283,7 +283,7 @@ public class EditPredmet extends JDialog{
 				for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
 					if((txtSifra.getText().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta())
 							&& p.getId() != BazaPredmeta.getInstance().getPredmeti().get(i).getId())) {
-						txtSifra.setToolTipText("Predmet sa unesenom sifrom vec postoji!");
+						txtSifra.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("postojiSifra"));
 						//JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiSifra"));
 						postoji = true;
 					}
