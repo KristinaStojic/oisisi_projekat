@@ -53,7 +53,7 @@ public class DeleteAction extends AbstractAction{
 				DeleteStudent deleteStudent = new DeleteStudent(izabraniStudent);
 				deleteStudent.setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(null, "Morate izabrati studenta!");
+				JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("morateIzabratiStudenta"));
 			}
 		}else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 1) {
 			Profesor izabraniProfesor = GlavniProzor.getInstance().tabbedPane.getIzabraniProfesor();
@@ -62,6 +62,7 @@ public class DeleteAction extends AbstractAction{
 				DeleteProfesor deleteProfesor = new DeleteProfesor(izabraniProfesor);
 				deleteProfesor.setVisible(true);
 			}else {
+				JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("morateIzabratiProfesora"));
 			}
 		}
 

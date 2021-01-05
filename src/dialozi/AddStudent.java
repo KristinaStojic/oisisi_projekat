@@ -314,7 +314,7 @@ public class AddStudent extends JDialog {
 				for(int i = 0; i < BazaStudenata.getInstance().getStudenti().size(); i++) {
 					if((txtBri.getText().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))) {
 						postoji = true;
-						txtBri.setToolTipText("Uneseni broj indeksa vec postoji!");
+						txtBri.setToolTipText( GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));
 						//JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));
 					}
 				}

@@ -123,6 +123,7 @@ public class MenuBar extends JMenuBar{
 
 		miAbout = new JMenuItem(GlavniProzor.getInstance().getResourceBundle().getString("mniAbout"), icon);
 
+		miAbout.setMnemonic(KeyEvent.VK_A);
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
 		miAbout.addActionListener(new ActionListener(){
 

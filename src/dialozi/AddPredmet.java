@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.regex.Pattern;
 
 import javax.swing.BoxLayout;
@@ -13,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -134,12 +135,16 @@ public class AddPredmet  extends JDialog {
 		
 		panBtn = new JPanel();
 		potvrdi = new JButton(GlavniProzor.getInstance().getResourceBundle().getString("btnPotvrdi"));
+		potvrdi.setEnabled(false);
 		potvrdi.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {		
-					if(txtSifra.getText().trim().isEmpty()|| txtNaziv.getText().trim().isEmpty() 
+					Predmet predmet = collectData();
+					PredmetController.getInstance().dodajPredmet(predmet);
+					dispose();
+					/*if(txtSifra.getText().trim().isEmpty()|| txtNaziv.getText().trim().isEmpty() 
 							|| txtGodina.getText().trim().isEmpty()	|| txtESPB.getText().trim().isEmpty()) {
 						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("svaPolja"));
 					}else {
@@ -165,12 +170,61 @@ public class AddPredmet  extends JDialog {
 							dispose();
 						}
 						
-					}
+					}*/
 				}catch(Exception ex) {
 					ex.printStackTrace();
 				}
 			}
 		});
+		
+		KeyListener provjera = new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				boolean sve_uneseno = false;
+				if(txtSifra.getText().trim().isEmpty()|| txtNaziv.getText().trim().isEmpty() 
+						|| txtGodina.getText().trim().isEmpty()	|| txtESPB.getText().trim().isEmpty()) {
+					sve_uneseno = false;
+				}else {
+					sve_uneseno = true;
+				}
+					boolean postoji = false;
+					for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
+						if((txtSifra.getText().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta()))) {
+							//JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("postojiSifra"));
+							postoji = true;
+						}
+					}
+					boolean ispravan_unos = false;
+					Pattern godina = Pattern.compile("[1-6]");
+					Pattern espb = Pattern.compile("[1-9][0-9]?");
+					if(godina.matcher(txtGodina.getText()).matches() && espb.matcher(txtESPB.getText()).matches()){
+						ispravan_unos = true;
+					}
+					if(!postoji && sve_uneseno && ispravan_unos) {
+						potvrdi.setEnabled(true);
+					}else {
+						potvrdi.setEnabled(false);
+					}		
+				}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+		
+		txtESPB.addKeyListener(provjera);
+		txtGodina.addKeyListener(provjera);
+		txtNaziv.addKeyListener(provjera);
+		txtSifra.addKeyListener(provjera);
 		
 		odustani = new JButton(GlavniProzor.getInstance().getResourceBundle().getString("btnOdustani"));
 		odustani.addActionListener(new ActionListener() {

@@ -51,7 +51,7 @@ public class InsertAction extends AbstractAction{
 				editStudent.setVisible(true);
 				GlavniProzor.getInstance().azurirajPrikaz("IZMJENI", -1);
 			}else {
-				JOptionPane.showMessageDialog(null, "Morate izabrati studenta!");
+				JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("morateIzabratiStudenta"));
 			}
 		}else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 2) {
 			Predmet izabraniPredmet = GlavniProzor.getInstance().tabbedPane.getIzabraniPredmet();
@@ -60,7 +60,7 @@ public class InsertAction extends AbstractAction{
 				editPredmet.setVisible(true);
 				GlavniProzor.getInstance().azurirajPrikaz("IZMJENE", -1);
 			}else {
-				JOptionPane.showMessageDialog(null, "Morate izabrati predmet!");
+				JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("morateIzabratiPredmet"));
 			}
 		}
 
