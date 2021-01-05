@@ -145,7 +145,7 @@ public class EditStudent extends JDialog {
 		pane.add(GlavniProzor.getInstance().getResourceBundle().getString("editPolozeniTab"),polozeniPanel);
 		
 		nepolozeniPanel = nepolozeniIzmjena();
-		pane.add(GlavniProzor.getInstance().getResourceBundle().getString("editNepolozeni"),nepolozeniPanel);
+		pane.add(GlavniProzor.getInstance().getResourceBundle().getString("editNepolozeniTab"),nepolozeniPanel);
 		
 		add(pane);
 		
