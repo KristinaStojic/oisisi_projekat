@@ -217,9 +217,11 @@ public class BazaStudenata {
 
 	public void naprednaPretraga(String txt) {
 		zadovoljavajuPretragu = new ArrayList<Student>();
-		String[] tekst = txt.split(" ");
+		
 		boolean prosao = true;
 		for(Student s : privremeno) {
+			String[] tekst = txt.split(" ");
+			prosao = true;
 			if(tekst[1].equals("=")) {
 				for(int i = 2; i < tekst.length; i++) {
 					tekst[i] = tekst[i].replaceAll("[()]", "");
@@ -227,9 +229,8 @@ public class BazaStudenata {
 						i++;
 						if(tekst[i].equals("==")) {
 							i++;
-							if(tekst[i].charAt(0) == '/') {
+							if(tekst[i].startsWith("/")) {
 								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
-								System.out.println(tekst[i]);
 								Pattern pattern = Pattern.compile(tekst[i]);
 								if(!pattern.matcher(s.getBrojIndeksa().toUpperCase()).matches()) {
 									prosao = false;
@@ -242,8 +243,8 @@ public class BazaStudenata {
 							}
 						}else if(tekst[i].equals("!=")) {	
 							i++;
-							if(tekst[i].charAt(0) == '/') {
-								tekst[i] = tekst[i].replaceAll("[/]", "");
+							if(tekst[i].startsWith("/")) {
+								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
 								Pattern pattern = Pattern.compile(tekst[i]);
 								if(pattern.matcher(s.getBrojIndeksa().toUpperCase()).matches()) {
 									prosao = false;
@@ -256,7 +257,36 @@ public class BazaStudenata {
 							}
 						}
 					}else if(tekst[i].equals("ime")) {
-						
+						i++;
+						if(tekst[i].equals("==")) {
+							i++;
+							if(tekst[i].startsWith("/")) {
+								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
+								Pattern pattern = Pattern.compile(tekst[i]);
+								if(!pattern.matcher(s.getImeStudenta().toUpperCase()).matches()) {
+									prosao = false;
+								}
+							}else {
+								tekst[i] = tekst[i].replaceAll("[\"]", "");
+								if(!s.getImeStudenta().toUpperCase().equals(tekst[i].toUpperCase())) {
+									prosao = false;
+								}
+							}
+						}else if(tekst[i].equals("!=")) {	
+							i++;
+							if(tekst[i].startsWith("/")) {
+								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
+								Pattern pattern = Pattern.compile(tekst[i]);
+								if(pattern.matcher(s.getImeStudenta().toUpperCase()).matches()) {
+									prosao = false;
+								}
+							}else {
+								tekst[i] = tekst[i].replaceAll("[\"]", "");
+								if(s.getImeStudenta().toUpperCase().equals(tekst[i].toUpperCase())) {
+									prosao = false;
+								}
+							}
+						}
 					}else if(tekst[i].equals("prezime")) {
 						
 					}else if(tekst[i].equals("godina")) {
