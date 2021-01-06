@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.regex.Pattern;
 
 import javax.swing.BoxLayout;
@@ -13,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -259,34 +260,33 @@ public class AddProfessor  extends JDialog {
 		
 		
 		panBtn = new JPanel();
-		//potvrdi = new JButton("Potvrdi");
 		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
+		potvrdi.setEnabled(false);
 		potvrdi.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
+			//	try {
 				
-					if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
-							|| txtDatum.getText().trim().isEmpty() || txtAdresa.getText().trim().isEmpty()
-								|| txtTel.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()
-									|| txtAdresaKanc.getText().trim().isEmpty() || txtBrLicne.getText().trim().isEmpty()) {
-						//JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
-						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("svaPolja"));
+				//	if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
+				//			|| txtDatum.getText().trim().isEmpty() || txtAdresa.getText().trim().isEmpty()
+				//				|| txtTel.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()
+				//					|| txtAdresaKanc.getText().trim().isEmpty() || txtBrLicne.getText().trim().isEmpty()) {
+				//		JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("svaPolja"));
 
-					}else {
-						Profesor profesor = collectData();
-						//System.out.println(profesor);
-						boolean postoji = false;
-						for(int i = 0; i < BazaProfesora.getInstance().getProfesori().size(); i++) {
-							if((profesor.getBrojLicneKarte().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))) {
-								//JOptionPane.showMessageDialog(null, "Uneseni broj lične karte već postoji!");
-								JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiLicna"));
+				//	}else {
+					//	Profesor profesor = collectData();
+						
+				//		boolean postoji = false;
+					//	for(int i = 0; i < BazaProfesora.getInstance().getProfesori().size(); i++) {
+					//		if((profesor.getBrojLicneKarte().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))) {
+					//			//JOptionPane.showMessageDialog(null, "Uneseni broj lične karte već postoji!");
+					//			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiLicna"));
 
-								postoji = true;
-							}}
-							if(!postoji) {
-								Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
+					//			postoji = true;
+					//		}}
+					//		if(!postoji) {
+					/*			Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
 								Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
 								Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
 								Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
@@ -311,11 +311,84 @@ public class AddProfessor  extends JDialog {
 					}
 				}catch(Exception ex) {
 					ex.printStackTrace();
-				}
+				}*/
+				
+				Profesor profesor;
+				profesor = collectData();
+				ProfesorController.getInstance().dodajProfesora(profesor);
+				dispose();
 			}
 		});
 		
-	//	odustani = new JButton("Odustani");
+	
+		
+		
+KeyListener provjera = new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				boolean sve_uneseno = false;
+				if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
+									|| txtTel.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()
+											|| txtAdresaKanc.getText().trim().isEmpty() || txtBrLicne.getText().trim().isEmpty() || txtDatum.getText().trim().isEmpty()) {
+					sve_uneseno = false;
+				}else {
+					sve_uneseno = true;
+				}
+				Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
+				Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
+				Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
+				Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
+				
+				boolean ispravan_unos = false;
+				if(datum.matcher(txtDatum.getText()).matches() && adresa.matcher(txtAdresa.getText()).matches()
+						&& telefon.matcher(txtTel.getText()).matches() && mejl.matcher(txtEmail.getText()).matches()
+						&& adresa.matcher(txtAdresaKanc.getText()).matches()) {
+					ispravan_unos = true;
+				} {
+					ispravan_unos = true;
+				}
+				boolean postoji = false;
+				for(int i = 0; i < BazaProfesora.getInstance().getProfesori().size(); i++) {
+						if((txtBrLicne.getText().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))) {
+							postoji = true;
+							txtBrLicne.setToolTipText( GlavniProzor.getInstance().resourceBundle.getString("postojiLicna"));
+							
+							
+				}else {
+					txtBrLicne.setToolTipText(null);
+
+				}
+				if(ispravan_unos && sve_uneseno && !postoji) {
+					potvrdi.setEnabled(true);
+				}else {
+					potvrdi.setEnabled(false);
+				}
+			}
+			}
+			@Override
+			public void keyPressed(KeyEvent e) {}};
+				
+			
+			txtIme.addKeyListener(provjera);
+			txtPrz.addKeyListener(provjera);
+			txtAdresa.addKeyListener(provjera);
+			txtAdresaKanc.addKeyListener(provjera);
+			txtBrLicne.addKeyListener(provjera);
+			txtDatum.addKeyListener(provjera);
+			txtEmail.addKeyListener(provjera);
+			txtTel.addKeyListener(provjera);
+			
+		
+		
+		
+		
+		
 		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
 
 		odustani.addActionListener(new ActionListener() {
