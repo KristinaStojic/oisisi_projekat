@@ -219,7 +219,7 @@ public class AddStudent extends JDialog {
 		panBtn = new JPanel();
 		
 		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
-		
+		potvrdi.setEnabled(false);
 		potvrdi.addActionListener(new ActionListener() {
 			
 			@Override
