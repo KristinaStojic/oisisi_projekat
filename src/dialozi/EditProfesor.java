@@ -327,11 +327,11 @@ public class EditProfesor extends JDialog {
 									Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
 									Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
 									Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
-									
+									Pattern brLicne = Pattern.compile("[A-Z|0-9]*");
 									boolean ispravan_unos = false;
 									if(datum.matcher(profesor.getDatumRodjenja()).matches() && adresa.matcher(profesor.getAdresaStanovanja()).matches()
 											&& telefon.matcher(profesor.getKontaktTelefon()).matches() && mejl.matcher(profesor.getEmailAdresa()).matches()
-											&& adresa.matcher(profesor.getAdresaKancelarije()).matches()) {
+											&& adresa.matcher(profesor.getAdresaKancelarije()).matches() && brLicne.matcher(profesor.getBrojLicneKarte()).matches()) {
 										ispravan_unos = true;
 									}
 									if(!ispravan_unos) {
