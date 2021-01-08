@@ -113,10 +113,33 @@ public class Predmet implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Predmet [sifra_predmeta=" + sifra_predmeta + ", naziv_predmeta=" + naziv_predmeta + ", semestar="
-				+ semestar + ", godina_izvodjenja=" + godina_izvodjenja + ", predmetni_profesor=" + predmetni_profesor
-				+ ", broj_ESPB=" + broj_ESPB + ", studenti_polozili=" + studenti_polozili + ", studenti_nisu_polozili="
-				+ studenti_nisu_polozili + ", id=" + id + "]";
+		return "Predmet [sifra_predmeta=" + sifra_predmeta;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + broj_ESPB;
+		result = prime * result + godina_izvodjenja;
+		result = prime * result + id;
+		result = prime * result + ((naziv_predmeta == null) ? 0 : naziv_predmeta.hashCode());
+		result = prime * result + ((predmetni_profesor == null) ? 0 : predmetni_profesor.hashCode());
+		result = prime * result + ((semestar == null) ? 0 : semestar.hashCode());
+		result = prime * result + ((sifra_predmeta == null) ? 0 : sifra_predmeta.hashCode());
+		result = prime * result + ((studenti_nisu_polozili == null) ? 0 : studenti_nisu_polozili.hashCode());
+		result = prime * result + ((studenti_polozili == null) ? 0 : studenti_polozili.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Predmet other = (Predmet) obj;
+		if(this.sifra_predmeta.equals(other.sifra_predmeta)) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	
