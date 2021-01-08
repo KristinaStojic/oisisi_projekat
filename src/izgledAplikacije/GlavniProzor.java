@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
 import model.BazaPredmeta;
@@ -55,7 +56,11 @@ public class GlavniProzor extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         
-
+        UIManager.put("OptionPane.yesButtonText", resourceBundle.getObject("da"));
+		UIManager.put("OptionPane.noButtonText", resourceBundle.getObject("ne"));
+		UIManager.put("OptionPane.okButtonText", resourceBundle.getObject("btnPotvrdi"));
+		UIManager.put("OptionPane.cancelButtonText", resourceBundle.getObject("btnOdustani"));
+		
         	menu = new MenuBar();
       		this.setJMenuBar(menu);
       		
@@ -164,6 +169,11 @@ this.addWindowListener(new WindowListener() {
 		status.initStatus();
 		tabbedPane.initTab();
 		//toolbar.initToolBar();
+		
+		UIManager.put("OptionPane.yesButtonText", resourceBundle.getObject("da"));
+		UIManager.put("OptionPane.noButtonText", resourceBundle.getObject("ne"));
+		UIManager.put("OptionPane.okButtonText", resourceBundle.getObject("btnPotvrdi"));
+		UIManager.put("OptionPane.cancelButtonText", resourceBundle.getObject("btnOdustani"));
 	}
 	
 }
