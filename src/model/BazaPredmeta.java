@@ -96,10 +96,11 @@ public class BazaPredmeta {
 		for(Predmet i : predmeti) {
 			if(i.getSifra_predmeta().equals(p.getSifra_predmeta())) {
 				predmeti.remove(p);
+				pomocni.remove(p);
 				break;
 			}
 		}
-		pomocni = predmeti;
+		//pomocni = predmeti;
 	}
 	
 	public List<Predmet> getPredmeti() {
@@ -117,7 +118,7 @@ public class BazaPredmeta {
 	public void dodajPredmet(Predmet p) {
 		p.setId(id++);
 		this.predmeti.add(p);
-		pomocni = predmeti;
+		//pomocni = predmeti;
 	}
 
 	public String getColumnName(int index) {
@@ -160,7 +161,7 @@ public class BazaPredmeta {
 				pr.setStudenti_nisu_polozili(p.getStudenti_nisu_polozili());
 			}
 		}
-		pomocni = predmeti;
+		//pomocni = predmeti;
 	}
 	
 	
