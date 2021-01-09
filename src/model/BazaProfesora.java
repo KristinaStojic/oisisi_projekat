@@ -86,10 +86,11 @@ public class BazaProfesora {
 		for(Profesor p : profesori) {
 			if(p.getId() == id) {
 				profesori.remove(p);
+				pomocni.remove(p);
 				break;
 			}
 		}
-		pomocni = profesori;
+		//pomocni = profesori;
 	}
 	
 	public void izmeniProfesora(Profesor p) {
@@ -108,7 +109,7 @@ public class BazaProfesora {
 				//System.out.println(i);
 			}	
 			}
-		pomocni = profesori;
+		//pomocni = profesori;
 	}
 	public List<Profesor> getProfesori(){
 		return profesori;
