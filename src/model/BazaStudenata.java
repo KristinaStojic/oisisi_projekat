@@ -216,6 +216,7 @@ public class BazaStudenata {
 
 	public void naprednaPretraga(String txt) {
 		zadovoljavajuPretragu = new ArrayList<Student>();
+		boolean pogresanUnos = false;
 		
 		boolean prosao = true;
 		for(Student s : privremeno) {
@@ -227,8 +228,7 @@ public class BazaStudenata {
 			boolean zatvorena = false;
 			boolean duplap = false;
 			boolean duplak = false;
-			boolean pogresanUnos = false;
-			if(tekst[0].equals("studenti") && tekst[1].equals("=")) {
+			if(tekst[0].equals("studenti") && tekst[1].equals("=") && tekst[2].startsWith("(")) {
 				for(int i = 2; i < tekst.length; i++) {
 					if(tekst[i].contains("(")) {
 						tekst[i] = tekst[i].substring(1, tekst[i].length());
@@ -249,19 +249,21 @@ public class BazaStudenata {
 							tekst[i] = tekst[i].replaceAll("[()]", "");
 							if(tekst[i].startsWith("/")) {
 								if(!tekst[i].endsWith("/")) {
-									//pogresanUnos = true;
+									pogresanUnos = true;
 								}
 								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
 								Pattern pattern = Pattern.compile(tekst[i]);
 								if(!pattern.matcher(s.getBrojIndeksa().toUpperCase()).matches()) {
 									prosao = false;
 								}
-							}else {
+							}else if(tekst[i].startsWith("\"") && tekst[i].endsWith("\"")){
 								tekst[i] = tekst[i].replaceAll("[\"]", "");
 								if(!s.getBrojIndeksa().toUpperCase().equals(tekst[i].toUpperCase())) {
 									prosao = false;
 								}
-							}						
+							}else {
+								pogresanUnos = true;
+							}
 						}else if(tekst[i].equals("!=")) {	
 							i++;
 							if(tekst[i].contains(")")) {
@@ -271,21 +273,23 @@ public class BazaStudenata {
 							tekst[i] = tekst[i].replaceAll("[()]", "");
 							if(tekst[i].startsWith("/")) {
 								if(!tekst[i].endsWith("/")) {
-									//pogresanUnos = true;
+									pogresanUnos = true;
 								}
 								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
 								Pattern pattern = Pattern.compile(tekst[i]);
 								if(pattern.matcher(s.getBrojIndeksa().toUpperCase()).matches()) {
 									prosao = false;
 								}
-							}else {
+							}else if(tekst[i].startsWith("\"") && tekst[i].endsWith("\"")){
 								tekst[i] = tekst[i].replaceAll("[\"]", "");
 								if(s.getBrojIndeksa().toUpperCase().equals(tekst[i].toUpperCase())) {
 									prosao = false;
 								}
+							}else {
+								pogresanUnos = true;
 							}
 						}else {
-							//pogresanUnos = true;
+							pogresanUnos = true;
 						}
 					}else if(tekst[i].equals("ime")) {
 						i++;
@@ -308,7 +312,7 @@ public class BazaStudenata {
 									prosao = false;
 								}
 							}else {
-								//pogresanUnos = true;
+								pogresanUnos = true;
 							}
 						}else if(tekst[i].equals("!=")) {	
 							i++;
@@ -329,7 +333,7 @@ public class BazaStudenata {
 									prosao = false;
 								}
 							}else {
-							//	pogresanUnos = true;
+								//pogresanUnos = true;
 							}
 						}else {
 							//pogresanUnos = true;
@@ -388,9 +392,8 @@ public class BazaStudenata {
 							Integer.parseInt(tekst[i]);
 						}catch(NumberFormatException e) {
 							uhvaceno = true;
-						}
-						uhvaceno = false;
-						if(uhvaceno) {
+						}*/
+						/*if(uhvaceno) {
 							pogresanUnos = true;
 						}else {*/
 							if(tekst[i].equals("==")) {
@@ -576,9 +579,6 @@ public class BazaStudenata {
 							}
 						}else if(tekst[i].equals("!=")) {	
 							i++;
-							if(!tekst[i].contains("}")) {
-								//pogresanUnos = true;
-							}
 								if(tekst[i].contains("{")) {
 									tekst[i] = tekst[i].substring(1, tekst[i].length());
 									
@@ -615,6 +615,8 @@ public class BazaStudenata {
 										}
 									}
 								}
+						}else {
+							//pogresanUnos = true;
 						}
 			
 				}
@@ -812,19 +814,24 @@ public class BazaStudenata {
 			lista.clear();
 			prosao = true;
 			}
+		}else {
+			//pogresanUnos = true;
 		}
 		}
-		studenti = zadovoljavajuPretragu;
+		//if(!pogresanUnos) {																	//Ako korisnik unese pogresno, ne mijenja se izgled tabele
+			studenti = zadovoljavajuPretragu;
+		//}
 	}
 	
 	public List<Predmet> predmetiKojeSlusa(List<String> tekst){
 		ArrayList<Predmet> ret = new ArrayList<Predmet>();
 		ArrayList<String> lista = new ArrayList<String>();
 		boolean prosao;
+		
 		for(Predmet predmet : BazaPredmeta.getInstance().getPredmeti()) {
 			prosao = true;
 			lista.clear();
-			boolean pogresanUnos = false;
+			
 			for(int i = 0; i < tekst.size() - 1; i++) {
 					
 					if(tekst.get(i).equals("sifra")) {
@@ -834,17 +841,14 @@ public class BazaStudenata {
 							if(tekst.get(i).startsWith("/")) {
 								tekst.set(i, tekst.get(i).substring(1, tekst.get(i).length() - 1));
 								Pattern pattern = Pattern.compile(tekst.get(i));
-								System.out.println(tekst.get(i));
 								if(!pattern.matcher(predmet.getSifra_predmeta()).matches()) {
 									prosao = false;
 								}
-							}else if(tekst.get(i).startsWith("\"") && tekst.get(i).endsWith("\"")){
+							}else{
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
 								if(!predmet.getSifra_predmeta().equals(tekst.get(i))) {
 									prosao = false;
 								}
-							}else {
-								//pogresanUnos = true;
 							}
 						}else if(tekst.get(i).equals("!=")) {
 							i++;
@@ -854,35 +858,31 @@ public class BazaStudenata {
 								if(pattern.matcher(predmet.getSifra_predmeta()).matches()) {
 									prosao = false;
 								}
-							}else if(tekst.get(i).startsWith("\"") && tekst.get(i).endsWith("\"")){
+							}else{
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
 								if(predmet.getSifra_predmeta().equals(tekst.get(i))) {
 									prosao = false;
 								}
-							}else {
-								//pogresanUnos = true;
 							}
-						}else {
-							//pogresanUnos = true;
 						}
 					}else if(tekst.get(i).equals("naziv")) {
 						i++;
-						if(tekst.get(i).equals("==")) {
+						
+						if(tekst.get(i).equals("==")) {System.out.println(predmet.getNaziv_predmeta());
 							i++;
+							
 							if(tekst.get(i).startsWith("/") && tekst.get(i).endsWith("/")) {
 								tekst.set(i, tekst.get(i).substring(1, tekst.get(i).length() - 1));
-								Pattern pattern = Pattern.compile(tekst.get(i));
+								Pattern pattern = Pattern.compile(tekst.get(i).toUpperCase());
 								
 								if(!pattern.matcher(predmet.getNaziv_predmeta()).matches()) {
 									prosao = false;
 								}
-							}else if(tekst.get(i).startsWith("\"") && tekst.get(i).endsWith("\'")){
+							}else{
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
-								if(!predmet.getNaziv_predmeta().equals(tekst.get(i))) {
+								if(predmet.getNaziv_predmeta().equals(tekst.get(i))) {
 									prosao = false;
 								}
-							}else {
-								//pogresanUnos = true;
 							}
 						}else if(tekst.get(i).equals("!=")) {
 							i++;
@@ -892,14 +892,13 @@ public class BazaStudenata {
 								if(pattern.matcher(predmet.getNaziv_predmeta()).matches()) {
 									prosao = false;
 								}
-							}else {
+							}else{
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
-								if(predmet.getNaziv_predmeta().equals(tekst.get(i))) {
+								
+								if(!predmet.getNaziv_predmeta().equals(tekst.get(i))) {
 									prosao = false;
 								}
 							}
-						}else {
-							pogresanUnos = true;
 						}
 					}else if(tekst.get(i).equals("ESPB")) {
 						i++;
@@ -933,8 +932,6 @@ public class BazaStudenata {
 							if(predmet.getBroj_ESPB() > Integer.parseInt(tekst.get(i))) {
 								prosao = false;
 							}
-						}else {
-							pogresanUnos = true;
 						}
 					}else if(tekst.get(i).equals("godina")) {
 						i++;
@@ -968,8 +965,6 @@ public class BazaStudenata {
 							if(predmet.getGodina_izvodjenja() > Integer.parseInt(tekst.get(i))) {
 								prosao = false;
 							}
-						}else {
-							pogresanUnos = true;
 						}
 
 					}else if(tekst.get(i).equals("semestar")) {
@@ -980,8 +975,7 @@ public class BazaStudenata {
 								if(!predmet.getSemestar().toString().equals(tekst.get(i))) {
 									prosao = false;
 								}
-							}else {
-								pogresanUnos = true;
+							}	
 							}
 						}else if(tekst.get(i).equals("!=")) {
 							i++;
@@ -989,15 +983,9 @@ public class BazaStudenata {
 								if(predmet.getSemestar().toString().equals(tekst.get(i))) {
 									prosao = false;
 								}
-							}else {
-								pogresanUnos = true;
 							}
-						}else {
-							pogresanUnos = true;
 						}
-					}else {
-						//pogresanUnos = true;
-					}
+					
 					if(tekst.get(i).equals("and") || tekst.get(i).equals("AND") || tekst.get(i).equals("&&")) {
 						lista.add("and");
 					}else if(tekst.get(i).equals("or") || tekst.get(i).equals("OR") || tekst.get(i).equals("||")) {
@@ -1010,7 +998,6 @@ public class BazaStudenata {
 					prosao = true;
 				
 			}
-			if(!pogresanUnos) {
 					if(lista.contains("and")) {
 						for(int b = 0; b < lista.size(); b++) {//prioritet za and
 							if(lista.get(b).equals("and")) {
@@ -1072,7 +1059,7 @@ public class BazaStudenata {
 			
 				ret.add(predmet);
 			}
-			}
+			
 		}
 		
 		
