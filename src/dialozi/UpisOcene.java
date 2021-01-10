@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -134,27 +136,15 @@ public class UpisOcene extends JDialog{
 		
 		panBtn = new JPanel();
 		potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
+		potvrdi.setEnabled(false);
+		txtDatum.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("ispravanDatum"));
 		potvrdi.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(txtDatum.getText().trim().isEmpty()) {
-					JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("svaPolja"));
-				}else {
-					Pattern datum1 = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
-					boolean ispravan_unos = false;
-					if(datum1.matcher(txtDatum.getText()).matches()) {
-						ispravan_unos = true;
-					}
-					if(!ispravan_unos) {
-						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("ispravanDatum"));
-						txtDatum.setText("");
-						txtDatum.requestFocus();
-					}
-					else {
+				
+					
 						
-					
-					
 					for(int i=0;i<student.getNepolozeniIspiti().size();i++) {
 						if(student.getNepolozeniIspiti().get(i).getSifra_predmeta().equals(p.getSifra_predmeta())) {
 							
@@ -187,11 +177,58 @@ public class UpisOcene extends JDialog{
 							
 						}
 						
-					}
-				}
+					
+				
 				}
 			}
 		});
+		
+		KeyListener provjera = new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				boolean sve_uneseno = false;
+				
+				if(txtDatum.getText().trim().isEmpty()) {
+					sve_uneseno = false;
+				}else {
+					sve_uneseno = true;
+				}
+				Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
+				boolean ispravan_unos = false;
+				
+				if(datum.matcher(txtDatum.getText()).matches()) {
+					ispravan_unos = true;
+				}
+				
+			
+				
+				
+				if(ispravan_unos && sve_uneseno) {
+					potvrdi.setEnabled(true);
+				}else {
+					potvrdi.setEnabled(false);
+				}
+				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			
+			
+		};
+		
+		txtDatum.addKeyListener(provjera);
 		odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
 		
 		odustani.addActionListener(new ActionListener() {

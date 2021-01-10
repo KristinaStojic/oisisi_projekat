@@ -74,5 +74,11 @@ private static PredmetController instance = null;
 	public void ukloniProfesoraPredmetu(Profesor prof, Predmet pred) {
 		BazaPredmeta.getInstance().ukloniProfesoraPredmetu(prof, pred);
 	}
+
+	public void naprednaPretragaPredmeta(String txt) {
+		BazaPredmeta.getInstance().naprednaPretragaPredmeta(txt);
+		GlavniProzor.getInstance().azurirajPrikaz("NADJEN", -1);
+		
+	}
 	
 }
