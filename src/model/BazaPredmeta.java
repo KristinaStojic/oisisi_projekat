@@ -836,7 +836,7 @@ public class BazaPredmeta {
 		for(Profesor profesor : BazaProfesora.getInstance().getProfesori()) {
 			prosao = true;
 			lista.clear();
-			
+			boolean pogresanUnos = false;
 			for(int i = 0; i < tekst.size() - 1; i++) {
 					
 					if(tekst.get(i).equals("ime")) {
@@ -850,11 +850,13 @@ public class BazaPredmeta {
 								if(!pattern.matcher(profesor.getIme()).matches()) {
 									prosao = false;
 								}
-							}else {
+							}else if(tekst.get(i).startsWith("\"") && tekst.get(i).endsWith("\"")) {
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
 								if(!profesor.getIme().equals(tekst.get(i))) {
 									prosao = false;
 								}
+							}else {
+								//pogresanUnos = true;
 							}
 						}else if(tekst.get(i).equals("!=")) {
 							i++;
@@ -864,11 +866,13 @@ public class BazaPredmeta {
 								if(pattern.matcher(profesor.getIme()).matches()) {
 									prosao = false;
 								}
-							}else {
+							}else if(tekst.get(i).startsWith("\"") && tekst.get(i).endsWith("\"")){
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
 								if(profesor.getIme().equals(tekst.get(i))) {
 									prosao = false;
 								}
+							}else {
+								//pogresanUnos = true;
 							}
 						}
 					}else if(tekst.get(i).equals("prezime")) {
@@ -882,11 +886,13 @@ public class BazaPredmeta {
 								if(!pattern.matcher(profesor.getIme()).matches()) {
 									prosao = false;
 								}
-							}else {
+							}else if(tekst.get(i).startsWith("\"") && tekst.get(i).endsWith("\"")){
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
 								if(!profesor.getIme().equals(tekst.get(i))) {
 									prosao = false;
 								}
+							}else {
+								//pogresanUnos = true;
 							}
 						}else if(tekst.get(i).equals("!=")) {
 							i++;
@@ -896,11 +902,13 @@ public class BazaPredmeta {
 								if(pattern.matcher(profesor.getIme()).matches()) {
 									prosao = false;
 								}
-							}else {
+							}else if(tekst.get(i).startsWith("\"") && tekst.get(i).endsWith("\"")){
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
 								if(profesor.getIme().equals(tekst.get(i))) {
 									prosao = false;
 								}
+							}else {
+								//pogresanUnos = true;
 							}
 						}
 					}else if(tekst.get(i).equals("titula")) {
@@ -911,6 +919,8 @@ public class BazaPredmeta {
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
 								if(!profesor.getTitula().toString().equals(tekst.get(i))) {
 									prosao = false;
+								}else {
+									//pogresanUnos = true;
 								}
 							
 						}else if(tekst.get(i).equals("!=")) {
@@ -919,8 +929,12 @@ public class BazaPredmeta {
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
 								if(profesor.getTitula().toString().equals(tekst.get(i))) {
 									prosao = false;
+								}else {
+									//pogresanUnos = true;
 								}
 							
+						}else {
+							//pogresanUnos = true;
 						}
 					}else if(tekst.get(i).equals("zvanje")) {
 						i++;
@@ -930,6 +944,8 @@ public class BazaPredmeta {
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
 								if(!profesor.getZvanje().toString().equals(tekst.get(i))) {
 									prosao = false;
+								}else {
+									//pogresanUnos = true;
 								}
 							
 						}else if(tekst.get(i).equals("!=")) {
@@ -938,13 +954,17 @@ public class BazaPredmeta {
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
 								if(profesor.getZvanje().toString().equals(tekst.get(i))) {
 									prosao = false;
+								}else {
+									//pogresanUnos = true;
 								}
 							
+						}else {
+							//pogresanUnos = true;
 						}
 					}
-					if(tekst.get(i).equals("and")) {
+					if(tekst.get(i).equals("and") || tekst.get(i).equals("AND") || tekst.get(i).equals("&&")) {
 						lista.add("and");
-					}else if(tekst.get(i).equals("or")) {
+					}else if(tekst.get(i).equals("or") || tekst.get(i).equals("OR") || tekst.get(i).equals("||")) {
 						lista.add("or");
 					}else if(prosao) {
 						lista.add("T");
@@ -958,51 +978,75 @@ public class BazaPredmeta {
 				System.out.println(str);
 			}
 			System.out.println("\n");*/
-			if(lista.size() > 1) {
-				for(int k = lista.size() - 1; k >= 0; k--) {
-					String prvi = lista.get(k);
-					
-					lista.remove(k);
-					k--;
-					String akcija = lista.get(k);
-					
-					lista.remove(k);
-					k--;
-					String drugi = lista.get(k);
-					
-					lista.remove(k);
-					
-					if(akcija.equals("and")) {
-						if(prvi.equals("T") && drugi.equals("T")) {
-							lista.add("T");
-						}else {
-							lista.add("F");
+			
+			//provjera 2 po dva uslova da li su tacna
+			if(!pogresanUnos) {
+				if(lista.contains("and") || lista.contains("AND") || lista.contains("&&")) {
+					for(int b = 0; b < lista.size(); b++) {//prioritet za and
+						if(lista.get(b).equals("and") || lista.get(b).equals("AND") || lista.get(b).equals("&&")) {
+							
+							String prvi = lista.get(b - 1);
+							
+							String drugi = lista.get(b + 1);
+						if(!prvi.equals(")") && !drugi.equals("(")) {
+							if(prvi.equals("T") && drugi.equals("T")) {
+								lista.set(b - 1, "T");
+							}else {
+								lista.set(b - 1, "F");
+							}
+							lista.remove(b + 1);
+							lista.remove(b);
 						}
-					}else if(akcija.equals("or")) {
-						if(prvi.equals("F") && drugi.equals("F")) {
-							lista.add("F");
-						}else {
-							lista.add("T");
+							
 						}
 					}
-				
-					if(lista.size() == 1) {
-						break;
-					}else {
-						k += 1;
-					}
-					
 				}
-			}	
+		if(lista.size() > 1) {
+			for(int k = lista.size() - 1; k >= 0; k--) {
+				String prvi = lista.get(k);
+				
+				lista.remove(k);
+				k--;
+				String akcija = lista.get(k);
+				
+				lista.remove(k);
+				k--;
+				String drugi = lista.get(k);
+				
+				lista.remove(k);
+				
+				if(akcija.equals("and") || akcija.equals("AND") || akcija.equals("&&")) {
+					if(prvi.equals("T") && drugi.equals("T")) {
+						lista.add("T");
+					}else {
+						lista.add("F");
+					}
+				}else if(akcija.equals("or") || akcija.equals("OR") || akcija.equals("||")) {
+					if(prvi.equals("F") && drugi.equals("F")) {
+						lista.add("F");
+					}else {
+						lista.add("T");
+					}
+				}
 			
-			if(lista.get(0).equals("T")) {
-			
-				ret.add(profesor);
+				if(lista.size() == 1) {
+					break;
+				}else {
+					k += 1;
+				}
+				
 			}
+		}	
+		
+		if(lista.get(0).equals("T")) {
+		
+			ret.add(profesor);
 		}
-		
-		
-		return ret;
+		}
+	}
+	
+	
+	return ret;
 	
 	}
 		
