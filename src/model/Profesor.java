@@ -17,16 +17,16 @@ public class Profesor implements Serializable{
 	public enum Zvanje {saradnik_u_nastavi, asistent, asistent_sa_doktoratom, docent, vanredni_profesor, redovni_profesor, profesor_emeritus};
 	protected String prezime;
 	protected String ime;
-	protected Date datum_rodjenja;
-	protected String adresa_stanovanja;
-	protected String kontakt_telefon;
-	protected String email_adresa;
-	protected String adresa_kancelarije;
-	protected String broj_licne_karte;
+	protected Date datumRodjenja;
+	protected String adresaStanovanja;
+	protected String kontaktTelefon;
+	protected String emailAdresa;
+	protected String adresaKancelarije;
+	protected String brojLicneKarte;
 	protected Titula titula;
 	protected Zvanje zvanje;
 
-	List<Predmet> predmeti_Profesora;
+	List<Predmet> predmetiProfesora;
 	protected int id;
 
 	public int getId() {
@@ -47,7 +47,7 @@ public class Profesor implements Serializable{
 		super();
 		DateFormat datformat = new SimpleDateFormat("dd.MM.yyyy.");
 		try {
-		this.datum_rodjenja = datformat.parse(datum_rodjenja);
+		this.datumRodjenja = datformat.parse(datum_rodjenja);
 		}
 		catch(ParseException e) {
 			e.printStackTrace();
@@ -55,14 +55,14 @@ public class Profesor implements Serializable{
 		this.prezime = prezime;
 		this.ime = ime;
 		//this.datum_rodjenja = datum_rodjenja;
-		this.adresa_stanovanja = adresa_stanovanja;
-		this.kontakt_telefon = kontakt_telefon;
-		this.email_adresa = email_adresa;
-		this.adresa_kancelarije = adresa_kancelarije;
-		this.broj_licne_karte = broj_licne_karte;
+		this.adresaStanovanja = adresa_stanovanja;
+		this.kontaktTelefon = kontakt_telefon;
+		this.emailAdresa = email_adresa;
+		this.adresaKancelarije = adresa_kancelarije;
+		this.brojLicneKarte = broj_licne_karte;
 		this.titula = titula;
 		this.zvanje = zvanje;
-		this.predmeti_Profesora = predmeti_Profesora;
+		this.predmetiProfesora = predmeti_Profesora;
 	}
 	
 	
@@ -89,12 +89,12 @@ public class Profesor implements Serializable{
 	}
 	public String getDatumRodjenja() {
 		DateFormat datformat = new SimpleDateFormat("dd.MM.yyyy.");
-		return datformat.format(datum_rodjenja);
+		return datformat.format(datumRodjenja);
 	}
 	public void setDatumRodjenja(String datumRodjenja) {
 		try{
 		Date date1=new SimpleDateFormat("dd.mm.yyyy.").parse(datumRodjenja);
-		this.datum_rodjenja = date1;
+		this.datumRodjenja = date1;
 	}
 	catch(ParseException e) {
 		e.printStackTrace();
@@ -102,34 +102,34 @@ public class Profesor implements Serializable{
 	}	
 	
 	public String getAdresaStanovanja() {
-		return adresa_stanovanja;
+		return adresaStanovanja;
 	}
 	public void setAdresaStanovanja(String adresaStanovanja) {
-		this.adresa_stanovanja = adresaStanovanja;
+		this.adresaStanovanja = adresaStanovanja;
 	}
 	public String getKontaktTelefon() {
-		return kontakt_telefon;
+		return kontaktTelefon;
 	}
 	public void setKontaktTelefon(String kontaktTelefon) {
-		this.kontakt_telefon = kontaktTelefon;
+		this.kontaktTelefon = kontaktTelefon;
 	}
 	public String getEmailAdresa() {
-		return email_adresa;
+		return emailAdresa;
 	}
 	public void setEmailAdresa(String emailAdresa) {
-		this.email_adresa = emailAdresa;
+		this.emailAdresa = emailAdresa;
 	}
 	public String getAdresaKancelarije() {
-		return adresa_kancelarije;
+		return adresaKancelarije;
 	}
 	public void setAdresaKancelarije(String adresaKancelarije) {
-		this.adresa_kancelarije = adresaKancelarije;
+		this.adresaKancelarije = adresaKancelarije;
 	}
 	public String getBrojLicneKarte() {
-		return broj_licne_karte;
+		return brojLicneKarte;
 	}
 	public void setBrojLicneKarte(String brojLicneKarte) {
-		this.broj_licne_karte = brojLicneKarte;
+		this.brojLicneKarte = brojLicneKarte;
 	}
 	public Titula getTitula() {
 		return titula;
@@ -145,19 +145,19 @@ public class Profesor implements Serializable{
 	}
 	
 	public List<Predmet> getPredmetiProfesora() {
-		return predmeti_Profesora;
+		return predmetiProfesora;
 	}
 
 	public void setPredmetiProfesora(List<Predmet> predmetiProfesora) {
-		predmeti_Profesora = predmetiProfesora;
+		predmetiProfesora = predmetiProfesora;
 	}
 	
 	@Override
 	public String toString() {
-		return "Profesor [prezime=" + prezime + ", ime=" + ime + ", datum_rodjenja=" + datum_rodjenja
-				+ ", adresa_stanovanja=" + adresa_stanovanja + ", kontakt_telefon=" + kontakt_telefon
-				+ ", email_adresa=" + email_adresa + ", adresa_kancelarije=" + adresa_kancelarije
-				+ ", broj_licne_karte=" + broj_licne_karte + ", titula=" + titula + ", zvanje=" + zvanje
-				+ ", predmeti_Profesora=" + predmeti_Profesora + ", id=" + id + "]";
+		return "Profesor [prezime=" + prezime + ", ime=" + ime + ", datum_rodjenja=" + datumRodjenja
+				+ ", adresa_stanovanja=" + adresaStanovanja + ", kontakt_telefon=" + kontaktTelefon
+				+ ", email_adresa=" + emailAdresa + ", adresa_kancelarije=" + adresaKancelarije
+				+ ", broj_licne_karte=" + brojLicneKarte + ", titula=" + titula + ", zvanje=" + zvanje
+				+ ", predmeti_Profesora=" + predmetiProfesora + ", id=" + id + "]";
 	}
 }
