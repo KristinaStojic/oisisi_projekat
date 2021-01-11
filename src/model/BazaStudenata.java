@@ -1125,6 +1125,7 @@ public class BazaStudenata {
 	}
 	
 	public void izbrisiNepolozeniPredmet(Predmet p) {
+		
 		for(Student s:studenti) {
 			if(s.getNepolozeniIspiti() != null) {
 			for(int i=0;i<s.getNepolozeniIspiti().size();i++) {
