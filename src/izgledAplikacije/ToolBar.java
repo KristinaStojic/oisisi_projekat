@@ -81,7 +81,7 @@ public class ToolBar extends JToolBar{
 	
 	
 	Btn4 = new JButton();
-	Btn4.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("toolSearch"));
+	//Btn4.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("toolSearch"));
 	Btn4.setIcon(new ImageIcon("imgs" + File.separator +"search.jpg"));
 	add(Btn4);
 	
@@ -114,7 +114,13 @@ public class ToolBar extends JToolBar{
 				if(txt.trim().equals("")) {
 					PredmetController.getInstance().vratiPrikaz();
 				}
-				PredmetController.getInstance().pretragaPredmeta(txt);
+				if(txt.contains("predmet")) {
+					PredmetController.getInstance().naprednaPretragaPredmeta(txt);
+				}
+				else {
+					PredmetController.getInstance().pretragaPredmeta(txt);
+				}
+				
 			}
 		}
 	});
