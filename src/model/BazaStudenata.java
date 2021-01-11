@@ -220,6 +220,7 @@ public class BazaStudenata {
 		
 		boolean prosao = true;
 		for(Student s : privremeno) {
+			System.out.println(s);
 			String[] tekst = txt.split(" ");
 			List<String> lista = new ArrayList<String>();
 			List<String> slusa_predmete = new ArrayList<String>();
@@ -253,12 +254,12 @@ public class BazaStudenata {
 								}
 								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
 								Pattern pattern = Pattern.compile(tekst[i]);
-								if(!pattern.matcher(s.getBrojIndeksa().toUpperCase()).matches()) {
+								if(!pattern.matcher(s.getBrojIndeksa()).matches()) {
 									prosao = false;
 								}
 							}else if(tekst[i].startsWith("\"") && tekst[i].endsWith("\"")){
 								tekst[i] = tekst[i].replaceAll("[\"]", "");
-								if(!s.getBrojIndeksa().toUpperCase().equals(tekst[i].toUpperCase())) {
+								if(!s.getBrojIndeksa().equals(tekst[i])) {
 									prosao = false;
 								}
 							}else {
@@ -277,12 +278,12 @@ public class BazaStudenata {
 								}
 								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
 								Pattern pattern = Pattern.compile(tekst[i]);
-								if(pattern.matcher(s.getBrojIndeksa().toUpperCase()).matches()) {
+								if(pattern.matcher(s.getBrojIndeksa()).matches()) {
 									prosao = false;
 								}
 							}else if(tekst[i].startsWith("\"") && tekst[i].endsWith("\"")){
 								tekst[i] = tekst[i].replaceAll("[\"]", "");
-								if(s.getBrojIndeksa().toUpperCase().equals(tekst[i].toUpperCase())) {
+								if(s.getBrojIndeksa().equals(tekst[i])) {
 									prosao = false;
 								}
 							}else {
@@ -303,12 +304,12 @@ public class BazaStudenata {
 							if(tekst[i].startsWith("/") && tekst[i].endsWith("/")) {
 								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
 								Pattern pattern = Pattern.compile(tekst[i]);
-								if(!pattern.matcher(s.getImeStudenta().toUpperCase()).matches()) {
+								if(!pattern.matcher(s.getImeStudenta()).matches()) {
 									prosao = false;
 								}
 							}else if(tekst[i].startsWith("\"") && tekst[i].endsWith("\"")){
 								tekst[i] = tekst[i].replaceAll("[\"]", "");
-								if(!s.getImeStudenta().toUpperCase().equals(tekst[i].toUpperCase())) {
+								if(!s.getImeStudenta().equals(tekst[i])) {
 									prosao = false;
 								}
 							}else {
@@ -324,12 +325,12 @@ public class BazaStudenata {
 							if(tekst[i].startsWith("/") && tekst[i].endsWith("/")) {
 								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
 								Pattern pattern = Pattern.compile(tekst[i]);
-								if(pattern.matcher(s.getImeStudenta().toUpperCase()).matches()) {
+								if(pattern.matcher(s.getImeStudenta()).matches()) {
 									prosao = false;
 								}
 							}else if(tekst[i].startsWith("\"") && tekst[i].endsWith("\"")){
 								tekst[i] = tekst[i].replaceAll("[\"]", "");
-								if(s.getImeStudenta().toUpperCase().equals(tekst[i].toUpperCase())) {
+								if(s.getImeStudenta().equals(tekst[i])) {
 									prosao = false;
 								}
 							}else {
@@ -350,12 +351,12 @@ public class BazaStudenata {
 							if(tekst[i].startsWith("/") && tekst[i].endsWith("/")) {
 								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
 								Pattern pattern = Pattern.compile(tekst[i]);
-								if(!pattern.matcher(s.getPrezimeStudenta().toUpperCase()).matches()) {
+								if(!pattern.matcher(s.getPrezimeStudenta()).matches()) {
 									prosao = false;
 								}
 							}else if(tekst[i].startsWith("\"") && tekst[i].endsWith("\"")){
 								tekst[i] = tekst[i].replaceAll("[\"]", "");
-								if(!s.getPrezimeStudenta().toUpperCase().equals(tekst[i].toUpperCase())) {
+								if(!s.getPrezimeStudenta().equals(tekst[i])) {
 									prosao = false;
 								}
 							}else {
@@ -371,12 +372,12 @@ public class BazaStudenata {
 							if(tekst[i].startsWith("/") && tekst[i].endsWith("/")) {
 								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
 								Pattern pattern = Pattern.compile(tekst[i]);
-								if(pattern.matcher(s.getPrezimeStudenta().toUpperCase()).matches()) {
+								if(pattern.matcher(s.getPrezimeStudenta()).matches()) {
 									prosao = false;
 								}
 							}else if(tekst[i].startsWith("\"") && tekst[i].endsWith("\"")){
 								tekst[i] = tekst[i].replaceAll("[\"]", "");
-								if(s.getPrezimeStudenta().toUpperCase().equals(tekst[i].toUpperCase())) {
+								if(s.getPrezimeStudenta().equals(tekst[i])) {
 									prosao = false;
 								}
 							}else {
@@ -564,12 +565,16 @@ public class BazaStudenata {
 								if(s.getNepolozeniIspiti() == null) {
 										prosao = false;
 								}else {
+									System.out.println("-------------\n");
 									int prosao1 = 0;
 									for(Predmet pr : predmeti) {
+										System.out.println(pr.getSifra_predmeta() + "prosao \n");
 										for(Predmet pr1 : s.getNepolozeniIspiti()) {
+											System.out.println(pr1.getSifra_predmeta() + "studentovi\n");
 											if(pr.getSifra_predmeta().equals(pr1.getSifra_predmeta())) {
 												prosao1++;
 											}
+											System.out.println(prosao1);
 										}
 									}
 									if(prosao1 == 0) {
@@ -827,8 +832,33 @@ public class BazaStudenata {
 		ArrayList<Predmet> ret = new ArrayList<Predmet>();
 		ArrayList<String> lista = new ArrayList<String>();
 		boolean prosao;
+		int od = 0;
+		int dos = 0;
+		String naziv = "";
+		for(int i = 0; i < tekst.size(); i++) {
+			
+			if(tekst.get(i).startsWith("\"") && !tekst.get(i).endsWith("\"")) {//Zbog imena sa vise rijeci..
+				od = i;
+				while(!tekst.get(i).endsWith("\"")) {
+					naziv += tekst.get(i);
+					i++;
+				}
+				naziv += tekst.get(i);
+				dos = i;
+				tekst.set(od, naziv);
+			od++;
+			int r = od;
+			for(int j = od; j <= dos; j++) {
+				tekst.remove(r);
+			}
+			}
+			
+			
+		}
+
 		
 		for(Predmet predmet : BazaPredmeta.getInstance().getPredmeti()) {
+			
 			prosao = true;
 			lista.clear();
 			
@@ -868,19 +898,22 @@ public class BazaStudenata {
 					}else if(tekst.get(i).equals("naziv")) {
 						i++;
 						
-						if(tekst.get(i).equals("==")) {System.out.println(predmet.getNaziv_predmeta());
+						if(tekst.get(i).equals("==")) {
 							i++;
 							
 							if(tekst.get(i).startsWith("/") && tekst.get(i).endsWith("/")) {
 								tekst.set(i, tekst.get(i).substring(1, tekst.get(i).length() - 1));
-								Pattern pattern = Pattern.compile(tekst.get(i).toUpperCase());
+								Pattern pattern = Pattern.compile(tekst.get(i));
 								
 								if(!pattern.matcher(predmet.getNaziv_predmeta()).matches()) {
 									prosao = false;
 								}
 							}else{
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
-								if(predmet.getNaziv_predmeta().equals(tekst.get(i))) {
+								
+								String ime = predmet.getNaziv_predmeta().replaceAll(" ", "");
+								
+								if(!ime.equals(tekst.get(i))) {
 									prosao = false;
 								}
 							}
@@ -895,7 +928,7 @@ public class BazaStudenata {
 							}else{
 								tekst.set(i, tekst.get(i).replaceAll("\"", ""));
 								
-								if(!predmet.getNaziv_predmeta().equals(tekst.get(i))) {
+								if(predmet.getNaziv_predmeta().equals(tekst.get(i))) {
 									prosao = false;
 								}
 							}
@@ -937,6 +970,7 @@ public class BazaStudenata {
 						i++;
 						if(tekst.get(i).equals("==")) {
 							i++;
+							
 							if(predmet.getGodina_izvodjenja() != Integer.parseInt(tekst.get(i))) {
 								prosao = false;
 							}
@@ -986,18 +1020,23 @@ public class BazaStudenata {
 							}
 						}
 					
+					
 					if(tekst.get(i).equals("and") || tekst.get(i).equals("AND") || tekst.get(i).equals("&&")) {
 						lista.add("and");
 					}else if(tekst.get(i).equals("or") || tekst.get(i).equals("OR") || tekst.get(i).equals("||")) {
 						lista.add("or");
-					}else if(prosao) {
-						lista.add("T");
-					}else if(!prosao) {
-						lista.add("F");
+					}else {
+						if(prosao) {
+							lista.add("T");
+						}else if(!prosao){
+							lista.add("F");
+						}
 					}
+					
 					prosao = true;
 				
 			}
+			
 					if(lista.contains("and")) {
 						for(int b = 0; b < lista.size(); b++) {//prioritet za and
 							if(lista.get(b).equals("and")) {
@@ -1124,6 +1163,7 @@ public class BazaStudenata {
 		privremeno = lista;
 	}
 	
+
 	public void izbrisiNepolozeniPredmet(Predmet p) {
 		
 		for(Student s:studenti) {
