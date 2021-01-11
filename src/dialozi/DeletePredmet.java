@@ -14,7 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.PredmetController;
+import controller.StudentiController;
 import izgledAplikacije.GlavniProzor;
+import model.BazaStudenata;
 import model.Predmet;
 
 public class DeletePredmet extends JDialog {
@@ -64,7 +66,10 @@ public class DeletePredmet extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			//PredmetController.getInstance().izbrisiPredmet(p);
+			BazaStudenata.getInstance().izbrisiNepolozeniPredmet(p);
 			PredmetController.getInstance().izbrisiPredmet(p);
+
 			dispose();
 		}
 			

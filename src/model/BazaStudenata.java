@@ -1124,4 +1124,16 @@ public class BazaStudenata {
 		privremeno = lista;
 	}
 	
+	public void izbrisiNepolozeniPredmet(Predmet p) {
+		for(Student s:studenti) {
+			if(s.getNepolozeniIspiti() != null) {
+			for(int i=0;i<s.getNepolozeniIspiti().size();i++) {
+				if(s.getNepolozeniIspiti().get(i).equals(p)) {
+					s.getNepolozeniIspiti().remove(p);
+				}
+			}
+		}
+		}
+	}
+	
 }
