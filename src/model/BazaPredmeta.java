@@ -257,7 +257,7 @@ public class BazaPredmeta {
 			boolean duplak = false;
 			boolean pogresanUnos = false;
 			
-			if(tekst[0].equals("predmeti") && tekst[1].equals("=")) {
+			if(tekst[0].equals("predmeti") && tekst[1].equals("=") && tekst[2].startsWith("(")) {
 				
 				for(int i = 2; i < tekst.length; i++) {
 					
@@ -276,48 +276,54 @@ public class BazaPredmeta {
 						
 						if(tekst[i].equals("==")) {
 							i++;
-							
 							if(tekst[i].contains(")")) {
 								tekst[i] = tekst[i].substring(0, tekst[i].length() - 1);
 								zatvorena = true;
 							}
 							tekst[i] = tekst[i].replaceAll("[()]", "");
-							if(tekst[i].startsWith("/") && tekst[i].endsWith("/")) { //ako je regularni izraz
-								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1); //skloni //
-								Pattern pattern = Pattern.compile(tekst[i].toUpperCase());
+							if(tekst[i].startsWith("/")) {
+								if(!tekst[i].endsWith("/")) {
+									pogresanUnos = true;
+								}
+								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
+								Pattern pattern = Pattern.compile(tekst[i]);
 								if(!pattern.matcher(p.getSifra_predmeta().toUpperCase()).matches()) {
 									prosao = false;
 								}
-							}else {
-								
-								tekst[i] = tekst[i].replaceAll("[\"]", ""); //ako je String
+							}else if(tekst[i].startsWith("\"") && tekst[i].endsWith("\"")){
+								tekst[i] = tekst[i].replaceAll("[\"]", "");
 								if(!p.getSifra_predmeta().toUpperCase().equals(tekst[i].toUpperCase())) {
 									prosao = false;
-									System.out.println(tekst[i]);
 								}
+							}else {
+								pogresanUnos = true;
 							}
-
-							
-						
-						}else if(tekst[i].equals("!=")) {	
+						}else if(tekst[i].equals("!=")){	
 							i++;
 							if(tekst[i].contains(")")) {
 								tekst[i] = tekst[i].substring(0, tekst[i].length() - 1);
 								zatvorena = true;
 							}
 							tekst[i] = tekst[i].replaceAll("[()]", "");
-							if(tekst[i].startsWith("/") && tekst[i].endsWith("/")) {
+							if(tekst[i].startsWith("/")) {
+								if(!tekst[i].endsWith("/")) {
+									pogresanUnos = true;
+								}
 								tekst[i] = tekst[i].substring(1, tekst[i].length() - 1);
 								Pattern pattern = Pattern.compile(tekst[i]);
 								if(pattern.matcher(p.getSifra_predmeta().toUpperCase()).matches()) {
 									prosao = false;
 								}
-							}else {
+							}else if(tekst[i].startsWith("\"") && tekst[i].endsWith("\"")){
 								tekst[i] = tekst[i].replaceAll("[\"]", "");
 								if(p.getSifra_predmeta().toUpperCase().equals(tekst[i].toUpperCase())) {
 									prosao = false;
 								}
+							}else {
+								pogresanUnos = true;
 							}
+						}else {
+							pogresanUnos = true;
 						}
 					}else if(tekst[i].equals("naziv")) {
 						i++;
@@ -335,13 +341,13 @@ public class BazaPredmeta {
 								if(!pattern.matcher(p.getNaziv_predmeta().toUpperCase()).matches()) {
 									prosao = false;
 								}
-							}else {
-								
-								tekst[i] = tekst[i].replaceAll("[\"]", ""); //ako je String
+							}else if(tekst[i].startsWith("\"") && tekst[i].endsWith("\"")){
+								tekst[i] = tekst[i].replaceAll("[\"]", "");
 								if(!p.getNaziv_predmeta().toUpperCase().equals(tekst[i].toUpperCase())) {
 									prosao = false;
-									System.out.println(tekst[i]);
 								}
+							}else {
+								pogresanUnos = true;
 							}
 
 							
@@ -359,12 +365,16 @@ public class BazaPredmeta {
 								if(pattern.matcher(p.getNaziv_predmeta().toUpperCase()).matches()) {
 									prosao = false;
 								}
-							}else {
+							}else if(tekst[i].startsWith("\"") && tekst[i].endsWith("\"")){
 								tekst[i] = tekst[i].replaceAll("[\"]", "");
 								if(p.getNaziv_predmeta().toUpperCase().equals(tekst[i].toUpperCase())) {
 									prosao = false;
 								}
+							}else {
+								pogresanUnos = true;
 							}
+						}else {
+							pogresanUnos = true;
 						}
 					}else if(tekst[i].equals("ESPB")) {
 						i++;
@@ -504,6 +514,8 @@ public class BazaPredmeta {
 							if(p.getGodina_izvodjenja() < Integer.parseInt(tekst[i].toUpperCase())) {
 								prosao = false;
 							}
+						}else {
+							//pogresanUnos = true;
 						}
 
 					}else if(tekst[i].equals("semestar")) {
@@ -537,6 +549,8 @@ public class BazaPredmeta {
 									prosao = false;
 									
 								}
+						}else {
+							//pogresanUnos = true;
 						}
 					}else if(tekst[i].equals("profesori")) {
 						i++;
