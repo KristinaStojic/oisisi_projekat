@@ -33,8 +33,8 @@ public class ComparatorSortiranje implements Comparator<String>{
 				return godina1.compareTo(godina2);
 			}
 			
-			return broj1.compareTo(broj2);
-
+			int ret = Integer.parseInt(broj1) - Integer.parseInt(broj2);
+			return ret;
 
 		}else if(pattern1.matcher(s1).matches() && pattern1.matcher(s2).matches()){
 		
@@ -48,7 +48,9 @@ public class ComparatorSortiranje implements Comparator<String>{
 			if(!smjer1.equals(smjer2)) {
 				return smjer1.compareTo(smjer2);
 			}
-			return broj1.compareTo(broj2);
+			
+			int ret = Integer.parseInt(broj1) - Integer.parseInt(broj2);
+			return ret;
 			
 		}else{
 			return s1.compareTo(s2);
