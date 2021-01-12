@@ -211,41 +211,7 @@ public class EditPredmet extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				/*try {		
-					if(txtSifra.getText().trim().isEmpty()|| txtNaziv.getText().trim().isEmpty() 
-							|| txtGodina.getText().trim().isEmpty()	|| txtESPB.getText().trim().isEmpty()) {
-						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
-					}else {
-						Predmet predmet = collectData();
-						predmet.setId(p.getId());
-						predmet.setPredmeni_profesor(p.getPredmetni_profesor());
-						
-						boolean postoji = false;
-						for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
-							if((predmet.getSifra_predmeta().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta())
-									&& predmet.getId() != BazaPredmeta.getInstance().getPredmeti().get(i).getId())) {
-								JOptionPane.showMessageDialog(null, "Unesena sifra predmeta vec postoji!");
-								postoji = true;
-							}
-						}
-						if(!postoji) {
-							boolean ispravan_unos = false;
-							Pattern godina = Pattern.compile("[1-6]");
-							Pattern espb = Pattern.compile("[1-9][0-9]?");
-							if(godina.matcher(String.valueOf(predmet.getGodina_izvodjenja())).matches() && espb.matcher(String.valueOf(predmet.getBroj_ESPB())).matches()){
-								ispravan_unos = true;
-							}	
-							if(!ispravan_unos) {
-								JOptionPane.showMessageDialog(null, "Neispravan unos!");
-							}else {
-								PredmetController.getInstance().izmeniPredmet(predmet);
-								dispose();
-							}
-						}
-					}
-				}catch(Exception ex) {
-					ex.printStackTrace();
-				}*/
+			
 				Predmet predmet = collectData();
 				predmet.setId(p.getId());
 				predmet.setPredmeni_profesor(p.getPredmetni_profesor());

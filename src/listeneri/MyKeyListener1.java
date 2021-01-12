@@ -35,18 +35,6 @@ public class MyKeyListener1 implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		
-		if (e.isActionKey() || e.getKeyCode() == KeyEvent.VK_ENTER
-				|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-			return;
-		}
-		
-		JTextField txt = (JTextField) e.getComponent();
-		Pattern pattern = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č]*");
-				
-		if(!pattern.matcher(txt.getText()).matches()) {
-			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("samoSlova"));
-			txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
-		}
 	}
 
 }

@@ -144,33 +144,7 @@ public class AddPredmet  extends JDialog {
 					Predmet predmet = collectData();
 					PredmetController.getInstance().dodajPredmet(predmet);
 					dispose();
-					/*if(txtSifra.getText().trim().isEmpty()|| txtNaziv.getText().trim().isEmpty() 
-							|| txtGodina.getText().trim().isEmpty()	|| txtESPB.getText().trim().isEmpty()) {
-						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("svaPolja"));
-					}else {
-						Predmet predmet = collectData();
-						boolean postoji = false;
-						for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
-							if((predmet.getSifra_predmeta().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta()))) {
-								JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("postojiSifra"));
-								postoji = true;
-							}
-						}
-						boolean ispravan_unos = false;
-						Pattern godina = Pattern.compile("[1-6]");
-						Pattern espb = Pattern.compile("[1-9][0-9]?");
-						if(godina.matcher(String.valueOf(predmet.getGodina_izvodjenja())).matches() && espb.matcher(String.valueOf(predmet.getBroj_ESPB())).matches()){
-							ispravan_unos = true;
-						}
-						if(!ispravan_unos) {
-							JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("neispravanUnos"));
-						}
-						if(!postoji && ispravan_unos) {
-							PredmetController.getInstance().dodajPredmet(predmet);
-							dispose();
-						}
-						
-					}*/
+					
 				}catch(Exception ex) {
 					ex.printStackTrace();
 				}

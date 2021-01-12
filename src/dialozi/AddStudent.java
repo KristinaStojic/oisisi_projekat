@@ -224,58 +224,17 @@ public class AddStudent extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				/*try {
-					if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
-							|| txtDat.getText().trim().isEmpty() || txtAdr.getText().trim().isEmpty()
-								|| txtBrt.getText().trim().isEmpty() || txtMail.getText().trim().isEmpty()
-									|| txtBri.getText().trim().isEmpty() || txtGodu.getText().trim().isEmpty()) {
-<<<<<<< HEAD
-						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("svaPolja"));
-					}else {*/
+			
 						Student student;
 						try {
 							student = collectData();
 							StudentiController.getInstance().dodajStudenta(student);
 							dispose();
 						} catch (ParseException e1) {
-							// TODO Auto-generated catch block
+							
 							e1.printStackTrace();
 						}
-						/*boolean postoji = false;
-=======
-						JOptionPane.showMessageDialog(null, "Morate unijeti sva polja!");
-					}else {
-						Student student = collectData();
-						boolean postoji = false;
->>>>>>> parent of f287f03... #lokalizacija
-						for(int i = 0; i < BazaStudenata.getInstance().getStudenti().size(); i++) {
-							if((student.getBrojIndeksa().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))) {
-								JOptionPane.showMessageDialog(null, "Uneseni indeks vec postoji!");
-								postoji = true;
-							}
-						}
-						Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
-						Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
-						Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
-						Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
-						Pattern godina = Pattern.compile("[0-9]{4}");
-						boolean ispravan_unos = false;
-						if(datum.matcher(student.getDatumRodjenjaStudenta()).matches() && adresa.matcher(student.getAdresaStudenta()).matches()
-								&& telefon.matcher(student.getKontaktTelefon()).matches() && mejl.matcher(student.getEmailAdresa()).matches()
-									&& godina.matcher(String.valueOf(student.getGodinaUpisa())).matches()) {
-							ispravan_unos = true;
-						}
-						if(!ispravan_unos) {
-							JOptionPane.showMessageDialog(null, "Neispravan unos!");
-						}
-						if(!postoji && ispravan_unos) {
-							
-						//}
 						
-					}
-				}catch(Exception ex) {
-					ex.printStackTrace();
-				}*/
 						
 			}
 		});

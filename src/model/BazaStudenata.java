@@ -48,29 +48,6 @@ public class BazaStudenata {
 	
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
-		/*try {
-		Student s1 = new Student("Katarina", "Zerajic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-95/2018", 2018, 3, model.Student.Status.B, 0.0, null, null);
-		s1.setId(id++);
-		studenti.add(s1);
-		
-		Student s2 = new Student("Ivana", "Markovic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "RA-99/2019", 2019, 4, model.Student.Status.B, 0.0, null, null);
-		studenti.add(s2);
-		s2.setId(id++);
-		
-		Student s3 = new Student("Marko", "Markovic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "PR-19/2010", 2010, 1, model.Student.Status.B, 0.0, null, null);
-		studenti.add(s3);
-		s3.setId(id++);
-		
-		Student s4 = new Student("Nikola", "Nikolic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "SW-10/2018", 2018, 6, model.Student.Status.B, 0.0, null, null);
-		studenti.add(s4);
-		s4.setId(id++);
-		
-		Student s5 = new Student("Ivana", "Markovic", new Date(), "Nemanjica, bb", "062/8472743", "katarinazer6@gmail.com", "PR-9/2020", 2020, 2, model.Student.Status.B, 0.0, null, null);
-		studenti.add(s5);
-		s5.setId(id++);
-		
-		privremeno = studenti;
-		}catch(NullPointerException e) {}*/
 		privremeno = studenti;
 		ObjectInputStream in=null;
 		Student s=null;
@@ -220,7 +197,6 @@ public class BazaStudenata {
 		
 		boolean prosao = true;
 		for(Student s : privremeno) {
-			System.out.println(s);
 			String[] tekst = txt.split(" ");
 			List<String> lista = new ArrayList<String>();
 			List<String> slusa_predmete = new ArrayList<String>();
@@ -334,10 +310,10 @@ public class BazaStudenata {
 									prosao = false;
 								}
 							}else {
-								//pogresanUnos = true;
+								pogresanUnos = true;
 							}
 						}else {
-							//pogresanUnos = true;
+							pogresanUnos = true;
 						}
 					}else if(tekst[i].equals("prezime")) {
 						i++;
@@ -360,7 +336,7 @@ public class BazaStudenata {
 									prosao = false;
 								}
 							}else {
-								//pogresanUnos = true;
+								pogresanUnos = true;
 							}
 						}else if(tekst[i].equals("!=")) {	
 							i++;
@@ -381,22 +357,13 @@ public class BazaStudenata {
 									prosao = false;
 								}
 							}else {
-								//pogresanUnos = true;
+								pogresanUnos = true;
 							}
 						}else {
-							//pogresanUnos = true;
+							pogresanUnos = true;
 						}
 					}else if(tekst[i].equals("godina")) {
 						i++;
-						/*boolean uhvaceno = false;
-						try {							//ne radi?
-							Integer.parseInt(tekst[i]);
-						}catch(NumberFormatException e) {
-							uhvaceno = true;
-						}*/
-						/*if(uhvaceno) {
-							pogresanUnos = true;
-						}else {*/
 							if(tekst[i].equals("==")) {
 								i++;
 								if(tekst[i].contains(")")) {
@@ -464,9 +431,9 @@ public class BazaStudenata {
 									prosao = false;
 								}
 							}else {
-								//pogresanUnos = true;
+								pogresanUnos = true;
 							}
-						//}
+						
 					}else if(tekst[i].equals("prosek")) {
 						i++;
 						if(tekst[i].equals("==")) {
@@ -536,7 +503,7 @@ public class BazaStudenata {
 								prosao = false;
 							}
 						}else {
-							//pogresanUnos = true;
+							pogresanUnos = true;
 						}
 					}else if(tekst[i].equals("slusa_predmete")) {
 						i++;
@@ -565,16 +532,15 @@ public class BazaStudenata {
 								if(s.getNepolozeniIspiti() == null) {
 										prosao = false;
 								}else {
-									System.out.println("-------------\n");
+									
 									int prosao1 = 0;
 									for(Predmet pr : predmeti) {
-										System.out.println(pr.getSifra_predmeta() + "prosao \n");
+										
 										for(Predmet pr1 : s.getNepolozeniIspiti()) {
-											System.out.println(pr1.getSifra_predmeta() + "studentovi\n");
+									
 											if(pr.getSifra_predmeta().equals(pr1.getSifra_predmeta())) {
 												prosao1++;
 											}
-											System.out.println(prosao1);
 										}
 									}
 									if(prosao1 == 0) {
@@ -621,7 +587,7 @@ public class BazaStudenata {
 									}
 								}
 						}else {
-							//pogresanUnos = true;
+							pogresanUnos = true;
 						}
 			
 				}
@@ -687,11 +653,13 @@ public class BazaStudenata {
 				prosao = true;
 				}
 			}
+				
 			if(!pogresanUnos) {
 				if(duplap) {
 					lista.add(1, "(");
 					duplap = false;
 				}
+				
 				if(duplak) {
 					lista.add(")");
 					duplak = false;
@@ -701,6 +669,7 @@ public class BazaStudenata {
 					lista.remove(lista.size() - 1);
 					lista.remove(0);
 				}
+				
 			if(lista.contains("and")) {
 				for(int b = 0; b < lista.size(); b++) {//prioritet za and
 					if(lista.get(b).equals("and")) {
@@ -820,12 +789,14 @@ public class BazaStudenata {
 			prosao = true;
 			}
 		}else {
-			//pogresanUnos = true;
+			pogresanUnos = true;
 		}
 		}
-		//if(!pogresanUnos) {																	//Ako korisnik unese pogresno, ne mijenja se izgled tabele
+		if(!pogresanUnos) {																	//Ako korisnik unese pogresno, ne mijenja se izgled tabele
 			studenti = zadovoljavajuPretragu;
-		//}
+		}else {
+			studenti = privremeno;
+		}
 	}
 	
 	public List<Predmet> predmetiKojeSlusa(List<String> tekst){
