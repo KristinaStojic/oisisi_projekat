@@ -30,6 +30,7 @@ private static ProfesorController instance = null;
 	
 	public void izmeniProfesora(Profesor p) {
 		BazaProfesora.getInstance().izmeniProfesora(p);
+		BazaPredmeta.getInstance().izmeniProfesora(p);
 		GlavniProzor.getInstance().azurirajPrikaz("IZMENJEN", -1);
 	}
 	

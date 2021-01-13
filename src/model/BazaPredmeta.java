@@ -1149,7 +1149,23 @@ public class BazaPredmeta {
 	}
 	
 	
-	
+	public void izmeniProfesora(Profesor p) {
+		for(Predmet s : predmeti) {
+			if(s.getPredmetni_profesor() != null){
+			
+				if(p.getBrojLicneKarte().equals(s.getPredmetni_profesor().getBrojLicneKarte())) {
+					s.getPredmetni_profesor().setIme(p.getIme());;
+					s.getPredmetni_profesor().setPrezime(p.getPrezime());
+					s.getPredmetni_profesor().setAdresaKancelarije(p.getAdresaKancelarije());
+					s.getPredmetni_profesor().setAdresaStanovanja(p.getAdresaStanovanja());
+					s.getPredmetni_profesor().setBrojLicneKarte(p.getBrojLicneKarte());
+					s.getPredmetni_profesor().setEmailAdresa(p.getEmailAdresa());
+					s.getPredmetni_profesor().setKontaktTelefon(p.getKontaktTelefon());
+				}
+			
+			}
+		}
+	}
 	
 		
 }
