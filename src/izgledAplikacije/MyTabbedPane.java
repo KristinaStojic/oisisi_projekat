@@ -65,13 +65,6 @@ enum Tab {Studenti, Profesori, Predmeti};
 		validate();
 	}
 	
-	public void azurirajPrikazPredmeta(String akcija, int vrijednost) {
-		AbstractTableModelPredmeti model = (AbstractTableModelPredmeti) predmetiTabela.getModel();
-		model.fireTableDataChanged();
-		validate();
-	}
-	
-	
 	public void azurirajPrikazProfesora(String akcija, int vrijednost) {
 		AbstractTableModelProfesori model = (AbstractTableModelProfesori) profesoriTabela.getModel();
 		model.fireTableDataChanged();
@@ -121,7 +114,11 @@ enum Tab {Studenti, Profesori, Predmeti};
 	}
 	
 	
-	
+	public void azurirajPrikazPredmeta(String akcija, int vrijednost) {
+		AbstractTableModelPredmeti model = (AbstractTableModelPredmeti) predmetiTabela.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
 	
 	public void initTab() {
 		setTitleAt(0, GlavniProzor.getInstance().getResourceBundle().getString("tabStudenti"));

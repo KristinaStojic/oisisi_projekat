@@ -183,19 +183,12 @@ public class BazaPredmeta {
 				String rijeci[] = txt.split(" ");
 				if(rijeci.length == 1) {
 					String naziv = rijeci[0];
-					
 					if(pred.getNaziv_predmeta().toUpperCase().contains(naziv.toUpperCase())) {
 						zadovoljavajuPretragu.add(pred);
 					}
 				}
 			}
-		
 			predmeti = zadovoljavajuPretragu;
-			/*for(Predmet p: predmeti) {
-				System.out.println(p.getNaziv_predmeta());
-			}*/
-			
-
 		}
 	
 	public void ukloniProfesora(int id) {
@@ -250,6 +243,15 @@ public class BazaPredmeta {
 	}
 	
 	
+	/*public void ukloniProfesoraPredmetu(Profesor prof, Predmet pred) {
+		for(Predmet p : predmeti) {
+			if(p.getPredmetni_profesor() != null) {
+				if(p.getPredmetni_profesor().getBrojLicneKarte().equals(prof.getBrojLicneKarte())) {
+					p.setPredmeni_profesor(null);
+				}
+			}
+		}
+	}*/
 	
 	public void ukloniProfesoraPredmetu(Profesor prof, Predmet pred) {
 		for(Predmet p : predmeti) {
