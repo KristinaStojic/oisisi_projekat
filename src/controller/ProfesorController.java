@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import izgledAplikacije.GlavniProzor;
 import model.BazaPredmeta;
-import model.BazaPredmetiProfesora;
 import model.BazaProfesora;
 import model.Predmet;
 import model.Profesor;

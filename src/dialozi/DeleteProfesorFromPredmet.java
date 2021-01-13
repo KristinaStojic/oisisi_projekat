@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import controller.PredmetController;
 import izgledAplikacije.GlavniProzor;
+import model.BazaProfesora;
 import model.Predmet;
 import model.Profesor;
 
@@ -50,9 +51,11 @@ public class DeleteProfesorFromPredmet extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PredmetController.getInstance().ukloniProfesoraPredmetu(prof, pred);
-				prof.getPredmetiProfesora().remove(pred);
+				
+				//prof.getPredmetiProfesora().remove(pred);
 				//ProfesorController.getInstance().izbrisiPredmetProfesoru(prof, pred);
-				//BazaProfesora.getInstance().izbrisiPredmetsaProfesora(pred);
+				BazaProfesora.getInstance().izbrisiPredmetsaProfesora(pred);
+				
 				if(prof.getPredmetiProfesora() != null) {
 					plus.setEnabled(true);
 					minus.setEnabled(false);
