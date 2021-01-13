@@ -37,7 +37,7 @@ public class DeletePredmet extends JDialog {
 	public DeletePredmet(Predmet p) {
 		setTitle("Brisanje predmeta");
 		setSize(new Dimension(420, 150));
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		setResizable(false);
 		setModal(true);
 				

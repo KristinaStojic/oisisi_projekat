@@ -68,7 +68,7 @@ public class UpisOcene extends JDialog{
 		//setTitle("Unos ocene");
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("unosOcene"));
 		setSize(320,420);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		setModal(true);
 		
 		dimension = new Dimension(150, 20);

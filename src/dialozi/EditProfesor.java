@@ -135,7 +135,7 @@ public class EditProfesor extends JDialog {
 		 setTitle(GlavniProzor.getInstance().resourceBundle.getString("izmeniProf"));
 
 			setSize(550,600);
-			setLocationRelativeTo(null);
+			setLocationRelativeTo(GlavniProzor.getInstance());
 			setModal(true);
 			
 			dimension = new Dimension(150, 20);

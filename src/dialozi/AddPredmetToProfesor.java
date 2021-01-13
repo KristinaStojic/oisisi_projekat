@@ -54,13 +54,13 @@ public class AddPredmetToProfesor extends JDialog{
 		
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("addPredmet"));
 		setSize(400,400);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		setModal(true);
 		
 		dimension = new Dimension(150, 20);
 		predmetPane = new JPanel(new BorderLayout());
 		
-		//ISPRAVI OVO, STAVI DA PREDMETI STOJI SKROZ LIJEVO
+		
 		JLabel lab= new JLabel(GlavniProzor.getInstance().resourceBundle.getString("predmeti"));
 		JPanel labsPanel = new JPanel (new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();

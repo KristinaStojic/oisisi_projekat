@@ -90,7 +90,7 @@ public class AddProfessor  extends JDialog {
 		//setTitle("Dodavanje profesora");
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("addProfesor"));
 		setSize(450,600);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		setModal(true);
 		
 		dimension = new Dimension(150, 20);
