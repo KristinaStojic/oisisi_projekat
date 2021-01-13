@@ -26,7 +26,6 @@ import izgledAplikacije.GlavniProzor;
 import listeneri.MyFocusListener1;
 import listeneri.MyFocusListener2;
 import listeneri.MyFocusListener4;
-import listeneri.MyFocusListener5;
 import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
 import model.BazaStudenata;
@@ -138,7 +137,7 @@ public class AddStudent extends JDialog {
 		labAdr.setPreferredSize(dim);
 		txtAdr = new JTextField();
 		txtAdr.setPreferredSize(dim);
-		txtAdr.addFocusListener(new MyFocusListener5());
+		//txtAdr.addFocusListener(new MyFocusListener5());
 		panAdr.add(labAdr);
 		panAdr.add(txtAdr);
 		panCen.add(panAdr);
@@ -259,12 +258,12 @@ public class AddStudent extends JDialog {
 					sve_uneseno = true;
 				}
 				Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
-				Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
+				//Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
 				Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
 				Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
 				Pattern godina = Pattern.compile("[0-9]{4}");
 				boolean ispravan_unos = false;
-				if(datum.matcher(txtDat.getText()).matches() && adresa.matcher(txtAdr.getText()).matches()
+				if(datum.matcher(txtDat.getText()).matches()
 						&& telefon.matcher(txtBrt.getText()).matches() && mejl.matcher(txtMail.getText()).matches()
 							&& godina.matcher(txtGodu.getText()).matches()) {
 					ispravan_unos = true;

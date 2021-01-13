@@ -24,7 +24,9 @@ public class JTables extends JTable{
 				//this.setAutoCreateRowSorter(true);
 				TableRowSorter<AbstractTableModelStudenti> sorter = new TableRowSorter<AbstractTableModelStudenti>(modelStudenti);
 				ComparatorSortiranje comp = new ComparatorSortiranje();
+				ComparatorProsjek comp1 = new ComparatorProsjek();
 				sorter.setComparator(0, comp);
+				sorter.setComparator(5, comp1);
 				this.setRowSorter(sorter);
 				break;
 		case Profesori:
