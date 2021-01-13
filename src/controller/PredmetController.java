@@ -7,7 +7,7 @@ import izgledAplikacije.GlavniProzor;
 import model.BazaNepolozeniIspiti;
 import model.BazaOcjena;
 import model.BazaPredmeta;
-
+import model.BazaPredmetiProfesora;
 import model.BazaStudenata;
 
 import model.BazaProfesora;
@@ -39,6 +39,7 @@ private static PredmetController instance = null;
 		BazaPredmeta.getInstance().izmeniPredmet(p);
 		GlavniProzor.getInstance().azurirajPrikaz("IZMJENJEN",-1);
 		BazaStudenata.getInstance().izmeniNepolozeni(p);
+		BazaPredmetiProfesora.getInstance().izmeniPredmet(p);
 		
 	}
 	

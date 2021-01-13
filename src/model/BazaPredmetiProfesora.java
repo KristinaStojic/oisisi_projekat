@@ -88,4 +88,20 @@ public class BazaPredmetiProfesora {
 					return null;
 				}
 			}
+			
+			public void izmeniPredmet(Predmet p) {
+				for(Profesor pr : BazaProfesora.getInstance().getProfesori()) {
+				if(pr.getPredmetiProfesora() != null) {
+				for(int i = 0; i < pr.getPredmetiProfesora().size(); i++) {
+					if(pr.getPredmetiProfesora().get(i).getId()  == p.getId()){
+						pr.getPredmetiProfesora().get(i).setGodina_izvodjenja(p.getGodina_izvodjenja());
+						pr.getPredmetiProfesora().get(i).setNaziv_predmeta(p.getNaziv_predmeta());
+						pr.getPredmetiProfesora().get(i).setPredmeni_profesor(p.getPredmetni_profesor());
+						pr.getPredmetiProfesora().get(i).setSemestar(p.getSemestar());
+					}
+				}
+				}
+				}
+			}
+			
 }

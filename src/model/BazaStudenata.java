@@ -1203,7 +1203,7 @@ public class BazaStudenata {
 		for(Student s : studenti) {
 			if(s.getNepolozeniIspiti() != null){
 			for(int i = 0; i < s.getNepolozeniIspiti().size(); i++) {
-				if(p.getSifra_predmeta().equals(s.getNepolozeniIspiti().get(i).getSifra_predmeta())) {
+				if(p.getId() == s.getNepolozeniIspiti().get(i).getId()) {
 					s.getNepolozeniIspiti().get(i).setBroj_ESPB(p.getBroj_ESPB());
 					s.getNepolozeniIspiti().get(i).setGodina_izvodjenja(p.getGodina_izvodjenja());
 					s.getNepolozeniIspiti().get(i).setNaziv_predmeta(p.getNaziv_predmeta());
