@@ -33,7 +33,7 @@ public class PonistiOcjenu extends JDialog{
 	public PonistiOcjenu(Student s, Ocena o) {
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("ponistiOcjenu"));
 		setSize(new Dimension(420, 150));
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		setResizable(true);
 		setModal(true);
 		

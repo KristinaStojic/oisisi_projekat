@@ -93,7 +93,7 @@ public class AddStudent extends JDialog {
 	public AddStudent() {
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("addStudent"));
 		setSize(450,600);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		setModal(true);
 		
 		dim = new Dimension(150, 20);

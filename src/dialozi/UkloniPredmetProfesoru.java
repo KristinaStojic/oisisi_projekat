@@ -33,7 +33,7 @@ public class UkloniPredmetProfesoru extends JDialog{
 	public UkloniPredmetProfesoru(Profesor profesor, ArrayList<Predmet> predmeti) {
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("ukloniPredmet"));
 		setSize(new Dimension(420, 150));
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		setResizable(true);
 		setModal(true);
 		

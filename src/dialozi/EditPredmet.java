@@ -87,7 +87,7 @@ public class EditPredmet extends JDialog{
 	private JPanel editPredmet(Predmet p) {
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("editPredmet"));
 		setSize(450,500);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		setModal(true);
 		
 		dim = new Dimension(150, 20);
@@ -226,7 +226,6 @@ public class EditPredmet extends JDialog{
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 			

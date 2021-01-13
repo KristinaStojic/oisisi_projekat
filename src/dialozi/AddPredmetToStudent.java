@@ -42,7 +42,7 @@ public class AddPredmetToStudent extends JDialog{
 	public AddPredmetToStudent(Student s) {
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("addPredmet"));
 		setSize(400,400);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		setModal(true);
 		
 		dim = new Dimension(150, 20);

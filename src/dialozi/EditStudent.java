@@ -371,7 +371,7 @@ public class EditStudent extends JDialog {
 	private JPanel informacijeIzmjena(Student s) {
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("editStudent"));
 		setSize(550,600);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		setModal(true);
 		
 		dim = new Dimension(150, 20);
@@ -523,7 +523,6 @@ public class EditStudent extends JDialog {
 					StudentiController.getInstance().izmeniStudenta(student);
 					dispose();
 				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}	
@@ -549,12 +548,12 @@ public class EditStudent extends JDialog {
 					sve_uneseno = true;
 				}
 				Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
-				Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
+				//Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
 				Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
 				Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
 				Pattern godina = Pattern.compile("[0-9]{4}");
 				boolean ispravan_unos = false;
-				if(datum.matcher(txtDat.getText()).matches() && adresa.matcher(txtAdr.getText()).matches()
+				if(datum.matcher(txtDat.getText()).matches()/* && adresa.matcher(txtAdr.getText()).matches()*/
 						&& telefon.matcher(txtBrt.getText()).matches() && mejl.matcher(txtMail.getText()).matches()
 							&& godina.matcher(txtGodu.getText()).matches()) {
 					ispravan_unos = true;
@@ -563,6 +562,7 @@ public class EditStudent extends JDialog {
 				for(int i = 0; i < BazaStudenata.getInstance().getStudenti().size(); i++) {
 					if((txtBri.getText().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))
 							&& BazaStudenata.getInstance().getStudenti().get(i).getId() != s.getId()) {
+						System.out.println(BazaStudenata.getInstance().getStudenti().get(i).getId() + " " + s.getId());
 						postoji = true;
 						txtBri.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("postojiIndeks"));
 						//JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));

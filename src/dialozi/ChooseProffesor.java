@@ -45,7 +45,7 @@ public class ChooseProffesor extends JDialog{
 		
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("odaberiProfesora"));
 		setSize(400,400);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		setModal(true);
 		
 		dim = new Dimension(150, 20);

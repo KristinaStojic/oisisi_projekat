@@ -31,7 +31,7 @@ public class MovePredmetFromStudent extends JDialog{
 	public MovePredmetFromStudent(Student student, Predmet predmet) {
 		setTitle(GlavniProzor.getInstance().resourceBundle.getString("uklanjanjePredmeta"));
 		setSize(new Dimension(420, 150));
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		setResizable(true);
 		setModal(true);
 		

@@ -33,7 +33,6 @@ public class EditAction extends AbstractAction{
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		System.out.println("Pritisnuto dugme");
 	
 		if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 1) {
 		    Profesor izabraniProfesor = GlavniProzor.getInstance().tabbedPane.getIzabraniProfesor();
@@ -51,7 +50,7 @@ public class EditAction extends AbstractAction{
 				editStudent.setVisible(true);
 				GlavniProzor.getInstance().azurirajPrikaz("IZMJENI", -1);
 			}else {
-				JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("morateIzabratiStudenta"));
+				JOptionPane.showMessageDialog(GlavniProzor.getInstance(), GlavniProzor.getInstance().getResourceBundle().getString("morateIzabratiStudenta"));
 			}
 		}else if(GlavniProzor.getInstance().tabbedPane.getSelectedIndex() == 2) {
 			Predmet izabraniPredmet = GlavniProzor.getInstance().tabbedPane.getIzabraniPredmet();
@@ -60,7 +59,7 @@ public class EditAction extends AbstractAction{
 				editPredmet.setVisible(true);
 				GlavniProzor.getInstance().azurirajPrikaz("IZMJENE", -1);
 			}else {
-				JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().getResourceBundle().getString("morateIzabratiPredmet"));
+				JOptionPane.showMessageDialog(GlavniProzor.getInstance(), GlavniProzor.getInstance().getResourceBundle().getString("morateIzabratiPredmet"));
 			}
 		}
 
