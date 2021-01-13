@@ -342,7 +342,7 @@ public class EditProfesor extends JDialog {
 					boolean postoji = false;
 					for(int i = 0; i < BazaProfesora.getInstance().getProfesori().size(); i++) {
 						if((txtBrLicne.getText().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))
-								&& p.getId() != BazaProfesora.getInstance().getProfesori().get(i).getId()) {
+								&& p.getId() != BazaProfesora.getInstance().getAll().get(i).getId()) {
 							txtBrLicne.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("postojiLicna"));
 							postoji = true;
 						}else {
