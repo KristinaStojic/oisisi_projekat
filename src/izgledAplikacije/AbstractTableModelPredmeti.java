@@ -49,7 +49,14 @@ public class AbstractTableModelPredmeti extends AbstractTableModel{
 		case 3:
 			return p.getGodina_izvodjenja();
 		case 4:
-			return p.getSemestar();
+			if(p.getSemestar() == Semestar.Zimski) {
+				return "Zimski";
+			}
+			else {
+				return "Letnji";
+			}
+			
+			//return p.getSemestar();
 		default:
 			return null;
 		}
@@ -63,7 +70,7 @@ public class AbstractTableModelPredmeti extends AbstractTableModel{
         }
         return BazaPredmeta.getInstance().getValueAt(0, columnIndex).getClass();*/
 		
-		if(columnIndex == 2 || columnIndex == 3) {
+	    if(columnIndex == 2 || columnIndex == 3) {
 			return Integer.class;
 		}else {
 			return String.class;
