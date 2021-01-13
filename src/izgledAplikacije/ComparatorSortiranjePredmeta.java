@@ -21,7 +21,8 @@ public class ComparatorSortiranjePredmeta implements Comparator<String>{
 			
 			String slova1 = podjela1[0];
 			String slova2 = podjela2[0];	
-			
+			int br1 = Integer.parseInt(brojevi1);
+			int br2 = Integer.parseInt(brojevi2);
 			
 			
 			/*String[] n = s1.split(""); //array of strings
@@ -53,9 +54,10 @@ public class ComparatorSortiranjePredmeta implements Comparator<String>{
 				
 			}else {
 				
-				System.out.println(brojevi1 + " " + brojevi2);
-				System.out.println(brojevi1.compareTo(brojevi2));
-				return brojevi1.compareTo(brojevi2);
+				//System.out.println(brojevi1 + " " + brojevi2);
+				int ret = Integer.parseInt(brojevi1) - Integer.parseInt(brojevi2);
+				return ret;
+				//return brojevi1.compareTo(brojevi2);
 				
 			}
 			
