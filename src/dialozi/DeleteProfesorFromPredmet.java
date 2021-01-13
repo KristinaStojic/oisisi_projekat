@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.PredmetController;
-import controller.ProfesorController;
 import izgledAplikacije.GlavniProzor;
 import model.Predmet;
 import model.Profesor;
