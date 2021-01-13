@@ -1,6 +1,7 @@
 package dialozi;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -265,53 +266,7 @@ public class AddProfessor  extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			//	try {
-				
-				//	if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
-				//			|| txtDatum.getText().trim().isEmpty() || txtAdresa.getText().trim().isEmpty()
-				//				|| txtTel.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()
-				//					|| txtAdresaKanc.getText().trim().isEmpty() || txtBrLicne.getText().trim().isEmpty()) {
-				//		JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("svaPolja"));
-
-				//	}else {
-					//	Profesor profesor = collectData();
-						
-				//		boolean postoji = false;
-					//	for(int i = 0; i < BazaProfesora.getInstance().getProfesori().size(); i++) {
-					//		if((profesor.getBrojLicneKarte().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))) {
-					//			//JOptionPane.showMessageDialog(null, "Uneseni broj lične karte već postoji!");
-					//			JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiLicna"));
-
-					//			postoji = true;
-					//		}}
-					//		if(!postoji) {
-					/*			Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
-								Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
-								Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
-								Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
-								
-								boolean ispravan_unos = false;
-								if(datum.matcher(profesor.getDatumRodjenja()).matches() && adresa.matcher(profesor.getAdresaStanovanja()).matches()
-										&& telefon.matcher(profesor.getKontaktTelefon()).matches() && mejl.matcher(profesor.getEmailAdresa()).matches()
-										&& adresa.matcher(profesor.getAdresaKancelarije()).matches()) {
-									ispravan_unos = true;
-								}
-								if(!ispravan_unos) {
-									//.showMessageDialog(null, "Neispravan unos!");
-									JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("neispravanUnos"));
-
-								}
-								if(!postoji && ispravan_unos) {
-									ProfesorController.getInstance().dodajProfesora(profesor);
-									dispose();
-								}
-							}
-						
-					}
-				}catch(Exception ex) {
-					ex.printStackTrace();
-				}*/
-				
+			
 				Profesor profesor;
 				profesor = collectData();
 				ProfesorController.getInstance().dodajProfesora(profesor);
@@ -361,10 +316,11 @@ KeyListener provjera = new KeyListener() {
 						if((txtBrLicne.getText().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))) {
 							postoji = true;
 							txtBrLicne.setToolTipText( GlavniProzor.getInstance().resourceBundle.getString("postojiLicna"));
-							
+							//txtBrLicne.setBackground(Color.RED);
+
 						}else {
 								txtBrLicne.setToolTipText(null);
-
+								//txtBrLicne.setBackground(Color.WHITE);
 							}
 						
 						

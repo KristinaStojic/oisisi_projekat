@@ -239,10 +239,22 @@ public class BazaPredmeta {
 	}
 	
 	
-	public void ukloniProfesoraPredmetu(Profesor prof, Predmet pred) {
+	/*public void ukloniProfesoraPredmetu(Profesor prof, Predmet pred) {
 		for(Predmet p : predmeti) {
 			if(p.getPredmetni_profesor() != null) {
 				if(p.getPredmetni_profesor().getBrojLicneKarte().equals(prof.getBrojLicneKarte())) {
+					p.setPredmeni_profesor(null);
+				}
+			}
+		}
+	}*/
+	
+	public void ukloniProfesoraPredmetu(Profesor prof, Predmet pred) {
+		for(Predmet p : predmeti) {
+			if(p.getSifra_predmeta().equals(pred.getSifra_predmeta())) {
+				if(p.getPredmetni_profesor() != null) {
+					if(p.getPredmetni_profesor().getBrojLicneKarte().equals(prof.getBrojLicneKarte()))
+					
 					p.setPredmeni_profesor(null);
 				}
 			}
