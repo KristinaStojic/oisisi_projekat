@@ -85,7 +85,7 @@ public class EditPredmet extends JDialog{
 	}
 	
 	private JPanel editPredmet(Predmet p) {
-		setTitle(GlavniProzor.getInstance().resourceBundle.getString("dodavanjePredmeta"));
+		setTitle(GlavniProzor.getInstance().resourceBundle.getString("editPredmet"));
 		setSize(450,500);
 		setLocationRelativeTo(null);
 		setModal(true);
