@@ -95,7 +95,7 @@ public class BazaProfesora {
 	
 	public void izmeniProfesora(Profesor p) {
 		for(Profesor i: profesori) {
-			if(i.getBrojLicneKarte().equals(p.getBrojLicneKarte())) {
+			if(i.getId()==p.getId()) {
 				i.setIme(p.getIme());
 				i.setPrezime(p.getPrezime());
 				i.setDatumRodjenja(p.getDatumRodjenja());
