@@ -33,7 +33,7 @@ public class BazaPredmetiProfesora {
 				
 			}
 			
-			private void initPredmetiProfesora() {
+			public void initPredmetiProfesora() {
 				this.predmetiProfesora = new ArrayList<Predmet>();
 				Profesor p = GlavniProzor.getInstance().tabbedPane.getIzabraniProfesor();
 				try {
@@ -59,6 +59,10 @@ public class BazaPredmetiProfesora {
 			
 			public void dodajPredmetiProfesora(Predmet p) {
 				this.predmetiProfesora.add(p);
+			}
+			
+			public void izbrisiPredmetProfesora(Predmet p) {
+				predmetiProfesora.remove(p);
 			}
 			
 			public String getColumnName(int index) {

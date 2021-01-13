@@ -208,6 +208,15 @@ public class BazaPredmeta {
 	}
 	
 	
+	public void dodajPredmetuProfesora(Profesor prof, Predmet pred) {
+		for(Predmet p : predmeti) {
+			if(p.getSifra_predmeta().equals(pred.getSifra_predmeta())) {
+				p.setPredmeni_profesor(prof);
+			}
+		}
+	}
+	
+	
 	public void saveDataPredmetTxt()throws IOException{
 		ObjectOutputStream out=null;
 		
@@ -239,6 +248,24 @@ public class BazaPredmeta {
 			}
 		}
 	}
+	
+	
+	public Predmet findById(String sifra) {
+		for (Predmet p : predmeti) {
+			if (p.getSifra_predmeta().equals(sifra)) {
+
+				return p;
+
+			}
+		}
+		return null;
+
+	}
+	
+	public void dodajProfesoraPredmetu(Profesor prof, Predmet pred) {
+		BazaPredmeta.getInstance().dodajPredmetuProfesora(prof, pred);
+	}
+	
 	
 	public void naprednaPretragaPredmeta(String txt) {
 		zadovoljavajuPretragu = new ArrayList<Predmet>();

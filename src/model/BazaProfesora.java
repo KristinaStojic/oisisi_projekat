@@ -226,4 +226,26 @@ public class BazaProfesora {
 		}
 	}
 	
+	public void izbrisiPredmet(Profesor prof, Predmet pred) {
+		for(int i=0;i<prof.getPredmetiProfesora().size();i++) {
+			if(prof.getPredmetiProfesora().get(i).equals(pred)) {
+				prof.getPredmetiProfesora().remove(pred);
+				return;
+			}
+		}
+
+		
+	}
+
+	public Profesor nadjiBlc(String blc) {
+
+		for (Profesor p : profesori) {
+
+			if (p.getBrojLicneKarte() == blc) {
+				return p;
+			}
+		}
+		return null;
+	}
+	
 }

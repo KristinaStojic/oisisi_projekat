@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import izgledAplikacije.GlavniProzor;
 import model.BazaPredmeta;
+import model.BazaPredmetiProfesora;
 import model.BazaProfesora;
 import model.Predmet;
 import model.Profesor;
@@ -58,5 +59,10 @@ private static ProfesorController instance = null;
 	public void dodajPredmet(Profesor p, Predmet pp) {
 		BazaProfesora.getInstance().dodajPredmete(p, pp);
 	}
+	
+	public void izbrisiPredmetProfesoru(Profesor prof, Predmet pred) {
+		BazaProfesora.getInstance().izbrisiPredmet(prof, pred);
+		//GlavniProzor.getInstance().tabbedPane.azurirajPrikazProfesora("OBRISAN", -1);
+		}
 
 }

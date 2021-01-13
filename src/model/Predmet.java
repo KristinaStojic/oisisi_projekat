@@ -39,6 +39,21 @@ public class Predmet implements Serializable{
 		this.studenti_nisu_polozili = studenti_nisu_polozili;
 	}
 
+	public Predmet(Predmet p) {
+
+		super();
+
+		this.sifra_predmeta = p.getSifra_predmeta();
+		this.naziv_predmeta = p.getNaziv_predmeta();
+		this.semestar = p.getSemestar();
+		this.godina_izvodjenja = p.getGodina_izvodjenja();
+		this.predmetni_profesor = p.getPredmetni_profesor();
+		broj_ESPB = p.getBroj_ESPB();
+		this.studenti_polozili = p.getStudenti_polozili();
+		this.studenti_nisu_polozili = p.getStudenti_nisu_polozili();
+
+	}
+
 	public String getSifra_predmeta() {
 		return sifra_predmeta;
 	}
