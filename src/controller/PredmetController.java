@@ -57,6 +57,7 @@ private static PredmetController instance = null;
 	
 	public void dodajNepolozeni(Predmet p, Student s) {
 		BazaNepolozeniIspiti.getInstance().dodajNepolozene(p, s);
+		BazaPredmeta.dodajStudentaNepolozeni(p, s);
 	}
 	
 	public void izbrisiNepolozeni(Predmet p, Student s) {

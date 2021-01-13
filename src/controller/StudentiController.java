@@ -37,6 +37,7 @@ public class StudentiController {
 	public void izbrisiStudenta(Student s) {
 		BazaStudenata.getInstance().izbrisiStudenta(s.getId());
 		GlavniProzor.getInstance().azurirajPrikaz("IZBRISAN", -1);
+		BazaStudenata.getInstance().skloniIzPredmeta(s);
 	}
 	
 	public void pretragaStudenata(String txt) {
@@ -51,9 +52,11 @@ public class StudentiController {
 	
 	public void ukloniPredmet(Student s, Predmet p) {
 		BazaStudenata.getInstance().ukloniPredmet(s, p);
+		BazaStudenata.getInstance().skloniStudentaPredmetu(s, p);
 	}
 	
 	public void ponistiOcjenu(Student s, Ocena o) {
 		BazaStudenata.getInstance().ponistiOcjenu(s, o);
+		BazaStudenata.getInstance().nisuPoloziliOcjena(s, o);
 	}
 }

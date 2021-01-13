@@ -1148,4 +1148,50 @@ public class BazaStudenata {
 		}
 	}
 	
+	public void skloniStudentaPredmetu(Student st, Predmet pr) {
+		for(Student s : BazaStudenata.getInstance().getStudenti()) {
+			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+					if(p.getSifra_predmeta().equals(pr.getSifra_predmeta())) {
+						p.getStudenti_nisu_polozili().remove(s);
+					}
+				}
+			}
+		}
+	}
+	
+	public void nisuPoloziliOcjena(Student st, Ocena oc) {
+		for(Student s : BazaStudenata.getInstance().getStudenti()) {
+			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+					if(p.getSifra_predmeta().equals(oc.getPredmet().getSifra_predmeta())) {
+						p.getStudenti_polozili().remove(s);
+						if(p.getStudenti_nisu_polozili() != null) {
+							p.getStudenti_nisu_polozili().add(s);
+						}else {
+							ArrayList<Student> list = new ArrayList<Student>();
+							list.add(s);
+							p.setStudenti_nisu_polozili(list);
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	public void skloniIzPredmeta(Student s) {
+		for(Student st : studenti) {
+			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+					for(int i = 0; i < p.getStudenti_nisu_polozili().size(); i++) {
+						if(p.getStudenti_nisu_polozili().get(i).getBrojIndeksa().equals(st.getBrojIndeksa())) {
+							p.getStudenti_nisu_polozili().remove(i);
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	
 }

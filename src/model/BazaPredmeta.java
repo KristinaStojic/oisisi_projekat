@@ -1062,5 +1062,23 @@ public class BazaPredmeta {
 	return ret;
 	
 	}
+	
+	public static void dodajStudentaNepolozeni(Predmet p, Student s) {
+		for(Student st : BazaStudenata.getInstance().getStudenti()) {
+			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+				for(Predmet pr : BazaPredmeta.getInstance().getPredmeti()) {
+					if(p.getSifra_predmeta().equals(pr.getSifra_predmeta())) {
+						if(p.getStudenti_nisu_polozili() != null) {
+							p.getStudenti_nisu_polozili().add(st);
+						}else {
+							ArrayList<Student> list = new ArrayList<Student>();
+							list.add(st);
+							p.setStudenti_nisu_polozili(list);
+						}
+					}
+				}
+			}
+		}
+	}
 		
 }
