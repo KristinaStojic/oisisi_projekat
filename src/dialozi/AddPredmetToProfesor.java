@@ -141,9 +141,9 @@ public class AddPredmetToProfesor extends JDialog{
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				int indeksIzabranog = lista.getSelectedIndex();
+				int izabrani = lista.getSelectedIndex();
 
-				dodat = new Predmet(listaMogucihPredmeta.get(indeksIzabranog));
+				dodat = new Predmet(listaMogucihPredmeta.get(izabrani));
 
 				
 				

@@ -1107,5 +1107,41 @@ public class BazaPredmeta {
 			}
 		}
 	}
+	
+	
+	public void dodajStudentaPolozeni(Predmet p, Student s) {
+		for(Student st : BazaStudenata.getInstance().getStudenti()) {
+			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+				for(Predmet pr : BazaPredmeta.getInstance().getPredmeti()) {
+					if(p.getSifra_predmeta().equals(pr.getSifra_predmeta())) {
+						if(p.getStudenti_polozili() != null) {
+							p.getStudenti_polozili().add(st);
+						}else {
+							ArrayList<Student> list = new ArrayList<Student>();
+							list.add(st);
+							p.setStudenti_polozili(list);
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	
+	public void skloniStudentaNepolozeni(Student st, Predmet pr) {
+		for(Student s : BazaStudenata.getInstance().getStudenti()) {
+			if(st.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+					if(p.getSifra_predmeta().equals(pr.getSifra_predmeta())) {
+						p.getStudenti_nisu_polozili().remove(s);
+					}
+				}
+			}
+		}
+	}
+	
+	
+	
+	
 		
 }

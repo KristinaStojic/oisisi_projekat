@@ -60,13 +60,24 @@ private static PredmetController instance = null;
 		BazaPredmeta.dodajStudentaNepolozeni(p, s);
 	}
 	
+	
+	
+	//za upis ocjene
 	public void izbrisiNepolozeni(Predmet p, Student s) {
 		BazaNepolozeniIspiti.getInstance().izbrisiNepolozeni(p, s);
 	}
 	
 	public void dodajPolozeni(Predmet p, Student s, int ocjena, Date datumPolaganja) {
 		BazaOcjena.getInstance().dodajPolozeni(s, p, ocjena, datumPolaganja);
+	
+		BazaPredmeta.getInstance().dodajStudentaPolozeni(p, s);
+		BazaPredmeta.getInstance().skloniStudentaNepolozeni(s, p);
+
 	}
+	
+	
+	
+	
 	
 	public void ukloniProfPredmetima(ArrayList<Predmet> predmeti) {
 		BazaPredmeta.getInstance().ukloniProfesoraPredmetima(predmeti);
