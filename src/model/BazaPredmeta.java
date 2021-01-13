@@ -180,13 +180,13 @@ public class BazaPredmeta {
 			
 			
 			for(Predmet pred : pomocni) {
-				String rijeci[] = txt.split(" ");
-				if(rijeci.length == 1) {
-					String naziv = rijeci[0];
-					if(pred.getNaziv_predmeta().toUpperCase().contains(naziv.toUpperCase())) {
+				//String rijeci[] = txt.split(" ");
+				//if(rijeci.length == 1) {
+					//String naziv = rijeci[0];
+					if(pred.getNaziv_predmeta().toUpperCase().contains(txt.toUpperCase())) {
 						zadovoljavajuPretragu.add(pred);
 					}
-				}
+				//}
 			}
 			predmeti = zadovoljavajuPretragu;
 		}
