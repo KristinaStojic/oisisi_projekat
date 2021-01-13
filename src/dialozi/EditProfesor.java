@@ -192,7 +192,7 @@ public class EditProfesor extends JDialog {
 			txtAdresa = new JTextField();
 			txtAdresa.setPreferredSize(dimension);
 			txtAdresa.setText(p.getAdresaStanovanja());
-			txtAdresa.addFocusListener(new MyFocusListener5());
+			//txtAdresa.addFocusListener(new MyFocusListener5());
 			panAdresa.add(labAdresa);
 			panAdresa.add(txtAdresa);
 			panCen.add(panAdresa);
@@ -232,7 +232,7 @@ public class EditProfesor extends JDialog {
 			txtAdresaKanc = new JTextField();
 			txtAdresaKanc.setPreferredSize(dimension);
 			txtAdresaKanc.setText(p.getAdresaKancelarije());
-			txtAdresaKanc.addFocusListener(new MyFocusListener5());
+			//txtAdresaKanc.addFocusListener(new MyFocusListener5());
 			panAdresaKanc.add(labAdresaKanc);
 			panAdresaKanc.add(txtAdresaKanc);
 			panCen.add(panAdresaKanc);
@@ -381,14 +381,14 @@ public class EditProfesor extends JDialog {
 						sve_uneseno = true;
 					}
 					Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
-					Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
+					//Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
 					Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
 					Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
 					Pattern brLicne = Pattern.compile("[A-Z|0-9]*");
 					boolean ispravan_unos = false;
-					if(datum.matcher(txtDatum.getText()).matches() && adresa.matcher(txtAdresa.getText()).matches()
+					if(datum.matcher(txtDatum.getText()).matches() && (txtAdresa.getText() != "")
 							&& telefon.matcher(txtTel.getText()).matches() && mejl.matcher(txtEmail.getText()).matches()
-							&& adresa.matcher(txtAdresaKanc.getText()).matches() && brLicne.matcher(txtBrLicne.getText()).matches()) {
+							&& (txtAdresa.getText() != "") && brLicne.matcher(txtBrLicne.getText()).matches()) {
 						ispravan_unos = true;
 					}
 					boolean postoji = false;
