@@ -10,6 +10,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -40,7 +44,7 @@ public class AddPredmetToProfesor extends JDialog{
 	JScrollBar scrol;
 	JPanel predmetPane;
 	
-	
+	Predmet dodat = null;
 	JList<String> predList;
 	List<String> list;
 	ArrayList<Predmet> listaMogucihPredmeta;
@@ -71,39 +75,58 @@ public class AddPredmetToProfesor extends JDialog{
         
         list = new ArrayList<String>();
 		listaMogucihPredmeta = new ArrayList<Predmet>();
-		boolean imaPredmet = false;
+		
 		try {
 			
-			for(Predmet p1 : BazaPredmeta.getInstance().getPredmeti()) {
-				
-	
-				if(p.getPredmetiProfesora() != null) { //ako profesor nema nijedan predmet na kom predaje
-				for(int i=0;i<p.getPredmetiProfesora().size();i++)
-			    {
-					if(p1.getSifra_predmeta().equals(p.getPredmetiProfesora().get(i).getSifra_predmeta())) {
-						imaPredmet = true;
-					}
+			for (Predmet pr : BazaPredmeta.getInstance().getPredmeti()) {
+
+				if (pr.getPredmetni_profesor() == null) {  
+					list.add(pr.getSifra_predmeta() + " - " + pr.getNaziv_predmeta());
+					listaMogucihPredmeta.add(pr);
 				}
-				}
-				
-				if(imaPredmet == false) {
-					
-					list.add(p1.getSifra_predmeta() + " - " + p1.getNaziv_predmeta());
-					listaMogucihPredmeta.add(p1);
-				}
-				imaPredmet = false;
-				
 			}
+			
 			
 		}catch(NullPointerException e) {}
 		
-		predList = new JList<String>(list.toArray(new String[list.size()]));
-		JScrollPane pane1 = new JScrollPane();
-		pane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		pane1.setViewportView(predList);
-		predList.setLayoutOrientation(JList.VERTICAL);
 		
-		predmetPane.add(pane1);
+		
+		DefaultListModel<String> model = new DefaultListModel<String>();
+
+		for (Predmet predm : listaMogucihPredmeta) {
+			String ispis = predm.getSifra_predmeta() + " - " + predm.getNaziv_predmeta();
+			model.addElement(ispis);
+		}
+
+		JList<String> lista = new JList<String>(model);
+		lista.setSelectedIndex(0);
+
+		JScrollPane scrollPane = new JScrollPane(lista);
+		scrollPane.setPreferredSize(scrollPane.getMaximumSize());
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		JPanel buttons = new JPanel();
+		buttons.setBorder(BorderFactory.createEmptyBorder(0, 0, 15, 0));
+		BoxLayout box = new BoxLayout(buttons, BoxLayout.X_AXIS);
+		buttons.setLayout(box);
+
+		JButton potvrdi = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnPotvrdi"));
+		JButton odustani = new JButton(GlavniProzor.getInstance().resourceBundle.getString("btnOdustani"));
+
+
+		buttons.add(Box.createHorizontalGlue());
+		buttons.add(potvrdi);
+		buttons.add(Box.createHorizontalStrut(10));
+		buttons.add(odustani);
+		
+
+		
+		//predList = new JList<String>(list.toArray(new String[list.size()]));
+		//JScrollPane pane1 = new JScrollPane();
+		//pane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		//pane1.setViewportView(lista);
+		//lista.setLayoutOrientation(JList.VERTICAL);
+		
+		predmetPane.add(scrollPane);
         
 
 		btnPan = new JPanel();
@@ -116,13 +139,108 @@ public class AddPredmetToProfesor extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(predList.getSelectedIndex() != -1) {
-					Predmet predmet = listaMogucihPredmeta.get(predList.getSelectedIndex());
-					predmet.setPredmeni_profesor(p);
-					ProfesorController.getInstance().dodajPredmet(p, predmet);
-					predmet.setPredmeni_profesor(p);
+				
+				
+				int indeksIzabranog = lista.getSelectedIndex();
+
+				dodat = new Predmet(listaMogucihPredmeta.get(indeksIzabranog));
+
+				
+				
+				if (dodat.getPredmetni_profesor() != null) {
+
+					
+						ProfesorController.getInstance().izbrisiPredmetProfesoru(dodat.getPredmetni_profesor(), dodat);
+						ProfesorController.getInstance().dodajPredmet(p, dodat);
+						BazaPredmeta.getInstance().findById(dodat.getSifra_predmeta()).setPredmeni_profesor(p);
+						
+						dispose();
+
+					
+				} else {
+
+					ProfesorController.getInstance().dodajPredmet(p, dodat);
+					BazaPredmeta.getInstance().findById(dodat.getSifra_predmeta()).setPredmeni_profesor(p);
+					
 					dispose();
 				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				/*
+				
+				
+				
+				//Predmet predmet = listaMogucihPredmeta.get(predList.getSelectedIndex());
+				Profesor stariProf = dodat.getPredmetni_profesor();
+				System.out.println(stariProf);
+				if(stariProf!=null) {
+					ProfesorController.getInstance().izbrisiPredmetProfesoru(stariProf, dodat);
+					PredmetController.getInstance().ukloniProfesoraPredmetu(dodat.getPredmetni_profesor(), dodat);
+					
+				}
+				
+				//ProfesorController.getInstance().izbrisiPredmetProfesoru(dodat.getPredmetni_profesor(),dodat);
+				
+				//PredmetController.getInstance().ukloniProfesoraPredmetu(dodat.getPredmetni_profesor(), dodat);
+				PredmetController.getInstance().dodajProfesoraPredmetu(p, dodat);
+				
+				ProfesorController.getInstance().dodajPredmet(p, dodat);
+				//System.out.println(p.getPredmetiProfesora().toString());
+				System.out.println("posle brisanja kao:\n");
+				System.out.println(dodat.getPredmetni_profesor());
+				
+				System.out.println("Predmeti novo profesora:\n");
+				System.out.println(p.getPredmetiProfesora().toString());
+
+				dispose();
+				
+				
+				+*/
+				
+				
+				//if(predList.getSelectedIndex() != -1) {
+					
+					/*Predmet predmet = listaMogucihPredmeta.get(predList.getSelectedIndex());
+					Profesor stariProf = predmet.getPredmetni_profesor();
+					if(stariProf!=null) {
+						ProfesorController.getInstance().izbrisiPredmetProfesoru(stariProf, predmet);
+						
+					}
+					ProfesorController.getInstance().dodajPredmet(p, predmet);
+					dispose();*/
+					
+					
+					/*Predmet predmet = listaMogucihPredmeta.get(predList.getSelectedIndex());
+					Profesor stariProf = predmet.getPredmetni_profesor();
+					if(stariProf!=null) {
+						Object[] izbor = {"DA", "NE"};
+						Object defaultChoice = izbor[0];
+						
+						int a = JOptionPane.showOptionDialog(pane1, "Da li zelite da zamijenite postojeceg profesora", "Dodavanje predmeta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, izbor, defaultChoice);
+						stariProf.getPredmetiProfesora().remove(predmet);
+					
+					if(a == JOptionPane.YES_OPTION) {
+						stariProf.getPredmetiProfesora().remove(predmet);
+						predmet.setPredmeni_profesor(p);
+						ProfesorController.getInstance().dodajPredmet(p, predmet);
+						dispose();
+					}
+					}
+					else {
+						predmet.setPredmeni_profesor(p);
+						ProfesorController.getInstance().dodajPredmet(p, predmet);
+						dispose();
+					}
+					*/
+				//}
 			}
 		});
 
