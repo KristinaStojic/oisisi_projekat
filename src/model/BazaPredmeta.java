@@ -166,6 +166,10 @@ public class BazaPredmeta {
 	}
 	
 	
+	public List<Predmet> getAll(){
+		return pomocni;
+	}
+	
 	// u slucaju da je polje za pretragu prazno, vraca pocetnu tabelu
 		public void vratiPrikaz() {
 			predmeti = pomocni;

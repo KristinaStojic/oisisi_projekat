@@ -559,10 +559,10 @@ public class EditStudent extends JDialog {
 					ispravan_unos = true;
 				}
 				boolean postoji = false;
-				for(int i = 0; i < BazaStudenata.getInstance().getStudenti().size(); i++) {
-					if((txtBri.getText().equals(BazaStudenata.getInstance().getStudenti().get(i).getBrojIndeksa()))
-							&& BazaStudenata.getInstance().getStudenti().get(i).getId() != s.getId()) {
-						System.out.println(BazaStudenata.getInstance().getStudenti().get(i).getId() + " " + s.getId());
+				for(int i = 0; i < BazaStudenata.getInstance().getAll().size(); i++) {
+					if((txtBri.getText().equals(BazaStudenata.getInstance().getAll().get(i).getBrojIndeksa()))
+							&& BazaStudenata.getInstance().getAll().get(i).getId() != s.getId()) {
+						
 						postoji = true;
 						txtBri.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("postojiIndeks"));
 						//JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiIndeks"));

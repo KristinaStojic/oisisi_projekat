@@ -245,9 +245,9 @@ public class EditPredmet extends JDialog{
 					ispravan_unos = true;
 				}
 				boolean postoji = false;
-				for(int i = 0; i < BazaPredmeta.getInstance().getPredmeti().size(); i++) {
-					if((txtSifra.getText().equals(BazaPredmeta.getInstance().getPredmeti().get(i).getSifra_predmeta())
-							&& p.getId() != BazaPredmeta.getInstance().getPredmeti().get(i).getId())) {
+				for(int i = 0; i < BazaPredmeta.getInstance().getAll().size(); i++) {
+					if((txtSifra.getText().equals(BazaPredmeta.getInstance().getAll().get(i).getSifra_predmeta())
+							&& p.getId() != BazaPredmeta.getInstance().getAll().get(i).getId())) {
 						txtSifra.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("postojiSifra"));
 						//JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiSifra"));
 						postoji = true;

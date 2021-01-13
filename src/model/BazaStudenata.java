@@ -158,6 +158,10 @@ public class BazaStudenata {
 		//privremeno = studenti;
 	}
 	
+	public List<Student> getAll() {
+		return privremeno;
+	}
+	
 	public void pretraziStudente(String txt) {
 		zadovoljavajuPretragu = new ArrayList<Student>();
 		for(Student s : privremeno) {
