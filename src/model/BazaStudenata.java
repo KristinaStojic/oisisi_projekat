@@ -837,15 +837,17 @@ public class BazaStudenata {
 			prosao = true;
 			lista.clear();
 			
+			System.out.println(predmet);
+			System.out.println(tekst);
 			for(int i = 0; i < tekst.size() - 1; i++) {
-					
+					prosao = true;
 					if(tekst.get(i).equals("sifra")) {
 						i++;
 						if(tekst.get(i).equals("==")) {
 							i++;
 							if(tekst.get(i).startsWith("/")) {
-								tekst.set(i, tekst.get(i).substring(1, tekst.get(i).length() - 1));
-								Pattern pattern = Pattern.compile(tekst.get(i));
+								String pat = tekst.get(i).substring(1, tekst.get(i).length() - 1);
+								Pattern pattern = Pattern.compile(pat);
 								if(!pattern.matcher(predmet.getSifra_predmeta()).matches()) {
 									prosao = false;
 								}
@@ -858,8 +860,8 @@ public class BazaStudenata {
 						}else if(tekst.get(i).equals("!=")) {
 							i++;
 							if(tekst.get(i).startsWith("/") && tekst.get(i).endsWith("\"")) {
-								tekst.set(i, tekst.get(i).substring(1, tekst.get(i).length() - 1));
-								Pattern pattern = Pattern.compile(tekst.get(i));
+								String pat = tekst.get(i).substring(1, tekst.get(i).length() - 1);
+								Pattern pattern = Pattern.compile(pat);
 								if(pattern.matcher(predmet.getSifra_predmeta()).matches()) {
 									prosao = false;
 								}
@@ -877,8 +879,8 @@ public class BazaStudenata {
 							i++;
 							
 							if(tekst.get(i).startsWith("/") && tekst.get(i).endsWith("/")) {
-								tekst.set(i, tekst.get(i).substring(1, tekst.get(i).length() - 1));
-								Pattern pattern = Pattern.compile(tekst.get(i));
+								String pat = tekst.get(i).substring(1, tekst.get(i).length() - 1);
+								Pattern pattern = Pattern.compile(pat);
 								
 								if(!pattern.matcher(predmet.getNaziv_predmeta()).matches()) {
 									prosao = false;
@@ -895,8 +897,8 @@ public class BazaStudenata {
 						}else if(tekst.get(i).equals("!=")) {
 							i++;
 							if(tekst.get(i).startsWith("/")) {
-								tekst.set(i, tekst.get(i).substring(1, tekst.get(i).length() - 1));
-								Pattern pattern = Pattern.compile(tekst.get(i));
+								String pat = tekst.get(i).substring(1, tekst.get(i).length() - 1);
+								Pattern pattern = Pattern.compile(pat);
 								if(pattern.matcher(predmet.getNaziv_predmeta()).matches()) {
 									prosao = false;
 								}
