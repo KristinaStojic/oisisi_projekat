@@ -7,7 +7,11 @@ import izgledAplikacije.GlavniProzor;
 import model.BazaNepolozeniIspiti;
 import model.BazaOcjena;
 import model.BazaPredmeta;
+
 import model.BazaStudenata;
+
+import model.BazaProfesora;
+
 import model.Predmet;
 import model.Profesor;
 import model.Student;
@@ -39,6 +43,7 @@ private static PredmetController instance = null;
 	}
 	
 	public void izbrisiPredmet(Predmet p) {
+		BazaProfesora.getInstance().izbrisiPredmetsaProfesora(p);
 		BazaPredmeta.getInstance().obrisiPredmet(p);
 		GlavniProzor.getInstance().azurirajPrikaz("IZBRISI",-1);
 		

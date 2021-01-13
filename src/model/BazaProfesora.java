@@ -93,6 +93,23 @@ public class BazaProfesora {
 		//pomocni = profesori;
 	}
 	
+	
+	public void izbrisiPredmetsaProfesora(Predmet p) {
+		for(Profesor pr : profesori) {
+					
+			if(pr.getPredmetiProfesora() != null) {
+					for(Predmet prProf : pr.getPredmetiProfesora()) {
+						
+						if(prProf.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+							
+							pr.getPredmetiProfesora().remove(p);
+							break;
+						}
+					}
+			}
+		}
+	}
+	
 	public void izmeniProfesora(Profesor p) {
 		for(Profesor i: profesori) {
 			if(i.getId()==p.getId()) {
