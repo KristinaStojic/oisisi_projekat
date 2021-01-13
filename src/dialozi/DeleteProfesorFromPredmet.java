@@ -52,7 +52,7 @@ public class DeleteProfesorFromPredmet extends JDialog{
 				PredmetController.getInstance().ukloniProfesoraPredmetu(prof, pred);
 				prof.getPredmetiProfesora().remove(pred);
 				//ProfesorController.getInstance().izbrisiPredmetProfesoru(prof, pred);
-				
+				//BazaProfesora.getInstance().izbrisiPredmetsaProfesora(pred);
 				if(prof.getPredmetiProfesora() != null) {
 					plus.setEnabled(true);
 					minus.setEnabled(false);
