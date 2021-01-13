@@ -1199,5 +1199,22 @@ public class BazaStudenata {
 		}
 	}
 	
+	public void izmeniNepolozeni(Predmet p) {
+		for(Student s : studenti) {
+			if(s.getNepolozeniIspiti() != null){
+			for(int i = 0; i < s.getNepolozeniIspiti().size(); i++) {
+				if(p.getSifra_predmeta().equals(s.getNepolozeniIspiti().get(i).getSifra_predmeta())) {
+					s.getNepolozeniIspiti().get(i).setBroj_ESPB(p.getBroj_ESPB());
+					s.getNepolozeniIspiti().get(i).setGodina_izvodjenja(p.getGodina_izvodjenja());
+					s.getNepolozeniIspiti().get(i).setNaziv_predmeta(p.getNaziv_predmeta());
+					s.getNepolozeniIspiti().get(i).setPredmeni_profesor(p.getPredmetni_profesor());
+					s.getNepolozeniIspiti().get(i).setSemestar(p.getSemestar());
+					s.getNepolozeniIspiti().get(i).setSifra_predmeta(p.getSifra_predmeta());
+				}
+			}
+			}
+		}
+	}
+	
 	
 }
