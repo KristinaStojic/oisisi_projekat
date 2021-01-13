@@ -41,7 +41,10 @@ public class JTables extends JTable{
 			//this.setAutoCreateRowSorter(true);
 			TableRowSorter<AbstractTableModelPredmeti> sorterPred = new TableRowSorter<AbstractTableModelPredmeti>(modelPredmeti);
 			ComparatorSortiranjePredmeta compPred = new ComparatorSortiranjePredmeta();
+			ComparatorESPB compESPB = new ComparatorESPB();
 			sorterPred.setComparator(0, compPred);
+			sorterPred.setComparator(2, compESPB);
+			sorterPred.setComparator(3, compESPB);
 			this.setRowSorter(sorterPred);
 			break;	
 		}

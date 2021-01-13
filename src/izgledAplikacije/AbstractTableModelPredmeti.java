@@ -1,13 +1,8 @@
 package izgledAplikacije;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.table.AbstractTableModel;
 
 import model.BazaPredmeta;
-import model.Predmet;
-import model.Predmet.Semestar;
 
 public class AbstractTableModelPredmeti extends AbstractTableModel{
 
@@ -15,10 +10,10 @@ public class AbstractTableModelPredmeti extends AbstractTableModel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<Predmet> predmeti = new ArrayList<Predmet>();
+	//private List<Predmet> predmeti = new ArrayList<Predmet>();
 
     public AbstractTableModelPredmeti() {
-		predmeti = BazaPredmeta.getInstance().getPredmeti();
+		//predmeti = BazaPredmeta.getInstance().getPredmeti();
 	}
 	
 	@Override
@@ -37,29 +32,8 @@ public class AbstractTableModelPredmeti extends AbstractTableModel{
 	
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		//return BazaPredmeta.getInstance().getValueAt(rowIndex, columnIndex);
-		Predmet p = this.predmeti.get(rowIndex);
-		switch(columnIndex) {
-		case 0:
-			return p.getSifra_predmeta();
-		case 1:
-			return p.getNaziv_predmeta();
-		case 2:
-			return p.getBroj_ESPB();
-		case 3:
-			return p.getGodina_izvodjenja();
-		case 4:
-			if(p.getSemestar() == Semestar.Zimski) {
-				return "Zimski";
-			}
-			else {
-				return "Letnji";
-			}
-			
-			//return p.getSemestar();
-		default:
-			return null;
-		}
+		return BazaPredmeta.getInstance().getValueAt(rowIndex, columnIndex);
+
 	}
 
 	
