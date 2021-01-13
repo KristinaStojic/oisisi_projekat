@@ -32,7 +32,6 @@ import izgledAplikacije.AbstractTableModelPredmetiProfesora;
 import izgledAplikacije.GlavniProzor;
 import listeneri.MyFocusListener1;
 import listeneri.MyFocusListener2;
-import listeneri.MyFocusListener5;
 import listeneri.MyFocusListener6;
 import listeneri.MyKeyListener1;
 import listeneri.MyKeyListener2;
@@ -302,56 +301,6 @@ public class EditProfesor extends JDialog {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					/*try {
-						
-						
-						if(txtIme.getText().trim().isEmpty() || txtPrz.getText().trim().isEmpty() 
-								|| txtDatum.getText().trim().isEmpty() || txtAdresa.getText().trim().isEmpty()
-									|| txtTel.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()
-										|| txtAdresaKanc.getText().trim().isEmpty() || txtBrLicne.getText().trim().isEmpty()) {
-							JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("svaPolja"));
-						}else {
-							Profesor profesor = collectData();
-							profesor.setId(p.getId());
-							boolean postoji = false;
-							for(int i = 0; i < BazaProfesora.getInstance().getProfesori().size(); i++) {
-								if((profesor.getBrojLicneKarte().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))
-										&& profesor.getId() != BazaProfesora.getInstance().getProfesori().get(i).getId()) {
-									//JOptionPane.showMessageDialog(null, "Uneseni broj lične karte već postoji!");
-									JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("postojiLicna"));
-									postoji = true;
-								}
-							}	
-								if(!postoji) {
-									//provjera da li su polja dobro popunjena
-									Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
-									Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
-									Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
-									Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
-									Pattern brLicne = Pattern.compile("[A-Z|0-9]*");
-									boolean ispravan_unos = false;
-									if(datum.matcher(profesor.getDatumRodjenja()).matches() && adresa.matcher(profesor.getAdresaStanovanja()).matches()
-											&& telefon.matcher(profesor.getKontaktTelefon()).matches() && mejl.matcher(profesor.getEmailAdresa()).matches()
-											&& adresa.matcher(profesor.getAdresaKancelarije()).matches() && brLicne.matcher(profesor.getBrojLicneKarte()).matches()) {
-										ispravan_unos = true;
-									}
-									if(!ispravan_unos) {
-										//JOptionPane.showMessageDialog(null, "Neispravan unos!");
-										JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("neispravanUnos"));
-
-									}
-									else{
-										ProfesorController.getInstance().izmeniProfesora(profesor);
-										dispose();
-									}
-								}
-							}
-						
-						
-					}catch(Exception ex) {
-						//System.out.println("GRESKA");
-						ex.printStackTrace();
-					}*/
 					
 					Profesor profesor = collectData();
 					profesor.setId(p.getId());
@@ -381,7 +330,6 @@ public class EditProfesor extends JDialog {
 						sve_uneseno = true;
 					}
 					Pattern datum = Pattern.compile("[0-3][0-9][.](0[1-9]|1[012])[.][0-2][0-9][0-9][0-9][.]");
-					//Pattern adresa = Pattern.compile("[A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*[0-9]*[,_ ][A-Z|a-z|ž|Ž|Đ|đ|Š|š|ć|Ć|č|Č_ ]*");
 					Pattern telefon = Pattern.compile("[0-9]{3}[/][0-9]{6,7}");
 					Pattern mejl = Pattern.compile("[a-z|0-9|_|.]+[a-z|0-9][@]([a-z]+[.][a-z]+)+");
 					Pattern brLicne = Pattern.compile("[A-Z|0-9]*");
@@ -476,7 +424,6 @@ public class EditProfesor extends JDialog {
 						ukloniPredmetProfesoru.setVisible(true);
 						azurirajPrikazPredmetaProfesora("UKLONJENO", -1);
 					}else {
-						//JOptionPane.showMessageDialog(null, "Morate izabrati predmet");
 						JOptionPane.showMessageDialog(null, GlavniProzor.getInstance().resourceBundle.getString("morateIzabratiPredmet"));
 
 					}

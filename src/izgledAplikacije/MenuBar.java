@@ -81,7 +81,7 @@ public class MenuBar extends JMenuBar{
 		miEdit = new JMenuItem(GlavniProzor.getInstance().getResourceBundle().getString("mniEdit"), icon);
 
 		//miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
-		InsertAction ed = new InsertAction();
+		EditAction ed = new EditAction();
 		miEdit.setAction(ed);
 		miEdit.setText(GlavniProzor.getInstance().getResourceBundle().getString("mniEdit"));
 		miEdit.setMnemonic(KeyEvent.VK_E);

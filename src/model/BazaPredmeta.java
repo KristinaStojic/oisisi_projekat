@@ -240,7 +240,6 @@ public class BazaPredmeta {
 		}
 	}
 	
-	@SuppressWarnings("unlikely-arg-type")
 	public void naprednaPretragaPredmeta(String txt) {
 		zadovoljavajuPretragu = new ArrayList<Predmet>();
 		boolean prosao = true;

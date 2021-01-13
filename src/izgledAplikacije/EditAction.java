@@ -16,13 +16,13 @@ import model.Predmet;
 import model.Profesor;
 import model.Student;
 
-public class InsertAction extends AbstractAction{
+public class EditAction extends AbstractAction{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public InsertAction() {
+	public EditAction() {
 		
 		//putValue(MNEMONIC_KEY,KeyEvent.VK_I);
 		putValue(SHORT_DESCRIPTION, "Edit");

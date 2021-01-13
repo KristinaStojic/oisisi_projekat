@@ -47,7 +47,7 @@ public class ToolBar extends JToolBar{
 	addSeparator();
 	
 	
-	InsertAction izmeni = new InsertAction();
+	EditAction izmeni = new EditAction();
      btn2 = new JButton(izmeni);
 	//btn2.setToolTipText(GlavniProzor.getInstance().getResourceBundle().getString("toolEdit"));
 	btn2.setIcon(new ImageIcon("imgs" + File.separator + "olovka.jpg"));
